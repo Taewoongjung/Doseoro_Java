@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -30,7 +31,6 @@ dependencies {
 	// lombok 라이브러리 추가 끝
 
 	// jsp
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'javax.servlet:jstl'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 
