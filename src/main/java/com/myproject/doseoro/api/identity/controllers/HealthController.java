@@ -18,4 +18,10 @@ public class HealthController {
     public String index(Map<String, Object> model) {
         return "index";
     }
+
+    @RequestMapping(value = "/login")
+    public String login(Map<String, Object> model) {
+        System.out.println("login called");
+        return "login";
+    }
 }

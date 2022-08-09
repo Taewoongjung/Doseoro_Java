@@ -1,5 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html lang="en">
 
 <head>
@@ -153,9 +153,9 @@
         request.setAttribute('method', 'GET');
     }
 </script>
-<script src="/static/js/topNav.js"></script>
-<script src="/static/css/bootstrap.min.css"></script>
-<script src="/static/js/popGuide.js"></script>
+<script src="/js/topNav.js"></script>
+<script src="/css/bootstrap.min.css"></script>
+<script src="/js/popGuide.js"></script>
 
 </body>
 
