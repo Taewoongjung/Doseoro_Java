@@ -1,10 +1,8 @@
-package com.myproject.doseoro.packages.identity.dao;
+package com.myproject.doseoro.packages.identity.domain;
 
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @ToString
 @Getter
@@ -12,16 +10,15 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "t_member")
-public class Member {
+@Table(name = "t_identity")
+public class Identity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID id;
+    @Column(length = 200, nullable = false)
+    private String id;
 
     @Column(length = 200, nullable = false)
     private String email;
@@ -38,28 +35,28 @@ public class Member {
     @Column(length = 14, nullable = false)
     private String phone;
 
-    @Column(name = "forgot_pw_question", length = 100, nullable = false)
+    @Column(name = "forgot_pw_question", length = 100, nullable = true)
     private String forgotPwQuestion;
 
-    @Column(name = "forgot_pw_answer", length = 100, nullable = false)
+    @Column(name = "forgot_pw_answer", length = 100, nullable = true)
     private String forgotPwAnswer;
 
     @Column(length = 100, nullable = true)
     private String liked;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = true)
     private String location;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = true)
     private String dong;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = true)
     private String si;
 
-    @Column(length = 10, nullable = false)
-    private String dou;
+    @Column(length = 10, nullable = true)
+    private String dou; // 도 ex) 경기"도"
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = true)
     private String provider;
 
     @Column(length = 50, nullable = true)
