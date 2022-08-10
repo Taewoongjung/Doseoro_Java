@@ -41,9 +41,10 @@ public class PageController {
     private final CreateUserIdentityCommandHandler createUserIdentityCommandHandler;
 
     @PostMapping(value = "/auth/signup")
-    public IdentityResponse comSignup(final SignUpRequest dto) throws Exception {
+    public String comSignup(final SignUpRequest dto) throws Exception {
         System.out.println("comSignup called");
         final Identity identity = createUserIdentityCommandHandler.signUp(dto);
-        return new IdentityResponse(identity.getId());
+        new IdentityResponse(identity.getId());
+        return "home";
     }
 }

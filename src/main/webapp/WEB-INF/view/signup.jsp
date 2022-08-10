@@ -18,7 +18,7 @@
 <body>
     <div class="flex w-100">
         <!-- 상단 바 -->
-        {% include "topNavbar.html" %}
+        <%@include file="topNavbar.jsp"%>
 
         <!-- 회원가입 영역 -->
         <main class="container-sm form-signin mt-5 mb-0 min-vh-100">
