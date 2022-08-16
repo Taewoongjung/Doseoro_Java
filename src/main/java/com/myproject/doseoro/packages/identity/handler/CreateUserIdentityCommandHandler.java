@@ -1,6 +1,6 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.packages.identity.dao.abstraction.IdentityRepository;
+import com.myproject.doseoro.infra.mybatis.IdentityMybatisRepository;
 import com.myproject.doseoro.packages.identity.domain.Identity;
 import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CreateUserIdentityCommandHandler {
 
-    private final IdentityRepository identityRepository;
+//    private final IdentityRepository identityRepository;
+
+    private final IdentityMybatisRepository identityRepository;
 
     public Identity signUp(final SignUpRequest dto) throws Exception {
         if (identityRepository.existsByEmail(dto.getEmail())) {
@@ -19,6 +21,6 @@ public class CreateUserIdentityCommandHandler {
         }
 
         final String uuid = UUID.randomUUID().toString();
-        return identityRepository.save(dto.toEntity(uuid));
+        return identityRepository.save(dto, uuid);
     }
 }

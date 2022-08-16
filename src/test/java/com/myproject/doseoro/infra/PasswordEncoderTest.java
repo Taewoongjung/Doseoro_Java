@@ -15,6 +15,10 @@ class PasswordEncoderTest {
 
     @BeforeEach
     public void beforeEach() {
+//        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
+//        WebSecurityConfig ws = ac.getBean(WebSecurityConfig.class);
+//        passwordEncoder = ws.passwordEncoder();
+
         WebSecurityConfig ws = new WebSecurityConfig();
         passwordEncoder = ws.passwordEncoder();
     }
@@ -23,6 +27,8 @@ class PasswordEncoderTest {
     @DisplayName("패스워드 암호화 테스트")
     void passwordEncoder() {
         // given
+//        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
+//        WebSecurityConfig ws = ac.getBean(WebSecurityConfig.class);
         String rawPassword = "12345677";
 
         // when

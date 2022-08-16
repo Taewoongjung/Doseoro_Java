@@ -16,11 +16,15 @@ dependencies {
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'mysql:mysql-connector-java'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.projectlombok:lombok:1.18.18'
 	implementation 'org.projectlombok:lombok:1.18.18'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// mybatis
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+
+	// jpa
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	// (비밀번호 암호화) security 의존성 주입
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.4.5'
