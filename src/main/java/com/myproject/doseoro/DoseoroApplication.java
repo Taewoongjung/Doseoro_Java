@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DoseoroApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DoseoroApplication.class, args);
-	}
 
+		SpringApplication.run(DoseoroApplication.class, args);
+
+	}
 }

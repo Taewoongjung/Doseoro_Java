@@ -8,6 +8,7 @@ class DoseoroApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
