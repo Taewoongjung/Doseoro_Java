@@ -48,17 +48,4 @@ public class SignUpRequest implements Serializable {
                 '}';
     }
 
-//    public Identity toEntity(final String uuid) {
-//        System.out.println("@@@@@@@  "+ toString());
-//        return Identity.builder()
-//                .id(uuid)
-//                .name(name)
-//                .phone(phoneNumber)
-//                .nickName(nickName)
-//                .email(email)
-//                .password(password)
-//                .forgotPwQuestion(question)
-//                .forgotPwAnswer(answerForQuestion)
-//                .build();
-//    }
 }

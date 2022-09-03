@@ -16,8 +16,6 @@ import static org.assertj.core.api.Assertions.*;
 class IdentityMybatisRepositoryTest {
 
     @Autowired
-    private IdentityMybatisRepository repository;
-
     @Test
     @DisplayName("DB에 있는 email 찾을 수 있다.")
     void findEmail() throws Exception {
@@ -28,7 +26,7 @@ class IdentityMybatisRepositoryTest {
                 "aaa", "a",
                 "aaaaaa"
         );
-        CreateUserIdentityCommandHandler handler = new CreateUserIdentityCommandHandler(repository);
-        handler.findEmail(dto);
+//        CreateUserIdentityCommandHandler handler = new CreateUserIdentityCommandHandler();
+//        handler.findEmail(dto);
     }
 }
