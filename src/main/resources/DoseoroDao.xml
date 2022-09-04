@@ -4,10 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.packages.identity.dao.DoseoroDao">
 
-    <select id="findAll" resultType="String">
-        select email from t_identity
-    </select>
-
     <select id="existEmail" resultType="Boolean" parameterType="String">
         select distinct * from t_identity where email = #{email}
     </select>
