@@ -67,7 +67,7 @@
         <!-- footer -->
         <nav class="navbar navbar-expand-md bg-dark border-1" id="footerNav"></nav>
     </div>
-    
+
     <script src="resources/js/checkFormat.js"></script>
     <script src="resources/js/signup-cli.js"></script>
     <script src="resources/js/topNav.js"></script>

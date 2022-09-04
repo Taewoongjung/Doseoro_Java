@@ -1,15 +1,12 @@
 package com.myproject.doseoro.api.identity.controllers;
 
-import com.myproject.doseoro.packages.identity.domain.Identity;
-import com.myproject.doseoro.packages.identity.dto.IdentityResponse;
 import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
 import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.Map;
 
 @Controller
@@ -42,17 +39,19 @@ public class PageController {
     }
 
     @PostMapping(value = "/auth/signup")
-    public String userSignup(SignUpRequest dto) throws Exception {
+    public String userSignup(SignUpRequest dto, Model model) throws Exception {
         System.out.println("comSignup called");
         System.out.println(dto);
 
         boolean identity = createUserIdentityCommandHandler.signUp(dto);
         if (!identity) {
-            System.out.println("중복된 아이디");
-            return "home";
+            System.out.println("중복된 이메일");
+            model.addAttribute("msg", "중복된 이메일 입니다.");
+            model.addAttribute("url", "/signup");
+            return "error";
         }
         System.out.println("signup end point = "+identity);
-        return "home";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/find")
