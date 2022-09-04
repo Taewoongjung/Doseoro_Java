@@ -18,8 +18,16 @@ public class IdentityMybatisService {
         return dao.findAll();
     }
 
-    public boolean existEmail(String email) {
-        return dao.existEmail(email);
+    public Boolean existEmail(String email) {
+        System.out.println("existEmail");
+
+        Boolean found = dao.existEmail(email);
+
+        if (found == null) {
+            found = false;
+        }
+
+        return found;
     }
 
     public boolean signUp(SignUpRequest user) {

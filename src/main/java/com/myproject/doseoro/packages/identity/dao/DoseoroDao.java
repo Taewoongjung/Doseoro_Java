@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface DoseoroDao {
     ArrayList<String> findAll();
 
-    boolean existEmail(String email);
+    Boolean existEmail(String email);
 
     boolean signUp(SignUpRequest user);
 }

@@ -4,6 +4,7 @@ import com.myproject.doseoro.packages.identity.domain.Identity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -11,13 +12,22 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SignUpRequest implements Serializable {
 
-    public String id;
+    @Setter
+    private String id;
+
     private String email;
+
+    @Setter
     private String password;
+
     private String name;
+
     private String nickName;
+
     private String phoneNumber;
+
     private String question;
+
     private String answerForQuestion;
 
     public SignUpRequest(String id, String email, String password, String name, String nickName, String phoneNumber, String question, String answerForQuestion) {

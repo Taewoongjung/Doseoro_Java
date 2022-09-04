@@ -1,10 +1,9 @@
 package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.infra.mybatis.identity.IdentityMybatisService;
-import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
-import com.myproject.doseoro.packages.identity.domain.Identity;
 import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,20 +14,24 @@ import java.util.UUID;
 public class CreateUserIdentityCommandHandler {
 
     private final IdentityMybatisService repository;
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public boolean signUp(final SignUpRequest dto) throws Exception {
-        System.out.println("t or f"+repository.existEmail(dto.getEmail()));
         if (repository.existEmail(dto.getEmail())) { // 따로 예외 처리하기 (지금은 임시방편)
-            throw new Exception("email existed");
+            return false;
         }
 
         final String uuid = UUID.randomUUID().toString();
-        dto.id = uuid;
+        dto.setId(uuid);
+
+        String hashedPassword = encoder.encode(dto.getPassword());
+        dto.setPassword(hashedPassword);
+
         System.out.println(dto);
 
-        boolean done = repository.signUp(dto);
-        System.out.println("Sign up done = " + done);
-        return done;
+        boolean signUpCompleted = repository.signUp(dto);
+        System.out.println("Sign up signUpCompleted = " + signUpCompleted);
+        return signUpCompleted;
     }
 
     public void findThis() {
@@ -43,7 +46,7 @@ public class CreateUserIdentityCommandHandler {
 
     public void emailExist() {
         System.out.println("start");
-        boolean found = repository.existEmail("a@a");
+        Boolean found = repository.existEmail("a@a");
         System.out.println(found);
         System.out.println("found");
     }

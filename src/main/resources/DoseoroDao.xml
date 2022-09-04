@@ -8,7 +8,7 @@
         select email from t_identity
     </select>
 
-    <select id="existEmail" resultType="boolean" parameterType="String">
+    <select id="existEmail" resultType="Boolean" parameterType="String">
         select distinct * from t_identity where email = #{email}
     </select>
 
