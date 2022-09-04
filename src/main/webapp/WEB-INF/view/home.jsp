@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="resources/static/css/style.css">
     <title>도서로</title>
 </head>
 
@@ -46,7 +46,7 @@
                                 {% else %}
                                 {% for book in rankedBooks %}
                                 <div class="saleCard card m-2" style="max-width: 210px;" onclick="location.href='/book/{{book.id}}'">
-                                    <img src="/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
+                                    <img src="resources/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
                                     <div class="card-body text-center">
                                         <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
                                         {% if book.price == -1 %}
@@ -92,7 +92,7 @@
             <div class="d-flex flex-wrap justify-content-center">
                 {% for book in books %}
                 <div class="saleCard card mt-4 m-2" style="max-width: 210px;" onclick="location.href='/book/{{book.id}}'">
-                    <img src="/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
+                    <img src="resources/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
                     <div class="card-body text-center">
                         <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
                         <a>{{book.price}} 원</a>
@@ -153,9 +153,9 @@
         request.setAttribute('method', 'GET');
     }
 </script>
-<script src="/js/topNav.js"></script>
-<script src="/css/bootstrap.min.css"></script>
-<script src="/js/popGuide.js"></script>
+<script src="resources/js/topNav.js"></script>
+<script src="resources/css/bootstrap.min.css"></script>
+<script src="resources/js/popGuide.js"></script>
 
 </body>
 

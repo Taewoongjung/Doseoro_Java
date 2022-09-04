@@ -11,26 +11,22 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SignUpRequest implements Serializable {
 
-    private String name;
-
-    private String phoneNumber;
-
-    private String nickName;
-
+    public String id;
     private String email;
-
     private String password;
-
+    private String name;
+    private String nickName;
+    private String phoneNumber;
     private String question;
-
     private String answerForQuestion;
 
-    public SignUpRequest(String name, String phoneNumber, String nickName, String email, String password, String question, String answerForQuestion) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.nickName = nickName;
+    public SignUpRequest(String id, String email, String password, String name, String nickName, String phoneNumber, String question, String answerForQuestion) {
+        this.id = id;
         this.email = email;
         this.password = password;
+        this.name = name;
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
         this.question = question;
         this.answerForQuestion = answerForQuestion;
     }
@@ -38,14 +34,14 @@ public class SignUpRequest implements Serializable {
     @Override
     public String toString() {
         return "SignUpRequest{" +
-                "name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", nickName='" + nickName + '\'' +
+                "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", question='" + question + '\'' +
                 ", answerForQuestion='" + answerForQuestion + '\'' +
                 '}';
     }
-
 }

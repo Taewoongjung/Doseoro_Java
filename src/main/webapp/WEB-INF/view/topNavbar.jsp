@@ -2,7 +2,7 @@
 <!-- 상단 바 / ~detail.html은 topNavbar2로 load하기-->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white ps-3 pe-3" id="topNav">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="/images/logo3.png" width="160" height="64"></a>
+        <a class="navbar-brand" href="/"><img src="resources/images/logo3.png" width="160" height="64"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
@@ -119,8 +119,8 @@
         </div>
     </div>
 
-    <script src="/js/notionEvent.js"></script>
-    <script src="/js/notyClick.js"></script>
+    <script src="resources/js/notionEvent.js"></script>
+    <script src="resources/js/notyClick.js"></script>
     <script>
         function commu_noty_delete(id) {
             const request = document.getElementById(`Commu-form-${id}`);

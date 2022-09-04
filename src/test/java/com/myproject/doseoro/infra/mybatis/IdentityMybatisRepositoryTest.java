@@ -24,7 +24,7 @@ class IdentityMybatisRepositoryTest {
                 "a", "1",
                 "aa", "a@a",
                 "aaa", "a",
-                "aaaaaa"
+                "aaaaaa", "a"
         );
 //        CreateUserIdentityCommandHandler handler = new CreateUserIdentityCommandHandler();
 //        handler.findEmail(dto);

@@ -8,4 +8,12 @@
         select email from t_identity
     </select>
 
+    <select id="existEmail" resultType="boolean" parameterType="String">
+        select distinct * from t_identity where email = #{email}
+    </select>
+
+    <insert id="signUp" parameterType="SignUpRequest">
+        insert into t_identity(id, email, password, name, nick_name, phone, forgot_pw_question, forgot_pw_answer)
+        values(#{id}, #{email}, #{password}, #{name}, #{nickName}, #{phoneNumber}, #{question}, #{answerForQuestion})
+    </insert>
 </mapper>

@@ -1,9 +1,12 @@
 package com.myproject.doseoro.api.identity.controllers;
 
+import com.myproject.doseoro.packages.identity.domain.Identity;
+import com.myproject.doseoro.packages.identity.dto.IdentityResponse;
+import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
 import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -31,21 +34,23 @@ public class PageController {
     }
 
     @RequestMapping(value = "/signup")
-    public String signup(Map<String, Object> model) {
+    public String signup() {
         System.out.println("signup called");
         return "signup";
     }
 
-//    @PostMapping(value = "/auth/signup")
-//    public String comSignup(final SignUpRequest dto) throws Exception {
-//        System.out.println("comSignup called");
-//        final Identity identity = createUserIdentityCommandHandler.signUp(dto);
-//        new IdentityResponse(identity.getId());
-//        return "home";
-//    }
+    @PostMapping(value = "/auth/signup")
+    public String userSignup(SignUpRequest dto) throws Exception {
+        System.out.println("comSignup called");
+        System.out.println(dto);
+        boolean identity = createUserIdentityCommandHandler.signUp(dto);
+        System.out.println("signup end point = "+identity);
+        return "home";
+    }
 
     @RequestMapping(value = "/find")
     public void findAllByEmail() throws Exception {
         createUserIdentityCommandHandler.findThis();
+        createUserIdentityCommandHandler.emailExist();
     }
 }

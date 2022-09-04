@@ -9,8 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/loginStyle.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/loginStyle.css">
     
     <title>회원가입</title>
 </head>
@@ -24,7 +24,7 @@
         <main class="container-sm form-signin mt-5 mb-0 min-vh-100">
             <form id="signup-form">
                 <div class="loginLogo">
-                    <img class="" src="/images/logo3.png" width="250px" height="100px">
+                    <img class="" src="resources/images/logo3.png" width="250px" height="100px">
                     <h1 class="h3 mt-3 mb-3">회원가입</h1>
                 </div>
                 
@@ -68,10 +68,10 @@
         <nav class="navbar navbar-expand-md bg-dark border-1" id="footerNav"></nav>
     </div>
     
-    <script src="/js/checkFormat.js"></script>
-    <script src="/js/signup-cli.js"></script>
-    <script src="/js/topNav.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="resources/js/checkFormat.js"></script>
+    <script src="resources/js/signup-cli.js"></script>
+    <script src="resources/js/topNav.js"></script>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

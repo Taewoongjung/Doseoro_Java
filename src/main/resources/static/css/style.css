@@ -29,11 +29,11 @@ input:-webkit-autofill {
 }
 @font-face {
 	font-family: "NanumSquareR"; 
-	src: url("/css/NanumSquareR.ttf");
+	src: url("resources/css/NanumSquareR.ttf");
 }
 @font-face {
 	font-family: "bmdohyeon"; 
-	src: url("/css/BMDOHYEON.ttf");
+	src: url("resources/css/BMDOHYEON.ttf");
 }
 body {
 	font-family: "NanumSquareR";

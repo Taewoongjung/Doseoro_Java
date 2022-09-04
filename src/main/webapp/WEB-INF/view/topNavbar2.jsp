@@ -2,7 +2,7 @@
 <!-- 상단 바 / ~detail.html은 topNavbar2로 load하기-->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white ps-3 pe-3" id="topNav">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="/img/logo3.png" width="160" height="64"></a>
+        <a class="navbar-brand" href="/"><img src="resources/img/logo3.png" width="160" height="64"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
@@ -11,7 +11,7 @@
                 {% if users and users.id %}
                 <li class="nav-item">
                     <div onclick="notionClick(true)" class="nav-link btn notionBtn d-flex align-items-center">
-                        <img src="/img/notionF.png" width="23px" alt="notionImg">
+                        <img src="resources/img/notionF.png" width="23px" alt="notionImg">
                         <p style="color:red">{% if noticess == 0 %}{% else %}!{% endif %}</p>
                     </div>
                     <div id="notionList" class="notionInner p-2">
