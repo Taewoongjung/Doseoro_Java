@@ -1,11 +1,13 @@
 package com.myproject.doseoro.infra.mybatis.identity;
 
 import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
+import com.myproject.doseoro.packages.identity.dto.IdentityDto;
 import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
+import com.myproject.doseoro.packages.identity.dto.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +29,24 @@ public class IdentityMybatisService {
 
     public boolean signUp(SignUpRequest user) {
         return dao.signUp(user);
+    }
+
+    public IdentityVO findByEmail(String email) {
+        return dao.findByEmail(email);
+    }
+
+    public IdentityDto login(String email, String password) {
+        return dao.login(email, password);
+    }
+
+    public Boolean loginCheck(IdentityVO vo) {
+        System.out.println("loginCheck");
+        System.out.println("loginCheck vo = " + vo);
+        System.out.println("loginCheck vo = " + vo.getEmail());
+        System.out.println("loginCheck vo = " + vo.getPassword());
+//        Boolean name = dao.loginCheck(vo.getEmail(), vo.getPassword());
+        HashMap name = dao.loginCheck(vo.getEmail());
+        System.out.println("?? = " + name);
+        return (name == null) ? false : true;
     }
 }

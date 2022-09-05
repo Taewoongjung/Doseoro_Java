@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -23,11 +24,19 @@
     <main class="container-sm min-vh-100 contentInner">
         <!-- 검색, 메뉴이동 기능 -->
         <!-- 로그인 하면 지역필터 나옴 -->
-        {% if user %}
-        {% include "searchBoxLoggedIn.html" %}
-        {% else %}
-        {% include "searchBox.html" %}
-        {% endif %}
+<%--        {% if user %}--%>
+<%--        {% include "searchBoxLoggedIn.html" %}--%>
+<%--        {% else %}--%>
+<%--        {% include "searchBox.html" %}--%>
+<%--        {% endif %}--%>
+        <c:choose>
+            <c:when test="${obj}">
+                <%@include file="searchBoxLoggedIn.jsp"%>
+            </c:when>
+            <c:when test="${!obj}">
+                <%@include file="searchBox.jsp"%>
+            </c:when>
+        </c:choose>
         <!-- 배너 -->
         <div class="bd-example">
             <div id="bannerList" class="carousel slide carousel-dark" data-bs-ride="carousel">

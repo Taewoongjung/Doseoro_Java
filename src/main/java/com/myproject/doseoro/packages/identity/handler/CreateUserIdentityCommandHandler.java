@@ -20,7 +20,7 @@ public class CreateUserIdentityCommandHandler {
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public boolean handle(final SignUpRequest dto) {
-        if (repository.existEmail(dto.getEmail())) { // 따로 예외 처리하기 (지금은 임시방편)
+        if (repository.existEmail(dto.getEmail())) {
             throw new BusinessException(EMAIL_DUPLICATION);
         }
 

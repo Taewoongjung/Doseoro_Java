@@ -3,54 +3,46 @@ package com.myproject.doseoro.packages.identity.dto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class SignUpRequest implements Serializable {
+public class IdentityDto {
 
-    @Setter
     private String id;
-
     private String email;
-
-    @Setter
     private String password;
-
     private String name;
-
     private String nickName;
+    private String phone;
+    private String forgotPwQuestion;
+    private String forgotPwAnswer;
 
-    private String phoneNumber;
-
-    private String question;
-
-    private String answerForQuestion;
-
-    public SignUpRequest(String id, String email, String password, String name, String nickName, String phoneNumber, String question, String answerForQuestion) {
+    public IdentityDto(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.nickName = nickName;
-        this.phoneNumber = phoneNumber;
-        this.question = question;
-        this.answerForQuestion = answerForQuestion;
+        this.phone = phone;
+        this.forgotPwQuestion = forgotPwQuestion;
+        this.forgotPwAnswer = forgotPwAnswer;
     }
 
     @Override
     public String toString() {
-        return "SignUpRequest{" +
+        return "IdentityDto{" +
                 "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", question='" + question + '\'' +
-                ", answerForQuestion='" + answerForQuestion + '\'' +
+                ", phone='" + phone + '\'' +
+                ", forgotPwQuestion='" + forgotPwQuestion + '\'' +
+                ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
                 '}';
+    }
+
+    public String getRole() {
+        return "USER";
     }
 }

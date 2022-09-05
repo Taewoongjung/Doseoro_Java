@@ -4,6 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.packages.identity.dao.DoseoroDao">
 
+    <select id="findByEmail" resultType="IdentityVO" parameterType="String">
+        SELECT * from t_identity where email = #{email}
+    </select>
+
+    <select id="login" resultType="IdentityDto" parameterType="String">
+        SELECT * from t_identity where email = #{email} and password = #{password}
+    </select>
+
+    <select id="loginCheck" resultType="HashMap" parameterType="String">
+        SELECT
+            id AS id,
+            email AS email,
+            name AS name,
+            nick_name AS nickName,
+            phone AS phone,
+            forgot_pw_question AS forgotPwQuestion,
+            forgot_pw_answer AS forgotPwAnswer
+        FROM t_identity
+        WHERE email = #{email}
+    </select>
+
+
     <select id="existEmail" resultType="Boolean" parameterType="String">
         select distinct * from t_identity where email = #{email}
     </select>

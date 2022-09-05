@@ -16,6 +16,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // post 방식으로 값을 전송할 때 token을 사용해야하는 보안 설정을 해제
                 .authorizeRequests()
 //                .anyRequest().authenticated();
-                .antMatchers("/**").permitAll();
+                .antMatchers("/**").permitAll()
+                .and()
+                    .formLogin()
+                        .loginPage("/login")
+                        .loginProcessingUrl("/auth/login")
+                        .defaultSuccessUrl("/")
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+        ;
     }
 }

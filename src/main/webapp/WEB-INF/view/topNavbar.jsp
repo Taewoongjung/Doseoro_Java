@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 상단 바 / ~detail.html은 topNavbar2로 load하기-->
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white ps-3 pe-3" id="topNav">
@@ -8,9 +9,6 @@
             <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse justify-content-sm-end" id="navbarCollapse">
             <ul class="navbar-nav mb-2 mb-md-0 notionBox">
-<%--                <%--%>
-<%--                    boolean user = false;--%>
-<%--                    if (user) %>--%>
 <%--                <li class="nav-item">--%>
 <%--                    <div onclick="notionClick(true)" class="nav-link btn notionBtn d-flex align-items-center">--%>
 <%--                        <img src="/img/notionF.png" width="23px" alt="notionImg">--%>
@@ -19,7 +17,7 @@
 <%--                    <div id="notionList" class="notionInner p-2">--%>
 <%--                        <ul class="m-2"><a class="notionBtn p-2" onclick="notionClick(false)">close</a></ul>--%>
 
-<%--                            <% if (noticess == 0) %>--%>
+<%--                        <% if (noticess == 0) %>--%>
 <%--                        <p class="ms-3">아주 조용합니다..</p>--%>
 <%--                        <% else %>--%>
 <%--                        <div id="listAll">--%>
@@ -106,15 +104,14 @@
 <%--                        {% endif %}--%>
 <%--                    </div>--%>
 <%--                </li>--%>
-
-<%--                <li class="nav-item"><a class="nav-link p-3">안녕하세요 {{user.nick}}님</a></li>--%>
-<%--                <li class="nav-item"><a class="nav-link p-3" href="/pages/like">관심상품</a></li>--%>
-<%--                <li class="nav-item"><a class="nav-link p-3" href="/mypage">마이페이지</a></li>--%>
-<%--                <li class="nav-item"><a class="nav-link p-3" href="/auth/logout">로그아웃</a></li>--%>
-
-<%--                {% else %}--%>
-                <li class="nav-item"><a class="nav-link p-3" href="/login">로그인</a></li>
-<%--                {% endif %}--%>
+                    <%if (session.getAttribute("email") == null) {%>
+                        <li class="nav-item"><a class="nav-link p-3" href="/login">로그인</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="nav-link p-3">안녕하세요 ${sessionScope.email}님</a></li>
+                        <li class="nav-item"><a class="nav-link p-3" href="/pages/like">관심상품</a></li>
+                        <li class="nav-item"><a class="nav-link p-3" href="/mypage">마이페이지</a></li>
+                        <li class="nav-item"><a class="nav-link p-3" href="/auth/logout">로그아웃</a></li>
+                    <% } %>
             </ul>
         </div>
     </div>
