@@ -41,8 +41,4 @@ public class IdentityDto {
                 ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
                 '}';
     }
-
-    public String getRole() {
-        return "USER";
-    }
 }

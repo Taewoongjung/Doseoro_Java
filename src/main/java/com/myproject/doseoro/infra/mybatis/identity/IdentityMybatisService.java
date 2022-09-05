@@ -27,26 +27,20 @@ public class IdentityMybatisService {
         return found;
     }
 
-    public boolean signUp(SignUpRequest user) {
-        return dao.signUp(user);
-    }
-
     public IdentityVO findByEmail(String email) {
         return dao.findByEmail(email);
     }
 
-    public IdentityDto login(String email, String password) {
-        return dao.login(email, password);
+    public SignUpRequest findUser(String email) {
+        return dao.findUser(email);
     }
 
     public Boolean loginCheck(IdentityVO vo) {
-        System.out.println("loginCheck");
-        System.out.println("loginCheck vo = " + vo);
-        System.out.println("loginCheck vo = " + vo.getEmail());
-        System.out.println("loginCheck vo = " + vo.getPassword());
-//        Boolean name = dao.loginCheck(vo.getEmail(), vo.getPassword());
         HashMap name = dao.loginCheck(vo.getEmail());
-        System.out.println("?? = " + name);
         return (name == null) ? false : true;
+    }
+
+    public boolean signUp(SignUpRequest user) {
+        return dao.signUp(user);
     }
 }

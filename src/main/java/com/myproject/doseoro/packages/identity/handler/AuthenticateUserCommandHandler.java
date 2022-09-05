@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class AuthenticateUserCommandHandler extends IdentityService {
 
-    private SqlSession sqlSession;
     private final IdentityMybatisService repository;
 
     public boolean handle(IdentityVO vo, HttpSession session) {
@@ -21,17 +20,14 @@ public class AuthenticateUserCommandHandler extends IdentityService {
         boolean result = repository.loginCheck(vo);
         if (result) {
             IdentityVO vo1 = viewUser(vo);
-            System.out.println("in if phrase");
-            System.out.println(vo1);
             session.setAttribute("email", vo1.getEmail());
+            session.setAttribute("name", vo1.getName());
         }
-        System.out.println("return from handler");
         return result;
     }
 
     @Override
     public IdentityVO viewUser(IdentityVO vo) {
-        System.out.println("viewUser in");
         return repository.findByEmail(vo.getEmail());
     }
 }

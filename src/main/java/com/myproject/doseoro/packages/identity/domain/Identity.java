@@ -1,6 +1,7 @@
 package com.myproject.doseoro.packages.identity.domain;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 @ToString
 @Getter
@@ -28,17 +29,24 @@ public class Identity {
 
     private String forgotPwAnswer;
 
+    @Nullable
     private String liked;
 
+    @Nullable
     private String location;
 
+    @Nullable
     private String dong;
 
+    @Nullable
     private String si;
 
+    @Nullable
     private String dou; // 도 ex) 경기"도"
 
+    @Nullable
     private String provider;
 
+    @Nullable
     private String snsId;
 }

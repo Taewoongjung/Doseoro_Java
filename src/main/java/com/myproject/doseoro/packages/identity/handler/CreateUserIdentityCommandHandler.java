@@ -30,10 +30,7 @@ public class CreateUserIdentityCommandHandler {
         String hashedPassword = encoder.encode(dto.getPassword());
         dto.setPassword(hashedPassword);
 
-        System.out.println(dto);
-
         boolean signUpCompleted = repository.signUp(dto);
-        System.out.println("Sign up signUpCompleted = " + signUpCompleted);
         return signUpCompleted;
     }
 }

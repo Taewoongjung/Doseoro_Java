@@ -12,14 +12,13 @@ import java.util.HashMap;
 @Mapper
 @Repository
 public interface DoseoroDao {
-    IdentityDto login(String email, String password);
-
     Boolean existEmail(String email);
-
-    boolean signUp(SignUpRequest user);
 
     IdentityVO findByEmail(String email);
 
-//    Boolean loginCheck(@Param("email")String email, @Param("password") String password);
+    SignUpRequest findUser(String email);
+
     HashMap loginCheck(@Param("email")String email);
+
+    boolean signUp(SignUpRequest user);
 }
