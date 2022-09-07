@@ -1,5 +1,6 @@
 package com.myproject.doseoro.packages.identity.dao;
 
+import com.myproject.doseoro.packages.identity.vo.AccessUser;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public interface DoseoroDao {
     Boolean existEmail(String email);
 
-    IdentityVO findByEmail(String email);
+    AccessUser findByEmail(String email);
 
     SignUpVO findUser(String email);
 

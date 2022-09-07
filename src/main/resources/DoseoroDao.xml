@@ -4,16 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.packages.identity.dao.DoseoroDao">
 
-    <select id="findByEmail" resultType="IdentityVO" parameterType="String">
+    <select id="findByEmail" resultType="AccessUser" parameterType="String">
         SELECT
             id AS id,
             email AS email,
-            password AS password,
-            name AS name,
-            nick_name AS nickName,
-            phone AS phone,
-            forgot_pw_question AS forgotPwQuestion,
-            forgot_pw_answer AS forgotPwAnswer
+            nick_name AS nickName
         FROM t_identity
         WHERE email = #{email}
     </select>

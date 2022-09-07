@@ -1,10 +1,12 @@
 package com.myproject.doseoro.api.identity.controllers;
 
+import com.myproject.doseoro.packages.identity.vo.AccessUser;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.handler.AuthenticateUserCommandHandler;
 import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.packages.identity.handler.RemoveUserSessionCommandHandler;
+import com.myproject.doseoro.packages.infra.manager.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -24,6 +27,7 @@ public class APIcontroller {
     private final CreateUserIdentityCommandHandler createUserIdentityCommandHandler;
     private final AuthenticateUserCommandHandler authenticateUserCommandHandler;
     private final RemoveUserSessionCommandHandler removeUserSessionCommandHandler;
+    private final AccessUserSessionManager accessUserSessionManager;
 
     @PostMapping(value = "/auth/signup")
     public String userSignup(@Valid SignUpVO vo, Model model) {
@@ -36,26 +40,18 @@ public class APIcontroller {
     }
 
     @GetMapping("/auth/login")
-    public String login(@ModelAttribute IdentityVO vo, HttpSession session) {
+    public String login(@ModelAttribute IdentityVO vo) {
         System.out.println("try login");
-        System.out.println("@@ = " + vo);
-        IdentityVO result = authenticateUserCommandHandler.handle(vo);
-        ModelAndView mav = new ModelAndView();
-        if (result == null) {
+        boolean result = authenticateUserCommandHandler.handle(vo);
+        if (!result) {
             return "redirect:/login";
         }
-        session.setAttribute("email", result.getEmail());
-        session.setAttribute("nickName", result.getNickName());
-//        mav.addObject("identity", result);
         return "redirect:/";
     }
 
     @GetMapping("/auth/logout")
     public String logout(HttpSession session) {
-        System.out.println("logout session = " + session.getId());
-        System.out.println("logout session = " + session.isNew());
-        System.out.println("logout session = " + session.getCreationTime());
-        System.out.println("logout session = " + session.getAttribute("email"));
+        System.out.println(session.getId());
         removeUserSessionCommandHandler.handle(session);
         return "redirect:/";
     }
