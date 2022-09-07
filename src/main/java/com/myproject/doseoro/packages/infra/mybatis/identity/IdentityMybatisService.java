@@ -27,15 +27,17 @@ public class IdentityMybatisService {
     }
 
     public IdentityVO findByEmail(String email) {
-        return dao.findByEmail(email);
+        IdentityVO aa = dao.findByEmail(email);
+        return aa;
     }
 
     public SignUpVO findUser(String email) {
         return dao.findUser(email);
     }
 
-    public Boolean loginCheck(IdentityVO vo) {
+    public boolean loginCheck(IdentityVO vo) {
         HashMap name = dao.loginCheck(vo.getEmail());
+        System.out.println(name);
         return (name == null) ? false : true;
     }
 

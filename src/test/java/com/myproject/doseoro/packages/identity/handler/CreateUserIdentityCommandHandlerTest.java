@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
@@ -27,7 +25,6 @@ class CreateUserIdentityCommandHandlerTest {
     public void commandHandler() {
         // given
         IdentityMybatisService repository = new IdentityMybatisService(dao);
-        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         SignUpVO user = new SignUpVO(
                 null,
                 "abcdefg@naver.com",
@@ -39,11 +36,14 @@ class CreateUserIdentityCommandHandlerTest {
                 "많은 추억"
         );
 
+        CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
+
         // when
-        createUserIdentityCommandHandler.handle(user);
-        SignUpVO actual = repository.findUser(user.getEmail());
+        sut.handle(user);
 
         // then
+        SignUpVO actual = repository.findUser(user.getEmail());
+
         assertThat(actual).isNotNull();
         assertThat(actual.getEmail()).isEqualTo("abcdefg@naver.com");
         assertThat(actual.getName()).isEqualTo("홍길동");
@@ -59,7 +59,6 @@ class CreateUserIdentityCommandHandlerTest {
     public void errorTest() {
         // given
         IdentityMybatisService repository = new IdentityMybatisService(dao);
-        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
 
         SignUpVO user = new SignUpVO(
                 "123123213214215231123",
@@ -73,8 +72,10 @@ class CreateUserIdentityCommandHandlerTest {
         );
         repository.signUp(user);
 
+        CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
+
         // when
         // then
-        Assertions.assertThrows(BusinessException.class, ()-> createUserIdentityCommandHandler.handle(user));
+        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(user));
     }
 }

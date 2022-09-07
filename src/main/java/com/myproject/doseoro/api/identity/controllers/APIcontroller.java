@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,8 +45,8 @@ public class APIcontroller {
             return "redirect:/login";
         }
         session.setAttribute("email", result.getEmail());
-        session.setAttribute("name", result.getNickName());
-        mav.addObject("identity", vo);
+        session.setAttribute("nickName", result.getNickName());
+//        mav.addObject("identity", result);
         return "redirect:/";
     }
 

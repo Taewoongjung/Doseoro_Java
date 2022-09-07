@@ -5,7 +5,17 @@
 <mapper namespace="com.myproject.doseoro.packages.identity.dao.DoseoroDao">
 
     <select id="findByEmail" resultType="IdentityVO" parameterType="String">
-        SELECT * FROM t_identity WHERE email = #{email}
+        SELECT
+            id AS id,
+            email AS email,
+            password AS password,
+            name AS name,
+            nick_name AS nickName,
+            phone AS phone,
+            forgot_pw_question AS forgotPwQuestion,
+            forgot_pw_answer AS forgotPwAnswer
+        FROM t_identity
+        WHERE email = #{email}
     </select>
 
     <select id="existEmail" resultType="Boolean" parameterType="String">

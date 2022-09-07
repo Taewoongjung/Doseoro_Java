@@ -6,6 +6,8 @@ import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityVO, IdentityVO> {
@@ -15,10 +17,10 @@ public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityV
     @Override
     public IdentityVO handle(IdentityVO vo) {
 
-        System.out.println("handler");
         boolean result = repository.loginCheck(vo);
         if (result) {
-            return vo.viewUser(vo, repository);
+            IdentityVO a = repository.findByEmail(vo.getEmail());
+            return a;
         }
         return null;
     }

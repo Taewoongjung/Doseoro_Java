@@ -107,7 +107,7 @@
                     <%if (session.getAttribute("email") == null) {%>
                         <li class="nav-item"><a class="nav-link p-3" href="/login">로그인</a></li>
                     <% } else { %>
-                        <li class="nav-item"><a class="nav-link p-3">안녕하세요 ${sessionScope.name}님</a></li>
+                        <li class="nav-item"><a class="nav-link p-3">안녕하세요 ${sessionScope.nickName}님</a></li>
                         <li class="nav-item"><a class="nav-link p-3" href="/pages/like">관심상품</a></li>
                         <li class="nav-item"><a class="nav-link p-3" href="/mypage">마이페이지</a></li>
                         <li class="nav-item"><a class="nav-link p-3" href="/auth/logout">로그아웃</a></li>
