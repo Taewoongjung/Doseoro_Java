@@ -1,8 +1,10 @@
 package com.myproject.doseoro.packages.identity.handler;
 
+import com.myproject.doseoro.global.error.exception.BusinessException;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,9 @@ class CreateUserIdentityCommandHandlerTest {
     public void commandHandler() {
         // given
         IdentityMybatisService repository = new IdentityMybatisService(dao);
-
-        String uuid = UUID.randomUUID().toString();
+        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         SignUpVO user = new SignUpVO(
-                uuid,
+                null,
                 "abcdefg@naver.com",
                 "aa",
                 "홍길동",
@@ -39,12 +40,11 @@ class CreateUserIdentityCommandHandlerTest {
         );
 
         // when
-        repository.signUp(user);
+        createUserIdentityCommandHandler.handle(user);
         SignUpVO actual = repository.findUser(user.getEmail());
 
         // then
         assertThat(actual).isNotNull();
-        assertThat(actual.getId()).isEqualTo(uuid);
         assertThat(actual.getEmail()).isEqualTo("abcdefg@naver.com");
         assertThat(actual.getName()).isEqualTo("홍길동");
         assertThat(actual.getNickName()).isEqualTo("길동이");
@@ -55,14 +55,14 @@ class CreateUserIdentityCommandHandlerTest {
 
     @Test
     @DisplayName("같은 유저 정보가 있을 경우 에러를 반환한다.")
-    @Transactional // 테스트 완료 후 rollback
+    @Transactional
     public void errorTest() {
         // given
         IdentityMybatisService repository = new IdentityMybatisService(dao);
+        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
 
-        String uuid = UUID.randomUUID().toString();
         SignUpVO user = new SignUpVO(
-                uuid,
+                "123123213214215231123",
                 "abcdefg@naver.com",
                 "aa",
                 "홍길동",
@@ -71,10 +71,10 @@ class CreateUserIdentityCommandHandlerTest {
                 "좋아하는 추억",
                 "많은 추억"
         );
-
-        // when
         repository.signUp(user);
 
+        // when
         // then
+        Assertions.assertThrows(BusinessException.class, ()-> createUserIdentityCommandHandler.handle(user));
     }
 }
