@@ -4,14 +4,21 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class IdentityDto {
 
+    @NotBlank
     private String id;
+    @NotBlank
     private String email;
+    @NotBlank
     private String password;
+    @NotBlank(message = "space in name")
     private String name;
+    @NotBlank
     private String nickName;
     private String phone;
     private String forgotPwQuestion;

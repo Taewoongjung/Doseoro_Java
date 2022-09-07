@@ -12,7 +12,7 @@
         SELECT distinct * FROM t_identity WHERE email = #{email}
     </select>
 
-    <select id="findUser" resultType="SignUpRequest" parameterType="String">
+    <select id="findUser" resultType="SignUpVO" parameterType="String">
         SELECT
             id AS id,
             email AS email,
@@ -40,7 +40,7 @@
     </select>
 
     <!--    회원가입     -->
-    <insert id="signUp" parameterType="SignUpRequest">
+    <insert id="signUp" parameterType="SignUpVO">
         INSERT INTO t_identity(id, email, password, name, nick_name, phone, forgot_pw_question, forgot_pw_answer)
         VALUES(#{id}, #{email}, #{password}, #{name}, #{nickName}, #{phoneNumber}, #{question}, #{answerForQuestion})
     </insert>

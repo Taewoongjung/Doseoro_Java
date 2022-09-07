@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.identity.dto;
+package com.myproject.doseoro.packages.identity.vo;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class SignUpRequest implements Serializable {
+public class SignUpVO implements Serializable {
 
     @Setter
     private String id;
@@ -29,7 +29,7 @@ public class SignUpRequest implements Serializable {
 
     private String answerForQuestion;
 
-    public SignUpRequest(String id, String email, String password, String name, String nickName, String phoneNumber, String question, String answerForQuestion) {
+    public SignUpVO(String id, String email, String password, String name, String nickName, String phoneNumber, String question, String answerForQuestion) {
         this.id = id;
         this.email = email;
         this.password = password;

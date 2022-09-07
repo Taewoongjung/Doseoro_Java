@@ -1,33 +1,25 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.infra.mybatis.identity.IdentityMybatisService;
-import com.myproject.doseoro.packages.identity.abstraction.IdentityService;
-import com.myproject.doseoro.packages.identity.dto.vo.IdentityVO;
+import com.myproject.doseoro.packages.abstraction.ICommandHandler;
+import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
+import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpSession;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticateUserCommandHandler extends IdentityService {
+public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityVO, IdentityVO> {
 
     private final IdentityMybatisService repository;
 
-    public boolean handle(IdentityVO vo, HttpSession session) {
+    @Override
+    public IdentityVO handle(IdentityVO vo) {
+
         System.out.println("handler");
         boolean result = repository.loginCheck(vo);
         if (result) {
-            IdentityVO vo1 = viewUser(vo);
-            session.setAttribute("email", vo1.getEmail());
-            session.setAttribute("name", vo1.getName());
+            return vo.viewUser(vo, repository);
         }
-        return result;
-    }
-
-    @Override
-    public IdentityVO viewUser(IdentityVO vo) {
-        return repository.findByEmail(vo.getEmail());
+        return null;
     }
 }

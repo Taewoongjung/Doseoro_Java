@@ -1,9 +1,8 @@
-package com.myproject.doseoro.infra.mybatis.identity;
+package com.myproject.doseoro.packages.infra.mybatis.identity;
 
 import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
-import com.myproject.doseoro.packages.identity.dto.IdentityDto;
-import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
-import com.myproject.doseoro.packages.identity.dto.vo.IdentityVO;
+import com.myproject.doseoro.packages.identity.vo.SignUpVO;
+import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class IdentityMybatisService {
         return dao.findByEmail(email);
     }
 
-    public SignUpRequest findUser(String email) {
+    public SignUpVO findUser(String email) {
         return dao.findUser(email);
     }
 
@@ -40,7 +39,7 @@ public class IdentityMybatisService {
         return (name == null) ? false : true;
     }
 
-    public boolean signUp(SignUpRequest user) {
+    public boolean signUp(SignUpVO user) {
         return dao.signUp(user);
     }
 }

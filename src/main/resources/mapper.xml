@@ -7,7 +7,7 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.myproject.doseoro.packages.identity.dto"/>
+        <package name="com.myproject.doseoro.packages.identity.vo"/>
     </typeAliases>
 
 </configuration>

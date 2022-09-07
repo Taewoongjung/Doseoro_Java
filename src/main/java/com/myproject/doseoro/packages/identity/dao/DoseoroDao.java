@@ -1,8 +1,7 @@
 package com.myproject.doseoro.packages.identity.dao;
 
-import com.myproject.doseoro.packages.identity.dto.IdentityDto;
-import com.myproject.doseoro.packages.identity.dto.SignUpRequest;
-import com.myproject.doseoro.packages.identity.dto.vo.IdentityVO;
+import com.myproject.doseoro.packages.identity.vo.SignUpVO;
+import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -16,9 +15,9 @@ public interface DoseoroDao {
 
     IdentityVO findByEmail(String email);
 
-    SignUpRequest findUser(String email);
+    SignUpVO findUser(String email);
 
     HashMap loginCheck(@Param("email")String email);
 
-    boolean signUp(SignUpRequest user);
+    boolean signUp(SignUpVO user);
 }

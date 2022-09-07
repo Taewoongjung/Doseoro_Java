@@ -1,8 +1,7 @@
-package com.myproject.doseoro.packages.identity.dto.vo;
+package com.myproject.doseoro.packages.identity.vo;
 
-import lombok.AccessLevel;
+import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 public class IdentityVO {
@@ -38,5 +37,8 @@ public class IdentityVO {
                 ", forgotPwQuestion='" + forgotPwQuestion + '\'' +
                 ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
                 '}';
+    }
+    public IdentityVO viewUser(IdentityVO vo, IdentityMybatisService repository) {
+        return repository.findByEmail(vo.getEmail());
     }
 }
