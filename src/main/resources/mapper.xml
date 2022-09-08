@@ -8,6 +8,7 @@
 
     <typeAliases>
         <package name="com.myproject.doseoro.packages.identity.vo"/>
+        <package name="com.myproject.doseoro.packages.book.vo"/>
     </typeAliases>
 
 </configuration>

@@ -1,4 +1,4 @@
-package com.myproject.doseoro.api.identity.controllers;
+package com.myproject.doseoro.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,13 @@ public class PageController {
 
     @RequestMapping(value = "/saleBoard")
     public String sale() {
-        System.out.println("sale called");
+        System.out.println("saleBoard called");
         return "saleBoard";
+    }
+
+    @RequestMapping(value = "/registerBook")
+    public String registerBook() {
+        System.out.println("registerBook called");
+        return "registerBook";
     }
 }

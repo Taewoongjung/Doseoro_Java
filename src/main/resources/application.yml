@@ -13,3 +13,9 @@ spring:
       prefix: /WEB-INF/view/
       suffix: .jsp
     static-path-pattern: /resources/**
+  servlet:
+    multipart:
+      enabled: true
+      location: /resources/uploads/
+      max-request-size: 30MB
+      max-file-size: 10MB

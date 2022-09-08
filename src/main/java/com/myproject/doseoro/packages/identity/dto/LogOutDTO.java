@@ -4,9 +4,10 @@ import lombok.Getter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 
 @Getter
-public class LogOutDTO {
+public class LogOutDTO implements Serializable {
     HttpSession session;
     HttpServletResponse response;
 

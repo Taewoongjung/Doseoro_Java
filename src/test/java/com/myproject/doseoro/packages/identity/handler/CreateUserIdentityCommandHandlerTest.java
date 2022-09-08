@@ -2,7 +2,7 @@ package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.global.error.exception.BusinessException;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
-import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
+import com.myproject.doseoro.global.dao.DoseoroDao;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

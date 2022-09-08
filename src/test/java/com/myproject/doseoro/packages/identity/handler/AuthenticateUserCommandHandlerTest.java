@@ -1,6 +1,6 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.packages.identity.dao.DoseoroDao;
+import com.myproject.doseoro.global.dao.DoseoroDao;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;

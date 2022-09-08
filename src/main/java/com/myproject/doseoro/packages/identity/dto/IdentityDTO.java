@@ -5,24 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class IdentityDTO {
+public class IdentityDTO implements Serializable {
 
     @NotBlank
-    private String id;
-    @NotBlank
-    private String email;
-    @NotBlank
-    private String password;
-    @NotBlank(message = "space in name")
-    private String name;
-    @NotBlank
-    private String nickName;
-    private String phone;
-    private String forgotPwQuestion;
-    private String forgotPwAnswer;
+    private final String id;
+    private final String email;
+    private final String password;
+    private final String name;
+    private final String nickName;
+    private final String phone;
+    private final String forgotPwQuestion;
+    private final String forgotPwAnswer;
 
     public IdentityDTO(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
         this.id = id;

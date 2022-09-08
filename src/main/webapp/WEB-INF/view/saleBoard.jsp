@@ -35,7 +35,7 @@
       <!-- 판매리스트 -->
       <div class="saleList pt-5 mt-5 border-top">
         <h1 class="h2 fw-bold">판매중인 책</h1><br>
-        <form id="book-form"><a href="/pages/registerBook" class="addBook text-decoration-none btn-primary p-2">상품 등록</a>
+        <form id="book-form"><a href="/registerBook" class="addBook text-decoration-none btn-primary p-2">상품 등록</a>
         </form>
 
         <div class="d-flex justify-content-center flex-wrap mt-5">
@@ -83,6 +83,7 @@
                 <input type="submit" class="btn-primary border-0" value="이동">
             </form>
         </div>
+      </div>
     </main>
 
   </div>

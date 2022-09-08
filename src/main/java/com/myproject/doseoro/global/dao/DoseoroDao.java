@@ -1,8 +1,7 @@
-package com.myproject.doseoro.packages.identity.dao;
+package com.myproject.doseoro.global.dao;
 
 import com.myproject.doseoro.packages.identity.vo.AccessUser;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
-import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

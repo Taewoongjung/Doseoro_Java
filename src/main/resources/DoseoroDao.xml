@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.myproject.doseoro.packages.identity.dao.DoseoroDao">
+<mapper namespace="com.myproject.doseoro.global.dao.DoseoroDao">
 
     <select id="findByEmail" resultType="AccessUser" parameterType="String">
         SELECT
