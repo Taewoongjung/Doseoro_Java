@@ -15,7 +15,6 @@ spring:
     static-path-pattern: /resources/**
   servlet:
     multipart:
-      enabled: true
-      location: /resources/uploads/
+      location: /Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs
       max-request-size: 30MB
       max-file-size: 10MB

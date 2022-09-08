@@ -151,7 +151,7 @@
 
         <div id="ckPhoto"></div>
         <div class="input-group mb-3">
-          <label for="img">상품 사진</label>
+          <label for=>상품 사진</label>
           <input type="file" class="form-control" id="book-photo" name="img" accept="image/*" onchange="clearImg()" multiple required>
         </div>
 
@@ -187,7 +187,7 @@
   <script>
     function one() {
       const request = document.getElementById('register_book-form');
-      request.setAttribute('action', '/book');
+      request.setAttribute('action', '/book/register');
       request.setAttribute('method', 'POST');
     }
   </script>

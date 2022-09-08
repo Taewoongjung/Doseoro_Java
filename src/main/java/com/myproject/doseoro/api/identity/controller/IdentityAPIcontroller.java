@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-@Controller(value = "/auth")
+@Controller()
 @RequiredArgsConstructor
 public class IdentityAPIcontroller {
 
@@ -23,7 +23,7 @@ public class IdentityAPIcontroller {
     private final AuthenticateUserCommandHandler authenticateUserCommandHandler;
     private final RemoveUserSessionCommandHandler removeUserSessionCommandHandler;
 
-    @PostMapping(value = "/signup")
+    @PostMapping(value = "/auth/signup")
     public String userSignup(@Valid SignUpVO vo, Model model) {
         System.out.println("comSignup called");
         System.out.println(vo);
@@ -33,7 +33,7 @@ public class IdentityAPIcontroller {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/auth/login")
     public String login(@ModelAttribute IdentityVO vo) {
         System.out.println("try login");
         boolean result = authenticateUserCommandHandler.handle(vo);
@@ -43,7 +43,7 @@ public class IdentityAPIcontroller {
         return "redirect:/";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/auth/logout")
     public String logout(HttpSession session) {
         System.out.println(session.getId());
         removeUserSessionCommandHandler.handle(session);
