@@ -24,11 +24,6 @@
     <main class="container-sm min-vh-100 contentInner">
         <!-- 검색, 메뉴이동 기능 -->
         <!-- 로그인 하면 지역필터 나옴 -->
-<%--        {% if user %}--%>
-<%--        {% include "searchBoxLoggedIn.html" %}--%>
-<%--        {% else %}--%>
-<%--        {% include "searchBox.html" %}--%>
-<%--        {% endif %}--%>
         <c:choose>
             <c:when test="${obj}">
                 <%@include file="searchBoxLoggedIn.jsp"%>
@@ -96,7 +91,7 @@
         <div class="saleList pt-5 mt-5 border-top">
             <div class="d-flex align-items-center">
                 <h2 class="h3 fw-bold">최근 판매 목록</h2>
-                <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/pages/saleBoard">더보기</a>
+                <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/saleBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
                 {% for book in books %}

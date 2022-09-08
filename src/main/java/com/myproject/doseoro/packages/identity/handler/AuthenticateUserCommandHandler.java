@@ -2,13 +2,11 @@ package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.identity.vo.AccessUser;
-import com.myproject.doseoro.packages.infra.manager.AccessUserSessionManager;
+import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
 
 @Service
 @RequiredArgsConstructor

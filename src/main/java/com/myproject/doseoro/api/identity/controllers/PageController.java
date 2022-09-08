@@ -25,4 +25,10 @@ public class PageController {
         System.out.println("signup called");
         return "signup";
     }
+
+    @RequestMapping(value = "/saleBoard")
+    public String sale() {
+        System.out.println("sale called");
+        return "saleBoard";
+    }
 }

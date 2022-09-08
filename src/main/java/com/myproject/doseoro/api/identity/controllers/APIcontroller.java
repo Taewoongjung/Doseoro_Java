@@ -1,24 +1,20 @@
 package com.myproject.doseoro.api.identity.controllers;
 
-import com.myproject.doseoro.packages.identity.vo.AccessUser;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.handler.AuthenticateUserCommandHandler;
 import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.packages.identity.handler.RemoveUserSessionCommandHandler;
-import com.myproject.doseoro.packages.infra.manager.AccessUserSessionManager;
+import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.HashMap;
 
 @Controller
 @RequiredArgsConstructor

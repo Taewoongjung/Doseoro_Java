@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class IdentityDto {
+public class IdentityDTO {
 
     @NotBlank
     private String id;
@@ -24,7 +24,7 @@ public class IdentityDto {
     private String forgotPwQuestion;
     private String forgotPwAnswer;
 
-    public IdentityDto(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
+    public IdentityDTO(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
         this.id = id;
         this.email = email;
         this.password = password;
