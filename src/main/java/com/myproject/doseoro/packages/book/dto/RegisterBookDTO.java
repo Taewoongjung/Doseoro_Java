@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +13,25 @@ import java.util.UUID;
 @Getter
 public class RegisterBookDTO implements Serializable {
 
+    @Setter
+    private String id;
     private final String title;
     private final String price;
     private final String author;
     private final String publisher;
-    private final ArrayList<String> checkCategory;
+    private final List<String> checkCategory;
     private final String checkState;
     @Setter
     private List<String> images;
     private final String dealRoot;
     private final String sold;
     private final String about;
+    @Setter
+    private String ownerId;
+    private String ownerEmail;
 
-    public RegisterBookDTO(String title, String price, String author, String publisher, ArrayList<String> checkCategory, String checkState, List<String> images, String dealRoot, String sold, String about) {
+    public RegisterBookDTO(String id, String title, String price, String author, String publisher, List<String> checkCategory, String checkState, List<String> images, String dealRoot, String sold, String about, String ownerEmail, String ownerId) {
+        this.id = id;
         this.title = title;
         this.price = price;
         this.author = author;
@@ -35,12 +42,15 @@ public class RegisterBookDTO implements Serializable {
         this.dealRoot = dealRoot;
         this.sold = sold;
         this.about = about;
+        this.ownerEmail = ownerEmail;
+        this.ownerId = ownerId;
     }
 
     @Override
     public String toString() {
         return "RegisterBookDTO{" +
-                "title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
                 ", author='" + author + '\'' +
                 ", publisher='" + publisher + '\'' +
@@ -50,14 +60,16 @@ public class RegisterBookDTO implements Serializable {
                 ", dealRoot='" + dealRoot + '\'' +
                 ", sold='" + sold + '\'' +
                 ", about='" + about + '\'' +
+                ", ownerEmail='" + ownerEmail + '\'' +
+                ", ownerId='" + ownerId + '\'' +
                 '}';
     }
 
-    public List<String> multipleImageFileHandle(List<MultipartFile> multipartFile) throws IOException {
+    public void multipleImageFileHandle(List<MultipartFile> multipartFile, RegisterBookDTO dto) throws IOException {
         String path = "/Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs/";
         File file = new File(path);
 
-        List<String> files = new ArrayList<>();
+        List<String> imageFileList = new ArrayList<>();
 
         if(multipartFile.size() > 0 && !multipartFile.get(0).getOriginalFilename().equals("")) {
             for (MultipartFile imgFile : multipartFile) {
@@ -65,7 +77,7 @@ public class RegisterBookDTO implements Serializable {
                 String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자
                 String savedFileName = UUID.randomUUID() + extension; //저장될 파일 명
 
-                files.add(savedFileName);
+                imageFileList.add(savedFileName);
 
                 FileOutputStream fos = new FileOutputStream(file + savedFileName);
                 InputStream is = imgFile.getInputStream();
@@ -87,6 +99,6 @@ public class RegisterBookDTO implements Serializable {
                 }
             }
         }
-        return files;
+        dto.setImages(imageFileList);
     }
 }
