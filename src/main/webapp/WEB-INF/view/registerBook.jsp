@@ -175,7 +175,7 @@
           <textarea type="text" class="form-control p-3 mb-4" id="book-about" name="about" placeholder="내용"
             rows="10"></textarea>
         </div>
-        <input name="ownerEmail", value=${sessionScope.email} />
+        <input name="ownerEmail" type="hidden", value=${sessionScope.email} />
         <button id="registBtn" class="btn btn-lg btn-primary w-100" type="submit" onclick="one()">상품 등록</button>
       </form>
     </main>

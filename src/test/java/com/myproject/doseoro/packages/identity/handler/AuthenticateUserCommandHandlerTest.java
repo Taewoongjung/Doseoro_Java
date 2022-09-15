@@ -50,7 +50,8 @@ class AuthenticateUserCommandHandlerTest {
                 "길동이",
                 "010-1234-5678",
                 "좋아하는 추억",
-                "많은 추억"
+                "많은 추억",
+                null
         );
 
         // when
@@ -89,7 +90,8 @@ class AuthenticateUserCommandHandlerTest {
                 "길동이",
                 "010-1234-5678",
                 "좋아하는 추억",
-                "많은 추억"
+                "많은 추억",
+                null
         );
 
         // when

@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-import static com.myproject.doseoro.packages.infra.session.AccessUserSessionManager.sessionStore;
-
 @Service
 @RequiredArgsConstructor
 public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookDTO, RegisterBookDTO> {

@@ -82,15 +82,9 @@
                    #{dto.price},
                    #{dto.author},
                    #{dto.publisher},
-<!--                   <foreach item="checkCategory" index="index" collection="dto.checkCategory" separator=" , ">-->
-<!--                        #{checkCategory},-->
-<!--                   </foreach>-->
                    #{dto.checkCategory, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
                    #{dto.checkState, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
                    #{dto.dealRoot},
-<!--                   <foreach item="images" index="index" collection="dto.images" separator=" , ">-->
-<!--                        #{images},-->
-<!--                   </foreach>-->
                    #{dto.images, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
                    #{dto.about},
                    #{dto.ownerId}

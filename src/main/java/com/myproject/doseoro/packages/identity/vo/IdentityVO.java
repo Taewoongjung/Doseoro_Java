@@ -1,8 +1,9 @@
 package com.myproject.doseoro.packages.identity.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Getter
 public class IdentityVO {
@@ -15,7 +16,9 @@ public class IdentityVO {
     private final String forgotPwQuestion;
     private final String forgotPwAnswer;
 
-    public IdentityVO(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
+    private final HttpServletResponse response;
+
+    public IdentityVO(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer, HttpServletResponse response) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -24,6 +27,7 @@ public class IdentityVO {
         this.phone = phone;
         this.forgotPwQuestion = forgotPwQuestion;
         this.forgotPwAnswer = forgotPwAnswer;
+        this.response = response;
     }
 
     @Override
@@ -37,9 +41,11 @@ public class IdentityVO {
                 ", phone='" + phone + '\'' +
                 ", forgotPwQuestion='" + forgotPwQuestion + '\'' +
                 ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
+                ", response=" + response +
                 '}';
     }
-//    public IdentityVO viewUser(IdentityVO vo, IdentityMybatisService repository) {
+
+    //    public IdentityVO viewUser(IdentityVO vo, IdentityMybatisService repository) {
 //        System.out.println("view User = "+vo);
 //        IdentityVO a = repository.findByEmail(vo.getEmail());
 //        System.out.println("@@@@@@@@ = "+a);

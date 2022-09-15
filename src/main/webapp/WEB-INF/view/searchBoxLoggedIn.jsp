@@ -10,10 +10,10 @@
                     <option value="community">커뮤니티</option>
             </select>
             <input type="text" class="form-control ps-3" id="book-publisher" name="searchWord" placeholder="검색" onkeyup="checkText()">
-            <button id="submitBtn" class="btn btn-primary" type="submit" disabled="true"><img src="/img/pngegg.png" width="35" height="25"class="mt-1"></button>
+            <button id="submitBtn" class="btn btn-primary" type="submit" disabled="true"><img src="resources/images/pngegg.png" width="35" height="25"class="mt-1"></button>
 
             <!-- 클릭하면 지역 필터 표시/숨김 -->
-            <div class="mt-2 ms-2"><a href="#" onclick="showRange('areaFilter')"><img src="/img/filter.png" alt="필터이미지" width="30"></a></div>
+            <div class="mt-2 ms-2"><a href="#" onclick="showRange('areaFilter')"><img src="resources/images/filter.png" alt="필터이미지" width="30"></a></div>
     </div>
 
     <!-- 지역설정 필터 -->

@@ -19,7 +19,7 @@ public class BookAPIcontroller {
     private final RegisterBookCommandHandler registerBookCommandHandler;
 
     @PostMapping(value = "/book/register")
-    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookDTO dto, HttpServletRequest request) {
+    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookDTO dto) {
         System.out.println("try book register");
         System.out.println("in API = " + dto);
         try {

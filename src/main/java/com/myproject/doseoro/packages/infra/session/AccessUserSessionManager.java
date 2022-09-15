@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,8 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class AccessUserSessionManager {
     private static final String USER_SESSION_KEY = "ACCESS_USER";
+
     private final HttpServletRequest servletRequest;
-    public static Map<String, Object> sessionStore = new ConcurrentHashMap<>();
+    public Map<String, Object> sessionStore = new ConcurrentHashMap<>();
 
     public void saveUser(AccessUser accessUser) {
 
@@ -27,7 +27,7 @@ public class AccessUserSessionManager {
         servletRequest.getSession().setAttribute("email", accessUser.getEmail());
         servletRequest.getSession().setAttribute("nickName", accessUser.getNickName());
 
-        sessionStore.put("email", accessUser.getEmail());
+        sessionStore.put(sessionId, accessUser.getUserId());
         System.out.println("뭐가 있지 = "+sessionStore.get(sessionId));
     }
 
