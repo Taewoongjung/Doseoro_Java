@@ -188,7 +188,7 @@
     function one() {
       const request = document.getElementById('register_book-form');
       request.setAttribute('action', '/book/register');
-      request.setAttribute('method', 'GET');
+      request.setAttribute('method', 'POST');
     }
   </script>
   <script src="resources/js/topNav.js"></script>

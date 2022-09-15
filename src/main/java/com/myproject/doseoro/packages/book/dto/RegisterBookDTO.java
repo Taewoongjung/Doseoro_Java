@@ -20,7 +20,7 @@ public class RegisterBookDTO implements Serializable {
     private final String author;
     private final String publisher;
     private final List<String> checkCategory;
-    private final String checkState;
+    private final List<String> checkState;
     @Setter
     private List<String> images;
     private final String dealRoot;
@@ -30,7 +30,7 @@ public class RegisterBookDTO implements Serializable {
     private String ownerId;
     private String ownerEmail;
 
-    public RegisterBookDTO(String id, String title, String price, String author, String publisher, List<String> checkCategory, String checkState, List<String> images, String dealRoot, String sold, String about, String ownerEmail, String ownerId) {
+    public RegisterBookDTO(String id, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerEmail, String ownerId) {
         this.id = id;
         this.title = title;
         this.price = price;
