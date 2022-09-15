@@ -1,4 +1,4 @@
-package com.myproject.doseoro.global.dao;
+package com.myproject.doseoro.global.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

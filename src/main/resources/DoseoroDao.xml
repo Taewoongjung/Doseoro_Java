@@ -82,14 +82,26 @@
                    #{dto.price},
                    #{dto.author},
                    #{dto.publisher},
-                   #{dto.checkCategory, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
-                   #{dto.checkState, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
+                   #{dto.checkCategory, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
+                   #{dto.checkState, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
                    #{dto.dealRoot},
-                   #{dto.images, typeHandler=com.myproject.doseoro.global.dao.JsonTypeHandler},
+                   #{dto.images, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
                    #{dto.about},
                    #{dto.ownerId}
                );
     </insert>
+
+    <!--    홈 화면에 전시할 책 5가지 찾기   -->
+    <select id="findHomeDisplayedBooks" resultType="HomeDisplayedBookVO">
+        SELECT
+            title AS title,
+            about AS about,
+            price AS price,
+            img AS images
+        FROM t_book
+        ORDER BY createdAt
+        DESC  LIMIT 5
+    </select>
 
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
 </mapper>
