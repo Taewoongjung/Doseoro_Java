@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.assertj.core.api.Assertions.*;
+
 @SpringBootTest
 class AuthenticateUserCommandHandlerTest {
 
@@ -58,7 +60,7 @@ class AuthenticateUserCommandHandlerTest {
         boolean actual = sut.handle(loginUser);
 
         // then
-        Assertions.assertThat(actual).isTrue();
+        assertThat(actual).isTrue();
     }
 
     @Test
@@ -98,6 +100,6 @@ class AuthenticateUserCommandHandlerTest {
         boolean actual = sut.handle(loginUser);
 
         // then
-        Assertions.assertThat(actual).isFalse();
+        assertThat(actual).isFalse();
     }
 }

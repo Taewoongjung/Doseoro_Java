@@ -3,10 +3,8 @@ package com.myproject.doseoro.packages.book.handler;
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
 import com.myproject.doseoro.packages.identity.vo.AccessUser;
-import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
-import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
