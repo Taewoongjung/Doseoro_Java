@@ -5,7 +5,6 @@ import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

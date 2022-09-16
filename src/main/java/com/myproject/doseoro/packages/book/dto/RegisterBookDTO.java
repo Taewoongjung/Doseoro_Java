@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-public class RegisterBookDTO implements Serializable {
+public class RegisterBookDTO {
 
     @Setter
     private String id;
+    private String postmessage;
     private final String title;
     private final String price;
     private final String author;
@@ -29,8 +30,9 @@ public class RegisterBookDTO implements Serializable {
     private String ownerId;
     private String ownerEmail;
 
-    public RegisterBookDTO(String id, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerEmail, String ownerId) {
+    public RegisterBookDTO(String id, String postmessage, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerId, String ownerEmail) {
         this.id = id;
+        this.postmessage = postmessage;
         this.title = title;
         this.price = price;
         this.author = author;
@@ -41,26 +43,27 @@ public class RegisterBookDTO implements Serializable {
         this.dealRoot = dealRoot;
         this.sold = sold;
         this.about = about;
-        this.ownerEmail = ownerEmail;
         this.ownerId = ownerId;
+        this.ownerEmail = ownerEmail;
     }
 
     @Override
     public String toString() {
         return "RegisterBookDTO{" +
                 "id='" + id + '\'' +
+                ", postmessage='" + postmessage + '\'' +
                 ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
                 ", author='" + author + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", checkCategory=" + checkCategory +
-                ", checkState='" + checkState + '\'' +
+                ", checkState=" + checkState +
                 ", images=" + images +
                 ", dealRoot='" + dealRoot + '\'' +
                 ", sold='" + sold + '\'' +
                 ", about='" + about + '\'' +
-                ", ownerEmail='" + ownerEmail + '\'' +
                 ", ownerId='" + ownerId + '\'' +
+                ", ownerEmail='" + ownerEmail + '\'' +
                 '}';
     }
 

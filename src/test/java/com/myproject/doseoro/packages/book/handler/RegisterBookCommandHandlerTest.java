@@ -60,6 +60,7 @@ class RegisterBookCommandHandlerTest {
 
         RegisterBookDTO registerBook = new RegisterBookDTO(
                 "7777777",
+                "이 책 좋아",
                 "자바의 신",
                 "28000",
                 "김상민",
@@ -79,6 +80,7 @@ class RegisterBookCommandHandlerTest {
 
         // then
         assertThat(actual).isNotNull();
+        assertThat(actual.getPostmessage()).isEqualTo("이 책 좋아");
         assertThat(actual.getTitle()).isEqualTo("자바의 신");
         assertThat(actual.getPrice()).isEqualTo("28000");
         assertThat(actual.getAuthor()).isEqualTo("김상민");

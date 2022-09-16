@@ -1,13 +1,9 @@
 package com.myproject.doseoro.packages.book.vo;
 
 import com.google.gson.JsonArray;
-import com.myproject.doseoro.global.util.JsonTypeHandler;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Builder

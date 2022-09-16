@@ -65,6 +65,7 @@
         INSERT INTO t_book
             (
                  id,
+                 postMessage,
                  title,
                  price,
                  author,
@@ -78,6 +79,7 @@
              )
         VALUES(
                    #{dto.id},
+                   #{dto.postmessage},
                    #{dto.title},
                    #{dto.price},
                    #{dto.author},

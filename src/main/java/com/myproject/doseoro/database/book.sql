@@ -2,6 +2,7 @@ CREATE TABLE `t_book`
 (
     `seq`           BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
     `id`            VARCHAR(64)  NOT NULL                  COMMENT '책 id',
+    `postMessage`   VARCHAR(100) NOT NULL                  COMMENT '책 포스팅 메시지',
     `title`         VARCHAR(100) NOT NULL                  COMMENT '책 제목',
     `price`         VARCHAR(200)     NULL   DEFAULT NULL   COMMENT '책 가격',
     `author`        VARCHAR(100)     NULL   DEFAULT NULL   COMMENT '책 저자 이름',

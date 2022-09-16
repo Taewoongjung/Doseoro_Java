@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Mapper
-@Repository
 public interface DoseoroDao {
 
 // @@@@@@@@@@@@@@@@   identity     @@@@@@@@@@@@@@@@@

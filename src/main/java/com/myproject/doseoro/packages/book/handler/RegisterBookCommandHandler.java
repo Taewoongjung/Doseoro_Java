@@ -20,18 +20,12 @@ public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookD
     @Override
     public RegisterBookDTO handle(RegisterBookDTO dto) {
         final String uuid = UUID.randomUUID().toString();
-        System.out.println("in handler = " + dto);
-
-//        StringUtils.removeEnd(sessionScope.email)
 
         AccessUser user = identityRepository.findByEmail(dto.getOwnerEmail());
-        System.out.println("@@ = "+ user);
         String idToBeSetInDTO = user.getUserId();
 
         dto.setOwnerId(idToBeSetInDTO);
         dto.setId(uuid);
-
-        System.out.println("After all = "+ dto);
 
         repository.registerBook(dto);
         return dto;
