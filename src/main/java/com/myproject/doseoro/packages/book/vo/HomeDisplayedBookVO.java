@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 
 @Builder
@@ -12,9 +13,9 @@ public class HomeDisplayedBookVO {
     private String title;
     private String about;
     private String price;
-    private JsonArray images;
+    private List<String> images;
 
-    public HomeDisplayedBookVO(String title, String about, String price, JsonArray images) {
+    public HomeDisplayedBookVO(String title, String about, String price, List<String> images) {
         this.title = title;
         this.about = about;
         this.price = price;

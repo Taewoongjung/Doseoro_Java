@@ -94,12 +94,18 @@
     </insert>
 
     <!--    홈 화면에 전시할 책 5가지 찾기   -->
-    <select id="findHomeDisplayedBooks" resultType="HomeDisplayedBookVO">
+    <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO">
+        <result property="title" column="title"></result>
+        <result property="about" column="about"></result>
+        <result property="price" column="price"></result>
+        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
+    </resultMap>
+    <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
         SELECT
-            title AS title,
-            about AS about,
-            price AS price,
-            img AS images
+            title,
+            about,
+            price,
+            img
         FROM t_book
         ORDER BY createdAt
         DESC  LIMIT 5
