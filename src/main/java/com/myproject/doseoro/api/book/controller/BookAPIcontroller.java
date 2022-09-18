@@ -51,7 +51,7 @@ public class BookAPIcontroller {
         return list;
     }
 
-    @GetMapping(value = "/book/{bookId}")
+    @GetMapping(value = "/{bookId}")
     public String bookDetailPage(Model model, @PathVariable String bookId) {
         System.out.println("book detail called");
 
