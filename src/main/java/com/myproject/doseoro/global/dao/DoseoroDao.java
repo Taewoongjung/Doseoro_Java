@@ -6,7 +6,6 @@ import com.myproject.doseoro.packages.identity.vo.AccessUser;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;

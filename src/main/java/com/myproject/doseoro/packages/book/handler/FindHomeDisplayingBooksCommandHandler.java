@@ -10,12 +10,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FindHomeDisplayingBooksCommandHandler implements ICommandHandler<HomeDisplayedBookVO, List<HomeDisplayedBookVO>> {
+public class FindHomeDisplayingBooksCommandHandler implements ICommandHandler<Void, List<HomeDisplayedBookVO>> {
 
     private final BookMybatisService service;
 
     @Override
-    public List<HomeDisplayedBookVO> handle(HomeDisplayedBookVO homeDisplayedBookVO) {
+    public List<HomeDisplayedBookVO> handle(Void unused) {
         List<HomeDisplayedBookVO> homeDisplayList = service.findHomeDisplayedBooks();
 
         return homeDisplayList;

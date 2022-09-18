@@ -2,12 +2,14 @@ package com.myproject.doseoro.packages.book.vo;
 
 import com.google.gson.JsonArray;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
 @Builder
+@Getter
 @NoArgsConstructor
 public class HomeDisplayedBookVO {
     private String title;

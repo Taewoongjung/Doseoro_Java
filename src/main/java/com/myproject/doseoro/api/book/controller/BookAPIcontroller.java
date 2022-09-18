@@ -1,6 +1,7 @@
 package com.myproject.doseoro.api.book.controller;
 
 import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
+import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
@@ -18,8 +19,8 @@ import java.util.*;
 public class BookAPIcontroller {
 
     private final RegisterBookCommandHandler registerBookCommandHandler;
+    private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
 
-    private final BookMybatisService service;
 
     @PostMapping(value = "/book/register")
     public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookDTO dto) {
@@ -38,9 +39,13 @@ public class BookAPIcontroller {
     }
 
     @GetMapping(value = "/book/find/booksForHome")
-    public void findBooks() {
-        List<HomeDisplayedBookVO> list = service.findHomeDisplayedBooks();
+    public List<HomeDisplayedBookVO> findBooks() {
+        System.out.println("display list called");
+
+        Void unused = null;
+        List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
 
         System.out.println("@@@ = " + list);
+        return list;
     }
 }
