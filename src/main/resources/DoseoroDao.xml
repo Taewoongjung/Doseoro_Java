@@ -102,6 +102,7 @@
     </resultMap>
     <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
         SELECT
+            id,
             title,
             about,
             price,

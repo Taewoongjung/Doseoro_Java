@@ -95,7 +95,7 @@
             </div>
             <div class="d-flex flex-wrap justify-content-center">
                 <c:forEach var="book" items="${books}">
-                    <div class="saleCard card mt-4 m-2" style="max-width: 210px;" onclick="location.href='/book/{{book.id}}'">
+                    <div class="saleCard card mt-4 m-2" style="max-width: 210px;" onclick="location.href='/book/${book.id}'">
                         <img src="resources/uploads/imgs${book.images[0]}" class="card-img-top" width="100%" height="280px">
                         <div class="card-body text-center">
                             <p class="postTitle card-title fw-bold mb-3">${book.title}</p>
