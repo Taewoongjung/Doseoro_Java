@@ -94,15 +94,15 @@
                 <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/saleBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                <div>ㅋㅋㅋ${books[1]}</div>
-                <div class="saleCard card mt-4 m-2" style="max-width: 210px;" onclick="location.href='/book/{{book.id}}'">
-                    <img src="resources/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
-                    <div class="card-body text-center">
-                        <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
-                        <a>{{book.price}} 원</a>
+                <c:forEach var="book" items="${books}">
+                    <div class="saleCard card mt-4 m-2" style="max-width: 210px;" onclick="location.href='/book/{{book.id}}'">
+                        <img src="resources/uploads/imgs${book.images[0]}" class="card-img-top" width="100%" height="280px">
+                        <div class="card-body text-center">
+                            <p class="postTitle card-title fw-bold mb-3">${book.title}</p>
+                            <a>${book.price} 원</a>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                </c:forEach>
             </div>
         </div>
 

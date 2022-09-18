@@ -17,7 +17,7 @@ public class PageController {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
 
     @RequestMapping(value = "/")
-    public String home(Model model) throws IOException {
+    public String home(Model model) {
         Void unused = null;
         List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
 

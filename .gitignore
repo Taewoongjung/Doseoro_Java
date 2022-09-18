@@ -5,7 +5,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-/Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/**
+/Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads
 
 ### STS ###
 .apt_generated
