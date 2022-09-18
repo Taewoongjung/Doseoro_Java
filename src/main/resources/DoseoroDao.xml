@@ -93,6 +93,41 @@
                );
     </insert>
 
+    <!--    책의 id로 책 찾기    -->
+    <resultMap id="BookVO" type="com.myproject.doseoro.packages.book.vo.BookVO">
+        <result property="postMessage" column="postMessage"></result>
+        <result property="title" column="title"></result>
+        <result property="price" column="price"></result>
+        <result property="author" column="author"></result>
+        <result property="publisher" column="publisher"></result>
+        <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
+        <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
+        <result property="tradeMethod" column="tradeMethod"></result>
+        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
+        <result property="like" column="like"></result>
+        <result property="sold" column="sold"></result>
+        <result property="about" column="about"></result>
+        <result property="OwnerId" column="OwnerId"></result>
+    </resultMap>
+    <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
+        SELECT
+            postMessage,
+            title,
+            price,
+            author,
+            publisher,
+            category,
+            state,
+            tradeMethod,
+            img,
+            like_count,
+            sold,
+            about,
+            OwnerId
+        FROM t_book
+        where id = #{bookId}
+    </select>
+
     <!--    홈 화면에 전시할 책 5가지 찾기   -->
     <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO">
         <result property="title" column="title"></result>

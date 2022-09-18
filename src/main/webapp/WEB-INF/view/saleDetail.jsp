@@ -13,13 +13,13 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>{{title}}</title>
+    <title>책 구경📖 ${title}</title>
 </head>
 
 <body>
     <div class="flex w-100">
         <!-- 상단 바 -->
-        <%@include file="topNavbar2.jsp"%>
+        <%@include file="topNavbar.jsp"%>
 
         <!-- 컨텐츠 -->
         <main class="saleDetail border container-sm overflow-hidden mt-0 mb-0 min-vh-100 pt-3 pb-5">

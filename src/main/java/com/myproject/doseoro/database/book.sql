@@ -11,7 +11,7 @@ CREATE TABLE `t_book`
     `state`         JSON             NULL   DEFAULT NULL   COMMENT '책 상태',
     `tradeMethod`   VARCHAR(100)     NULL   DEFAULT NULL   COMMENT '책 거래 방법',
     `img`           JSON             NULL   DEFAULT NULL   COMMENT '책 이미지(표지, 내부 상태 사진)',
-    `like`          VARCHAR(100)     NULL   DEFAULT 0      COMMENT '해당 책을 "좋아요" 누른 사람들(즐겨찾기 추가한 사람들)',
+    `like_count`    VARCHAR(100)     NULL   DEFAULT 0      COMMENT '해당 책을 "좋아요" 누른 사람들(즐겨찾기 추가한 사람들)',
     `sold`          TINYINT(1)       NULL   DEFAULT 0      COMMENT '해당 책이 팔렸는지 아닌지',
     `about`         VARCHAR(100)     NULL   DEFAULT NULL   COMMENT '해당 책에 대한 설명',
     `createdAt`     TIMESTAMP    NOT NULL   DEFAULT CURRENT_TIMESTAMP,
