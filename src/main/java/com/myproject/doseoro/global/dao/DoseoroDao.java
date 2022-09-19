@@ -11,7 +11,6 @@ import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Mapper

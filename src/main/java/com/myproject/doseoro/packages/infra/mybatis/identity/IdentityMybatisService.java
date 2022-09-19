@@ -8,8 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-
+import static com.myproject.doseoro.global.error.exception.ErrorCode.EMAIL_NOT_MATCHED;
 import static com.myproject.doseoro.global.error.exception.ErrorCode.PASSWORD_NOT_MATCHED;
 
 @Service
@@ -46,6 +45,10 @@ public class IdentityMybatisService {
 
     public boolean loginCheck(IdentityVO vo) {
         LogInVO foundUserToBeCompared = dao.loginCheck(vo.getEmail());
+        if (foundUserToBeCompared == null) {
+            log.error("[LOGIN ERROR] Email is not matched");
+            throw new BusinessException(EMAIL_NOT_MATCHED);
+        }
         if (!passwordEncoder.matches(vo.getPassword(), foundUserToBeCompared.getPassword())) {
             log.error("[LOGIN ERROR] Password is not matched");
             throw new BusinessException(PASSWORD_NOT_MATCHED);
