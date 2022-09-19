@@ -84,17 +84,17 @@
         INSERT INTO t_book
             (
                  id,
-                 postMessage,
+                 post_message,
                  title,
                  price,
                  author,
                  publisher,
                  category,
                  state,
-                 tradeMethod,
+                 trade_method,
                  img,
                  about,
-                 OwnerId
+                 owner_id
              )
         VALUES(
                    #{dto.id},
@@ -114,35 +114,35 @@
 
     <!--    책의 id로 책 찾기    -->
     <resultMap id="BookVO" type="com.myproject.doseoro.packages.book.vo.BookVO">
-        <result property="postMessage" column="postMessage"></result>
+        <result property="postMessage" column="post_message"></result>
         <result property="title" column="title"></result>
         <result property="price" column="price"></result>
         <result property="author" column="author"></result>
         <result property="publisher" column="publisher"></result>
         <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
         <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="tradeMethod" column="tradeMethod"></result>
+        <result property="tradeMethod" column="trade_method"></result>
         <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
         <result property="like" column="like"></result>
         <result property="sold" column="sold"></result>
         <result property="about" column="about"></result>
-        <result property="OwnerId" column="OwnerId"></result>
+        <result property="OwnerId" column="owner_id"></result>
     </resultMap>
     <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
         SELECT
-            postMessage,
+            post_message,
             title,
             price,
             author,
             publisher,
             category,
             state,
-            tradeMethod,
+            trade_method,
             img,
             like_count,
             sold,
             about,
-            OwnerId
+            owner_id
         FROM t_book
         where id = #{bookId}
     </select>

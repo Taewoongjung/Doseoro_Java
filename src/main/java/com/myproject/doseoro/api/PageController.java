@@ -23,12 +23,12 @@ public class PageController {
     @RequestMapping(value = "/")
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
+        System.out.println("home called");
+
         Void unused = null;
         List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
 
         model.addAttribute("books", list);
-        System.out.println("home = " + list);
-        System.out.println("home called");
         return "home";
     }
 
@@ -42,12 +42,19 @@ public class PageController {
     public String myPage(Model model) {
         System.out.println("mypage called");
         String userId = accessUserSessionManager.extractUser();
-        System.out.println(userId);
+
         IdentityMyPageVO thisUser = identityRepository.findUserById(userId);
 
         model.addAttribute("user", thisUser);
 
         return "myPage";
+    }
+
+    @RequestMapping(value = "/likedProductPage")
+    public String likedProduct() {
+        System.out.println("likedProductPage called");
+
+        return "likedProduct";
     }
 
     @RequestMapping(value = "/signup")

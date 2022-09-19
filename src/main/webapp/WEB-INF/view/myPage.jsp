@@ -53,7 +53,7 @@
             </div>
 
             <div class="myPageList text-center d-flex flex-wrap justify-content-center">
-                <a class="m-sm-4" href="/pages/like">
+                <a class="m-sm-4" href="/likedProductPage">
                     <img src="/images/bookmark.png" alt="관심상품">
                     <p class="text-decoration-none">관심상품</p>
                 </a>

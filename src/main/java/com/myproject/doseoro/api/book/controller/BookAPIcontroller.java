@@ -5,18 +5,18 @@ import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksComman
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
-import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class BookAPIcontroller {
 

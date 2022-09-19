@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <title>책 등록</title>
 </head>
@@ -157,12 +157,12 @@
 
         <div class="usreLocation">
           {% if user.location %}
-          <a><img src="resources/img/marker.png" width="25px" height="25px"></a>
+          <a><img src="img/marker.png" width="25px" height="25px"></a>
           <a class="fw-bold h5 text-black-50 text-decoration-none" id="postLocation">{{ user.location }}</a>
           {% else %}
           <div id="popGuide" onmouseout="popupGuide(false)" onmouseover="popupGuide(true)"
             class="fw-bold align-items-center d-flex mb-2">
-            <p><img src="resources/img/locationGuide.png" alt="guide" width="25px"></p>
+            <p><img src="img/locationGuide.png" alt="guide" width="25px"></p>
             <a>&nbsp&nbsp위치를 등록해주세요</a>
             <a id="postLocation">{{ user.location }}</a>
           </div>
@@ -191,11 +191,11 @@
       request.setAttribute('method', 'POST');
     }
   </script>
-  <script src="resources/js/topNav.js"></script>
-  <script src="resources/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/js/ckboxLimit.js"></script>
-  <script src="resources/js/popGuide.js"></script>
-  <script src="resources/js/previewPost.js"></script>
+  <script src="js/topNav.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/ckboxLimit.js"></script>
+  <script src="js/popGuide.js"></script>
+  <script src="js/previewPost.js"></script>
 
 </body>
 
