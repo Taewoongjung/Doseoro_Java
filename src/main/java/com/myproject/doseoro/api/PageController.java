@@ -28,7 +28,7 @@ public class PageController {
     @RequestMapping(value = "/")
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
-        log.info("[PAGE Called] home");
+        log.info("[PAGE Called] Home");
 
         Void unused = null;
         List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
@@ -39,13 +39,14 @@ public class PageController {
 
     @RequestMapping(value = "/login")
     public String login() {
-        System.out.println("login called");
+        log.info("[PAGE Called] Login");
         return "login";
     }
 
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
-        System.out.println("mypage called");
+        log.info("[PAGE Called] MyPage");
+
         String userId = accessUserSessionManager.extractUser();
 
         IdentityMyPageVO thisUser = identityRepository.findUserById(userId);
@@ -57,20 +58,22 @@ public class PageController {
 
     @RequestMapping(value = "/likedProductPage")
     public String likedProduct() {
-        System.out.println("likedProductPage called");
+        log.info("[PAGE Called] LikedProductPage");
 
         return "likedProduct";
     }
 
     @RequestMapping(value = "/signup")
     public String signup() {
-        System.out.println("signup called");
+        log.info("[PAGE Called] SignUp");
+
         return "signup";
     }
 
     @RequestMapping(value = "/saleBoard")
     public String saleBoard(Model model) {
-        System.out.println("saleBoard called");
+        log.info("[PAGE Called] SaleBoard");
+
         List<FindAllBooksVO> bookList = bookMybatisService.findAllBooksForSaleBoard();
         System.out.println(bookList);
         model.addAttribute("books", bookList);
@@ -80,7 +83,8 @@ public class PageController {
 
     @RequestMapping(value = "/registerBook")
     public String registerBook() {
-        System.out.println("registerBook called");
+        log.info("[PAGE Called] RegisterBook");
+
         return "registerBook";
     }
 }
