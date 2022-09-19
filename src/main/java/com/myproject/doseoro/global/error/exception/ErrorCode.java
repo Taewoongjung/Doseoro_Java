@@ -13,6 +13,9 @@ public enum ErrorCode {
     EMAIL_DUPLICATION(400, "I001", "Email is Duplicated"),
     LOGIN_INPUT_INVALID(400, "I002", "Login input is invalid");
 
+    // book
+
+
     private final String code;
     private final String message;
     private int status;

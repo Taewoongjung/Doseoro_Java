@@ -1,7 +1,6 @@
 package com.myproject.doseoro.api;
 
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
-import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
@@ -9,6 +8,7 @@ import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 public class PageController {
 
@@ -27,7 +28,7 @@ public class PageController {
     @RequestMapping(value = "/")
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
-        System.out.println("home called");
+        log.info("[PAGE Called] home");
 
         Void unused = null;
         List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
