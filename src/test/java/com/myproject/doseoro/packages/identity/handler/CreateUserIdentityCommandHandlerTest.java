@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,13 +19,14 @@ class CreateUserIdentityCommandHandlerTest {
 
     @Autowired
     private DoseoroDao dao;
+    private PasswordEncoder passwordEncoder;
 
     @Test
     @DisplayName("유저인증 정보가 존재하지 않는다면 인증 정보를 생성한다.")
     @Transactional // 테스트 완료 후 rollback
     public void commandHandler() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao);
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
         SignUpVO user = new SignUpVO(
                 null,
                 "abcdefg@naver.com",
@@ -58,7 +60,7 @@ class CreateUserIdentityCommandHandlerTest {
     @Transactional
     public void errorTest() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao);
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
 
         SignUpVO user = new SignUpVO(
                 "123123213214215231123",

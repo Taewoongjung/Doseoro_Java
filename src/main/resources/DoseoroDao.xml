@@ -51,9 +51,10 @@
     </select>
 
     <!--    로그인     -->
-    <select id="loginCheck" resultType="HashMap" parameterType="String">
+    <select id="loginCheck" resultType="LogInVO" parameterType="String">
         SELECT
             id AS id,
+            password AS password,
             email AS email,
             name AS name,
             nick_name AS nickName,

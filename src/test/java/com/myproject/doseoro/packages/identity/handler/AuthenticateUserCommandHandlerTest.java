@@ -5,21 +5,22 @@ import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
+@RequiredArgsConstructor
 class AuthenticateUserCommandHandlerTest {
 
-    @Autowired
     private DoseoroDao dao;
-
-    @Autowired
+    private PasswordEncoder passwordEncoder;
     private AccessUserSessionManager accessUserSessionManager;
 
     @Test
@@ -27,7 +28,7 @@ class AuthenticateUserCommandHandlerTest {
     @Transactional
     public void loginSuccessCommandHandler() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao);
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
@@ -67,7 +68,7 @@ class AuthenticateUserCommandHandlerTest {
     @Transactional
     public void loginFailureCommandHandler() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao);
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 

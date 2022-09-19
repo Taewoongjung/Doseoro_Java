@@ -6,6 +6,7 @@ import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.packages.identity.vo.LogInVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,7 +27,7 @@ public interface DoseoroDao {
 
     SignUpVO findUser(String email);
 
-    HashMap loginCheck(@Param("email")String email);
+    LogInVO loginCheck(@Param("email")String email);
 
     boolean signUp(SignUpVO user);
 
