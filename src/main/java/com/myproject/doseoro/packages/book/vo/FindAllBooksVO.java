@@ -10,7 +10,7 @@ import java.util.Objects;
 @Builder
 @Getter
 @NoArgsConstructor
-public class BookVO {
+public class FindAllBooksVO {
 
     private String id;
     private String postMessage;
@@ -27,7 +27,7 @@ public class BookVO {
     private String about;
     private String OwnerId;
 
-    public BookVO(String id, String postMessage, String title, String price, String author, String publisher, List<String> category, List<String> state, String tradeMethod, List<String> images, String likeCount, String sold, String about, String ownerId) {
+    public FindAllBooksVO(String id, String postMessage, String title, String price, String author, String publisher, List<String> category, List<String> state, String tradeMethod, List<String> images, String likeCount, String sold, String about, String ownerId) {
         this.id = id;
         this.postMessage = postMessage;
         this.title = title;
@@ -48,8 +48,8 @@ public class BookVO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookVO bookVO = (BookVO) o;
-        return Objects.equals(id, bookVO.id) && Objects.equals(postMessage, bookVO.postMessage) && Objects.equals(title, bookVO.title) && Objects.equals(price, bookVO.price) && Objects.equals(author, bookVO.author) && Objects.equals(publisher, bookVO.publisher) && Objects.equals(category, bookVO.category) && Objects.equals(state, bookVO.state) && Objects.equals(tradeMethod, bookVO.tradeMethod) && Objects.equals(images, bookVO.images) && Objects.equals(likeCount, bookVO.likeCount) && Objects.equals(sold, bookVO.sold) && Objects.equals(about, bookVO.about) && Objects.equals(OwnerId, bookVO.OwnerId);
+        FindAllBooksVO that = (FindAllBooksVO) o;
+        return Objects.equals(id, that.id) && Objects.equals(postMessage, that.postMessage) && Objects.equals(title, that.title) && Objects.equals(price, that.price) && Objects.equals(author, that.author) && Objects.equals(publisher, that.publisher) && Objects.equals(category, that.category) && Objects.equals(state, that.state) && Objects.equals(tradeMethod, that.tradeMethod) && Objects.equals(images, that.images) && Objects.equals(likeCount, that.likeCount) && Objects.equals(sold, that.sold) && Objects.equals(about, that.about) && Objects.equals(OwnerId, that.OwnerId);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class BookVO {
 
     @Override
     public String toString() {
-        return "BookVO{" +
+        return "FindAllBooksVO{" +
                 "id='" + id + '\'' +
                 ", postMessage='" + postMessage + '\'' +
                 ", title='" + title + '\'' +

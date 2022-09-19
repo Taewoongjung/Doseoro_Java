@@ -25,15 +25,17 @@
                 <h1 class="h4 fw-bold mb-5">관심상품</h1>
                 <div class="mb-5">
                     <h1 class="h4 fw-bold">판매</h1>
-                    {% for book in books %}
-                    <div class="likeList w-100 mt-3 mb-3 border d-flex flex-wrap" onclick="location.href='/book/{{book.thisbook}}'">
-                        <img src="/images/{{book.img[0]}}" class="" width="150px" height="200px">
-                        <div class="ms-4">
-                            <h1 class="h2 m-1 mb-3  fw-bold">{{book.posttitle}}</h1>
-                                <h4 class="h5 m-1">{{book.price}} 원</h4>
+                    <c:forEach var="book" items="${books}">
+                        {% for book in books %}
+                        <div class="likeList w-100 mt-3 mb-3 border d-flex flex-wrap" onclick="location.href='/${book.id}'">
+                            <img src="/images/img${book.images[0]}" class="" width="150px" height="200px">
+                            <div class="ms-4">
+                                <h1 class="h2 m-1 mb-3  fw-bold">${book.title}</h1>
+                                <h4 class="h5 m-1">${book.price} 원</h4>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                        {% endfor %}
+                    </c:forEach>
                 </div>
                 <div>
                     <h1 class="h4 fw-bold">무료나눔</h1>

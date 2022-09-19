@@ -2,6 +2,7 @@ package com.myproject.doseoro.global.dao;
 
 import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
 import com.myproject.doseoro.packages.book.vo.BookVO;
+import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
@@ -35,4 +36,6 @@ public interface DoseoroDao {
     BookVO findBookByBookId(String bookId);
 
     List<HomeDisplayedBookVO> findHomeDisplayedBooks();
+
+    List<FindAllBooksVO> findAllBooksForSaleBoard();
 }

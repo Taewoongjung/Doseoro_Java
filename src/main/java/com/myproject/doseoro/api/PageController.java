@@ -1,8 +1,11 @@
 package com.myproject.doseoro.api;
 
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.packages.book.vo.BookVO;
+import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,7 @@ public class PageController {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final AccessUserSessionManager accessUserSessionManager;
     private final IdentityMybatisService identityRepository;
+    private final BookMybatisService bookMybatisService;
 
     @RequestMapping(value = "/")
     public String home(Model model) {
@@ -64,8 +68,12 @@ public class PageController {
     }
 
     @RequestMapping(value = "/saleBoard")
-    public String sale() {
+    public String saleBoard(Model model) {
         System.out.println("saleBoard called");
+        List<FindAllBooksVO> bookList = bookMybatisService.findAllBooksForSaleBoard();
+        System.out.println(bookList);
+        model.addAttribute("books", bookList);
+
         return "saleBoard";
     }
 

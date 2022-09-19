@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <title>팝니다</title>
 </head>
@@ -39,18 +39,16 @@
         </form>
 
         <div class="d-flex justify-content-center flex-wrap mt-5">
-          {% for book in books %}
-          {% if book.price > 0 %}
+        <c:forEach var="book" items="${books}">
           <div class="saleCard card m-sm-5 mt-4 m-2" style="max-width: 210px;"
-            onclick="location.href='/book/{{book.id}}'">
-            <img src="resources/img/{{book.img[0]}}" class="card-img-top" width="100%" height="280px">
+            onclick="location.href='/${book.id}'">
+            <img src="uploads/imgs${book.images[0]}" class="card-img-top" width="100%" height="280px">
             <div class="card-body text-center">
-              <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
-              <p>{{book.price}} 원</p>
+              <p class="postTitle card-title fw-bold mb-3">${book.postMessage}</p>
+              <p>${book.price} 원</p>
             </div>
           </div>
-          {% endif %}
-          {% endfor %}
+        </c:forEach>
         </div>
 
         <!-- 페이징 -->
