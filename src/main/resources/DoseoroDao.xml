@@ -5,13 +5,22 @@
 <mapper namespace="com.myproject.doseoro.global.dao.DoseoroDao">
 
     <!--@@@@@@@@@@@@@@@@   identity     @@@@@@@@@@@@@@@@@-->
-    <select id="findByEmail" resultType="AccessUser" parameterType="String">
+    <select id="findByEmail" resultType="AccessUserVO" parameterType="String">
         SELECT
             id AS id,
             email AS email,
             nick_name AS nickName
         FROM t_identity
         WHERE email = #{email}
+    </select>
+
+    <select id="findById" resultType="AccessUserVO" parameterType="String">
+        SELECT
+            email AS email,
+            name AS name,
+            nick_name AS nickName
+        FROM t_identity
+        WHERE id = #{id}
     </select>
 
     <select id="existEmail" resultType="Boolean" parameterType="String">

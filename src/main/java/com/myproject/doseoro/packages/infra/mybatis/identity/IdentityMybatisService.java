@@ -1,7 +1,7 @@
 package com.myproject.doseoro.packages.infra.mybatis.identity;
 
 import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.identity.vo.AccessUser;
+import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,11 @@ public class IdentityMybatisService {
         return found;
     }
 
-    public AccessUser findByEmail(String email) {
+    public AccessUserVO findById(String id) {
+        return dao.findById(id);
+    }
+
+    public AccessUserVO findByEmail(String email) {
         return dao.findByEmail(email);
     }
 

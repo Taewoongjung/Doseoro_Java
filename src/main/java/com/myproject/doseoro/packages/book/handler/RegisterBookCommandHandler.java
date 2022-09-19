@@ -2,7 +2,7 @@ package com.myproject.doseoro.packages.book.handler;
 
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
-import com.myproject.doseoro.packages.identity.vo.AccessUser;
+import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookD
     public RegisterBookDTO handle(RegisterBookDTO dto) {
         final String uuid = UUID.randomUUID().toString();
 
-        AccessUser user = identityRepository.findByEmail(dto.getOwnerEmail());
+        AccessUserVO user = identityRepository.findByEmail(dto.getOwnerEmail());
         String idToBeSetInDTO = user.getUserId();
 
         dto.setOwnerId(idToBeSetInDTO);

@@ -5,22 +5,25 @@ import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksComman
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
+import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class BookAPIcontroller {
 
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final BookMybatisService bookMybatisService;
+    private final IdentityMybatisService repository;
+
 
     @PostMapping(value = "/book/register")
     public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookDTO dto) {
@@ -54,7 +57,10 @@ public class BookAPIcontroller {
 
         BookVO book = bookMybatisService.findBookByBookId(bookId);
         System.out.println(book);
+        AccessUserVO user = repository.findById(book.getOwnerId());
+        System.out.println(user.getNickName());
         model.setViewName("saleDetail");
+        model.addObject("nickName", user.getNickName());
         model.addObject("title", book.getPostMessage());
         model.addObject("book", book);
         return model;

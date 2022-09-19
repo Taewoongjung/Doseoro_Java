@@ -99,9 +99,9 @@
       request.setAttribute('method', 'GET');
     }
   </script>
-  <script src="resources/js/topNav.js"></script>
-  <script src="resources/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/js/movePage.js"></script>
+  <script src="js/topNav.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/movePage.js"></script>
 </body>
 
 </html>

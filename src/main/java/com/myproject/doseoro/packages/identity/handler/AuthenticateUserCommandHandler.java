@@ -1,7 +1,7 @@
 package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
-import com.myproject.doseoro.packages.identity.vo.AccessUser;
+import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
@@ -21,7 +21,7 @@ public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityV
 
         boolean result = repository.loginCheck(vo);
         if (result) {
-            AccessUser user = repository.findByEmail(vo.getEmail());
+            AccessUserVO user = repository.findByEmail(vo.getEmail());
             accessUserSessionManager.saveUser(user);
             return true;
         }
