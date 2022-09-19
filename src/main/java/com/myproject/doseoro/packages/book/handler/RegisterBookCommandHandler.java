@@ -21,7 +21,7 @@ public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookD
     public RegisterBookDTO handle(RegisterBookDTO dto) {
         final String uuid = UUID.randomUUID().toString();
 
-        AccessUserVO user = identityRepository.findByEmail(dto.getOwnerEmail());
+        AccessUserVO user = identityRepository.findUserByEmail(dto.getOwnerEmail());
         String idToBeSetInDTO = user.getUserId();
 
         dto.setOwnerId(idToBeSetInDTO);

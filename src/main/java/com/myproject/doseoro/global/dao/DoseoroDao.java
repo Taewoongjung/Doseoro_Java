@@ -4,6 +4,7 @@ import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
+import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,9 +19,9 @@ public interface DoseoroDao {
 
     Boolean existEmail(String email);
 
-    AccessUserVO findById(String id);
+    IdentityMyPageVO findUserById(String id);
 
-    AccessUserVO findByEmail(String email);
+    AccessUserVO findUserByEmail(String email);
 
     SignUpVO findUser(String email);
 

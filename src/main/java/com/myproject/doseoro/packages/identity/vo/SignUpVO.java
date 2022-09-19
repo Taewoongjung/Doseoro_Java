@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class SignUpVO implements Serializable {
+public class SignUpVO {
 
     @Setter
     private String id;

@@ -21,7 +21,7 @@ public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityV
 
         boolean result = repository.loginCheck(vo);
         if (result) {
-            AccessUserVO user = repository.findByEmail(vo.getEmail());
+            AccessUserVO user = repository.findUserByEmail(vo.getEmail());
             accessUserSessionManager.saveUser(user);
             return true;
         }

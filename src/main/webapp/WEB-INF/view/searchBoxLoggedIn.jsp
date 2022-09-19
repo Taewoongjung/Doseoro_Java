@@ -29,7 +29,7 @@
 <!-- 메뉴이동 -->
 <div class="menuForm container mt-2 mb-2 justify-content-center d-flex" role="group">
     <div class="menuBtn"><button type="button" class="btn fw-bold"
-                    onclick="location.href='/pages/saleBoard'">팝니다</button></div>
+                    onclick="location.href='/saleBoard'">팝니다</button></div>
     <div class="menuBtn"><button type="button" class="btn fw-bold"
                     onclick="location.href='/pages/bookRequest'">삽니다</button></div>
     <div class="menuBtn"><button type="button" class="btn fw-bold"

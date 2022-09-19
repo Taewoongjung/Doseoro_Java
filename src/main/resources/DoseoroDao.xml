@@ -5,7 +5,7 @@
 <mapper namespace="com.myproject.doseoro.global.dao.DoseoroDao">
 
     <!--@@@@@@@@@@@@@@@@   identity     @@@@@@@@@@@@@@@@@-->
-    <select id="findByEmail" resultType="AccessUserVO" parameterType="String">
+    <select id="findUserByEmail" resultType="AccessUserVO" parameterType="String">
         SELECT
             id AS id,
             email AS email,
@@ -14,11 +14,21 @@
         WHERE email = #{email}
     </select>
 
-    <select id="findById" resultType="AccessUserVO" parameterType="String">
+    <select id="findUserById" resultType="IdentityMyPageVO" parameterType="String">
         SELECT
+            id AS id,
             email AS email,
             name AS name,
-            nick_name AS nickName
+            nick_name AS nickName,
+            phone AS phone,
+            liked AS liked,
+            location AS location,
+            dong AS dong,
+            si AS si,
+            dou AS dou,
+            provider AS provider,
+            sns_id AS snsId,
+            updated_at AS updatedAt
         FROM t_identity
         WHERE id = #{id}
     </select>
