@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.infra.security;
+package com.myproject.doseoro.global.setting.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

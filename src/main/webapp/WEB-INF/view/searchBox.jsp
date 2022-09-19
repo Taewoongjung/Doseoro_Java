@@ -10,7 +10,7 @@
                         <option value="community">커뮤니티</option>
                 </select>
                 <input type="text" class="form-control ps-3" id="book-publisher" name="searchWord" placeholder="검색" onkeyup="checkText()">
-                <button id="submitBtn" class="btn btn-primary" type="submit" disabled="true"><img src="/img/pngegg.png" width="35" height="25"
+                <button id="submitBtn" class="btn btn-primary" type="submit" disabled="true"><img src="/images/pngegg.png" width="35" height="25"
                                 class="mt-1"></button>
         </div>
 </form>
@@ -27,4 +27,4 @@
                         onclick="location.href='/pages/community'">커뮤니티</button></div>
 </div>
 
-<script src="resources/js/checkFormat.js"></script>
+<script src="js/checkFormat.js"></script>

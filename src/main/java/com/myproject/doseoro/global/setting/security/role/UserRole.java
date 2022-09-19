@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.infra.security.role;
+package com.myproject.doseoro.global.setting.security.role;
 
 import lombok.Getter;
 

@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -8,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>책 구경📖 ${title}</title>
 </head>
@@ -30,17 +28,18 @@
                 <!-- 제목 -->
                 <div class="w-100 pb-2 mb-4 border-bottom">
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h1 class="h2 fw-bold" id="getPostingTitle">{{book.postmessage}}</h1>
+                        <h1 class="h2 fw-bold" id="getPostingTitle">${book.postMessage}</h1>
                         <p class="">조회수 : {{book.hits}}</p>
                     </div>
                     <div class="d-lg-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center mb-2">
                             <p class="me-2 mt-2 fw-bold">{{book.usernick}}</p>
-                            {% if this_book_location %}
-                            <p><a><img src="resources/images/marker.png" width="20px"></a>{{this_book_location}}</p>
-                            {% else %}
-                            <p><a><img src="resources/images/marker.png" width="20px"></a>미등록</p>
-                            {% endif %}
+<%--                            이거는 위치 정보. 카카오 api 붙이고 연결할 예정--%>
+<%--                            {% if this_book_location %} --%>
+<%--                            <p><a><img src="images/marker.png" width="20px"></a>{{this_book_location}}</p>--%>
+<%--                            {% else %}--%>
+<%--                            <p><a><img src="images/marker.png" width="20px"></a>미등록</p>--%>
+<%--                            {% endif %} --%>
                         </div>
                         <a class="text-decoration-none text-dark text-end" id="getPostingDate"></a>
                         <input id="postingTime" type="hidden" value="{{createdAt}}">
@@ -52,67 +51,65 @@
                     <!-- 이미지 슬라이드 -->
                     <div id="carouselExampleControls" class="carousel slide slideBox" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            {% if book.img[0] != NULL %}
-                            <div class="carousel-item active">
-                                <img class="" src="resources/images/{{book.img[0]}}" style="border-radius:21px;" width="320px"
-                                    height="400px" alt="bookImg">
-                            </div>
-                            {% endif %}
-                            {% if book.img[1] != NULL %}
-                            <div class="carousel-item">
-                                <img class="" src="resources/images/{{book.img[1]}}" style="border-radius:21px" width="320px"
-                                    height="400px" alt="bookImg">
-                            </div>
-                            {% endif %}
-                            {% if book.img[2] != NULL %}
-                            <div class="carousel-item">
-                                <img class="" src="resources/images/{{book.img[2]}}" style="border-radius:21px" width="320px"
-                                    height="400px" alt="bookImg">
-                            </div>
-                            {% endif %}
-                            {% if book.img[3] != NULL %}
-                            <div class="carousel-item">
-                                <img class="" src="resources/images/{{book.img[3]}}" style="border-radius:21px" width="320px"
-                                    height="400px" alt="bookImg">
-                            </div>
-                            {% endif %}
-                            {% if book.img[4] != NULL %}
-                            <div class="carousel-item">
-                                <img class="" src="resources/images/{{book.img[4]}}" style="border-radius:21px" width="320px"
-                                    height="400px" alt="bookImg">
-                            </div>
-                            {% endif %}
+                            <c:set var="book" value="${book}"/>
+                            <c:if test="${book.images[0] ne null}">
+                                <div class="carousel-item active">
+                                    <img class="" src="uploads/imgs${book.images[0]}" style="border-radius:21px;" width="320px"
+                                        height="400px" alt="bookImg">
+                                </div>
+                            </c:if>
+                            <c:if test="${book.images[1] ne null}">
+                                <div class="carousel-item">
+                                    <img class="" src="uploads/imgs${book.images[1]}" style="border-radius:21px" width="320px"
+                                        height="400px" alt="bookImg">
+                                </div>
+                            </c:if>
+                            <c:if test="${book.images[2] ne null}">
+                                <div class="carousel-item">
+                                    <img class="" src="uploads/imgs${book.images[2]}" style="border-radius:21px" width="320px"
+                                        height="400px" alt="bookImg">
+                                </div>
+                            </c:if>
+                            <c:if test="${book.images[3] ne null}">
+                                <div class="carousel-item">
+                                    <img class="" src="uploads/imgs${book.images[3]}" style="border-radius:21px" width="320px"
+                                        height="400px" alt="bookImg">
+                                </div>
+                            </c:if>
+                            <c:if test="${book.images[4] ne null}">
+                                <div class="carousel-item">
+                                    <img class="" src="uploads/imgs${book.images[4]}" style="border-radius:21px" width="320px"
+                                        height="400px" alt="bookImg">
+                                </div>
+                            </c:if>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                            data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                            data-bs-slide="next">
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
-                        </a>
+                        </button>
                     </div>
 
                     <div class="bookInfo w-75 me-0 ms-sm-5 align-content-between">
                         <div class="d-flex mb-3 align-items-center w-100 justify-content-between">
                             <div class="saleCheck d-flex border-0 p-2 me-2 align-items-center"
                                 style="border-radius: 10px">
-                                {% if free_books | length %}
-                                    {% if book.sold == 1 %}
-                                        <a class="h5 mb-0 text-decoration-none fw-bold">나눔완료</a>
-                                    {% else %}
+                                <c:set var="book" value="${book}"/>
+                                <c:if test="${book.price eq null}">
+                                    <c:if test="${book.sold eq '1'}">
+                                            <a class="h5 mb-0 text-decoration-none fw-bold">나눔완료</a>
+                                    </c:if>
                                         <a class="h5 mb-0 text-decoration-none fw-bold">무료나눔</a>
-                                    {% endif %}
-
-                                {% else %}
-                                    {% if book.sold == 1 %}
+                                </c:if>
+                                <c:if test="${book.price ne null}">
+                                    <c:if test="${book.sold eq '1'}">
                                         <a class="h5 mb-0 text-decoration-none fw-bold">판매완료</a>
-                                    {% else %}
+                                    </c:if>
                                         <a class="h5 mb-0 text-decoration-none fw-bold">판매</a>
-                                    {% endif %}
-                                {% endif %}
+                                </c:if>
                                 <div class="">
                                     <form id="book_like-form">
                                         <div class="saleCheck border-0 p-2 d-flex" style="border-radius: 10px">
@@ -126,8 +123,8 @@
                                             <input type="hidden" name="title" value="{{book.title}}">
                                             <input type="hidden" name="price" value="{{book.price}}">
                                             <input type="hidden" name="registeredUserNick" value="{{book.usernick}}">
-                                            {% if book.sold == 1 %}
-                                            {% else %}
+<%--                                            {% if book.sold == 1 %}--%>
+<%--                                            {% else %}--%>
                                                 <button class="btn  btn-outline-primary" class="btn" type="submit"
                                                     onclick="like()" style="border: 0px">❤️</button>
 
@@ -135,7 +132,7 @@
                                                 <div class="saleCheck border-0 pt-1" style="border-radius: 10px">
                                                     <a class="h5 text-decoration-none fw-bold">+ {{book.likecount}}</a>
                                                 </div>
-                                            {% endif %}
+<%--                                            {% endif %}--%>
                                         </div>
                                     </form>
                                 </div>
@@ -151,7 +148,7 @@
                                         value="{{book.createdAt}}">
                                     <div class="dropdown">
                                         <a class="btn kebobMenu" href="#" data-bs-toggle="dropdown"
-                                            aria-expanded="true"><img src="resources/images/kebob.png" alt="dropdownMenu"
+                                            aria-expanded="true"><img src="images/kebob.png" alt="dropdownMenu"
                                                 width="15px"></a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdown1">
                                             <!-- 무료나눔 or 판매 -->
@@ -175,7 +172,7 @@
                         </div>
                         <div class="bookTitle d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">책 제목</h4>
-                            <a class="text-body text-decoration-none" id="getBookTitle">{{book.title}}</a>
+                            <a class="text-body text-decoration-none" id="getBookTitle">${book.title}</a>
                         </div>
 
                         {% if free_books | length %}
@@ -183,29 +180,29 @@
                         {% else %}
                         <div class="bookTitle d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">가격</h4>
-                            <a class="text-body text-decoration-none" id="getBookPrice">{{book.price}}원</a>
+                            <a class="text-body text-decoration-none" id="getBookPrice">${book.price}원</a>
                         </div>
                         {% endif %}
 
                         <div class="auther d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">저자</h4>
-                            <a class="text-body text-decoration-none" id="getAuther">{{book.author}}</a>
+                            <a class="text-body text-decoration-none" id="getAuther">${book.author}</a>
                         </div>
                         <div class="publisher d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">출판사</h4>
-                            <a class="text-body text-decoration-none" id="getPublisher">{{book.publisher}}</a>
+                            <a class="text-body text-decoration-none" id="getPublisher">${book.publisher}</a>
                         </div>
                         <div class="category d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">카테고리</h4>
-                            <a class="text-body text-decoration-none" id="getCategory">{{book.category}}</a>
+                            <a class="text-body text-decoration-none" id="getCategory">${book.category}</a>
                         </div>
                         <div class="category d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">외관손상</h4>
-                            <a class="text-body text-decoration-none" id="getAppearanceInfo">{{book.state}}</a>
+                                <a class="text-body text-decoration-none" id="getAppearanceInfoA">${book.state[0]}</a>
                         </div>
                         <div class="category d-flex align-items-center mt-2 mb-2">
                             <h4 class="h4 fw-bold w-50">거래방법</h4>
-                            <a class="text-body text-decoration-none" id="getAppearanceInfo">{{book.tradingmethod}}</a>
+                            <a class="text-body text-decoration-none" id="getAppearanceInfoB">${book.tradeMethod}</a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +210,7 @@
             <!-- 게시물 내용 -->
             <div class="mt-3 border-top w-75 ms-auto me-auto mb-5 pt-4">
                 <div class="mt-3"><a id="getPostingContents">{{book.tags}}</a></div>
-                <div class="mt-3"><a id="getPostingContents" style="white-space: pre-line;">{{book.about}}</a></div>
+                <div class="mt-3"><a id="getPostingContents" style="white-space: pre-line;">${book.about}</a></div>
             </div>
 
             <!-- 댓글 달기 -->
@@ -299,7 +296,7 @@
                         <div class="reCommentList">
                             <div class="reCommentListInner d-sm-flex">
                                 <div class="d-flex align-items-center">
-                                    <div class="p-2"><img src="resources/images/reply.png" style="opacity: 0.5;" width="15px"></div>
+                                    <div class="p-2"><img src="images/reply.png" style="opacity: 0.5;" width="15px"></div>
 
                                     <!-- 유저닉네임 받아오기 -->
                                     <div class="comment-nick fw-bold">{{re_comment.reCommentNick}}</div>
@@ -360,7 +357,7 @@
             <div class="reCommentList">
                 <div class="reCommentListInner d-sm-flex">
                     <div class="d-flex align-items-center">
-                        <div class="p-2"><img src="resources/images/reply.png" style="opacity: 0.5;" width="15px"></div>
+                        <div class="p-2"><img src="images/reply.png" style="opacity: 0.5;" width="15px"></div>
                         <div class="comment-nick fw-bold">{{re_comment.reCommentNick}}</div>
                     </div>
                     <div class="comment-content">{{re_comment.createdAt}}</div>
@@ -459,11 +456,11 @@
         }
 
     </script>
-    <script src="resources/js/bootstrap.bundle.min.js"></script>
-    <script src="resources/js/topNav.js"></script>
-    <script src="resources/js/timestamp.js"></script>
-    <script src="resources/js/postUD.js"></script>
-    <script src="resources/js/commentEvent.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/topNav.js"></script>
+    <script src="js/timestamp.js"></script>
+    <script src="js/postUD.js"></script>
+    <script src="js/commentEvent.js"></script>
 </body>
 
 </html>

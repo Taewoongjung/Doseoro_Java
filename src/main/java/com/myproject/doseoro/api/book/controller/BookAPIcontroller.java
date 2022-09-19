@@ -8,16 +8,13 @@ import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
-@Controller()
+@Controller
 @RequiredArgsConstructor
 public class BookAPIcontroller {
 
@@ -52,13 +49,14 @@ public class BookAPIcontroller {
     }
 
     @GetMapping(value = "/{bookId}")
-    public String bookDetailPage(Model model, @PathVariable String bookId) {
+    public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
         System.out.println("book detail called");
 
         BookVO book = bookMybatisService.findBookByBookId(bookId);
         System.out.println(book);
-        model.addAttribute("title", book.getPostMessage());
-        model.addAttribute("book", book);
-        return "saleDetail";
+        model.setViewName("saleDetail");
+        model.addObject("title", book.getPostMessage());
+        model.addObject("book", book);
+        return model;
     }
 }
