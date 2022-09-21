@@ -1,11 +1,13 @@
 package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.global.dao.DoseoroDao;
+import com.myproject.doseoro.global.error.exception.BusinessException;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,9 +101,7 @@ class AuthenticateUserCommandHandlerTest {
         );
 
         // when
-        boolean actual = sut.handle(loginUser);
-
         // then
-        assertThat(actual).isFalse();
+        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(loginUser));
     }
 }
