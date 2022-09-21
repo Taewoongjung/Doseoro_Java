@@ -20,10 +20,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-@RequiredArgsConstructor
 class RegisterBookCommandHandlerTest {
 
+    @Autowired
     private DoseoroDao dao;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Test
@@ -35,10 +36,10 @@ class RegisterBookCommandHandlerTest {
         IdentityMybatisService identityRepository = new IdentityMybatisService(dao, passwordEncoder);
         RegisterBookCommandHandler sut = new RegisterBookCommandHandler(bookRepository, identityRepository);
 
-        CreateUserIdentityCommandHandler singup = new CreateUserIdentityCommandHandler(identityRepository);
+        CreateUserIdentityCommandHandler singUp = new CreateUserIdentityCommandHandler(identityRepository);
 
         SignUpVO user = new SignUpVO(
-                null,
+                "111",
                 "abcdefg@naver.com",
                 "aa",
                 "홍길동",
@@ -47,7 +48,7 @@ class RegisterBookCommandHandlerTest {
                 "좋아하는 추억",
                 "많은 추억"
         );
-        singup.handle(user);
+        singUp.handle(user);
 
         List<String> checkCategory = new ArrayList<>();
         checkCategory.add("SF");
@@ -75,7 +76,7 @@ class RegisterBookCommandHandlerTest {
                 "0",
                 "자바 기본서 입니다.",
                 "abcdefg@naver.com",
-                null
+                "abcdefg@naver.com"
         );
 
         // when

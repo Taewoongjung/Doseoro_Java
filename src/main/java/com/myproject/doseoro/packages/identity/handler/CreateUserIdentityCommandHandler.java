@@ -19,18 +19,16 @@ public class CreateUserIdentityCommandHandler implements ICommandHandler<SignUpV
     private final IdentityMybatisService repository;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public Boolean handle(final SignUpVO dto) {
-        if (repository.existEmail(dto.getEmail())) {
+    public Boolean handle(final SignUpVO vo) {
+        if (repository.existEmail(vo.getEmail())) {
             throw new BusinessException(EMAIL_DUPLICATION);
         }
 
-        final String uuid = UUID.randomUUID().toString();
-        dto.setId(uuid);
+        vo.imbueUserId();
 
-        String hashedPassword = encoder.encode(dto.getPassword());
-        dto.setPassword(hashedPassword);
+        String hashedPassword = encoder.encode(vo.getPassword());
+        vo.imbueUserPassword(hashedPassword);
 
-        boolean signUpCompleted = repository.signUp(dto);
-        return signUpCompleted;
+        return repository.signUp(vo);
     }
 }

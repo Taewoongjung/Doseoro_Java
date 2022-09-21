@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class PageController {
 
@@ -28,7 +27,6 @@ public class PageController {
     @RequestMapping(value = "/")
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
-        log.info("[PAGE Called] Home");
 
         Void unused = null;
         List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
@@ -39,13 +37,11 @@ public class PageController {
 
     @RequestMapping(value = "/login")
     public String login() {
-        log.info("[PAGE Called] Login");
         return "login";
     }
 
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
-        log.info("[PAGE Called] MyPage");
 
         String userId = accessUserSessionManager.extractUser();
 
@@ -58,21 +54,18 @@ public class PageController {
 
     @RequestMapping(value = "/likedProductPage")
     public String likedProduct() {
-        log.info("[PAGE Called] LikedProductPage");
 
         return "likedProduct";
     }
 
     @RequestMapping(value = "/signup")
     public String signup() {
-        log.info("[PAGE Called] SignUp");
 
         return "signup";
     }
 
     @RequestMapping(value = "/saleBoard")
     public String saleBoard(Model model) {
-        log.info("[PAGE Called] SaleBoard");
 
         List<FindAllBooksVO> bookList = bookMybatisService.findAllBooksForSaleBoard();
         System.out.println(bookList);
@@ -83,7 +76,6 @@ public class PageController {
 
     @RequestMapping(value = "/registerBook")
     public String registerBook() {
-        log.info("[PAGE Called] RegisterBook");
 
         return "registerBook";
     }

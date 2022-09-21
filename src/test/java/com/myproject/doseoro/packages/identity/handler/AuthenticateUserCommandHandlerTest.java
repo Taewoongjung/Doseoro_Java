@@ -16,11 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-@RequiredArgsConstructor
 class AuthenticateUserCommandHandlerTest {
 
+    @Autowired
     private DoseoroDao dao;
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private AccessUserSessionManager accessUserSessionManager;
 
     @Test

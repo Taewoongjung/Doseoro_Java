@@ -6,17 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SignUpVO {
 
-    @Setter
     private String id;
 
     private String email;
 
-    @Setter
     private String password;
 
     private String name;
@@ -52,5 +51,14 @@ public class SignUpVO {
                 ", question='" + question + '\'' +
                 ", answerForQuestion='" + answerForQuestion + '\'' +
                 '}';
+    }
+
+    public void imbueUserId() {
+        String uuid = UUID.randomUUID().toString();
+        this.id = uuid;
+    }
+
+    public void imbueUserPassword(String password) {
+        this.password = password;
     }
 }
