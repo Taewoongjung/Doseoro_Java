@@ -19,10 +19,3 @@ jobs:
         uses: robvanderleek/create-issue-branch@v1.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
