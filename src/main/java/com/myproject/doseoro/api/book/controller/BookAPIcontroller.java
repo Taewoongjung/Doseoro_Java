@@ -1,6 +1,6 @@
 package com.myproject.doseoro.api.book.controller;
 
-import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
+import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.packages.book.vo.BookVO;
@@ -27,12 +27,10 @@ public class BookAPIcontroller {
 
 
     @PostMapping(value = "/book/register")
-    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookDTO dto) {
+    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookVO vo) {
 
         try {
-            dto.multipleImageFileHandle(multipartFile, dto);
-            RegisterBookDTO resultDto = registerBookCommandHandler.handle(dto);
-            System.out.println("완료 = " + resultDto);
+            vo.multipleImageFileHandle(multipartFile, vo);
 
         } catch (Exception e) { // BussinessException 로직 추가하기
             e.printStackTrace();

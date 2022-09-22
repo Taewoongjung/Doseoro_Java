@@ -81,7 +81,7 @@
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
 
     <!--    책 등록    -->
-    <insert id="registerBook" parameterType="RegisterBookDTO">
+    <insert id="registerBook" parameterType="RegisterBookVO">
         INSERT INTO t_book
             (
                  id,
@@ -98,18 +98,18 @@
                  owner_id
              )
         VALUES(
-                   #{dto.id},
-                   #{dto.postmessage},
-                   #{dto.title},
-                   #{dto.price},
-                   #{dto.author},
-                   #{dto.publisher},
-                   #{dto.checkCategory, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
-                   #{dto.checkState, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
-                   #{dto.dealRoot},
-                   #{dto.images, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
-                   #{dto.about},
-                   #{dto.ownerId}
+                   #{vo.id},
+                   #{vo.postmessage},
+                   #{vo.title},
+                   #{vo.price},
+                   #{vo.author},
+                   #{vo.publisher},
+                   #{vo.checkCategory, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
+                   #{vo.checkState, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
+                   #{vo.dealRoot},
+                   #{vo.images, typeHandler=com.myproject.doseoro.global.util.JsonTypeHandler},
+                   #{vo.about},
+                   #{vo.ownerId}
                );
     </insert>
 
