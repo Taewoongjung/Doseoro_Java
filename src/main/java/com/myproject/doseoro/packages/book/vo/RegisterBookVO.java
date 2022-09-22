@@ -12,7 +12,6 @@ import java.util.UUID;
 @Getter
 public class RegisterBookVO {
 
-    @Setter
     private String id;
     private String postmessage;
     private final String title;
@@ -21,12 +20,10 @@ public class RegisterBookVO {
     private final String publisher;
     private final List<String> checkCategory;
     private final List<String> checkState;
-    @Setter
     private List<String> images;
     private final String dealRoot;
     private final String sold;
     private final String about;
-    @Setter
     private String ownerId;
     private String ownerEmail;
 
