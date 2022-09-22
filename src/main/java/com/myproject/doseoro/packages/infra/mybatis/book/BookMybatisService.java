@@ -1,7 +1,7 @@
 package com.myproject.doseoro.packages.infra.mybatis.book;
 
 import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
+import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
@@ -16,8 +16,8 @@ public class BookMybatisService {
 
     private final DoseoroDao dao;
 
-    public void registerBook(RegisterBookDTO dto) {
-        dao.registerBook(dto);
+    public void registerBook(RegisterBookVO vo) {
+        dao.registerBook(vo);
     }
 
     public BookVO findBookByBookId(String bookId) {

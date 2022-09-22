@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.book.dto;
+package com.myproject.doseoro.packages.book.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-public class RegisterBookDTO {
+public class RegisterBookVO {
 
     @Setter
     private String id;
@@ -30,7 +30,7 @@ public class RegisterBookDTO {
     private String ownerId;
     private String ownerEmail;
 
-    public RegisterBookDTO(String id, String postmessage, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerId, String ownerEmail) {
+    public RegisterBookVO(String id, String postmessage, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerId, String ownerEmail) {
         this.id = id;
         this.postmessage = postmessage;
         this.title = title;
@@ -49,7 +49,7 @@ public class RegisterBookDTO {
 
     @Override
     public String toString() {
-        return "RegisterBookDTO{" +
+        return "RegisterBookVO{" +
                 "id='" + id + '\'' +
                 ", postmessage='" + postmessage + '\'' +
                 ", title='" + title + '\'' +
@@ -67,7 +67,20 @@ public class RegisterBookDTO {
                 '}';
     }
 
-    public void multipleImageFileHandle(List<MultipartFile> multipartFile, RegisterBookDTO dto) throws IOException {
+    public void imbueImages(List<String> images) {
+        this.images = images;
+    }
+
+    public void imbueId(String id) {
+        this.id = id;
+    }
+
+    public void imbueOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+
+    public void multipleImageFileHandle(List<MultipartFile> multipartFile, RegisterBookVO vo) throws IOException {
         String path = "/Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs/";
         File file = new File(path);
 
@@ -101,6 +114,6 @@ public class RegisterBookDTO {
                 }
             }
         }
-        dto.setImages(imageFileList);
+        vo.imbueImages(imageFileList);
     }
 }

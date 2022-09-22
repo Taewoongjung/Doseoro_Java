@@ -1,12 +1,11 @@
 package com.myproject.doseoro.packages.book.handler;
 
 import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.book.dto.RegisterBookDTO;
+import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +61,7 @@ class RegisterBookCommandHandlerTest {
         images.add("imgs1e51ca13-e32e-4db8-a308-bf4ccdd2c15f");
         images.add("imgs0c1d16f2-a946-468f-8bcc-ffdc8f57b2fe");
 
-        RegisterBookDTO registerBook = new RegisterBookDTO(
+        RegisterBookVO registerBook = new RegisterBookVO(
                 "7777777",
                 "이 책 좋아",
                 "자바의 신",
@@ -80,7 +79,7 @@ class RegisterBookCommandHandlerTest {
         );
 
         // when
-        RegisterBookDTO actual = sut.handle(registerBook);
+        RegisterBookVO actual = sut.handle(registerBook);
 
         // then
         assertThat(actual).isNotNull();
