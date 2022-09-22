@@ -1,0 +1,28 @@
+name: Create issue branch automatically
+
+on:
+  issues:
+    types: [ assigned ]
+  issue_comment:
+    types: [created ]
+  pull_request:
+    types: [ closed ]
+
+  workflow_dispatch:
+
+jobs:
+  create_issue_branch_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Issue Branch
+        uses: robvanderleek/create-issue-branch@v1.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
