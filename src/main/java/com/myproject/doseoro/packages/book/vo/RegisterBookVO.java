@@ -1,7 +1,6 @@
 package com.myproject.doseoro.packages.book.vo;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
