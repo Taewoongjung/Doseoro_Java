@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 import static com.myproject.doseoro.global.error.exception.ErrorCode.EMAIL_DUPLICATION;
 
 @Service
