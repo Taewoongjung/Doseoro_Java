@@ -5,10 +5,12 @@ on:
   push: # feature/*와 pre-production 브랜치에서 push가 일어났을 때 github action 동작
     branches:
       - 'feature/*'
+      - 'main'
       - 'pre-production'
   pull_request: # feature/*와 pre-production 브랜치에서 PR이 일어났을 때 github action 동작
     branches:
       - 'feature/*'
+      - 'main'
       - 'pre-production'
 
 # 참고사항
