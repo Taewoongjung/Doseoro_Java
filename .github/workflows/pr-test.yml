@@ -2,12 +2,12 @@ name: PR test CI
 
 # 하기 내용에 해당하는 이벤트 발생 시 github action 동작
 on:
-  push: # feature/*와 pre-production 브랜치에서 push가 일어났을 때 github action 동작
+  push: # feature/*와 pre-production와 main 브랜치에서 push가 일어났을 때 github action 동작
     branches:
       - 'feature/*'
       - 'main'
       - 'pre-production'
-  pull_request: # feature/*와 pre-production 브랜치에서 PR이 일어났을 때 github action 동작
+  pull_request: # feature/*와 pre-production와 main 브랜치에서 PR이 일어났을 때 github action 동작
     branches:
       - 'feature/*'
       - 'main'
@@ -30,6 +30,14 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        
+      - name: Setup MySQL
+        uses: samin/mysql-action@v1
+        with:
+          character set server: 'utf8'
+          mysql database: 'Doseoro'
+          mysql user: 'root'
+          mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
       - name: Build with Gradle # 실제 application build(-x 옵션을 통해 test는 제외)
         run: ./gradlew build -x test
