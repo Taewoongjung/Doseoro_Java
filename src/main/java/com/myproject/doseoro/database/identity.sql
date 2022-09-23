@@ -9,7 +9,6 @@ CREATE TABLE `t_identity`
     `phone`                  VARCHAR(14)  NOT NULL COMMENT '유저 휴대폰번호',
     `forgot_pw_question`     VARCHAR(100) NOT NULL COMMENT '비밀번호 분실 시 인증을 위한 질문',
     `forgot_pw_answer`       VARCHAR(100) NOT NULL COMMENT '비밀번호 분실 시 인증을 위한 질문에 대한 답',
-    `liked`                  VARCHAR(100)     NULL COMMENT '좋아요 받은 개수',
     `location`               VARCHAR(100)     NULL COMMENT '유저가 사는 주소 전체',
     `dong`                   VARCHAR(10)      NULL COMMENT '유저가 사는 주소에서 동',
     `si`                     VARCHAR(10)      NULL COMMENT '유저가 사는 주소에서 시',
@@ -21,4 +20,4 @@ CREATE TABLE `t_identity`
     PRIMARY KEY (`seq`),
     UNIQUE KEY `uix-identity-id` (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT '회원가입';
+  DEFAULT CHARSET = utf8mb4 COMMENT '유저 정보';
