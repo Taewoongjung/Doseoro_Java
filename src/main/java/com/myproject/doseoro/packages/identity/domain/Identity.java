@@ -30,9 +30,6 @@ public class Identity {
     private String forgotPwAnswer;
 
     @Nullable
-    private String liked;
-
-    @Nullable
     private String location;
 
     @Nullable
