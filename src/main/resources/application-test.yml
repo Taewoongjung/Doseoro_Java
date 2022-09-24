@@ -4,17 +4,17 @@ mybatis:
 
 spring:
   profiles:
-    active: local
+    active: test
   datasource:
-    url: jdbc:mysql://localhost:3307/Doseoro?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
-    password: Wjdxodnd1@
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  mvc:
-    view:
-      prefix: /WEB-INF/view/
-      suffix: .jsp
-#    static-path-pattern: /resources/static/**
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/Doseoro-for-test
+    username: sa
+    password:
+  #  mvc:
+  #    view:
+  #      prefix: /WEB-INF/view/
+  #      suffix: .jsp
+  ##    static-path-pattern: /resources/static/**
   servlet:
     multipart:
       location: /Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs
