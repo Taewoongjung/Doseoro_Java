@@ -10,11 +10,6 @@ spring:
     url: jdbc:h2:mem:Doseoro-for-test
     username: sa
     password:
-  #  mvc:
-  #    view:
-  #      prefix: /WEB-INF/view/
-  #      suffix: .jsp
-  ##    static-path-pattern: /resources/static/**
   servlet:
     multipart:
       location: /Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs
