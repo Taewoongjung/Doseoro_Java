@@ -18,7 +18,10 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.24'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	testImplementation('org.mockito:mockito-core:3.7.7')
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.5.2'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	runtimeOnly 'com.h2database:h2'
+
 	// mybatis
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'

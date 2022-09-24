@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.global.dao.DoseoroDao">
 
+    <!--@@@@@@@@@@@@@@@@   CREATE TABLE     @@@@@@@@@@@@@@@@@-->
+    <select id="createIdentityTable">
+
+    </select>
+    <!--@@@@@@@@@@@@@@@@   CREATE TABLE     @@@@@@@@@@@@@@@@@-->
+
+
+
     <!--@@@@@@@@@@@@@@@@   identity     @@@@@@@@@@@@@@@@@-->
     <select id="findUserByEmail" resultType="AccessUserVO" parameterType="String">
         SELECT
