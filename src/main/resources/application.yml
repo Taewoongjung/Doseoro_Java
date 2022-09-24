@@ -3,6 +3,8 @@ mybatis:
   mapper-locations: classpath:DoseoroDao.xml
 
 spring:
+  profiles:
+    active: local
   datasource:
     url: jdbc:mysql://localhost:3307/Doseoro?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
     username: root
