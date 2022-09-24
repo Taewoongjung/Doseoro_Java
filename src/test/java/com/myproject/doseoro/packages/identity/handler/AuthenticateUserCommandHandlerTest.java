@@ -58,77 +58,77 @@ class AuthenticateUserCommandHandlerTest {
     @DisplayName("유저는 로그인을 할 수 있다.")
     @Transactional
     public void loginSuccessCommandHandler() {
-//        // given
-//        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
-//        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
-//        AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
-//
-//        SignUpVO signUpUser = new SignUpVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
-//        createUserIdentityCommandHandler.handle(signUpUser);
-//
-//        IdentityVO loginUser = new IdentityVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억",
-//                null
-//        );
-//
-//        // when
-//        boolean actual = sut.handle(loginUser);
-//
-//        // then
-//        assertThat(actual).isTrue();
+        // given
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
+        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
+        AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
+
+        SignUpVO signUpUser = new SignUpVO(
+                "7777777",
+                "abcdefg@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억"
+        );
+        createUserIdentityCommandHandler.handle(signUpUser);
+
+        IdentityVO loginUser = new IdentityVO(
+                "7777777",
+                "abcdefg@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억",
+                null
+        );
+
+        // when
+        boolean actual = sut.handle(loginUser);
+
+        // then
+        assertThat(actual).isTrue();
     }
 
     @Test
     @DisplayName("유저는 유저 정보를 틀리게 입력하면 로그인을 할 수 없다.")
     @Transactional
     public void loginFailureCommandHandler() {
-//        // given
-//        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
-//        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
-//        AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
-//
-//        SignUpVO signUpUser = new SignUpVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
-//        createUserIdentityCommandHandler.handle(signUpUser);
-//
-//        IdentityVO loginUser = new IdentityVO(
-//                "7770777",
-//                "abcdef@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억",
-//                null
-//        );
-//
-//        // when
-//        // then
-//        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(loginUser));
+        // given
+        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
+        CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
+        AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
+
+        SignUpVO signUpUser = new SignUpVO(
+                "7777777",
+                "abcdefg@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억"
+        );
+        createUserIdentityCommandHandler.handle(signUpUser);
+
+        IdentityVO loginUser = new IdentityVO(
+                "7770777",
+                "abcdef@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억",
+                null
+        );
+
+        // when
+        // then
+        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(loginUser));
     }
 }
