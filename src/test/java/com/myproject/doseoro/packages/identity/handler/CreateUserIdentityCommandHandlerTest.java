@@ -19,6 +19,7 @@ class CreateUserIdentityCommandHandlerTest {
 
     @Autowired
     private DoseoroDao dao;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Test

@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.24'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	testImplementation('org.mockito:mockito-core:3.7.7')
 	// mybatis
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
