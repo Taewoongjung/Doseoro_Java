@@ -25,7 +25,6 @@ public class BookAPIcontroller {
     private final BookMybatisService bookMybatisService;
     private final IdentityMybatisService repository;
 
-
     @PostMapping(value = "/book/register")
     public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookVO vo) {
 
