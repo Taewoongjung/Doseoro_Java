@@ -14,7 +14,7 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
-#    static-path-pattern: /resources/static/**
+
   servlet:
     multipart:
       location: /Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs
