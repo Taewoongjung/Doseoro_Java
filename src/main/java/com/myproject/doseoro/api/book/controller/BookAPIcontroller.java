@@ -25,13 +25,12 @@ public class BookAPIcontroller {
     private final BookMybatisService bookMybatisService;
     private final IdentityMybatisService repository;
 
-
     @PostMapping(value = "/book/register")
     public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookVO vo) {
 
         try {
             vo.multipleImageFileHandle(multipartFile, vo);
-
+            registerBookCommandHandler.handle(vo);
         } catch (Exception e) { // BussinessException 로직 추가하기
             e.printStackTrace();
         }

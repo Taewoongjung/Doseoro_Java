@@ -21,7 +21,6 @@
             name AS name,
             nick_name AS nickName,
             phone AS phone,
-            liked AS liked,
             location AS location,
             dong AS dong,
             si AS si,
@@ -125,7 +124,6 @@
         <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
         <result property="tradeMethod" column="trade_method"></result>
         <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="like" column="like"></result>
         <result property="sold" column="sold"></result>
         <result property="about" column="about"></result>
         <result property="OwnerId" column="owner_id"></result>
@@ -142,7 +140,6 @@
             state,
             trade_method,
             img,
-            like_count,
             sold,
             about,
             owner_id
@@ -181,7 +178,6 @@
         <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
         <result property="tradeMethod" column="trade_method"></result>
         <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="like" column="like"></result>
         <result property="sold" column="sold"></result>
         <result property="about" column="about"></result>
         <result property="OwnerId" column="owner_id"></result>
@@ -198,7 +194,6 @@
             state,
             trade_method,
             img,
-            like_count,
             sold,
             about,
             owner_id
