@@ -201,6 +201,49 @@
         WHERE sold != 1 AND price != "null"
     </select>
 
+    <!--    좋아요 누르기    -->
+    <insert id="hitLike" parameterType="BookHitVO">
+        INSERT INTO t_book_like
+        (
+            id,
+            identity_id,
+            book_id
+        )
+        VALUES(
+                  #{vo.id},
+                  #{vo.userId},
+                  #{vo.bookId}
+              );
+    </insert>
+
+    <!--    해당 유저가 좋아요 눌렀는지 검사    -->
+    <resultMap id="BookHitVO1" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
+        <result property="id" column="id"></result>
+        <result property="userId" column="identity_id"></result>
+        <result property="bookId" column="book_id"></result>
+    </resultMap>
+    <select id="isLikedByUserId" resultMap="BookHitVO1" parameterType="String">
+        SELECT DISTINCT
+            id,
+            identity_id,
+            book_id
+        FROM t_book_like
+        WHERE identity_id = #{userId} AND book_id = #{bookId}
+    </select>
+
+    <!--    좋아요 개수    -->
+    <resultMap id="BookHitVO" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
+        <result property="identityId" column="identity_id"></result>
+        <result property="bookId" column="book_id"></result>
+    </resultMap>
+    <select id="countLike" resultMap="BookHitVO" parameterType="String">
+        SELECT
+            identity_id,
+            book_id
+        FROM t_book_like
+        WHERE book_id = #{bookId}
+    </select>
+
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
 
 </mapper>

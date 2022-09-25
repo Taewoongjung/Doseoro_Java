@@ -1,15 +1,18 @@
 package com.myproject.doseoro.api.book.controller;
 
+import com.myproject.doseoro.packages.book.handler.HitLikeCommandHandler;
 import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.packages.book.vo.BookHitVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +25,7 @@ public class BookAPIcontroller {
 
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
+    private final HitLikeCommandHandler hitLikeCommandHandler;
     private final BookMybatisService bookMybatisService;
     private final IdentityMybatisService repository;
 
@@ -56,12 +60,21 @@ public class BookAPIcontroller {
             IdentityMyPageVO user = repository.findUserById(book.getOwnerId());
             System.out.println(user.getNickName());
             model.setViewName("saleDetail");
-            model.addObject("nickName", user.getNickName());
+            model.addObject("user", user);
             model.addObject("title", book.getPostMessage());
             model.addObject("book", book);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return model;
+    }
+
+    @PostMapping(value = "/like")
+    public String hitLike(Model model, BookHitVO vo) {
+        System.out.println("@@ = " + vo);
+        hitLikeCommandHandler.handle(vo);
+//        model.addAttribute("likeCount", likeCountResult);
+
+        return "redirect:/"+vo.getBookId();
     }
 }

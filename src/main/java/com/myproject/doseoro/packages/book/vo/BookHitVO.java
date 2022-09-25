@@ -1,0 +1,21 @@
+package com.myproject.doseoro.packages.book.vo;
+
+import lombok.*;
+
+@Getter
+@ToString
+public class BookHitVO {
+    private String id;
+    private final String userId;
+    private final String bookId;
+
+    public BookHitVO(String id, String userId, String bookId) {
+        this.id = id;
+        this.userId = userId;
+        this.bookId = bookId;
+    }
+
+    public void imbueId(String id) {
+        this.id = id;
+    }
+}

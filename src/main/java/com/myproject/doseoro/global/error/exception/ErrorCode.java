@@ -13,10 +13,10 @@ public enum ErrorCode {
     EMAIL_DUPLICATION(400, "I001", "Email is Duplicated"),
     LOGIN_INPUT_INVALID(400, "I002", "Login input is invalid"),
     EMAIL_NOT_MATCHED(400, "I003", "Email is not matched"),
-    PASSWORD_NOT_MATCHED(400, "I004", "Password is not matched");
+    PASSWORD_NOT_MATCHED(400, "I004", "Password is not matched"),
 
     // book
-
+    ALREADY_LIKED(401, "D001", "You already liked this product");
 
     private final String code;
     private final String message;
