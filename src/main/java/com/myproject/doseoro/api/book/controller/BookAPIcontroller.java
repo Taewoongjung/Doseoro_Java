@@ -1,6 +1,7 @@
 package com.myproject.doseoro.api.book.controller;
 
 import com.myproject.doseoro.packages.book.handler.HitLikeCommandHandler;
+import com.myproject.doseoro.packages.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.packages.book.handler.RegisterBookCommandHandler;
@@ -26,6 +27,7 @@ public class BookAPIcontroller {
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
+    private final HitReLikeCommandHandler hitReLikeCommandHandler;
     private final BookMybatisService bookMybatisService;
     private final IdentityMybatisService repository;
 
@@ -71,7 +73,10 @@ public class BookAPIcontroller {
 
     @PostMapping(value = "/like")
     public String hitLike(Model model, BookHitVO vo) {
-        System.out.println("@@ = " + vo);
+
+        BookHitVO alreadyLiked = hitReLikeCommandHandler.handle(vo);
+        if(alreadyLiked.getId() != null) { return "redirect:/" + vo.getBookId(); }
+
         hitLikeCommandHandler.handle(vo);
 //        model.addAttribute("likeCount", likeCountResult);
 

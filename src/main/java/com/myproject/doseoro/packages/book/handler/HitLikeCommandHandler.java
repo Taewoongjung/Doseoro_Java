@@ -12,22 +12,21 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class HitLikeCommandHandler implements ICommandHandler<BookHitVO, Void>{
+public class HitLikeCommandHandler implements ICommandHandler<BookHitVO, BookHitVO>{
 
     private final BookMybatisService repository;
 
     @Override
-    public Void handle(BookHitVO vo) {
-        System.out.println("!! "+repository.isLikedByUserId(vo.getUserId(), vo.getBookId()).isEmpty());
-
-        if (!repository.isLikedByUserId(vo.getUserId(), vo.getBookId()).isEmpty()) {
-            throw new BusinessException(ErrorCode.ALREADY_LIKED);
-        }
+    public BookHitVO handle(BookHitVO vo) {
+        // 여기 핸들러에서 id 값을 넣어 주니까
+        // id 값이 있으면(null 이 아니면) 다시 row 를 생성할 필요가 없으니 null 리턴
+        if(vo.getId() != null) return null;
 
         String uuid = UUID.randomUUID().toString();
         vo.imbueId(uuid);
 
+        // 해당 객체(책)에 처음 좋아요 남기니까 새로운 row 생성
         repository.hitLike(vo);
-        return null;
+        return vo;
     }
 }

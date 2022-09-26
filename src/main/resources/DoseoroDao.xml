@@ -207,41 +207,61 @@
         (
             id,
             identity_id,
-            book_id
+            book_id,
+            is_liked
         )
         VALUES(
                   #{vo.id},
                   #{vo.userId},
-                  #{vo.bookId}
+                  #{vo.bookId},
+                  't'
               );
     </insert>
+
 
     <!--    해당 유저가 좋아요 눌렀는지 검사    -->
     <resultMap id="BookHitVO1" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
         <result property="id" column="id"></result>
         <result property="userId" column="identity_id"></result>
         <result property="bookId" column="book_id"></result>
+        <result property="isLiked" column="is_liked"></result>
     </resultMap>
     <select id="isLikedByUserId" resultMap="BookHitVO1" parameterType="String">
         SELECT DISTINCT
             id,
             identity_id,
-            book_id
+            book_id,
+            is_liked
         FROM t_book_like
         WHERE identity_id = #{userId} AND book_id = #{bookId}
     </select>
 
+
+    <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 't'면 'f'로 업데이트    -->
+    <update id="hitReLikeWhenLiked" parameterType="String">
+        UPDATE t_book_like
+        SET is_liked = 'f'
+        WHERE identity_id = #{userId} AND book_id = #{bookId}
+    </update>
+
+    <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 'f'면 't'로 업데이트    -->
+    <update id="hitReLikeWhenUnLiked" parameterType="String">
+        UPDATE t_book_like
+        SET is_liked = 't'
+        WHERE identity_id = #{userId} AND book_id = #{bookId}
+    </update>
+
     <!--    좋아요 개수    -->
-    <resultMap id="BookHitVO" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
+    <resultMap id="BookHitVO2" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
         <result property="identityId" column="identity_id"></result>
         <result property="bookId" column="book_id"></result>
     </resultMap>
-    <select id="countLike" resultMap="BookHitVO" parameterType="String">
+    <select id="countLike" resultMap="BookHitVO2" parameterType="String">
         SELECT
             identity_id,
             book_id
         FROM t_book_like
-        WHERE book_id = #{bookId}
+        WHERE book_id = #{bookId} AND is_liked != "f"
     </select>
 
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->

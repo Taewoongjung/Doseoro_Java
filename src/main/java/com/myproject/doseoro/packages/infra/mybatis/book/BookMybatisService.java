@@ -33,6 +33,16 @@ public class BookMybatisService {
         dao.hitLike(vo);
     }
 
+    public void hitReLikeWhenLiked(String userId, String bookId, String isLiked) {
+        System.out.println("좋아요 안 눌러져 있을 때 " + isLiked);
+        dao.hitReLikeWhenLiked(userId, bookId, isLiked);
+    }
+
+    public void hitReLikeWhenUnLiked(String userId, String bookId, String isLiked) {
+        System.out.println("좋아요 눌러져 있을 때 " + isLiked);
+        dao.hitReLikeWhenUnLiked(userId, bookId, isLiked);
+    }
+
     public List<BookHitVO> isLikedByUserId(String userId, String bookId) {
         return dao.isLikedByUserId(userId, bookId);
     }

@@ -46,6 +46,9 @@ public interface DoseoroDao {
 
     void hitLike(@Param("vo") BookHitVO vo);
 
+    void hitReLikeWhenUnLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
+    void hitReLikeWhenLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
+
     List<BookHitVO> isLikedByUserId(@Param("userId") String userId, @Param("bookId") String bookId);
 
     List<BookHitVO> countLike(String bookId);
