@@ -44,40 +44,28 @@ class HitLikeCommandHandlerTest {
         assertThat(actual.get(0).getBookId()).isEqualTo("2525");
     }
 
-//    @Test
-//    @DisplayName("유저가 좋아요를 누른 책에 다시 누르면 좋아요 취소 된다.")
-//    @Transactional
-//    public void duplicateClicked() {
-//        // given
-//        BookMybatisService bookRepository = new BookMybatisService(dao);
-//        HitLikeCommandHandler hitLikeCommandHandler = new HitLikeCommandHandler(bookRepository);
-//        HitReLikeCommandHandler hitReLikeCommandHandler = new HitReLikeCommandHandler(bookRepository);
-//
-//        BookHitVO vo1 = new BookHitVO(
-//            "11111212",
-//            "1212",
-//            "2525",
-//            "t"
-//        );
-//
-//        // when
-//        BookHitVO voo = hitLikeCommandHandler.handle(vo1);
-//        System.out.println("after @@@ = " + voo);
-//
-//        BookHitVO voo1 = hitReLikeCommandHandler.handle(vo1);
-//        System.out.println("#@@!@!@ = " + voo1);
-//
-//        BookHitVO vo2 = new BookHitVO(
-//                "11111212",
-//                "1212",
-//                "2525",
-//                "t"
-//        );
-//
-//        BookHitVO vooo = hitReLikeCommandHandler.handle(vo2);
-//        System.out.println("#@@!@!@ = " + vooo);
-//
-//        // then
-//        assertThat(vooo.getIsLiked()).isEqualTo("t");
-//    }
+    @Test
+    @DisplayName("유저가 좋아요를 누른 책에 다시 누르면 좋아요 취소 된다.")
+    @Transactional
+    public void duplicateClicked() {
+        // given
+        BookMybatisService bookRepository = new BookMybatisService(dao);
+        HitLikeCommandHandler hitLikeCommandHandler = new HitLikeCommandHandler(bookRepository);
+        HitReLikeCommandHandler hitReLikeCommandHandler = new HitReLikeCommandHandler(bookRepository);
+
+        BookHitVO likeObject = new BookHitVO(
+                "11111212",
+                "1212",
+                "2525",
+                "t"
+        );
+
+        // when
+        bookRepository.hitLike(likeObject);
+        hitReLikeCommandHandler.handle(likeObject);
+        List<BookHitVO> actual = bookRepository.isLikedByUserId(likeObject.getUserId(), likeObject.getBookId());
+
+        // then
+        assertThat(actual.get(0).getIsLiked()).isEqualTo("f");
+    }
 }
