@@ -49,9 +49,8 @@ class HitLikeCommandHandlerTest {
     @Transactional
     public void duplicateClicked() {
         // given
-        BookMybatisService bookRepository = new BookMybatisService(dao);
-        HitLikeCommandHandler hitLikeCommandHandler = new HitLikeCommandHandler(bookRepository);
-        HitReLikeCommandHandler hitReLikeCommandHandler = new HitReLikeCommandHandler(bookRepository);
+        BookMybatisService repository = new BookMybatisService(dao);
+        HitReLikeCommandHandler sut = new HitReLikeCommandHandler(repository);
 
         BookHitVO likeObject = new BookHitVO(
                 "11111212",
@@ -61,9 +60,9 @@ class HitLikeCommandHandlerTest {
         );
 
         // when
-        bookRepository.hitLike(likeObject);
-        hitReLikeCommandHandler.handle(likeObject);
-        List<BookHitVO> actual = bookRepository.isLikedByUserId(likeObject.getUserId(), likeObject.getBookId());
+        repository.hitLike(likeObject);
+        sut.handle(likeObject);
+        List<BookHitVO> actual = repository.isLikedByUserId(likeObject.getUserId(), likeObject.getBookId());
 
         // then
         assertThat(actual.get(0).getIsLiked()).isEqualTo("f");
