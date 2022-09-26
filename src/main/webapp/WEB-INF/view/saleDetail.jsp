@@ -33,7 +33,7 @@
                     </div>
                     <div class="d-lg-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center mb-2">
-                            <p class="me-2 mt-2 fw-bold">${nickName}</p>
+                            <p class="me-2 mt-2 fw-bold">${user.nickName}</p>
 <%--                            이거는 위치 정보. 카카오 api 붙이고 연결할 예정--%>
 <%--                            {% if this_book_location %} --%>
 <%--                            <p><a><img src="images/marker.png" width="20px"></a>{{this_book_location}}</p>--%>
@@ -116,13 +116,9 @@
                                             <!-- 책 올린 사람 찾기 위함 -->
                                             <input type="hidden" name="createdat" value="{{book.createdAt}}">
                                             <!-- OwnerId -->
-                                            <input type="hidden" name="user" value="{{user}}">
+                                            <input type="hidden" name="userId" value="${sessionScope.ACCESS_USER}">
                                             <!-- BookId -->
-                                            <input type="hidden" name="bookId" value="{{bookId}}">
-                                            <input type="hidden" name="postmessage" value="{{book.postmessage}}">
-                                            <input type="hidden" name="title" value="{{book.title}}">
-                                            <input type="hidden" name="price" value="{{book.price}}">
-                                            <input type="hidden" name="registeredUserNick" value="{{book.usernick}}">
+                                            <input type="hidden" name="bookId" value="${book.id}">
 <%--                                            {% if book.sold == 1 %}--%>
 <%--                                            {% else %}--%>
                                                 <button class="btn  btn-outline-primary" class="btn" type="submit"

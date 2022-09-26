@@ -1,10 +1,7 @@
 package com.myproject.doseoro.packages.infra.mybatis.book;
 
 import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
-import com.myproject.doseoro.packages.book.vo.BookVO;
-import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
-import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.packages.book.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +27,27 @@ public class BookMybatisService {
 
     public List<FindAllBooksVO> findAllBooksForSaleBoard() {
         return dao.findAllBooksForSaleBoard();
+    }
+
+    public void hitLike(BookHitVO vo) {
+        dao.hitLike(vo);
+    }
+
+    public void hitReLikeWhenLiked(String userId, String bookId, String isLiked) {
+        System.out.println("좋아요 안 눌러져 있을 때 " + isLiked);
+        dao.hitReLikeWhenLiked(userId, bookId, isLiked);
+    }
+
+    public void hitReLikeWhenUnLiked(String userId, String bookId, String isLiked) {
+        System.out.println("좋아요 눌러져 있을 때 " + isLiked);
+        dao.hitReLikeWhenUnLiked(userId, bookId, isLiked);
+    }
+
+    public List<BookHitVO> isLikedByUserId(String userId, String bookId) {
+        return dao.isLikedByUserId(userId, bookId);
+    }
+
+    public List<BookHitVO> countLike(String bookId) {
+        return dao.countLike(bookId);
     }
 }

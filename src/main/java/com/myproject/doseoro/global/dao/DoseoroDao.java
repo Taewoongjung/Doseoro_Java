@@ -4,6 +4,7 @@ import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.book.vo.BookVO;
 import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.packages.book.vo.BookHitVO;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.packages.identity.vo.LogInVO;
@@ -30,6 +31,10 @@ public interface DoseoroDao {
 
     boolean signUp(SignUpVO user);
 
+
+
+
+
 // @@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@
     void registerBook(@Param("vo") RegisterBookVO vo);
 
@@ -38,4 +43,13 @@ public interface DoseoroDao {
     List<HomeDisplayedBookVO> findHomeDisplayedBooks();
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();
+
+    void hitLike(@Param("vo") BookHitVO vo);
+
+    void hitReLikeWhenUnLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
+    void hitReLikeWhenLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
+
+    List<BookHitVO> isLikedByUserId(@Param("userId") String userId, @Param("bookId") String bookId);
+
+    List<BookHitVO> countLike(String bookId);
 }
