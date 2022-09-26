@@ -18,9 +18,6 @@ public class HitLikeCommandHandler implements ICommandHandler<BookHitVO, BookHit
 
     @Override
     public BookHitVO handle(BookHitVO vo) {
-        // 여기 핸들러에서 id 값을 넣어 주니까
-        // id 값이 있으면(null 이 아니면) 다시 row 를 생성할 필요가 없으니 null 리턴
-        if(vo.getId() != null) return null;
 
         String uuid = UUID.randomUUID().toString();
         vo.imbueId(uuid);

@@ -31,7 +31,7 @@ class HitLikeCommandHandlerTest {
             "11111212",
             "1212",
             "2525",
-            "f"
+            "t"
         );
 
         // when

@@ -75,7 +75,10 @@ public class BookAPIcontroller {
     public String hitLike(Model model, BookHitVO vo) {
 
         BookHitVO alreadyLiked = hitReLikeCommandHandler.handle(vo);
-        if(alreadyLiked.getId() != null) { return "redirect:/" + vo.getBookId(); }
+        if(alreadyLiked.getId() != null || vo.getId() != null) { return "redirect:/" + vo.getBookId(); }
+
+        // hitLikeCommandHandler 핸들러에서 id 값을 넣어 주니까
+        // id 값이 있으면(null 이 아니면) 다시 row 를 생성할 필요가 없으니 null 리턴
 
         hitLikeCommandHandler.handle(vo);
 //        model.addAttribute("likeCount", likeCountResult);
