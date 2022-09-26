@@ -20,12 +20,4 @@ public class BookHitVO {
     public void imbueId(String id) {
         this.id = id;
     }
-
-    public void like() {
-        this.isLiked = "t";
-    }
-
-    public void unLike() {
-        this.isLiked = "f";
-    }
 }
