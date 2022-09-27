@@ -66,12 +66,14 @@ public class BookAPIcontroller {
             IdentityMyPageVO user = repository.findUserById(book.getOwnerId());
             String userId = accessUserSessionManager.extractUser();
 
+            List<BookHitVO> countLikedInTheBook = bookMybatisService.countLike(bookId);
             String isLikeExisted = bookMybatisService.isBookLiked(userId, bookId);
 
             model.setViewName("saleDetail");
             model.addObject("user", user);
             model.addObject("title", book.getPostMessage());
             model.addObject("book", book);
+            model.addObject("countLike", countLikedInTheBook.size());
             if(isLikeExisted != null) model.addObject("isLiked", true);
         } catch (Exception e) {
             e.printStackTrace();

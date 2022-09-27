@@ -252,16 +252,16 @@
     </update>
 
     <!--    좋아요 개수    -->
-    <resultMap id="BookHitVO2" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
-        <result property="identityId" column="identity_id"/>
+    <resultMap id="BookLikCountVO" type="com.myproject.doseoro.packages.book.vo.BookLikCountVO">
+        <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
     </resultMap>
-    <select id="countLike" resultMap="BookHitVO2" parameterType="String">
+    <select id="countLike" resultMap="BookLikCountVO" parameterType="String">
         SELECT
             identity_id,
             book_id
         FROM t_book_like
-        WHERE book_id = #{bookId} AND is_liked != "f"
+        WHERE book_id = #{bookId} AND is_liked = 't'
     </select>
 
     <!--    좋아요 여부    -->
