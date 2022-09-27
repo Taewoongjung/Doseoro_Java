@@ -114,19 +114,19 @@
 
     <!--    책의 id로 책 찾기    -->
     <resultMap id="BookVO" type="com.myproject.doseoro.packages.book.vo.BookVO">
-        <result property="id" column="id"></result>
-        <result property="postMessage" column="post_message"></result>
-        <result property="title" column="title"></result>
-        <result property="price" column="price"></result>
-        <result property="author" column="author"></result>
-        <result property="publisher" column="publisher"></result>
-        <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="tradeMethod" column="trade_method"></result>
-        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="sold" column="sold"></result>
-        <result property="about" column="about"></result>
-        <result property="OwnerId" column="owner_id"></result>
+        <result property="id" column="id"/>
+        <result property="postMessage" column="post_message"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="tradeMethod" column="trade_method"/>
+        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="sold" column="sold"/>
+        <result property="about" column="about"/>
+        <result property="OwnerId" column="owner_id"/>
     </resultMap>
     <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
         SELECT
@@ -149,10 +149,10 @@
 
     <!--    홈 화면에 전시할 책 5가지 찾기   -->
     <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO">
-        <result property="title" column="title"></result>
-        <result property="about" column="about"></result>
-        <result property="price" column="price"></result>
-        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
+        <result property="title" column="title"/>
+        <result property="about" column="about"/>
+        <result property="price" column="price"/>
+        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
     </resultMap>
     <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
         SELECT
@@ -168,19 +168,19 @@
 
     <!--    판매중인 책 가져오기    -->
     <resultMap id="FindAllBooksVO" type="com.myproject.doseoro.packages.book.vo.FindAllBooksVO">
-        <result property="id" column="id"></result>
-        <result property="postMessage" column="post_message"></result>
-        <result property="title" column="title"></result>
-        <result property="price" column="price"></result>
-        <result property="author" column="author"></result>
-        <result property="publisher" column="publisher"></result>
-        <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="tradeMethod" column="trade_method"></result>
-        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"></result>
-        <result property="sold" column="sold"></result>
-        <result property="about" column="about"></result>
-        <result property="OwnerId" column="owner_id"></result>
+        <result property="id" column="id"/>
+        <result property="postMessage" column="post_message"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="category" column="category" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="state" column="state" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="tradeMethod" column="trade_method"/>
+        <result property="images" column="img" typeHandler="com.myproject.doseoro.global.util.JsonTypeHandler"/>
+        <result property="sold" column="sold"/>
+        <result property="about" column="about"/>
+        <result property="OwnerId" column="owner_id"/>
     </resultMap>
     <select id="findAllBooksForSaleBoard" resultMap="FindAllBooksVO">
         SELECT
@@ -221,10 +221,10 @@
 
     <!--    해당 유저가 좋아요 눌렀는지 검사    -->
     <resultMap id="BookHitVO1" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
-        <result property="id" column="id"></result>
-        <result property="userId" column="identity_id"></result>
-        <result property="bookId" column="book_id"></result>
-        <result property="isLiked" column="is_liked"></result>
+        <result property="id" column="id"/>
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
+        <result property="isLiked" column="is_liked"/>
     </resultMap>
     <select id="isLikedByUserId" resultMap="BookHitVO1" parameterType="String">
         SELECT DISTINCT
@@ -253,8 +253,8 @@
 
     <!--    좋아요 개수    -->
     <resultMap id="BookHitVO2" type="com.myproject.doseoro.packages.book.vo.BookHitVO">
-        <result property="identityId" column="identity_id"></result>
-        <result property="bookId" column="book_id"></result>
+        <result property="identityId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
     </resultMap>
     <select id="countLike" resultMap="BookHitVO2" parameterType="String">
         SELECT
