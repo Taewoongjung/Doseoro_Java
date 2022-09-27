@@ -50,4 +50,8 @@ public class BookMybatisService {
     public List<BookHitVO> countLike(String bookId) {
         return dao.countLike(bookId);
     }
+
+    public String isBookLiked(String userId, String bookId) {
+        return dao.isBookLiked(userId, bookId);
+    }
 }

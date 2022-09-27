@@ -264,6 +264,16 @@
         WHERE book_id = #{bookId} AND is_liked != "f"
     </select>
 
+    <!--    좋아요 여부    -->
+    <select id="isBookLiked" resultType="String" parameterType="String">
+        SELECT
+            identity_id,
+            book_id,
+            is_liked
+        FROM t_book_like
+        WHERE identity_id = #{userId} AND book_id = #{bookId} AND is_liked = 't'
+    </select>
+
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
 
 </mapper>
