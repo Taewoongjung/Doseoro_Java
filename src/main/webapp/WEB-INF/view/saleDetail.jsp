@@ -130,7 +130,7 @@
 
                                                     <!-- 좋아요 눌린 갯수 -->
                                                 <div class="saleCheck border-0 pt-1" style="border-radius: 10px">
-                                                    <a class="h5 text-decoration-none fw-bold">+ {{book.likecount}}</a>
+                                                    <a class="h5 text-decoration-none fw-bold">+ ${countLike}</a>
                                                 </div>
 <%--                                            {% endif %}--%>
                                         </div>
