@@ -1,5 +1,6 @@
 package com.myproject.doseoro.packages.book.handler;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.book.vo.BookHitVO;
 import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
@@ -14,6 +15,7 @@ public class HitReLikeCommandHandler implements ICommandHandler<BookHitVO, BookH
 
     private final BookMybatisService repository;
 
+    @Logging
     @Override
     public BookHitVO handle(BookHitVO vo) {
         List<BookHitVO> found = repository.isLikedByUserId(vo.getUserId(), vo.getBookId());

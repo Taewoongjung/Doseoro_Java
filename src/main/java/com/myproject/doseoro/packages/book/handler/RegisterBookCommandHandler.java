@@ -1,5 +1,6 @@
 package com.myproject.doseoro.packages.book.handler;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
@@ -17,6 +18,7 @@ public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookV
     private final BookMybatisService repository;
     private final IdentityMybatisService identityRepository;
 
+    @Logging
     @Override
     public RegisterBookVO handle(RegisterBookVO vo) {
         final String uuid = UUID.randomUUID().toString();

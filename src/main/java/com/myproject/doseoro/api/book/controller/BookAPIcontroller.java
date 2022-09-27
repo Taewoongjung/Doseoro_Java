@@ -1,5 +1,6 @@
 package com.myproject.doseoro.api.book.controller;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.book.handler.HitLikeCommandHandler;
 import com.myproject.doseoro.packages.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
@@ -31,6 +32,7 @@ public class BookAPIcontroller {
     private final BookMybatisService bookMybatisService;
     private final IdentityMybatisService repository;
 
+    @Logging
     @PostMapping(value = "/book/register")
     public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookVO vo) {
 
@@ -44,6 +46,7 @@ public class BookAPIcontroller {
         return "redirect:/saleBoard";
     }
 
+    @Logging
     @GetMapping(value = "/book/find/booksForHome")
     public List<HomeDisplayedBookVO> findBooks() {
 
@@ -53,6 +56,7 @@ public class BookAPIcontroller {
         return list;
     }
 
+    @Logging
     @GetMapping(value = "/{bookId}")
     public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
@@ -71,6 +75,7 @@ public class BookAPIcontroller {
         return model;
     }
 
+    @Logging
     @PostMapping(value = "/like")
     public String hitLike(Model model, BookHitVO vo) {
 

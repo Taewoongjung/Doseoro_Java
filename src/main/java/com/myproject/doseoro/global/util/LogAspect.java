@@ -12,7 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ import static org.apache.tomcat.util.buf.StringUtils.join;
 public class LogAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    @Around("within(com.myproject.doseoro..*)")
+    @Around("@annotation(Logging)") // Custom AOP
     public Object logging(ProceedingJoinPoint pjp) throws Throwable {
 
         String params = getRequestParams();

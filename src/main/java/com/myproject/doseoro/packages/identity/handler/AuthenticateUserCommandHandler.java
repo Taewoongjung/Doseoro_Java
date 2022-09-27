@@ -1,5 +1,6 @@
 package com.myproject.doseoro.packages.identity.handler;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.identity.vo.AccessUserVO;
 import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
@@ -15,6 +16,7 @@ public class AuthenticateUserCommandHandler implements ICommandHandler<IdentityV
     private final IdentityMybatisService repository;
     private final AccessUserSessionManager accessUserSessionManager;
 
+    @Logging
     @Override
     public Boolean handle(IdentityVO vo) {
         repository.loginCheck(vo);

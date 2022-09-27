@@ -1,6 +1,7 @@
 package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.global.error.exception.BusinessException;
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.abstraction.ICommandHandler;
 import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
@@ -19,6 +20,8 @@ public class CreateUserIdentityCommandHandler implements ICommandHandler<SignUpV
     private final IdentityMybatisService repository;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    @Logging
+    @Override
     public Boolean handle(final SignUpVO vo) {
         if (repository.existEmail(vo.getEmail())) {
             throw new BusinessException(EMAIL_DUPLICATION);

@@ -1,5 +1,6 @@
 package com.myproject.doseoro.api;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.packages.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.packages.book.vo.HomeDisplayedBookVO;
@@ -24,6 +25,7 @@ public class PageController {
     private final IdentityMybatisService identityRepository;
     private final BookMybatisService bookMybatisService;
 
+    @Logging
     @RequestMapping(value = "/")
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
@@ -35,11 +37,13 @@ public class PageController {
         return "home";
     }
 
+    @Logging
     @RequestMapping(value = "/login")
     public String login() {
         return "login";
     }
 
+    @Logging
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
 
@@ -52,18 +56,21 @@ public class PageController {
         return "myPage";
     }
 
+    @Logging
     @RequestMapping(value = "/likedProductPage")
     public String likedProduct() {
 
         return "likedProduct";
     }
 
+    @Logging
     @RequestMapping(value = "/signup")
     public String signup() {
 
         return "signup";
     }
 
+    @Logging
     @RequestMapping(value = "/saleBoard")
     public String saleBoard(Model model) {
 
@@ -74,6 +81,7 @@ public class PageController {
         return "saleBoard";
     }
 
+    @Logging
     @RequestMapping(value = "/registerBook")
     public String registerBook() {
 
