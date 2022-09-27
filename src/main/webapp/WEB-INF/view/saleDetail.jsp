@@ -119,10 +119,14 @@
                                             <input type="hidden" name="userId" value="${sessionScope.ACCESS_USER}">
                                             <!-- BookId -->
                                             <input type="hidden" name="bookId" value="${book.id}">
-<%--                                            {% if book.sold == 1 %}--%>
-<%--                                            {% else %}--%>
+                                            <c:if test="${isLiked==null}">
+                                                <button class="btn  btn-outline-primary" class="btn" type="submit"
+                                                        onclick="like()" style="border: 0px">💛️</button>
+                                            </c:if>
+                                            <c:if test="${isLiked}">
                                                 <button class="btn  btn-outline-primary" class="btn" type="submit"
                                                     onclick="like()" style="border: 0px">❤️</button>
+                                            </c:if>
 
                                                     <!-- 좋아요 눌린 갯수 -->
                                                 <div class="saleCheck border-0 pt-1" style="border-radius: 10px">
