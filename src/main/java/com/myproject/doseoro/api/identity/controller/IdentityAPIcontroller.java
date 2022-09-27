@@ -1,5 +1,6 @@
 package com.myproject.doseoro.api.identity.controller;
 
+import com.myproject.doseoro.global.util.Logging;
 import com.myproject.doseoro.packages.identity.vo.SignUpVO;
 import com.myproject.doseoro.packages.identity.vo.IdentityVO;
 import com.myproject.doseoro.packages.identity.handler.AuthenticateUserCommandHandler;
@@ -22,6 +23,7 @@ public class IdentityAPIcontroller {
     private final AuthenticateUserCommandHandler authenticateUserCommandHandler;
     private final RemoveUserSessionCommandHandler removeUserSessionCommandHandler;
 
+    @Logging
     @PostMapping(value = "/auth/signup")
     public String userSignup(SignUpVO vo, Model model) {
         System.out.println("comSignup called");
@@ -32,6 +34,7 @@ public class IdentityAPIcontroller {
         return "redirect:/";
     }
 
+    @Logging
     @GetMapping("/auth/login")
     public String login(@ModelAttribute IdentityVO vo) {
         System.out.println("try login");
@@ -42,6 +45,7 @@ public class IdentityAPIcontroller {
         return "redirect:/";
     }
 
+    @Logging
     @GetMapping("/auth/logout")
     public String logout(HttpSession session) {
         System.out.println(session.getId());

@@ -1,5 +1,6 @@
 package com.myproject.doseoro.packages.infra.loginInterceptor;
 
+import com.myproject.doseoro.global.util.Logging;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -11,6 +12,8 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 
 @Slf4j
 public class LoginCheckInterceptor implements HandlerInterceptor {
+
+    @Logging
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
