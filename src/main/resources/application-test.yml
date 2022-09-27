@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 mybatis:
   config-location: classpath:mapper.xml
   mapper-locations: classpath:DoseoroDao.xml
@@ -24,5 +23,3 @@ spring:
       location: /Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs
       max-request-size: 30MB
       max-file-size: 10MB
-=======
->>>>>>> Stashed changes
