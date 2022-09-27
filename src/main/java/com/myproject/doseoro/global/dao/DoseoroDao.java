@@ -52,4 +52,6 @@ public interface DoseoroDao {
     List<BookHitVO> isLikedByUserId(@Param("userId") String userId, @Param("bookId") String bookId);
 
     List<BookHitVO> countLike(String bookId);
+
+    String isBookLiked(@Param("userId") String userId, @Param("bookId") String bookId);
 }
