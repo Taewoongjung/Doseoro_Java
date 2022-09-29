@@ -2,8 +2,9 @@ package com.myproject.doseoro.adaptor.api;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
 import com.myproject.doseoro.application.identity.handler.MyPageQuery;
-import com.myproject.doseoro.domain.book.vo.FindAllBooksVO;
+import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
 import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.domain.identity.dto.MyPageDtoResult;
@@ -19,8 +20,10 @@ import java.util.List;
 public class PageController {
 
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
-    private final BookMybatisRepository bookMybatisService;
     private final MyPageQuery myPageQuery;
+    private final SaleBoardQuery saleBoardQuery;
+
+    Void voId = null;
 
     @Logging
     @RequestMapping(value = "/")
@@ -44,7 +47,6 @@ public class PageController {
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
 
-        Void voId = null;
         MyPageDtoResult result = myPageQuery.query(voId);
 
         model.addAttribute("user", result.getUser());
@@ -70,8 +72,7 @@ public class PageController {
     @RequestMapping(value = "/saleBoard")
     public String saleBoard(Model model) {
 
-        List<FindAllBooksVO> bookList = bookMybatisService.findAllBooksForSaleBoard();
-        System.out.println(bookList);
+        SaleBoardDtoResult bookList = saleBoardQuery.query(voId);
         model.addAttribute("books", bookList);
 
         return "saleBoard";
