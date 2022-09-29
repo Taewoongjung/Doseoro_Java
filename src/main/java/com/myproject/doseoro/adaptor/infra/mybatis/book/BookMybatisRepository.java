@@ -70,4 +70,9 @@ public class BookMybatisRepository implements BookRepository {
     public List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId) {
         return dao.FindAllLikedBookByUserId(userId);
     }
+
+    @Override
+    public List<AllLikedBookVO> allLikedBook(String userId) {
+        return  dao.allLikedBook(userId);
+    }
 }

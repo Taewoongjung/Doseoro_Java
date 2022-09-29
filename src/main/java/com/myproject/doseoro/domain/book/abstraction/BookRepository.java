@@ -27,4 +27,6 @@ public interface BookRepository {
     public String isBookLiked(String userId, String bookId);
 
     List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
+
+    List<AllLikedBookVO> allLikedBook(String bookId);
 }

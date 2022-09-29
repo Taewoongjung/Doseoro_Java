@@ -6,6 +6,8 @@ import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCom
 import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
 import com.myproject.doseoro.application.identity.handler.MyPageQuery;
 import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
+import com.myproject.doseoro.domain.book.vo.AllLikedBookVO;
+import com.myproject.doseoro.domain.book.vo.BookHitVO;
 import com.myproject.doseoro.domain.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
@@ -67,9 +69,10 @@ public class PageController {
 
         String userId = accessUserSessionManager.extractUser();
 
-        List<FindAllLikedBookVO> books = bookMybatisRepository.FindAllLikedBookByUserId(userId);
+        List<AllLikedBookVO> books = bookMybatisRepository.allLikedBook(userId);
+        System.out.println(books);
 
-        model.addAttribute("books", books);
+//        model.addAttribute("books", books);
         return "likedProduct";
     }
 

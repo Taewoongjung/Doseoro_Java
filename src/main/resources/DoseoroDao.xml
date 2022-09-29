@@ -251,7 +251,7 @@
         WHERE identity_id = #{userId} AND book_id = #{bookId}
     </update>
 
-    <!--    좋아요 개수    -->
+    <!--    좋아요 개수 + 유저가 좋아요 누른 책 모두 들고오기   -->
     <resultMap id="BookLikCountVO" type="com.myproject.doseoro.domain.book.vo.BookLikCountVO">
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
@@ -274,39 +274,17 @@
         WHERE identity_id = #{userId} AND book_id = #{bookId} AND is_liked = 't'
     </select>
 
-    <!--    유저가 좋아요 누른 책 모두 들고오기    -->
-    <resultMap id="FindAllLikedBookVO" type="com.myproject.doseoro.domain.book.vo.FindAllLikedBookVO">
-        <result property="id" column="id"/>
-        <result property="postMessage" column="post_message"/>
-        <result property="title" column="title"/>
-        <result property="price" column="price"/>
-        <result property="author" column="author"/>
-        <result property="publisher" column="publisher"/>
-        <result property="category" column="category" typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
-        <result property="state" column="state" typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
-        <result property="tradeMethod" column="trade_method"/>
-        <result property="images" column="img" typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
-        <result property="sold" column="sold"/>
-        <result property="about" column="about"/>
-        <result property="OwnerId" column="owner_id"/>
+    <!--    유저가 좋아요 누른 책 모두 들고오기   -->
+    <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.domain.book.vo.AllLikedBookVO">
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
     </resultMap>
-    <select id="FindAllLikedBookByUserId" resultMap="FindAllLikedBookVO" parameterType="String">
+    <select id="allLikedBook" resultMap="AllLikedBookVO" parameterType="String">
         SELECT
-            id,
-            post_message,
-            title,
-            price,
-            author,
-            publisher,
-            category,
-            state,
-            trade_method,
-            img,
-            sold,
-            about,
-            owner_id
-        FROM t_book
-        WHERE owner_id = #{userId}
+            identity_id,
+            book_id
+        FROM t_book_like
+        WHERE identity_id = #{userId} AND is_liked = 't'
     </select>
 
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
