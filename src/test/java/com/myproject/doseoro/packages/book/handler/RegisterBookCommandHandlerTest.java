@@ -1,11 +1,12 @@
 package com.myproject.doseoro.packages.book.handler;
 
-import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.book.vo.RegisterBookVO;
-import com.myproject.doseoro.packages.identity.handler.CreateUserIdentityCommandHandler;
-import com.myproject.doseoro.packages.identity.vo.SignUpVO;
-import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
-import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
+import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
+import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
+import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
+import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
+import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
+import com.myproject.doseoro.domain.identity.vo.SignUpVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class RegisterBookCommandHandlerTest {
@@ -31,8 +32,8 @@ class RegisterBookCommandHandlerTest {
     @Transactional
     public void handle() {
         // given
-        BookMybatisService bookRepository = new BookMybatisService(dao);
-        IdentityMybatisService identityRepository = new IdentityMybatisService(dao, passwordEncoder);
+        BookMybatisRepository bookRepository = new BookMybatisRepository(dao);
+        IdentityMybatisRepository identityRepository = new IdentityMybatisRepository(dao, passwordEncoder);
         RegisterBookCommandHandler sut = new RegisterBookCommandHandler(bookRepository, identityRepository);
 
         CreateUserIdentityCommandHandler singUp = new CreateUserIdentityCommandHandler(identityRepository);

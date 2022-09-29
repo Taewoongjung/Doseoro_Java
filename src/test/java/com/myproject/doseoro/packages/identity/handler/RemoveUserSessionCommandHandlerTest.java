@@ -1,6 +1,7 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
+import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.application.identity.handler.RemoveUserSessionCommandHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,6 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletResponse;
 
 @SpringBootTest
 class RemoveUserSessionCommandHandlerTest {

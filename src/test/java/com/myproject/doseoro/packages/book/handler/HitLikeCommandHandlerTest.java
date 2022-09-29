@@ -1,8 +1,10 @@
 package com.myproject.doseoro.packages.book.handler;
 
-import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.packages.book.vo.BookHitVO;
-import com.myproject.doseoro.packages.infra.mybatis.book.BookMybatisService;
+import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
+import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
+import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
+import com.myproject.doseoro.domain.book.vo.BookHitVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class HitLikeCommandHandlerTest {
@@ -24,7 +26,7 @@ class HitLikeCommandHandlerTest {
     @Transactional
     public void CommandHandlerTest() {
         // given
-        BookMybatisService bookRepository = new BookMybatisService(dao);
+        BookMybatisRepository bookRepository = new BookMybatisRepository(dao);
         HitLikeCommandHandler sut = new HitLikeCommandHandler(bookRepository);
 
         BookHitVO vo = new BookHitVO(
@@ -49,7 +51,7 @@ class HitLikeCommandHandlerTest {
     @Transactional
     public void duplicateClicked() {
         // given
-        BookMybatisService repository = new BookMybatisService(dao);
+        BookMybatisRepository repository = new BookMybatisRepository(dao);
         HitReLikeCommandHandler sut = new HitReLikeCommandHandler(repository);
 
         BookHitVO likeObject = new BookHitVO(

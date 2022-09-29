@@ -1,11 +1,13 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.global.dao.DoseoroDao;
-import com.myproject.doseoro.global.error.exception.BusinessException;
-import com.myproject.doseoro.packages.identity.vo.IdentityVO;
-import com.myproject.doseoro.packages.identity.vo.SignUpVO;
-import com.myproject.doseoro.packages.infra.session.AccessUserSessionManager;
-import com.myproject.doseoro.packages.infra.mybatis.identity.IdentityMybatisService;
+import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
+import com.myproject.doseoro.application.global.error.exception.BusinessException;
+import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.application.identity.handler.AuthenticateUserCommandHandler;
+import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
+import com.myproject.doseoro.domain.identity.vo.IdentityVO;
+import com.myproject.doseoro.domain.identity.vo.SignUpVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class AuthenticateUserCommandHandlerTest {
@@ -31,7 +33,7 @@ class AuthenticateUserCommandHandlerTest {
     @Transactional
     public void loginSuccessCommandHandler() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
+        IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
@@ -71,7 +73,7 @@ class AuthenticateUserCommandHandlerTest {
     @Transactional
     public void loginFailureCommandHandler() {
         // given
-        IdentityMybatisService repository = new IdentityMybatisService(dao, passwordEncoder);
+        IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
