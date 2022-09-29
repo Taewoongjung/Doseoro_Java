@@ -2,12 +2,11 @@ package com.myproject.doseoro.adaptor.api;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.identity.handler.MyPageQuery;
 import com.myproject.doseoro.domain.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
-import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.domain.identity.dto.MyPageDtoResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +19,8 @@ import java.util.List;
 public class PageController {
 
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
-    private final AccessUserSessionManager accessUserSessionManager;
-    private final IdentityMybatisRepository identityRepository;
     private final BookMybatisRepository bookMybatisService;
+    private final MyPageQuery myPageQuery;
 
     @Logging
     @RequestMapping(value = "/")
@@ -46,11 +44,10 @@ public class PageController {
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
 
-        String userId = accessUserSessionManager.extractUser();
+        Void voId = null;
+        MyPageDtoResult result = myPageQuery.query(voId);
 
-        IdentityMyPageVO thisUser = identityRepository.findUserById(userId);
-
-        model.addAttribute("user", thisUser);
+        model.addAttribute("user", result.getUser());
 
         return "myPage";
     }
