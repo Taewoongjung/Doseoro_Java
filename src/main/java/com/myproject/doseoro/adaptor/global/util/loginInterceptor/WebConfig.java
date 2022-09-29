@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.global.util.loginInterceptor;
+package com.myproject.doseoro.adaptor.global.util.loginInterceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

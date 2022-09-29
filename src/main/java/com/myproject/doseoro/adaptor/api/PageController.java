@@ -7,7 +7,7 @@ import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

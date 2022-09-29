@@ -5,7 +5,7 @@ import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.domain.identity.vo.IdentityVO;
 import com.myproject.doseoro.domain.identity.vo.SignUpVO;
 
-public interface IIdentityRepository {
+public interface IdentityRepository {
     public Boolean existEmail(String email);
 
     public IdentityMyPageVO findUserById(String id);

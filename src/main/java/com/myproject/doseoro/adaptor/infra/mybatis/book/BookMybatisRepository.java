@@ -1,7 +1,7 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
-import com.myproject.doseoro.domain.book.abstraction.IBookRepository;
+import com.myproject.doseoro.domain.book.abstraction.BookRepository;
 import com.myproject.doseoro.domain.book.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BookMybatisRepository implements IBookRepository {
+public class BookMybatisRepository implements BookRepository {
 
     private final DoseoroDao dao;
 

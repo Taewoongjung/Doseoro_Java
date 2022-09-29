@@ -1,8 +1,8 @@
 package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.abstraction.ICommandHandler;
-import com.myproject.doseoro.domain.book.abstraction.IBookRepository;
+import com.myproject.doseoro.application.abstraction.CommandHandler;
+import com.myproject.doseoro.domain.book.abstraction.BookRepository;
 import com.myproject.doseoro.domain.book.vo.BookHitVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,9 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class HitLikeCommandHandler implements ICommandHandler<BookHitVO, BookHitVO>{
+public class HitLikeCommandHandler implements CommandHandler<BookHitVO, BookHitVO> {
 
-    private final IBookRepository repository;
+    private final BookRepository repository;
 
     @Logging
     @Override

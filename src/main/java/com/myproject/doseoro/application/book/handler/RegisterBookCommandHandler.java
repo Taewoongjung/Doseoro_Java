@@ -1,10 +1,10 @@
 package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.abstraction.ICommandHandler;
-import com.myproject.doseoro.domain.book.abstraction.IBookRepository;
+import com.myproject.doseoro.application.abstraction.CommandHandler;
+import com.myproject.doseoro.domain.book.abstraction.BookRepository;
 import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.domain.identity.abstraction.IIdentityRepository;
+import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
 import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,10 +13,10 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterBookCommandHandler implements ICommandHandler<RegisterBookVO, RegisterBookVO> {
+public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO, RegisterBookVO> {
 
-    private final IBookRepository repository;
-    private final IIdentityRepository identityRepository;
+    private final BookRepository repository;
+    private final IdentityRepository identityRepository;
 
     @Logging
     @Override

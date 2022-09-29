@@ -1,6 +1,6 @@
 package com.myproject.doseoro.packages.identity.handler;
 
-import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.identity.handler.RemoveUserSessionCommandHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

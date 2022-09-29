@@ -1,21 +1,21 @@
 package com.myproject.doseoro.application.identity.handler;
 
-import com.myproject.doseoro.domain.identity.abstraction.IIdentityRepository;
+import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
 import com.myproject.doseoro.domain.identity.vo.SignUpVO;
-import com.myproject.doseoro.application.global.error.exception.BusinessException;
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.abstraction.ICommandHandler;
+import com.myproject.doseoro.application.abstraction.CommandHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import static com.myproject.doseoro.application.global.error.exception.ErrorCode.EMAIL_DUPLICATION;
+import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.EMAIL_DUPLICATION;
 
 @Service
 @RequiredArgsConstructor
-public class CreateUserIdentityCommandHandler implements ICommandHandler<SignUpVO, Boolean> {
+public class CreateUserIdentityCommandHandler implements CommandHandler<SignUpVO, Boolean> {
 
-    private final IIdentityRepository repository;
+    private final IdentityRepository repository;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Logging

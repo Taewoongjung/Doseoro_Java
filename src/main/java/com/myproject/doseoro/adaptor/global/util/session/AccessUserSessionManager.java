@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.global.util.session;
+package com.myproject.doseoro.adaptor.global.util.session;
 
 import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
 import lombok.RequiredArgsConstructor;
