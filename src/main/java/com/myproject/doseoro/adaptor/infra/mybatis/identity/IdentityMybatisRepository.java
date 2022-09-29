@@ -1,21 +1,21 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.identity;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
-import com.myproject.doseoro.application.global.error.exception.BusinessException;
-import com.myproject.doseoro.domain.identity.abstraction.IIdentityRepository;
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
+import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
 import com.myproject.doseoro.domain.identity.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import static com.myproject.doseoro.application.global.error.exception.ErrorCode.EMAIL_NOT_MATCHED;
-import static com.myproject.doseoro.application.global.error.exception.ErrorCode.PASSWORD_NOT_MATCHED;
+import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.EMAIL_NOT_MATCHED;
+import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.PASSWORD_NOT_MATCHED;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class IdentityMybatisRepository implements IIdentityRepository {
+public class IdentityMybatisRepository implements IdentityRepository {
     /* 데이터베이스에서 값들을 받아 이 클래스에서 처리 후 넘기기 위한 클래스 */
 
     private final DoseoroDao dao;

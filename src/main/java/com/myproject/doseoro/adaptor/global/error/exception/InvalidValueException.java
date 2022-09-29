@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.global.error.exception;
+package com.myproject.doseoro.adaptor.global.error.exception;
 
 public class InvalidValueException extends BusinessException {
 

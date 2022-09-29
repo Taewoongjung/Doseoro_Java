@@ -4,7 +4,7 @@ import com.myproject.doseoro.domain.book.vo.*;
 
 import java.util.List;
 
-public interface IBookRepository {
+public interface BookRepository {
 
     void registerBook(RegisterBookVO vo);
 

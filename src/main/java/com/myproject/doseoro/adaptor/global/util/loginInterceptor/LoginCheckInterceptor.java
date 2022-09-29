@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.global.util.loginInterceptor;
+package com.myproject.doseoro.adaptor.global.util.loginInterceptor;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import lombok.extern.slf4j.Slf4j;

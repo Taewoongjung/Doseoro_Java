@@ -2,8 +2,8 @@ package com.myproject.doseoro.packages.identity.handler;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.application.global.error.exception.BusinessException;
-import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
+import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.identity.handler.AuthenticateUserCommandHandler;
 import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.domain.identity.vo.IdentityVO;

@@ -1,18 +1,17 @@
 package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
-import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
+import com.myproject.doseoro.application.book.handler.*;
+import com.myproject.doseoro.domain.book.dto.BookDetailDto;
+import com.myproject.doseoro.domain.book.dto.BookDetailDtoResult;
 import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
-import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.domain.book.vo.BookVO;
 import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.domain.book.vo.BookHitVO;
 import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.application.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +28,7 @@ public class BookAPIcontroller {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
-    private final BookMybatisRepository bookMybatisService;
-    private final IdentityMybatisRepository repository;
-    private final AccessUserSessionManager accessUserSessionManager;
+    private final BookDetailPageQuery bookDetailPageQuery;
 
     @Logging
     @PostMapping(value = "/book/register")
@@ -62,19 +59,14 @@ public class BookAPIcontroller {
     public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
         try {
-            BookVO book = bookMybatisService.findBookByBookId(bookId);
-            IdentityMyPageVO user = repository.findUserById(book.getOwnerId());
-            String userId = accessUserSessionManager.extractUser();
-
-            List<BookHitVO> countLikedInTheBook = bookMybatisService.countLike(bookId);
-            String isLikeExisted = bookMybatisService.isBookLiked(userId, bookId);
+            BookDetailDtoResult result = bookDetailPageQuery.query(new BookDetailDto(bookId));
 
             model.setViewName("saleDetail");
-            model.addObject("user", user);
-            model.addObject("title", book.getPostMessage());
-            model.addObject("book", book);
-            model.addObject("countLike", countLikedInTheBook.size());
-            if(isLikeExisted != null) model.addObject("isLiked", true);
+            model.addObject("user", result.getUser());
+            model.addObject("title", result.getBook().getPostMessage());
+            model.addObject("book", result.getBook());
+            model.addObject("countLike", result.getCountLikedInTheBook().size());
+            if(result.getIsLikeExisted() != null) model.addObject("isLiked", true);
         } catch (Exception e) {
             e.printStackTrace();
         }

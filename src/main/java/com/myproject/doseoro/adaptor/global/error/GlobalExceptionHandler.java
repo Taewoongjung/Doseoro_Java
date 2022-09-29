@@ -1,7 +1,7 @@
-package com.myproject.doseoro.application.global.error;
+package com.myproject.doseoro.adaptor.global.error;
 
-import com.myproject.doseoro.application.global.error.exception.BusinessException;
-import com.myproject.doseoro.application.global.error.exception.ErrorCode;
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
+import com.myproject.doseoro.adaptor.global.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
