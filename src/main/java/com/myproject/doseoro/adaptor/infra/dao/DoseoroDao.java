@@ -1,10 +1,6 @@
 package com.myproject.doseoro.adaptor.infra.dao;
 
-import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.domain.book.vo.BookVO;
-import com.myproject.doseoro.domain.book.vo.FindAllBooksVO;
-import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
+import com.myproject.doseoro.domain.book.vo.*;
 import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
 import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.domain.identity.vo.LogInVO;
@@ -47,11 +43,14 @@ public interface DoseoroDao {
     void hitLike(@Param("vo") BookHitVO vo);
 
     void hitReLikeWhenUnLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
+
     void hitReLikeWhenLiked(@Param("userId") String userId, @Param("bookId") String bookId, @Param("isLiked") String isLiked);
 
-    List<BookHitVO> isLikedByUserId(@Param("userId") String userId, @Param("bookId") String bookId);
+    List<BookHitVO> isLikedByUserIdAndBookId(@Param("userId") String userId, @Param("bookId") String bookId);
 
     List<BookHitVO> countLike(String bookId);
 
     String isBookLiked(@Param("userId") String userId, @Param("bookId") String bookId);
+
+    List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
 }

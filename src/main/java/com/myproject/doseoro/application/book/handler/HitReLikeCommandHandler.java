@@ -18,7 +18,7 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
     @Logging
     @Override
     public BookHitVO handle(BookHitVO vo) {
-        List<BookHitVO> found = repository.isLikedByUserId(vo.getUserId(), vo.getBookId());
+        List<BookHitVO> found = repository.isLikedByUserIdAndBookId(vo.getUserId(), vo.getBookId());
         if (found.size() == 0) return vo;
         // 좋아요 요청 들어오면 유저 이력 유무 검사.
         // 해당 객체에 좋아요 누른 이력이 없었으면 객체 그대로 리턴
