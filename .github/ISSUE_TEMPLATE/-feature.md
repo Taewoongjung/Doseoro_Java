@@ -7,13 +7,13 @@ assignees: ''
 
 ---
 
-###Issue:✨FEATURE
+### Issue:✨FEATURE
 Feature 작업 사항을 입력해주세요
 
-##Description
+## Description
 
-##To-do
-- [ ]todo
-- [ ]todo
+## To-do
+- [ ] todo
+- [ ] todo
 
-##ETC
+## ETC
