@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-##Description
+## Description
 
-##To-do
-- [] to-do
-- [] to-do
+## To-do
+- [ ] to-do
+- [ ] to-do
 
-##ETC
+## ETC
