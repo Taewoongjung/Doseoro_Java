@@ -4,6 +4,7 @@ import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.*;
 import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDtoResult;
+import com.myproject.doseoro.application.book.readmodel.GetAllBooksByBookIdQuery;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
