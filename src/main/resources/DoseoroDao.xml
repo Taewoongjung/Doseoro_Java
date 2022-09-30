@@ -276,11 +276,13 @@
 
     <!--    유저가 좋아요 누른 책 모두 들고오기   -->
     <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.domain.book.vo.AllLikedBookVO">
+        <result property="id" column="id"/>
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
     </resultMap>
     <select id="allLikedBook" resultMap="AllLikedBookVO" parameterType="String">
         SELECT
+            id,
             identity_id,
             book_id
         FROM t_book_like

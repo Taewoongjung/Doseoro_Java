@@ -6,10 +6,7 @@ import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCom
 import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
 import com.myproject.doseoro.application.identity.handler.MyPageQuery;
 import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
-import com.myproject.doseoro.domain.book.vo.AllLikedBookVO;
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
-import com.myproject.doseoro.domain.book.vo.FindAllLikedBookVO;
-import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.domain.book.vo.*;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.domain.identity.dto.MyPageDtoResult;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -70,9 +69,19 @@ public class PageController {
         String userId = accessUserSessionManager.extractUser();
 
         List<AllLikedBookVO> books = bookMybatisRepository.allLikedBook(userId);
-        System.out.println(books);
+        System.out.println("Liked = " + books);
+        List<String> listOfBookId = books.stream()
+                .map(book ->book.getBookId())
+                .collect(Collectors.toList());
+        System.out.println(" after stream = " + listOfBookId);
 
-//        model.addAttribute("books", books);
+        List<BookVO> actualReturningBooks = new ArrayList<>();
+        for (int i = 0; i < listOfBookId.size(); i++) {
+            actualReturningBooks.add(bookMybatisRepository.findBookByBookId(listOfBookId.get(i)));
+        }
+
+//        findBookByBookId
+        model.addAttribute("books", actualReturningBooks);
         return "likedProduct";
     }
 
