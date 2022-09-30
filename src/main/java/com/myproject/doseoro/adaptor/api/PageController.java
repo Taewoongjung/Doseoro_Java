@@ -1,25 +1,20 @@
 package com.myproject.doseoro.adaptor.api;
 
-import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.application.book.handler.GetLikedBooksByUserQuery;
 import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
 import com.myproject.doseoro.application.identity.handler.MyPageQuery;
-import com.myproject.doseoro.domain.book.dto.BookDetailDtoResult;
 import com.myproject.doseoro.domain.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
 import com.myproject.doseoro.domain.book.vo.*;
-import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.domain.identity.dto.MyPageDtoResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -68,8 +63,8 @@ public class PageController {
     public String likedProduct(Model model) {
 
         GetLikedBooksByUserDtoResult books = getLikedBooksByUserQuery.query(voId);
-//        findBookByBookId
         model.addAttribute("books", books.getLikedBooks());
+
         return "likedProduct";
     }
 
