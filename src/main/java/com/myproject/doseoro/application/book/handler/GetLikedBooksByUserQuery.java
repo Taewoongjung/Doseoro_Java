@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +26,8 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
 
         List<AllLikedBookVO> foundAllBooks = bookMybatisRepository.allLikedBook(userId);
         List<String> listOfBookId = foundAllBooks.stream()
-                .map(AllLikedBookVO::getBookId).toList();
+                .map(book ->book.getBookId())
+                .collect(Collectors.toList());
 
         List<BookVO> books = new ArrayList<>();
         for (int i = 0; i < listOfBookId.size(); i++) {
