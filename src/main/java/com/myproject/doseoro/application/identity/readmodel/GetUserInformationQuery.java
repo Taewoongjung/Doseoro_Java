@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.identity.handler;
+package com.myproject.doseoro.application.identity.readmodel;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.abstraction.CommandQuery;
