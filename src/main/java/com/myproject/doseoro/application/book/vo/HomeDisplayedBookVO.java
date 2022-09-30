@@ -1,4 +1,4 @@
-package com.myproject.doseoro.domain.book.vo;
+package com.myproject.doseoro.application.book.vo;
 
 import lombok.Builder;
 import lombok.Getter;

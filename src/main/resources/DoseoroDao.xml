@@ -113,7 +113,7 @@
     </insert>
 
     <!--    책의 id로 책 찾기    -->
-    <resultMap id="BookVO" type="com.myproject.doseoro.domain.book.vo.BookVO">
+    <resultMap id="BookVO" type="com.myproject.doseoro.application.book.vo.BookVO">
         <result property="id" column="id"/>
         <result property="postMessage" column="post_message"/>
         <result property="title" column="title"/>
@@ -148,7 +148,7 @@
     </select>
 
     <!--    홈 화면에 전시할 책 5가지 찾기   -->
-    <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO">
+    <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO">
         <result property="title" column="title"/>
         <result property="about" column="about"/>
         <result property="price" column="price"/>
@@ -167,7 +167,7 @@
     </select>
 
     <!--    판매중인 책 가져오기    -->
-    <resultMap id="FindAllBooksVO" type="com.myproject.doseoro.domain.book.vo.FindAllBooksVO">
+    <resultMap id="FindAllBooksVO" type="com.myproject.doseoro.application.book.vo.FindAllBooksVO">
         <result property="id" column="id"/>
         <result property="postMessage" column="post_message"/>
         <result property="title" column="title"/>
@@ -220,7 +220,7 @@
 
 
     <!--    해당 유저가 좋아요 눌렀는지 검사    -->
-    <resultMap id="BookHitVO1" type="com.myproject.doseoro.domain.book.vo.BookHitVO">
+    <resultMap id="BookHitVO1" type="com.myproject.doseoro.application.book.vo.BookHitVO">
         <result property="id" column="id"/>
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
@@ -252,7 +252,7 @@
     </update>
 
     <!--    좋아요 개수 + 유저가 좋아요 누른 책 모두 들고오기   -->
-    <resultMap id="BookLikCountVO" type="com.myproject.doseoro.domain.book.vo.BookLikCountVO">
+    <resultMap id="BookLikCountVO" type="com.myproject.doseoro.application.book.vo.BookLikCountVO">
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
     </resultMap>
@@ -275,7 +275,7 @@
     </select>
 
     <!--    유저가 좋아요 누른 책 모두 들고오기   -->
-    <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.domain.book.vo.AllLikedBookVO">
+    <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.application.book.vo.AllLikedBookVO">
         <result property="id" column="id"/>
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>

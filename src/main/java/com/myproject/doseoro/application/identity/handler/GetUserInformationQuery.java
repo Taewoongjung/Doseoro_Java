@@ -2,9 +2,9 @@ package com.myproject.doseoro.application.identity.handler;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.abstraction.CommandQuery;
-import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
-import com.myproject.doseoro.domain.identity.dto.GetUserInformationDtoResult;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

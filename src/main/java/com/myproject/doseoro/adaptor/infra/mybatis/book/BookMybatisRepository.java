@@ -1,8 +1,8 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
-import com.myproject.doseoro.domain.book.abstraction.BookRepository;
-import com.myproject.doseoro.domain.book.vo.*;
+import com.myproject.doseoro.application.book.vo.*;
+import com.myproject.doseoro.application.abstraction.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

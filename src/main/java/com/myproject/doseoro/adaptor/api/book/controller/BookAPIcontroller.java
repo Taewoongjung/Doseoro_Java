@@ -2,11 +2,11 @@ package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.*;
-import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDto;
-import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDtoResult;
-import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDto;
+import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDtoResult;
+import com.myproject.doseoro.application.book.vo.RegisterBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.BookHitVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

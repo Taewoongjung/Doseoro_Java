@@ -1,7 +1,7 @@
 package com.myproject.doseoro.application.identity.handler;
 
-import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
-import com.myproject.doseoro.domain.identity.vo.SignUpVO;
+import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.abstraction.CommandHandler;

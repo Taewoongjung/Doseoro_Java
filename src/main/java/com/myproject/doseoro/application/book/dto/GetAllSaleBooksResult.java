@@ -1,6 +1,6 @@
-package com.myproject.doseoro.domain.book.dto;
+package com.myproject.doseoro.application.book.dto;
 
-import com.myproject.doseoro.domain.book.vo.FindAllBooksVO;
+import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import lombok.Getter;
 
 import java.util.List;

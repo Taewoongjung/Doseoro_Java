@@ -1,10 +1,10 @@
 package com.myproject.doseoro.adaptor.infra.dao;
 
-import com.myproject.doseoro.domain.book.vo.*;
-import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
-import com.myproject.doseoro.domain.identity.vo.LogInVO;
-import com.myproject.doseoro.domain.identity.vo.SignUpVO;
+import com.myproject.doseoro.application.book.vo.*;
+import com.myproject.doseoro.application.identity.vo.AccessUserVO;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.identity.vo.LogInVO;
+import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

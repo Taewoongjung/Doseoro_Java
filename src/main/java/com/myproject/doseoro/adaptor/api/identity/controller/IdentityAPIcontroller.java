@@ -1,8 +1,8 @@
 package com.myproject.doseoro.adaptor.api.identity.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.domain.identity.vo.SignUpVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityVO;
+import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import com.myproject.doseoro.application.identity.vo.IdentityVO;
 import com.myproject.doseoro.application.identity.handler.AuthenticateUserCommandHandler;
 import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.application.identity.handler.RemoveUserSessionCommandHandler;

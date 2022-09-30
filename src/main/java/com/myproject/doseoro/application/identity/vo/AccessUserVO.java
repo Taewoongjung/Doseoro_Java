@@ -1,4 +1,4 @@
-package com.myproject.doseoro.domain.identity.vo;
+package com.myproject.doseoro.application.identity.vo;
 
 import lombok.Getter;
 

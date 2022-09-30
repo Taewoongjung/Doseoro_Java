@@ -1,4 +1,4 @@
-package com.myproject.doseoro.domain.book.vo;
+package com.myproject.doseoro.application.book.vo;
 
 import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;

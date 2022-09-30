@@ -1,6 +1,6 @@
-package com.myproject.doseoro.domain.book.abstraction;
+package com.myproject.doseoro.application.abstraction;
 
-import com.myproject.doseoro.domain.book.vo.*;
+import com.myproject.doseoro.application.book.vo.*;
 
 import java.util.List;
 
