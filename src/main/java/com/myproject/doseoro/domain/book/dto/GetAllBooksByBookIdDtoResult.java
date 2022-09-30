@@ -3,16 +3,15 @@ package com.myproject.doseoro.domain.book.dto;
 import com.myproject.doseoro.domain.book.vo.BookHitVO;
 import com.myproject.doseoro.domain.book.vo.BookVO;
 import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
-public class BookDetailDtoResult {
+public class GetAllBooksByBookIdDtoResult {
     private final BookVO book;
 
-    public BookDetailDtoResult(BookVO book, IdentityMyPageVO user, List<BookHitVO> countLikedInTheBook, String isLikeExisted) {
+    public GetAllBooksByBookIdDtoResult(BookVO book, IdentityMyPageVO user, List<BookHitVO> countLikedInTheBook, String isLikeExisted) {
         this.book = book;
         this.user = user;
         this.countLikedInTheBook = countLikedInTheBook;

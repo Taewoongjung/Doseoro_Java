@@ -1,8 +1,8 @@
 package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.application.abstraction.CommandQuery;
+import com.myproject.doseoro.domain.book.abstraction.BookRepository;
 import com.myproject.doseoro.domain.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.domain.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.domain.book.vo.BookVO;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBooksByUserDtoResult> {
 
-    private final BookMybatisRepository bookMybatisRepository;
+    private final BookRepository bookMybatisRepository;
     private final AccessUserSessionManager accessUserSessionManager;
 
     @Override
