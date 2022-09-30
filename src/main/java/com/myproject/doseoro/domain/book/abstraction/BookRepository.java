@@ -20,9 +20,13 @@ public interface BookRepository {
 
     public void hitReLikeWhenUnLiked(String userId, String bookId, String isLiked);
 
-    public List<BookHitVO> isLikedByUserId(String userId, String bookId);
+    public List<BookHitVO> isLikedByUserIdAndBookId(String userId, String bookId);
 
     public List<BookHitVO> countLike(String bookId);
 
     public String isBookLiked(String userId, String bookId);
+
+    List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
+
+    List<AllLikedBookVO> allLikedBook(String bookId);
 }

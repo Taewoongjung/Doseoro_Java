@@ -38,7 +38,7 @@ class HitLikeCommandHandlerTest {
 
         // when
         sut.handle(vo);
-        List<BookHitVO> actual = bookRepository.isLikedByUserId(vo.getUserId(), vo.getBookId());
+        List<BookHitVO> actual = bookRepository.isLikedByUserIdAndBookId(vo.getUserId(), vo.getBookId());
 
         // then
         assertThat(actual).isNotNull();
@@ -64,7 +64,7 @@ class HitLikeCommandHandlerTest {
         // when
         repository.hitLike(likeObject);
         sut.handle(likeObject);
-        List<BookHitVO> actual = repository.isLikedByUserId(likeObject.getUserId(), likeObject.getBookId());
+        List<BookHitVO> actual = repository.isLikedByUserIdAndBookId(likeObject.getUserId(), likeObject.getBookId());
 
         // then
         assertThat(actual.get(0).getIsLiked()).isEqualTo("f");

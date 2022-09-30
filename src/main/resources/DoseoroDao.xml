@@ -226,7 +226,7 @@
         <result property="bookId" column="book_id"/>
         <result property="isLiked" column="is_liked"/>
     </resultMap>
-    <select id="isLikedByUserId" resultMap="BookHitVO1" parameterType="String">
+    <select id="isLikedByUserIdAndBookId" resultMap="BookHitVO1" parameterType="String">
         SELECT DISTINCT
             id,
             identity_id,
@@ -251,7 +251,7 @@
         WHERE identity_id = #{userId} AND book_id = #{bookId}
     </update>
 
-    <!--    좋아요 개수    -->
+    <!--    좋아요 개수 + 유저가 좋아요 누른 책 모두 들고오기   -->
     <resultMap id="BookLikCountVO" type="com.myproject.doseoro.domain.book.vo.BookLikCountVO">
         <result property="userId" column="identity_id"/>
         <result property="bookId" column="book_id"/>
@@ -272,6 +272,21 @@
             is_liked
         FROM t_book_like
         WHERE identity_id = #{userId} AND book_id = #{bookId} AND is_liked = 't'
+    </select>
+
+    <!--    유저가 좋아요 누른 책 모두 들고오기   -->
+    <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.domain.book.vo.AllLikedBookVO">
+        <result property="id" column="id"/>
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
+    </resultMap>
+    <select id="allLikedBook" resultMap="AllLikedBookVO" parameterType="String">
+        SELECT
+            id,
+            identity_id,
+            book_id
+        FROM t_book_like
+        WHERE identity_id = #{userId} AND is_liked = 't'
     </select>
 
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->

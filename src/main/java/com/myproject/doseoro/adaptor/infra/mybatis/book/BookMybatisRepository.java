@@ -52,8 +52,8 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public List<BookHitVO> isLikedByUserId(String userId, String bookId) {
-        return dao.isLikedByUserId(userId, bookId);
+    public List<BookHitVO> isLikedByUserIdAndBookId(String userId, String bookId) {
+        return dao.isLikedByUserIdAndBookId(userId, bookId);
     }
 
     @Override
@@ -64,5 +64,15 @@ public class BookMybatisRepository implements BookRepository {
     @Override
     public String isBookLiked(String userId, String bookId) {
         return dao.isBookLiked(userId, bookId);
+    }
+
+    @Override
+    public List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId) {
+        return dao.FindAllLikedBookByUserId(userId);
+    }
+
+    @Override
+    public List<AllLikedBookVO> allLikedBook(String userId) {
+        return  dao.allLikedBook(userId);
     }
 }
