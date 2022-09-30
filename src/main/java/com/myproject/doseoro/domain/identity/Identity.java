@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.identity.domain;
+package com.myproject.doseoro.domain.identity;
 
 import lombok.*;
 import org.springframework.lang.Nullable;

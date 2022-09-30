@@ -1,9 +1,9 @@
-package com.myproject.doseoro.domain.identity.abstraction;
+package com.myproject.doseoro.application.abstraction;
 
-import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityVO;
-import com.myproject.doseoro.domain.identity.vo.SignUpVO;
+import com.myproject.doseoro.application.identity.vo.AccessUserVO;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.identity.vo.IdentityVO;
+import com.myproject.doseoro.application.identity.vo.SignUpVO;
 
 public interface IdentityRepository {
     public Boolean existEmail(String email);

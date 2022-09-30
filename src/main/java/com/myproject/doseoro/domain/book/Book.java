@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.book.domain;
+package com.myproject.doseoro.domain.book;
 
 import lombok.*;
 

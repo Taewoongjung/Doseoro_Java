@@ -4,7 +4,7 @@ import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.vo.BookHitVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

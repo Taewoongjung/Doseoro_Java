@@ -2,10 +2,10 @@ package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.abstraction.CommandHandler;
-import com.myproject.doseoro.domain.book.abstraction.BookRepository;
-import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
-import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
+import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.vo.RegisterBookVO;
+import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

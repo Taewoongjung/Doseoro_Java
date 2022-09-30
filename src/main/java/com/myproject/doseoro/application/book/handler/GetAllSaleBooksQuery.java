@@ -1,9 +1,9 @@
 package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.application.abstraction.CommandQuery;
-import com.myproject.doseoro.domain.book.abstraction.BookRepository;
-import com.myproject.doseoro.domain.book.dto.GetAllSaleBooksResult;
-import com.myproject.doseoro.domain.book.vo.FindAllBooksVO;
+import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
+import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

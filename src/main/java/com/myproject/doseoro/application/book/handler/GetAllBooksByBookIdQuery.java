@@ -2,13 +2,13 @@ package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.abstraction.CommandQuery;
-import com.myproject.doseoro.domain.book.abstraction.BookRepository;
-import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDto;
-import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDtoResult;
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
-import com.myproject.doseoro.domain.book.vo.BookVO;
-import com.myproject.doseoro.domain.identity.abstraction.IdentityRepository;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDto;
+import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDtoResult;
+import com.myproject.doseoro.application.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.vo.BookVO;
+import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

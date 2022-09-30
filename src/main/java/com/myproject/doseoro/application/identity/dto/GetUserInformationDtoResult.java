@@ -1,6 +1,6 @@
-package com.myproject.doseoro.domain.identity.dto;
+package com.myproject.doseoro.application.identity.dto;
 
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import lombok.Getter;
 
 @Getter

@@ -1,6 +1,6 @@
 package com.myproject.doseoro.adaptor.global.util.session;
 
-import com.myproject.doseoro.domain.identity.vo.AccessUserVO;
+import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

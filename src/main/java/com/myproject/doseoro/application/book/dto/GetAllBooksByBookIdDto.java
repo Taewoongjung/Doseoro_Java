@@ -1,4 +1,4 @@
-package com.myproject.doseoro.domain.book.dto;
+package com.myproject.doseoro.application.book.dto;
 
 import lombok.Getter;
 

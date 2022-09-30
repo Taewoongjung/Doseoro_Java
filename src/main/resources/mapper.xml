@@ -7,10 +7,10 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.myproject.doseoro.domain.identity.dto"/>
-        <package name="com.myproject.doseoro.domain.identity.vo"/>
-        <package name="com.myproject.doseoro.domain.book.dto"/>
-        <package name="com.myproject.doseoro.domain.book.vo"/>
+        <package name="com.myproject.doseoro.application.identity.dto"/>
+        <package name="com.myproject.doseoro.application.identity.vo"/>
+        <package name="com.myproject.doseoro.application.book.dto"/>
+        <package name="com.myproject.doseoro.application.book.vo"/>
     </typeAliases>
 
 </configuration>

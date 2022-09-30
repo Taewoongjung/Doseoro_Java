@@ -1,8 +1,8 @@
-package com.myproject.doseoro.domain.book.dto;
+package com.myproject.doseoro.application.book.dto;
 
-import com.myproject.doseoro.domain.book.vo.BookHitVO;
-import com.myproject.doseoro.domain.book.vo.BookVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.vo.BookVO;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import lombok.Getter;
 
 import java.util.List;
