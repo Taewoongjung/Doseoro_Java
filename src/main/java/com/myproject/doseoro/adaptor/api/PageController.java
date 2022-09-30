@@ -3,12 +3,12 @@ package com.myproject.doseoro.adaptor.api;
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.application.book.handler.GetLikedBooksByUserQuery;
-import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
-import com.myproject.doseoro.application.identity.handler.MyPageQuery;
+import com.myproject.doseoro.application.book.handler.GetAllSaleBooksQuery;
+import com.myproject.doseoro.application.identity.handler.GetUserInformationQuery;
 import com.myproject.doseoro.domain.book.dto.GetLikedBooksByUserDtoResult;
-import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
+import com.myproject.doseoro.domain.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.domain.book.vo.*;
-import com.myproject.doseoro.domain.identity.dto.MyPageDtoResult;
+import com.myproject.doseoro.domain.identity.dto.GetUserInformationDtoResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +21,8 @@ import java.util.List;
 public class PageController {
 
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
-    private final MyPageQuery myPageQuery;
-    private final SaleBoardQuery saleBoardQuery;
+    private final GetUserInformationQuery myPageQuery;
+    private final GetAllSaleBooksQuery saleBoardQuery;
     private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
 
 
@@ -51,7 +51,7 @@ public class PageController {
     @RequestMapping(value = "/mypage")
     public String myPage(Model model) {
 
-        MyPageDtoResult result = myPageQuery.query(voId);
+        GetUserInformationDtoResult result = myPageQuery.query(voId);
 
         model.addAttribute("user", result.getUser());
 
@@ -79,7 +79,7 @@ public class PageController {
     @RequestMapping(value = "/saleBoard")
     public String saleBoard(Model model) {
 
-        SaleBoardDtoResult bookList = saleBoardQuery.query(voId);
+        GetAllSaleBooksResult bookList = saleBoardQuery.query(voId);
         model.addAttribute("books", bookList);
 
         return "saleBoard";

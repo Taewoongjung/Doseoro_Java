@@ -6,10 +6,10 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class SaleBoardDtoResult {
+public class GetAllSaleBooksResult {
     private final List<FindAllBooksVO> bookList;
 
-    public SaleBoardDtoResult(List<FindAllBooksVO> bookList) {
+    public GetAllSaleBooksResult(List<FindAllBooksVO> bookList) {
         this.bookList = bookList;
     }
 }

@@ -2,16 +2,11 @@ package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.*;
-import com.myproject.doseoro.domain.book.dto.BookDetailDto;
-import com.myproject.doseoro.domain.book.dto.BookDetailDtoResult;
+import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDto;
+import com.myproject.doseoro.domain.book.dto.GetAllBooksByBookIdDtoResult;
 import com.myproject.doseoro.domain.book.vo.RegisterBookVO;
-import com.myproject.doseoro.domain.book.vo.BookVO;
 import com.myproject.doseoro.domain.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.domain.book.vo.BookHitVO;
-import com.myproject.doseoro.domain.identity.vo.IdentityMyPageVO;
-import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
-import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +23,7 @@ public class BookAPIcontroller {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
-    private final BookDetailPageQuery bookDetailPageQuery;
+    private final GetAllBooksByBookIdQuery bookDetailPageQuery;
 
     @Logging
     @PostMapping(value = "/book/register")
@@ -59,7 +54,7 @@ public class BookAPIcontroller {
     public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
         try {
-            BookDetailDtoResult result = bookDetailPageQuery.query(new BookDetailDto(bookId));
+            GetAllBooksByBookIdDtoResult result = bookDetailPageQuery.query(new GetAllBooksByBookIdDto(bookId));
 
             model.setViewName("saleDetail");
             model.addObject("user", result.getUser());

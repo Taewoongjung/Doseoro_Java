@@ -3,10 +3,10 @@ package com.myproject.doseoro.domain.book.dto;
 import lombok.Getter;
 
 @Getter
-public class BookDetailDto {
+public class GetAllBooksByBookIdDto {
     private final String bookId;
 
-    public BookDetailDto(String bookId) {
+    public GetAllBooksByBookIdDto(String bookId) {
         this.bookId = bookId;
     }
 }
