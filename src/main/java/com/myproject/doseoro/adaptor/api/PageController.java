@@ -3,8 +3,11 @@ package com.myproject.doseoro.adaptor.api;
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.handler.GetLikedBooksByUserQuery;
 import com.myproject.doseoro.application.book.handler.SaleBoardQuery;
 import com.myproject.doseoro.application.identity.handler.MyPageQuery;
+import com.myproject.doseoro.domain.book.dto.BookDetailDtoResult;
+import com.myproject.doseoro.domain.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.domain.book.dto.SaleBoardDtoResult;
 import com.myproject.doseoro.domain.book.vo.*;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
@@ -25,10 +28,8 @@ public class PageController {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final MyPageQuery myPageQuery;
     private final SaleBoardQuery saleBoardQuery;
+    private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
 
-
-    private final BookMybatisRepository bookMybatisRepository;
-    private final AccessUserSessionManager accessUserSessionManager;
 
 
     Void voId = null;
@@ -66,22 +67,9 @@ public class PageController {
     @RequestMapping(value = "/likedProductPage")
     public String likedProduct(Model model) {
 
-        String userId = accessUserSessionManager.extractUser();
-
-        List<AllLikedBookVO> books = bookMybatisRepository.allLikedBook(userId);
-        System.out.println("Liked = " + books);
-        List<String> listOfBookId = books.stream()
-                .map(book ->book.getBookId())
-                .collect(Collectors.toList());
-        System.out.println(" after stream = " + listOfBookId);
-
-        List<BookVO> actualReturningBooks = new ArrayList<>();
-        for (int i = 0; i < listOfBookId.size(); i++) {
-            actualReturningBooks.add(bookMybatisRepository.findBookByBookId(listOfBookId.get(i)));
-        }
-
+        GetLikedBooksByUserDtoResult books = getLikedBooksByUserQuery.query(voId);
 //        findBookByBookId
-        model.addAttribute("books", actualReturningBooks);
+        model.addAttribute("books", books.getLikedBooks());
         return "likedProduct";
     }
 
