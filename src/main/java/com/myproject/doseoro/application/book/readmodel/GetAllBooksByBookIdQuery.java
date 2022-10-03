@@ -28,7 +28,7 @@ public class GetAllBooksByBookIdQuery implements CommandQuery<GetAllBooksByBookI
         String userId = accessUserSessionManager.extractUser();
 
         List<BookHitVO> countLikedInTheBook = bookMybatisService.countLike(detailDTO.getBookId());
-        String isLikeExisted = bookMybatisService.isBookLiked(userId, detailDTO.getBookId());
+        String isLikeExisted = bookMybatisService.isBookLiked(userId, detailDTO.getBookId()); // 이 페이지를 열어본 유저가 책에 좋아요를 눌렀는지 검사 (여부에 따라 하트 색깔 바뀜)
 
         return new GetAllBooksByBookIdDtoResult(book, user, countLikedInTheBook, isLikeExisted);
     }
