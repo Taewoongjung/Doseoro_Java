@@ -13,6 +13,7 @@ CREATE TABLE `t_book`
     `img`           JSON             NULL   DEFAULT NULL   COMMENT '책 이미지(표지, 내부 상태 사진)',
     `sold`          TINYINT(1)       NULL   DEFAULT 0      COMMENT '해당 책이 팔렸는지 아닌지',
     `about`         VARCHAR(100)     NULL   DEFAULT NULL   COMMENT '해당 책에 대한 설명',
+    `hits`          VARCHAR(200)     NULL   DEFAULT 0      COMMENT '해당 책의 조회수',
     `createdAt`     TIMESTAMP    NOT NULL   DEFAULT CURRENT_TIMESTAMP,
     `updatedAt`     TIMESTAMP    NOT NULL   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `owner_id`      VARCHAR(64)  NOT NULL                  COMMENT '해당 책을 소유하고 있는 사람의 id',
