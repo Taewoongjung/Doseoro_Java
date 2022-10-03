@@ -3,8 +3,8 @@ package com.myproject.doseoro.application.book.readmodel;
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.abstraction.BookRepository;
 import com.myproject.doseoro.application.abstraction.IdentityRepository;
-import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDto;
-import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDtoResult;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 class GetAllBooksByBookIdQueryTest {
 
     @InjectMocks
-    GetAllBooksByBookIdQuery getAllBooksByBookIdQuery;
+    GetAllInformationOfTheBookByBookIdQuery getAllInformationOfTheBookByBookIdQuery;
 
     @Mock
     private BookRepository bookMybatisService;
@@ -98,7 +98,7 @@ class GetAllBooksByBookIdQueryTest {
         when(bookMybatisService.countLike("777")).thenReturn(countLikedInTheBook);
         when(bookMybatisService.isBookLiked("12312315256787", "777")).thenReturn("true");
 
-        GetAllBooksByBookIdDtoResult actual = getAllBooksByBookIdQuery.query(new GetAllBooksByBookIdDto("777"));
+        GetAllInformationOfTheBookByBookIdDtoResult actual = getAllInformationOfTheBookByBookIdQuery.query(new GetAllInformationOfTheBookByBookIdDto("777"));
 
         assertThat(actual).isNotNull();
         assertThat(actual.getBook().getId()).isEqualTo("777");
