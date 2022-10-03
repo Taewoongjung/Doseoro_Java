@@ -8,10 +8,10 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class GetAllBooksByBookIdDtoResult {
+public class GetAllInformationOfTheBookByBookIdDtoResult {
     private final BookVO book;
 
-    public GetAllBooksByBookIdDtoResult(BookVO book, IdentityMyPageVO user, List<BookHitVO> countLikedInTheBook, String isLikeExisted) {
+    public GetAllInformationOfTheBookByBookIdDtoResult(BookVO book, IdentityMyPageVO user, List<BookHitVO> countLikedInTheBook, String isLikeExisted) {
         this.book = book;
         this.user = user;
         this.countLikedInTheBook = countLikedInTheBook;

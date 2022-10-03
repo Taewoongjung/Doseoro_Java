@@ -24,6 +24,8 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
     public GetLikedBooksByUserDtoResult query(Void unused) {
         String userId = accessUserSessionManager.extractUser();
 
+        if(userId == null) { return null; }
+
         List<AllLikedBookVO> foundAllBooks = bookMybatisRepository.allLikedBook(userId);
         List<String> listOfBookId = foundAllBooks.stream()
                 .map(book ->book.getBookId())
