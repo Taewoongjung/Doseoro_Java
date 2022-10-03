@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.identity.handler;
+package com.myproject.doseoro.application.identity.handler;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
