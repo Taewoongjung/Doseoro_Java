@@ -22,13 +22,24 @@ import static org.apache.tomcat.util.buf.StringUtils.join;
 public class LogAspect {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    @Around("@annotation(com.myproject.doseoro.adaptor.logger.Logging)") // Custom AOP
-    public Object logging(ProceedingJoinPoint pjp) throws Throwable {
+    @Around("@annotation(com.myproject.doseoro.adaptor.logger.Logging) && @annotation(target)") // Custom AOP
+    public Object logging(ProceedingJoinPoint pjp, Logging target) throws Throwable {
 
         String params = getRequestParams();
 
         long startAt = System.currentTimeMillis();
+        if(target.level().equals("error")) {
+            logger.error("----------> REQUEST : {}({}) = {}", pjp.getSignature().getDeclaringTypeName(),
+                    pjp.getSignature().getName(), params);
+                Object result = pjp.proceed();
 
+                long endAt = System.currentTimeMillis();
+
+            logger.error("----------> RESPONSE : {}({}) = {} ({}ms)", pjp.getSignature().getDeclaringTypeName(),
+                    pjp.getSignature().getName(), result, endAt-startAt);
+
+            return result;
+        }
         logger.info("----------> REQUEST : {}({}) = {}", pjp.getSignature().getDeclaringTypeName(),
                 pjp.getSignature().getName(), params);
 
