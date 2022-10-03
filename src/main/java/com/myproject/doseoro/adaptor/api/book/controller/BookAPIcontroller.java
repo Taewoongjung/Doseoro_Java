@@ -2,9 +2,9 @@ package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.handler.*;
-import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDto;
-import com.myproject.doseoro.application.book.dto.GetAllBooksByBookIdDtoResult;
-import com.myproject.doseoro.application.book.readmodel.GetAllBooksByBookIdQuery;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
+import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
@@ -24,7 +24,7 @@ public class BookAPIcontroller {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
-    private final GetAllBooksByBookIdQuery bookDetailPageQuery;
+    private final GetAllInformationOfTheBookByBookIdQuery bookDetailPageQuery;
 
     @Logging
     @PostMapping(value = "/book/register")
@@ -55,7 +55,7 @@ public class BookAPIcontroller {
     public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
         try {
-            GetAllBooksByBookIdDtoResult result = bookDetailPageQuery.query(new GetAllBooksByBookIdDto(bookId));
+            GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(new GetAllInformationOfTheBookByBookIdDto(bookId));
 
             model.setViewName("saleDetail");
             model.addObject("user", result.getUser());
