@@ -127,6 +127,7 @@
         <result property="sold" column="sold"/>
         <result property="about" column="about"/>
         <result property="OwnerId" column="owner_id"/>
+        <result property="hits" column="hits"/>
     </resultMap>
     <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
         SELECT
@@ -142,7 +143,8 @@
             img,
             sold,
             about,
-            owner_id
+            owner_id,
+            hits
         FROM t_book
         where id = #{bookId}
     </select>
@@ -288,6 +290,13 @@
         FROM t_book_like
         WHERE identity_id = #{userId} AND is_liked = 't'
     </select>
+
+    <!--    책을 클릭 하면 조회수 +1   -->
+    <update id="hitBook" parameterType="String">
+        UPDATE t_book
+        SET hits = hits + 1
+        WHERE id = #{bookId}
+    </update>
 
     <!--@@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@-->
 

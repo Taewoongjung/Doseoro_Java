@@ -55,4 +55,6 @@ public interface DoseoroDao {
     List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
 
     List<AllLikedBookVO> allLikedBook(String userId);
+
+    void hitBook(@Param("bookId") String bookId);
 }

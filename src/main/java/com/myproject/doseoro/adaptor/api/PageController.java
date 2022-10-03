@@ -80,7 +80,7 @@ public class PageController {
     public String saleBoard(Model model) {
 
         GetAllSaleBooksResult bookList = saleBoardQuery.query(voId);
-        model.addAttribute("books", bookList);
+        model.addAttribute("books", bookList.getBookList());
 
         return "saleBoard";
     }

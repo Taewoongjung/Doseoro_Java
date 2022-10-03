@@ -1,4 +1,4 @@
-package com.myproject.doseoro.packages.book.handler;
+package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;

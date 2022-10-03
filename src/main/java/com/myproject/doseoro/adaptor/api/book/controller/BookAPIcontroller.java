@@ -25,6 +25,7 @@ public class BookAPIcontroller {
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
     private final GetAllInformationOfTheBookByBookIdQuery bookDetailPageQuery;
+    private final AddHitWhenBookClickedCommandHandler addHitWhenBookClickedCommandHandler;
 
     @Logging
     @PostMapping(value = "/book/register")
@@ -56,6 +57,7 @@ public class BookAPIcontroller {
 
         try {
             GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(new GetAllInformationOfTheBookByBookIdDto(bookId));
+            addHitWhenBookClickedCommandHandler.handle(bookId);
 
             model.setViewName("saleDetail");
             model.addObject("user", result.getUser());
