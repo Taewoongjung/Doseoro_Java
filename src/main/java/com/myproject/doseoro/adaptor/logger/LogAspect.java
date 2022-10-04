@@ -28,7 +28,7 @@ public class LogAspect {
         String params = getRequestParams();
 
         long startAt = System.currentTimeMillis();
-        if(target.level().equals("error")) {
+        if(LogType.ERROR.equals(target.level())) {
             logger.error("----------> REQUEST : {}({}) = {}", pjp.getSignature().getDeclaringTypeName(),
                     pjp.getSignature().getName(), params);
                 Object result = pjp.proceed();

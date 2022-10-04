@@ -2,6 +2,7 @@ package com.myproject.doseoro.adaptor.global.error;
 
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.global.error.exception.ErrorCode;
+import com.myproject.doseoro.adaptor.logger.LogType;
 import com.myproject.doseoro.adaptor.logger.Logging;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler {
      *  HttpMessageConverter 에서 등록한 HttpMessageConverter binding 못할경우 발생
      *  주로 @RequestBody, @RequestPart 어노테이션에서 발생
      */
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("handleMethodArgumentNotValidException", e);
@@ -37,7 +38,7 @@ public class GlobalExceptionHandler {
      * @ModelAttribut 으로 binding error 발생시 BindException 발생한다.
      * ref https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-modelattrib-method-args
      */
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(BindException.class)
     protected ResponseEntity<ErrorResponse> handleBindException(BindException e) {
         log.error("handleBindException", e);
@@ -49,7 +50,7 @@ public class GlobalExceptionHandler {
      * enum type 일치하지 않아 binding 못할 경우 발생
      * 주로 @RequestParam enum으로 binding 못했을 경우 발생
      */
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         log.error("handleMethodArgumentTypeMismatchException", e);
@@ -60,7 +61,7 @@ public class GlobalExceptionHandler {
     /**
      * 지원하지 않은 HTTP method 호출 할 경우 발생
      */
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     protected ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
         log.error("handleHttpRequestMethodNotSupportedException", e);
@@ -71,7 +72,7 @@ public class GlobalExceptionHandler {
     /**
      * Authentication 객체가 필요한 권한을 보유하지 않은 경우 발생합니다.
      */
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(AccessDeniedException.class)
     protected ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException e) {
         log.error("handleAccessDeniedException", e);
@@ -79,7 +80,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.HANDLE_ACCESS_DENIED.getStatus()));
     }
 
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(BusinessException.class)
     protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
         log.error("handleEntityNotFoundException", e);
@@ -88,7 +89,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
     }
 
-    @Logging(level = "error")
+    @Logging(level = LogType.ERROR)
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
         log.error("handleEntityNotFoundException", e);

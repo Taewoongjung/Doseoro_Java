@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Logging {
-    String level() default "info";
+    LogType level() default LogType.INFO;
 }
