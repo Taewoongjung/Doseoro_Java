@@ -29,7 +29,7 @@
                 <div class="w-100 pb-2 mb-4 border-bottom">
                     <div class="d-sm-flex align-items-center justify-content-between">
                         <h1 class="h2 fw-bold" id="getPostingTitle">${book.postMessage}</h1>
-                        <p class="">조회수 : {{book.hits}}</p>
+                        <p class="">조회수 : ${book.hits}</p>
                     </div>
                     <div class="d-lg-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center mb-2">
