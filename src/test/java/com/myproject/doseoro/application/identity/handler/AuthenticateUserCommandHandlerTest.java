@@ -1,13 +1,13 @@
 package com.myproject.doseoro.application.identity.handler;
 
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
-import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.application.identity.handler.AuthenticateUserCommandHandler;
-import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
+import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
 import com.myproject.doseoro.application.identity.vo.IdentityVO;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import com.myproject.doseoro.identity.IdentityVOFixture;
+import com.myproject.doseoro.identity.SignUpVOFixture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,29 +37,10 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = new SignUpVO(
-                "7777777",
-                "abcdefg@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억"
-        );
+        SignUpVO signUpUser = SignUpVOFixture.createSignUpVO();
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = new IdentityVO(
-                "7777777",
-                "abcdefg@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억",
-                null
-        );
+        IdentityVO loginUser = IdentityVOFixture.createIdentityVO();
 
         // when
         boolean actual = sut.handle(loginUser);
@@ -77,32 +58,13 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = new SignUpVO(
-                "7777777",
-                "abcdefg@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억"
-        );
+        SignUpVO signUpUser = SignUpVOFixture.createSignUpVOWhenMakesWrong();
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = new IdentityVO(
-                "7770777",
-                "abcdef@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억",
-                null
-        );
+        IdentityVO loginUser = IdentityVOFixture.createIdentityVO();
 
         // when
         // then
-        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(loginUser));
+        Assertions.assertThrows(BusinessException.class, () -> sut.handle(loginUser));
     }
 }

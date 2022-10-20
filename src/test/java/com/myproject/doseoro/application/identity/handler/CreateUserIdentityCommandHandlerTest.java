@@ -1,10 +1,10 @@
 package com.myproject.doseoro.application.identity.handler;
 
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
-import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import com.myproject.doseoro.identity.SignUpVOFixture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,16 +29,7 @@ class CreateUserIdentityCommandHandlerTest {
     public void commandHandler() {
         // given
         IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
-        SignUpVO user = new SignUpVO(
-                null,
-                "abcdefg@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억"
-        );
+        SignUpVO user = SignUpVOFixture.createSignUpVO();
 
         CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
 
@@ -64,22 +55,13 @@ class CreateUserIdentityCommandHandlerTest {
         // given
         IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
 
-        SignUpVO user = new SignUpVO(
-                "123123213214215231123",
-                "abcdefg@naver.com",
-                "aa",
-                "홍길동",
-                "길동이",
-                "010-1234-5678",
-                "좋아하는 추억",
-                "많은 추억"
-        );
+        SignUpVO user = SignUpVOFixture.createSignUpVO();
         repository.signUp(user);
 
         CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
 
         // when
         // then
-        Assertions.assertThrows(BusinessException.class, ()-> sut.handle(user));
+        Assertions.assertThrows(BusinessException.class, () -> sut.handle(user));
     }
 }
