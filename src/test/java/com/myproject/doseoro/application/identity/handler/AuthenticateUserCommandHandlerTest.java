@@ -8,7 +8,6 @@ import com.myproject.doseoro.application.identity.vo.IdentityVO;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import com.myproject.doseoro.identity.IdentityVOFixture;
 import com.myproject.doseoro.identity.SignUpVOFixture;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class AuthenticateUserCommandHandlerTest {
@@ -65,6 +65,6 @@ class AuthenticateUserCommandHandlerTest {
 
         // when
         // then
-        Assertions.assertThrows(BusinessException.class, () -> sut.handle(loginUser));
+        assertThrows(BusinessException.class, () -> sut.handle(loginUser));
     }
 }
