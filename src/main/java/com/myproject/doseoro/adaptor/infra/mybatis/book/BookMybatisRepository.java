@@ -1,8 +1,8 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
-import com.myproject.doseoro.application.book.vo.*;
+import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookMybatisRepository implements BookRepository {
 
-    private final DoseoroDao dao;
+    private final BookDao dao;
 
     @Override
     public void registerBook(RegisterBookVO vo) {
@@ -73,7 +73,7 @@ public class BookMybatisRepository implements BookRepository {
 
     @Override
     public List<AllLikedBookVO> allLikedBook(String userId) {
-        return  dao.allLikedBook(userId);
+        return dao.allLikedBook(userId);
     }
 
     @Override

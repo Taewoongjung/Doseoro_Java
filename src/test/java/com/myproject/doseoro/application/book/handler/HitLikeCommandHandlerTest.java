@@ -1,9 +1,7 @@
 package com.myproject.doseoro.application.book.handler;
 
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
-import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
-import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class HitLikeCommandHandlerTest {
 
     @Autowired
-    private DoseoroDao dao;
+    private BookDao dao;
 
     @Test
     @DisplayName("유저는 좋아요를 누른다.")
@@ -30,10 +28,10 @@ class HitLikeCommandHandlerTest {
         HitLikeCommandHandler sut = new HitLikeCommandHandler(bookRepository);
 
         BookHitVO vo = new BookHitVO(
-            "11111212",
-            "1212",
-            "2525",
-            "t"
+                "11111212",
+                "1212",
+                "2525",
+                "t"
         );
 
         // when

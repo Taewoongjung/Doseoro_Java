@@ -2,7 +2,7 @@ package com.myproject.doseoro.application.identity.handler;
 
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
 import com.myproject.doseoro.application.identity.vo.IdentityVO;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AuthenticateUserCommandHandlerTest {
 
     @Autowired
-    private DoseoroDao dao;
+    private IdentityDao dao;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
