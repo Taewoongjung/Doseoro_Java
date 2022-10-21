@@ -1,9 +1,9 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.identity;
 
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
-import com.myproject.doseoro.application.identity.vo.*;
+import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
 import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +18,7 @@ import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.PAS
 public class IdentityMybatisRepository implements IdentityRepository {
     /* 데이터베이스에서 값들을 받아 이 클래스에서 처리 후 넘기기 위한 클래스 */
 
-    private final DoseoroDao dao;
+    private final IdentityDao dao;
     private final PasswordEncoder passwordEncoder;
 
     @Override

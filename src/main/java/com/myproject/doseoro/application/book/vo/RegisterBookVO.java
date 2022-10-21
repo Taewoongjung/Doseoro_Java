@@ -1,5 +1,6 @@
 package com.myproject.doseoro.application.book.vo;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Builder
 public class RegisterBookVO {
 
     private String id;

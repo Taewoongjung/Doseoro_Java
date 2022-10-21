@@ -1,6 +1,6 @@
 mybatis:
-  config-location: classpath:mapper.xml
-  mapper-locations: classpath:DoseoroDao.xml
+  type-aliases-package: com.myproject.doseoro.application
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
 
 spring:
   profiles:

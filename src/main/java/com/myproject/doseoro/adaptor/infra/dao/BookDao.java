@@ -1,37 +1,15 @@
 package com.myproject.doseoro.adaptor.infra.dao;
 
 import com.myproject.doseoro.application.book.vo.*;
-import com.myproject.doseoro.application.identity.vo.AccessUserVO;
-import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
-import com.myproject.doseoro.application.identity.vo.LogInVO;
-import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
-public interface DoseoroDao {
-
-// @@@@@@@@@@@@@@@@   identity     @@@@@@@@@@@@@@@@@
-
-    Boolean existEmail(String email);
-
-    IdentityMyPageVO findUserById(String id);
-
-    AccessUserVO findUserByEmail(String email);
-
-    SignUpVO findUser(String email);
-
-    LogInVO loginCheck(@Param("email")String email);
-
-    boolean signUp(SignUpVO user);
-
-
-
-
-
-// @@@@@@@@@@@@@@@@   book     @@@@@@@@@@@@@@@@@
+@Repository
+public interface BookDao {
     void registerBook(@Param("vo") RegisterBookVO vo);
 
     BookVO findBookByBookId(String bookId);
@@ -55,4 +33,6 @@ public interface DoseoroDao {
     List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
 
     List<AllLikedBookVO> allLikedBook(String userId);
+
+    void hitBook(@Param("bookId") String bookId);
 }

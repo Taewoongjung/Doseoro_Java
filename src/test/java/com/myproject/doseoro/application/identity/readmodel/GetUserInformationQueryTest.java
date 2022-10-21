@@ -4,7 +4,7 @@ import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManage
 import com.myproject.doseoro.application.abstraction.IdentityRepository;
 import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
-import org.assertj.core.api.Assertions;
+import com.myproject.doseoro.identity.IdentityMyPageVOFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,8 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetUserInformationQueryTest {
@@ -31,20 +31,7 @@ class GetUserInformationQueryTest {
     @DisplayName("해당 유저의 유저 정보를 불러온다.")
     void getUser() {
 
-        IdentityMyPageVO identity = new IdentityMyPageVO(
-                "12312315256787",
-                "a@a.com",
-                "홍길동",
-                "길도이",
-                "010-2111-7777",
-                "경기도 용인시 보정동",
-                "보정동",
-                "용인시",
-                "경기도",
-                "kakao",
-                "12321-11",
-                "11-11-11"
-        );
+        IdentityMyPageVO identity = IdentityMyPageVOFixture.createIdentityMyPageVO();
 
         when(accessUserSessionManager.extractUser()).thenReturn("12312315256787");
         when(identityRepository.findUserById("12312315256787")).thenReturn(identity);

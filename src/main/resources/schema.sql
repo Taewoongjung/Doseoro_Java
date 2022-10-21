@@ -32,7 +32,7 @@ create table if not exists t_book
     img JSON null,
     sold varchar(1) null,
     about varchar(100) null,
-    hits varchar(200) null,
+    hits integer default 0,
     owner_id varchar(64) null
 );
 

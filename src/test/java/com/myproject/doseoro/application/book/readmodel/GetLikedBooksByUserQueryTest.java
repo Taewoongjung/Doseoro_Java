@@ -97,12 +97,8 @@ class GetLikedBooksByUserQueryTest {
                 .OwnerId("123")
                 .build();
 
-        List<BookVO> actualBookList = new ArrayList<>();
-        actualBookList.add(registeredBook1);
-        actualBookList.add(registeredBook2);
-
-        when(bookMybatisRepository.findBookByBookId("1212")).thenReturn(actualBookList.get(0));
-        when(bookMybatisRepository.findBookByBookId("121112")).thenReturn(actualBookList.get(1));
+        when(bookMybatisRepository.findBookByBookId("1212")).thenReturn(registeredBook1);
+        when(bookMybatisRepository.findBookByBookId("121112")).thenReturn(registeredBook2);
 
         GetLikedBooksByUserDtoResult actual = getLikedBooksByUserQuery.query(null);
 

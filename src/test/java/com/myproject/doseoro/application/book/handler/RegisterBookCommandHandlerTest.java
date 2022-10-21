@@ -1,11 +1,11 @@
-package com.myproject.doseoro.packages.book.handler;
+package com.myproject.doseoro.application.book.handler;
 
-import com.myproject.doseoro.adaptor.infra.dao.DoseoroDao;
+import com.myproject.doseoro.adaptor.infra.dao.BookDao;
+import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
-import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
-import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
+import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RegisterBookCommandHandlerTest {
 
     @Autowired
-    private DoseoroDao dao;
+    private BookDao bookDao;
+    @Autowired
+    private IdentityDao identityDao;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -32,8 +34,8 @@ class RegisterBookCommandHandlerTest {
     @Transactional
     public void handle() {
         // given
-        BookMybatisRepository bookRepository = new BookMybatisRepository(dao);
-        IdentityMybatisRepository identityRepository = new IdentityMybatisRepository(dao, passwordEncoder);
+        BookMybatisRepository bookRepository = new BookMybatisRepository(bookDao);
+        IdentityMybatisRepository identityRepository = new IdentityMybatisRepository(identityDao, passwordEncoder);
         RegisterBookCommandHandler sut = new RegisterBookCommandHandler(bookRepository, identityRepository);
 
         CreateUserIdentityCommandHandler singUp = new CreateUserIdentityCommandHandler(identityRepository);
