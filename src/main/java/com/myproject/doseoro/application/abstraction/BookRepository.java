@@ -1,7 +1,6 @@
 package com.myproject.doseoro.application.abstraction;
 
 import com.myproject.doseoro.application.book.vo.*;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public interface BookRepository {
 
     List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
 
-    List<AllLikedBookVO> allLikedBook(String bookId);
+    List<AllLikedBookVO> allLikedBook(String userId);
 
     void hitBook(String bookId);
 }

@@ -4,7 +4,7 @@ import com.myproject.doseoro.application.identity.vo.SignUpVO;
 
 public class SignUpVOFixture {
 
-    public static SignUpVO signUpVO = new SignUpVO(
+    public static final SignUpVO signUpVO = new SignUpVO(
             "7777777",
             "abcdefg@naver.com",
             "aa",
@@ -15,8 +15,7 @@ public class SignUpVOFixture {
             "많은 추억"
     );
 
-
-    public static SignUpVO signUpVOWhenMakesWrong = new SignUpVO(
+    public static final SignUpVO signUpVOWhenMakesWrong = new SignUpVO(
             "7777777",
             "aaa@naver.com",
             "aa",
