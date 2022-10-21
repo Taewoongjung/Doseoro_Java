@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myproject.doseoro.adaptor.infra.dao.BookDao">
+
+    <!--    책 등록    -->
+    <insert id="registerBook" parameterType="RegisterBookVO">
+        INSERT INTO t_book
+        (id,
+         post_message,
+         title,
+         price,
+         author,
+         publisher,
+         category,
+         state,
+         trade_method,
+         img,
+         about,
+         owner_id)
+        VALUES (#{vo.id},
+                #{vo.postmessage},
+                #{vo.title},
+                #{vo.price},
+                #{vo.author},
+                #{vo.publisher},
+                #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+                #{vo.checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+                #{vo.dealRoot},
+                #{vo.images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+                #{vo.about},
+                #{vo.ownerId});
+    </insert>
+
+    <!--    책의 id로 책 찾기    -->
+    <resultMap id="BookVO" type="com.myproject.doseoro.application.book.vo.BookVO">
+        <result property="id" column="id"/>
+        <result property="postMessage" column="post_message"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="category" column="category"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="state" column="state"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="tradeMethod" column="trade_method"/>
+        <result property="images" column="img"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="sold" column="sold"/>
+        <result property="about" column="about"/>
+        <result property="OwnerId" column="owner_id"/>
+        <result property="hits" column="hits"/>
+    </resultMap>
+    <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
+        SELECT id,
+               post_message,
+               title,
+               price,
+               author,
+               publisher,
+               category,
+               state,
+               trade_method,
+               img,
+               sold,
+               about,
+               owner_id,
+               hits
+        FROM t_book
+        where id = #{bookId}
+    </select>
+
+    <!--    홈 화면에 전시할 책 5가지 찾기   -->
+    <resultMap id="HomeDisplayedBookVO" type="com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO">
+        <result property="title" column="title"/>
+        <result property="about" column="about"/>
+        <result property="price" column="price"/>
+        <result property="images" column="img"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+    </resultMap>
+    <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
+        SELECT id,
+               title,
+               about,
+               price,
+               img
+        FROM t_book
+        ORDER BY createdAt
+                DESC LIMIT 5
+    </select>
+
+    <!--    판매중인 책 가져오기    -->
+    <resultMap id="FindAllBooksVO" type="com.myproject.doseoro.application.book.vo.FindAllBooksVO">
+        <result property="id" column="id"/>
+        <result property="postMessage" column="post_message"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="category" column="category"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="state" column="state"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="tradeMethod" column="trade_method"/>
+        <result property="images" column="img"
+                typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+        <result property="sold" column="sold"/>
+        <result property="about" column="about"/>
+        <result property="OwnerId" column="owner_id"/>
+    </resultMap>
+    <select id="findAllBooksForSaleBoard" resultMap="FindAllBooksVO">
+        SELECT id,
+               post_message,
+               title,
+               price,
+               author,
+               publisher,
+               category,
+               state,
+               trade_method,
+               img,
+               sold,
+               about,
+               owner_id
+        FROM t_book
+        WHERE sold != 1 AND price != "null"
+    </select>
+
+    <!--    좋아요 누르기    -->
+    <insert id="hitLike" parameterType="BookHitVO">
+        INSERT INTO t_book_like
+        (id,
+         identity_id,
+         book_id,
+         is_liked)
+        VALUES (#{vo.id},
+                #{vo.userId},
+                #{vo.bookId},
+                't');
+    </insert>
+
+
+    <!--    해당 유저가 좋아요 눌렀는지 검사    -->
+    <resultMap id="BookHitVO1" type="com.myproject.doseoro.application.book.vo.BookHitVO">
+        <result property="id" column="id"/>
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
+        <result property="isLiked" column="is_liked"/>
+    </resultMap>
+    <select id="isLikedByUserIdAndBookId" resultMap="BookHitVO1" parameterType="String">
+        SELECT DISTINCT id,
+                        identity_id,
+                        book_id,
+                        is_liked
+        FROM t_book_like
+        WHERE identity_id = #{userId}
+          AND book_id = #{bookId}
+    </select>
+
+
+    <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 't'면 'f'로 업데이트    -->
+    <update id="hitReLikeWhenLiked" parameterType="String">
+        UPDATE t_book_like
+        SET is_liked = 'f'
+        WHERE identity_id = #{userId}
+          AND book_id = #{bookId}
+    </update>
+
+    <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 'f'면 't'로 업데이트    -->
+    <update id="hitReLikeWhenUnLiked" parameterType="String">
+        UPDATE t_book_like
+        SET is_liked = 't'
+        WHERE identity_id = #{userId}
+          AND book_id = #{bookId}
+    </update>
+
+    <!--    좋아요 개수 + 유저가 좋아요 누른 책 모두 들고오기   -->
+    <resultMap id="BookLikCountVO" type="com.myproject.doseoro.application.book.vo.BookLikCountVO">
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
+    </resultMap>
+    <select id="countLike" resultMap="BookLikCountVO" parameterType="String">
+        SELECT identity_id,
+               book_id
+        FROM t_book_like
+        WHERE book_id = #{bookId}
+          AND is_liked = 't'
+    </select>
+
+    <!--    좋아요 여부    -->
+    <select id="isBookLiked" resultType="String" parameterType="String">
+        SELECT identity_id,
+               book_id,
+               is_liked
+        FROM t_book_like
+        WHERE identity_id = #{userId}
+          AND book_id = #{bookId}
+          AND is_liked = 't'
+    </select>
+
+    <!--    유저가 좋아요 누른 책 모두 들고오기   -->
+    <resultMap id="AllLikedBookVO" type="com.myproject.doseoro.application.book.vo.AllLikedBookVO">
+        <result property="id" column="id"/>
+        <result property="userId" column="identity_id"/>
+        <result property="bookId" column="book_id"/>
+    </resultMap>
+    <select id="allLikedBook" resultMap="AllLikedBookVO" parameterType="String">
+        SELECT id,
+               identity_id,
+               book_id
+        FROM t_book_like
+        WHERE identity_id = #{userId}
+          AND is_liked = 't'
+    </select>
+
+    <!--    책을 클릭 하면 조회수 +1   -->
+    <update id="hitBook" parameterType="String">
+        UPDATE t_book
+        SET hits = hits + 1
+        WHERE id = #{bookId}
+    </update>
+
+</mapper>
