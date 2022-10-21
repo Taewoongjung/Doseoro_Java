@@ -37,10 +37,10 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = SignUpVOFixture.createSignUpVO();
+        SignUpVO signUpUser = SignUpVOFixture.signUpVO;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = IdentityVOFixture.createIdentityVO();
+        IdentityVO loginUser = IdentityVOFixture.identityVO;
 
         // when
         boolean actual = sut.handle(loginUser);
@@ -58,10 +58,10 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = SignUpVOFixture.createSignUpVOWhenMakesWrong();
+        SignUpVO signUpUser = SignUpVOFixture.signUpVOWhenMakesWrong;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = IdentityVOFixture.createIdentityVO();
+        IdentityVO loginUser = IdentityVOFixture.identityVO;
 
         // when
         // then
