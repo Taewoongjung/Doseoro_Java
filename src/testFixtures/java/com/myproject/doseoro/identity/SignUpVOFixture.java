@@ -15,7 +15,6 @@ public class SignUpVOFixture {
             "많은 추억"
     );
 
-
     public static SignUpVO signUpVOWhenMakesWrong = new SignUpVO(
             "7777777",
             "aaa@naver.com",

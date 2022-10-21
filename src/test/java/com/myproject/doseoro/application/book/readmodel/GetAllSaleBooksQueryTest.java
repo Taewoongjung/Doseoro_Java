@@ -3,6 +3,7 @@ package com.myproject.doseoro.application.book.readmodel;
 import com.myproject.doseoro.application.abstraction.BookRepository;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
+import com.myproject.doseoro.book.FindAllBooksVOFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,13 +14,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetAllSaleBooksQueryTest {
 
-    @InjectMocks GetAllSaleBooksQuery getAllSaleBooksQuery;
+    @InjectMocks
+    GetAllSaleBooksQuery getAllSaleBooksQuery;
 
     @Mock
     private BookRepository bookMybatisService;
@@ -28,25 +30,9 @@ class GetAllSaleBooksQueryTest {
     @DisplayName("판매중인 모든 책들을 불러온다.")
     void test1() {
 
-        FindAllBooksVO book1 = FindAllBooksVO.builder()
-                .id("123")
-                .postMessage("책 팔아요 ~")
-                .title("읽으면 좋은 책")
-                .price("70000000000000")
-                .author("천재")
-                .publisher("천재 모임")
-                .OwnerId("111")
-                .build();
+        FindAllBooksVO book1 = FindAllBooksVOFixture.firstFindAllBooksVO();
 
-        FindAllBooksVO book2 = FindAllBooksVO.builder()
-                .id("113")
-                .postMessage("책 팜요 ~")
-                .title("읽으면 정말 좋은 책")
-                .price("7000000")
-                .author("천재 작가")
-                .publisher("천재 작가 모임")
-                .OwnerId("111")
-                .build();
+        FindAllBooksVO book2 = FindAllBooksVOFixture.secondFindAllBooksVO();
 
         List<FindAllBooksVO> bookList = new ArrayList<>();
         bookList.add(book1);
@@ -78,25 +64,9 @@ class GetAllSaleBooksQueryTest {
     @DisplayName("판매중이지 않는 책(무료나눔)은 불러오지 않는다.")
     void test2() {
 
-        FindAllBooksVO book1 = FindAllBooksVO.builder()
-                .id("123")
-                .postMessage("책 팔아요 ~")
-                .title("읽으면 좋은 책")
-                .price(null)
-                .author("천재")
-                .publisher("천재 모임")
-                .OwnerId("111")
-                .build();
+        FindAllBooksVO book1 = FindAllBooksVOFixture.notForSaleFindAllBooksVO();
 
-        FindAllBooksVO book2 = FindAllBooksVO.builder()
-                .id("113")
-                .postMessage("책 팜요 ~")
-                .title("읽으면 정말 좋은 책")
-                .price("7000000")
-                .author("천재 작가")
-                .publisher("천재 작가 모임")
-                .OwnerId("111")
-                .build();
+        FindAllBooksVO book2 = FindAllBooksVOFixture.secondFindAllBooksVO();
 
         List<FindAllBooksVO> bookList = new ArrayList<>();
         bookList.add(null);

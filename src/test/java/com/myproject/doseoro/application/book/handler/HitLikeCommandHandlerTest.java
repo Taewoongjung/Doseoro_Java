@@ -3,6 +3,7 @@ package com.myproject.doseoro.application.book.handler;
 import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
+import com.myproject.doseoro.book.BookHitVOFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,7 @@ class HitLikeCommandHandlerTest {
         BookMybatisRepository bookRepository = new BookMybatisRepository(dao);
         HitLikeCommandHandler sut = new HitLikeCommandHandler(bookRepository);
 
-        BookHitVO vo = new BookHitVO(
-                "11111212",
-                "1212",
-                "2525",
-                "t"
-        );
+        BookHitVO vo = BookHitVOFixture.bookHitVO;
 
         // when
         sut.handle(vo);
@@ -52,12 +48,7 @@ class HitLikeCommandHandlerTest {
         BookMybatisRepository repository = new BookMybatisRepository(dao);
         HitReLikeCommandHandler sut = new HitReLikeCommandHandler(repository);
 
-        BookHitVO likeObject = new BookHitVO(
-                "11111212",
-                "1212",
-                "2525",
-                "t"
-        );
+        BookHitVO likeObject = BookHitVOFixture.bookHitVO;
 
         // when
         repository.hitLike(likeObject);
