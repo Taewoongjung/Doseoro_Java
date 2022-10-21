@@ -37,10 +37,28 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = SignUpVOFixture.signUpVO;
+        SignUpVO signUpUser = new SignUpVO(
+                "7777777",
+                "abcdefg@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억"
+        );
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = IdentityVOFixture.identityVO;
+        IdentityVO loginUser = new IdentityVO(
+                "7777777",
+                "abcdefg@naver.com",
+                "aa",
+                "홍길동",
+                "길동이",
+                "010-1234-5678",
+                "좋아하는 추억",
+                "많은 추억"
+        );
 
         // when
         boolean actual = sut.handle(loginUser);
