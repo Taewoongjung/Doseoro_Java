@@ -31,7 +31,7 @@ class GetUserInformationQueryTest {
     @DisplayName("해당 유저의 유저 정보를 불러온다.")
     void getUser() {
 
-        IdentityMyPageVO identity = IdentityMyPageVOFixture.createIdentityMyPageVO();
+        IdentityMyPageVO identity = IdentityMyPageVOFixture.identityMyPageVO;
 
         when(accessUserSessionManager.extractUser()).thenReturn("12312315256787");
         when(identityRepository.findUserById("12312315256787")).thenReturn(identity);

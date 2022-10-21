@@ -29,7 +29,7 @@ class CreateUserIdentityCommandHandlerTest {
     public void commandHandler() {
         // given
         IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
-        SignUpVO user = SignUpVOFixture.createSignUpVO();
+        SignUpVO user = SignUpVOFixture.signUpVO;
 
         CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
 
@@ -55,7 +55,7 @@ class CreateUserIdentityCommandHandlerTest {
         // given
         IdentityMybatisRepository repository = new IdentityMybatisRepository(dao, passwordEncoder);
 
-        SignUpVO user = SignUpVOFixture.createSignUpVO();
+        SignUpVO user = SignUpVOFixture.signUpVO;
         repository.signUp(user);
 
         CreateUserIdentityCommandHandler sut = new CreateUserIdentityCommandHandler(repository);
