@@ -38,28 +38,31 @@ class AuthenticateUserCommandHandlerTest {
         CreateUserIdentityCommandHandler createUserIdentityCommandHandler = new CreateUserIdentityCommandHandler(repository);
         AuthenticateUserCommandHandler sut = new AuthenticateUserCommandHandler(repository, accessUserSessionManager);
 
-        SignUpVO signUpUser = new SignUpVO(
-                signUpVO.getId(),
-                signUpVO.getEmail(),
-                signUpVO.getPassword(),
-                signUpVO.getName(),
-                signUpVO.getNickName(),
-                signUpVO.getPhoneNumber(),
-                signUpVO.getQuestion(),
-                signUpVO.getAnswerForQuestion()
-        );
+//        SignUpVO signUpUser = new SignUpVO(
+//                signUpVO.getId(),
+//                signUpVO.getEmail(),
+//                signUpVO.getPassword(),
+//                signUpVO.getName(),
+//                signUpVO.getNickName(),
+//                signUpVO.getPhoneNumber(),
+//                signUpVO.getQuestion(),
+//                signUpVO.getAnswerForQuestion()
+//        );
+
+        SignUpVO signUpUser = signUpVO;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-        IdentityVO loginUser = new IdentityVO(
-                identityVO.getId(),
-                identityVO.getEmail(),
-                identityVO.getPassword(),
-                identityVO.getName(),
-                identityVO.getNickName(),
-                identityVO.getPhone(),
-                identityVO.getForgotPwQuestion(),
-                identityVO.getForgotPwAnswer()
-        );
+//        IdentityVO loginUser = new IdentityVO(
+//                identityVO.getId(),
+//                identityVO.getEmail(),
+//                identityVO.getPassword(),
+//                identityVO.getName(),
+//                identityVO.getNickName(),
+//                identityVO.getPhone(),
+//                identityVO.getForgotPwQuestion(),
+//                identityVO.getForgotPwAnswer()
+//        );
+        IdentityVO loginUser = identityVO;
 
         // when
         boolean actual = sut.handle(loginUser);
