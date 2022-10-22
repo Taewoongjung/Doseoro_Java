@@ -39,29 +39,9 @@ class AuthenticateUserCommandHandlerTest {
     public void loginSuccessCommandHandler() {
 
         // given
-//        SignUpVO signUpUser = new SignUpVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         SignUpVO signUpUser = SignUpVOFixture.signUpVO;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-//        IdentityVO loginUser = new IdentityVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         IdentityVO loginUser = IdentityVOFixture.identityVO;
         // when
         boolean actual = sut.handle(loginUser);
@@ -76,29 +56,9 @@ class AuthenticateUserCommandHandlerTest {
     public void loginEmailNotMatchedFailureCommandHandler() {
 
         // given
-//        SignUpVO signUpUser = new SignUpVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         SignUpVO signUpUser = SignUpVOFixture.signUpVO;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-//        IdentityVO loginUser = new IdentityVO(
-//                "7777777",
-//                "abcef@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         IdentityVO loginUser = IdentityVOFixture.identityVOEmailNotMatch;
         // when
         when(repository.loginCheck(loginUser)).thenThrow(new BusinessException(EMAIL_NOT_MATCHED));
@@ -115,29 +75,9 @@ class AuthenticateUserCommandHandlerTest {
     public void loginPasswordNotMatchedFailureCommandHandler() {
 
         // given
-//        SignUpVO signUpUser = new SignUpVO(
-//                "7777777",
-//                "abcdefg@naver.com",
-//                "aa",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         SignUpVO signUpUser = SignUpVOFixture.signUpVO;
         createUserIdentityCommandHandler.handle(signUpUser);
 
-//        IdentityVO loginUser = new IdentityVO(
-//                "7777777",
-//                "abcdef@naver.com",
-//                "a",
-//                "홍길동",
-//                "길동이",
-//                "010-1234-5678",
-//                "좋아하는 추억",
-//                "많은 추억"
-//        );
         IdentityVO loginUser = IdentityVOFixture.identityVOPasswordNotMatch;
 
         // when
