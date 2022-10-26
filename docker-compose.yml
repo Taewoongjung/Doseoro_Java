@@ -1,0 +1,12 @@
+version: "3"
+services:
+  db:
+    image: mysql
+    container_name: db
+    ports:
+      - 3309:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r
+      MYSQL_DATABASE: Doseoro
+      MYSQL_USER: aa
+      MYSQL_PASSWORD: 1q2w3e4r
