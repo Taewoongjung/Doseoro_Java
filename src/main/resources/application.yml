@@ -7,8 +7,13 @@ spring:
     active: local
   datasource:
     url: jdbc:mysql://localhost:3307/Doseoro?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
-    password: Wjdxodnd1@
+    username: aa
+    password: 1q2w3e4r
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    user: aa
+    password: 1q2w3e4r
+    url: jdbc:mysql://localhost:3307/Doseoro?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     view:
