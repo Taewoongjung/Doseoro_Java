@@ -14,7 +14,6 @@ spring:
     password: 1q2w3e4r
     url: jdbc:mysql://localhost:3307/Doseoro?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
-    locations: filesystem:./migrations
   mvc:
     view:
       prefix: /WEB-INF/view/
