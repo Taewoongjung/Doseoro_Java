@@ -2,13 +2,18 @@ package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.application.abstraction.BookRepository;
-import com.myproject.doseoro.application.book.vo.*;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
+import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
+import com.myproject.doseoro.application.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.vo.BookVO;
+import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
+import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 @RequiredArgsConstructor
 public class BookMybatisRepository implements BookRepository {
 

@@ -1,18 +1,22 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.identity;
 
-import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
-import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
-import com.myproject.doseoro.application.abstraction.IdentityRepository;
-import com.myproject.doseoro.application.identity.vo.*;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.EMAIL_NOT_MATCHED;
 import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.PASSWORD_NOT_MATCHED;
 
-@Service
+import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
+import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
+import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.identity.vo.AccessUserVO;
+import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
+import com.myproject.doseoro.application.identity.vo.IdentityVO;
+import com.myproject.doseoro.application.identity.vo.LogInVO;
+import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Repository;
+
+@Repository
 @Slf4j
 @RequiredArgsConstructor
 public class IdentityMybatisRepository implements IdentityRepository {

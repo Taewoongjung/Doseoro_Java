@@ -1,6 +1,5 @@
-mybatis:
-  type-aliases-package: com.myproject.doseoro.application
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
+server:
+  port: 1000
 
 spring:
   profiles:
