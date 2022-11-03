@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.adaptor.infra.dao.IdentityDao">
 
-    <select id="findUserByEmail" resultType="AccessUserVO" parameterType="String">
-        SELECT id        AS id,
-               email     AS email,
-               nick_name AS nickName
-        FROM t_identity
-        WHERE email = #{email}
-    </select>
+  <select id="findUserByEmail"
+    resultType="com.myproject.doseoro.application.identity.vo.AccessUserVO" parameterType="String">
+    SELECT id        AS id,
+           email     AS email,
+           nick_name AS nickName
+    FROM t_identity
+    WHERE email = #{email}
+  </select>
 
-    <select id="findUserById" resultType="IdentityMyPageVO" parameterType="String">
-        SELECT id         AS id,
-               email      AS email,
-               name       AS name,
-               nick_name  AS nickName,
-               phone      AS phone,
-               location   AS location,
-               dong       AS dong,
-               si         AS si,
-               dou        AS dou,
-               provider   AS provider,
-               sns_id     AS snsId,
-               updated_at AS updatedAt
-        FROM t_identity
-        WHERE id = #{id}
-    </select>
+  <select id="findUserById"
+    resultType="com.myproject.doseoro.application.identity.vo.IdentityMyPageVO"
+    parameterType="String">
+    SELECT id         AS id,
+           email      AS email,
+           name       AS name,
+           nick_name  AS nickName,
+           phone      AS phone,
+           location   AS location,
+           dong       AS dong,
+           si         AS si,
+           dou        AS dou,
+           provider   AS provider,
+           sns_id     AS snsId,
+           updated_at AS updatedAt
+    FROM t_identity
+    WHERE id = #{id}
+  </select>
 
-    <select id="existEmail" resultType="Boolean" parameterType="String">
-        SELECT distinct *
-        FROM t_identity
-        WHERE email = #{email}
-    </select>
+  <select id="existEmail" resultType="Boolean" parameterType="String">
+    SELECT distinct *
+    FROM t_identity
+    WHERE email = #{email}
+  </select>
 
-    <select id="findUser" resultType="SignUpVO" parameterType="String">
-        SELECT id                 AS id,
-               email              AS email,
-               name               AS name,
-               nick_name          AS nickName,
-               phone              AS phoneNumber,
-               forgot_pw_question AS question,
-               forgot_pw_answer   AS answerForQuestion
-        FROM t_identity
-        WHERE email = #{email}
-    </select>
+  <select id="findUser" resultType="com.myproject.doseoro.application.identity.vo.SignUpVO"
+    parameterType="String">
+    SELECT id                 AS id,
+           email              AS email,
+           name               AS name,
+           nick_name          AS nickName,
+           phone              AS phoneNumber,
+           forgot_pw_question AS question,
+           forgot_pw_answer   AS answerForQuestion
+    FROM t_identity
+    WHERE email = #{email}
+  </select>
 
-    <!--    로그인     -->
-    <select id="loginCheck" resultType="LogInVO" parameterType="String">
-        SELECT id                 AS id,
-               password           AS password,
-               email              AS email,
-               name               AS name,
-               nick_name          AS nickName,
-               phone              AS phone,
-               forgot_pw_question AS forgotPwQuestion,
-               forgot_pw_answer   AS forgotPwAnswer
-        FROM t_identity
-        WHERE email = #{email}
-    </select>
+  <!--    로그인     -->
+  <select id="loginCheck" resultType="com.myproject.doseoro.application.identity.vo.LogInVO"
+    parameterType="String">
+    SELECT id                 AS id,
+           password           AS password,
+           email              AS email,
+           name               AS name,
+           nick_name          AS nickName,
+           phone              AS phone,
+           forgot_pw_question AS forgotPwQuestion,
+           forgot_pw_answer   AS forgotPwAnswer
+    FROM t_identity
+    WHERE email = #{email}
+  </select>
 
-    <!--    회원가입     -->
-    <insert id="signUp" parameterType="SignUpVO">
-        INSERT INTO t_identity(id, email, password, name, nick_name, phone, forgot_pw_question, forgot_pw_answer)
-        VALUES (#{id}, #{email}, #{password}, #{name}, #{nickName}, #{phoneNumber}, #{question}, #{answerForQuestion})
-    </insert>
+  <!--    회원가입     -->
+  <insert id="signUp" parameterType="com.myproject.doseoro.application.identity.vo.SignUpVO">
+    INSERT INTO t_identity(id, email, password, name, nick_name, phone, forgot_pw_question,
+                           forgot_pw_answer)
+    VALUES (#{id}, #{email}, #{password}, #{name}, #{nickName}, #{phoneNumber}, #{question},
+            #{answerForQuestion})
+  </insert>
 </mapper>
