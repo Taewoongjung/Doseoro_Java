@@ -1,38 +1,36 @@
 package com.myproject.doseoro.application.book.handler;
 
-import com.myproject.doseoro.adaptor.infra.dao.BookDao;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.book.BookHitVOFixture;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
 class HitLikeCommandHandlerTest {
 
     @Autowired
-    private BookDao dao;
+    private BookMybatisRepository bookRepository;
 
     @Test
     @DisplayName("유저는 좋아요를 누른다.")
     @Transactional
     public void CommandHandlerTest() {
         // given
-        BookMybatisRepository bookRepository = new BookMybatisRepository(dao);
         HitLikeCommandHandler sut = new HitLikeCommandHandler(bookRepository);
 
         BookHitVO vo = BookHitVOFixture.bookHitVO;
 
         // when
         sut.handle(vo);
-        List<BookHitVO> actual = bookRepository.isLikedByUserIdAndBookId(vo.getUserId(), vo.getBookId());
+        List<BookHitVO> actual = bookRepository.isLikedByUserIdAndBookId(vo.getUserId(),
+            vo.getBookId());
 
         // then
         assertThat(actual).isNotNull();
@@ -45,15 +43,15 @@ class HitLikeCommandHandlerTest {
     @Transactional
     public void duplicateClicked() {
         // given
-        BookMybatisRepository repository = new BookMybatisRepository(dao);
-        HitReLikeCommandHandler sut = new HitReLikeCommandHandler(repository);
+        HitReLikeCommandHandler sut = new HitReLikeCommandHandler(bookRepository);
 
         BookHitVO likeObject = BookHitVOFixture.bookHitVO;
 
         // when
-        repository.hitLike(likeObject);
+        bookRepository.hitLike(likeObject);
         sut.handle(likeObject);
-        List<BookHitVO> actual = repository.isLikedByUserIdAndBookId(likeObject.getUserId(), likeObject.getBookId());
+        List<BookHitVO> actual = bookRepository.isLikedByUserIdAndBookId(likeObject.getUserId(),
+            likeObject.getBookId());
 
         // then
         assertThat(actual.get(0).getIsLiked()).isEqualTo("f");

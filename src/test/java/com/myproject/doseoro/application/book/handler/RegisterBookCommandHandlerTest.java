@@ -1,7 +1,7 @@
 package com.myproject.doseoro.application.book.handler;
 
-import com.myproject.doseoro.adaptor.infra.dao.BookDao;
-import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.myproject.doseoro.adaptor.infra.mybatis.book.BookMybatisRepository;
 import com.myproject.doseoro.adaptor.infra.mybatis.identity.IdentityMybatisRepository;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
@@ -13,31 +13,26 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class RegisterBookCommandHandlerTest {
 
     @Autowired
-    private BookDao bookDao;
+    private BookMybatisRepository bookRepository;
     @Autowired
-    private IdentityDao identityDao;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private IdentityMybatisRepository identityRepository;
 
     @Test
     @DisplayName("유저는 새로운 책을 등록할 수 있다.")
     @Transactional
     public void handle() {
         // given
-        BookMybatisRepository bookRepository = new BookMybatisRepository(bookDao);
-        IdentityMybatisRepository identityRepository = new IdentityMybatisRepository(identityDao, passwordEncoder);
-        RegisterBookCommandHandler sut = new RegisterBookCommandHandler(bookRepository, identityRepository);
+        RegisterBookCommandHandler sut = new RegisterBookCommandHandler(bookRepository,
+            identityRepository);
 
-        CreateUserIdentityCommandHandler singUp = new CreateUserIdentityCommandHandler(identityRepository);
+        CreateUserIdentityCommandHandler singUp = new CreateUserIdentityCommandHandler(
+            identityRepository);
 
         SignUpVO user = SignUpVOFixture.signUpVO;
         singUp.handle(user);
