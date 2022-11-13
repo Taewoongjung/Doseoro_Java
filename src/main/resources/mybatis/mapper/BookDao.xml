@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.adaptor.infra.dao.BookDao">
 
-  <!--    책 등록    -->
+  <!--   판매 책 등록    -->
   <insert id="registerBook"
     parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
     INSERT INTO t_book
@@ -125,9 +125,10 @@
            img,
            sold,
            about,
-           owner_id
+           owner_id,
+           donation
     FROM t_book
-    WHERE sold != 1 AND price != "null"
+    WHERE sold != 1 AND price != "null" AND donation != 1
   </select>
 
   <!--    좋아요 누르기    -->
