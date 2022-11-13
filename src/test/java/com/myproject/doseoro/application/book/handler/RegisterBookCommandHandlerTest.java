@@ -27,7 +27,7 @@ class RegisterBookCommandHandlerTest {
     private IdentityRepository identityRepository;
 
     @Test
-    @DisplayName("유저는 무료나눔 책을 등록할 수 있다.")
+    @DisplayName("유저는 책을 등록할 수 있다.")
     @Transactional
     public void handle() {
         // given

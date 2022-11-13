@@ -8,7 +8,6 @@ import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,13 +21,9 @@ public class RegisterDonationBookCommandHandler implements
     @Logging
     @Override
     public RegisterBookVO handle(RegisterBookVO vo) {
-        System.out.println(vo);
-        System.out.println(StringUtils.chop(vo.getOwnerEmail()));
         final String uuid = UUID.randomUUID().toString();
 
-        AccessUserVO user = identityRepository.findUserByEmail(
-            StringUtils.chop(vo.getOwnerEmail()));
-        System.out.println("user = " + user);
+        AccessUserVO user = identityRepository.findUserByEmail(vo.getOwnerEmail());
         String idToBeSetInDTO = user.getUserId();
 
         vo.imbueId(uuid);
