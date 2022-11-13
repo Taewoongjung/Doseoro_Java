@@ -36,7 +36,7 @@
 
         <div class="saleList pt-5 mt-5 border-top">
             <h1 class="h2 fw-bold">나눔 목록</h1><br>
-            <form id="book-form"><a href="/pages/registDonation"
+            <form id="book-form"><a href="/registerDonationBook"
                                     class="addBook text-decoration-none btn-primary p-2">나눔 등록</a>
             </form>
 

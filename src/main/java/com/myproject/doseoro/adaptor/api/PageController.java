@@ -100,4 +100,11 @@ public class PageController {
 
         return "registerBook";
     }
+
+    @Logging
+    @RequestMapping(value = "/registerDonationBook")
+    public String registerDonationBook() {
+
+        return "registerDonation";
+    }
 }
