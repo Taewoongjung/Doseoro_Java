@@ -1,0 +1,1 @@
+ALTER TABLE t_book ADD COLUMN donation TINYINT(1)       NULL   DEFAULT 0      COMMENT '해당 책이 무료기부인지 아닌지';
