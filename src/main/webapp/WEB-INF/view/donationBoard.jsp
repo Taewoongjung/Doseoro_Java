@@ -20,16 +20,19 @@
 <body>
 <div class="flex w-100">
     <!-- 상단 바 -->
-    {% include "topNavbar.html" %}
+    <%@include file="topNavbar.jsp" %>
 
     <!-- main -->
     <main class="container-sm min-vh-100 contentInner">
         <!-- 검색, 메뉴이동 기능 -->
-        {% if user %}
-        {% include "searchBoxLoggedIn.html" %}
-        {% else %}
-        {% include "searchBox.html" %}
-        {% endif %}
+        <c:choose>
+            <c:when test="${obj}">
+                <%@include file="searchBoxLoggedIn.jsp" %>
+            </c:when>
+            <c:when test="${!obj}">
+                <%@include file="searchBox.jsp" %>
+            </c:when>
+        </c:choose>
 
         <div class="saleList pt-5 mt-5 border-top">
             <h1 class="h2 fw-bold">나눔 목록</h1><br>
@@ -91,6 +94,7 @@
                     <input type="submit" class="btn-primary border-0" value="이동">
                 </form>
             </div>
+        </div>
     </main>
 
     <!-- footer -->
