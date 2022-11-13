@@ -175,6 +175,7 @@
                           placeholder="내용" rows="10"></textarea>
             </div>
 
+            <input name="ownerEmail" type="hidden" value=${sessionScope.email}/>
             <button id="registBtn" class="btn btn-lg btn-primary w-100" class="btn" type="submit"
                     onclick="one()">상품 등록
             </button>
@@ -189,7 +190,7 @@
 <script>
   function one() {
     const request = document.getElementById('register_book-form');
-    request.setAttribute('action', '/free_community/book');
+    request.setAttribute('action', '/book/donations');
     request.setAttribute('method', 'POST');
   }
 </script>

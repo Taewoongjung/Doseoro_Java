@@ -14,6 +14,8 @@ public interface BookDao {
 
     void registerBook(@Param("vo") RegisterBookVO vo);
 
+    void registerDonationBook(@Param("vo") RegisterBookVO vo);
+
     BookVO findBookByBookId(String bookId);
 
     List<HomeDisplayedBookVO> findHomeDisplayedBooks();

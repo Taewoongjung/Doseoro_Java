@@ -34,6 +34,34 @@
             #{vo.ownerId});
   </insert>
 
+  <!--   무료나눔 책 등록    -->
+  <insert id="registerDonationBook"
+    parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
+    INSERT INTO t_book
+    (id,
+     post_message,
+     title,
+     author,
+     publisher,
+     category,
+     state,
+     trade_method,
+     img,
+     about,
+     owner_id)
+    VALUES (#{vo.id},
+            #{vo.postmessage},
+            #{vo.title},
+            #{vo.author},
+            #{vo.publisher},
+            #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.dealRoot},
+            #{vo.images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.about},
+            #{vo.ownerId});
+  </insert>
+
   <!--    책의 id로 책 찾기    -->
   <resultMap id="BookVO" type="com.myproject.doseoro.application.book.vo.BookVO">
     <result property="id" column="id"/>
@@ -72,6 +100,7 @@
     FROM t_book
     where id = #{bookId}
   </select>
+
 
   <!--    홈 화면에 전시할 책 5가지 찾기   -->
   <resultMap id="HomeDisplayedBookVO"
@@ -125,10 +154,9 @@
            img,
            sold,
            about,
-           owner_id,
-           donation
+           owner_id
     FROM t_book
-    WHERE sold != 1 AND price != "null" AND donation != 1
+    WHERE sold != 1 AND price != "null"
   </select>
 
   <!--    좋아요 누르기    -->

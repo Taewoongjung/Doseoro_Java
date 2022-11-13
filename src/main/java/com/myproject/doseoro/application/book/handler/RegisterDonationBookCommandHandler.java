@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO, RegisterBookVO> {
+public class RegisterDonationBookCommandHandler implements
+    CommandHandler<RegisterBookVO, RegisterBookVO> {
 
     private final BookRepository repository;
     private final IdentityRepository identityRepository;
@@ -21,16 +22,19 @@ public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO
     @Logging
     @Override
     public RegisterBookVO handle(RegisterBookVO vo) {
+        System.out.println(vo);
+        System.out.println(StringUtils.chop(vo.getOwnerEmail()));
         final String uuid = UUID.randomUUID().toString();
 
         AccessUserVO user = identityRepository.findUserByEmail(
             StringUtils.chop(vo.getOwnerEmail()));
+        System.out.println("user = " + user);
         String idToBeSetInDTO = user.getUserId();
 
         vo.imbueId(uuid);
         vo.imbueOwnerId(idToBeSetInDTO);
 
-        repository.registerBook(vo);
+        repository.registerDonationBook(vo);
         return vo;
     }
 }

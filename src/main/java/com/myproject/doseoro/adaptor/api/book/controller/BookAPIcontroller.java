@@ -1,26 +1,34 @@
 package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.book.handler.*;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
+import com.myproject.doseoro.application.book.handler.AddHitWhenBookClickedCommandHandler;
+import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
+import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
+import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
+import com.myproject.doseoro.application.book.handler.RegisterDonationBookCommandHandler;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
-import com.myproject.doseoro.application.book.vo.RegisterBookVO;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.RegisterBookVO;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
 public class BookAPIcontroller {
 
     private final RegisterBookCommandHandler registerBookCommandHandler;
+    private final RegisterDonationBookCommandHandler registerDonationBookCommandHandler;
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
@@ -28,8 +36,9 @@ public class BookAPIcontroller {
     private final AddHitWhenBookClickedCommandHandler addHitWhenBookClickedCommandHandler;
 
     @Logging
-    @PostMapping(value = "/book/register")
-    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile, RegisterBookVO vo) {
+    @PostMapping(value = "/book/books")
+    public String registerBook(@RequestParam("img") List<MultipartFile> multipartFile,
+        RegisterBookVO vo) {
 
         try {
             vo.multipleImageFileHandle(multipartFile, vo);
@@ -39,6 +48,21 @@ public class BookAPIcontroller {
         }
 
         return "redirect:/saleBoard";
+    }
+
+    @Logging
+    @PostMapping(value = "/book/donations")
+    public String registerDonationBook(@RequestParam("img") List<MultipartFile> multipartFile,
+        RegisterBookVO vo) {
+
+        try {
+            vo.multipleImageFileHandle(multipartFile, vo);
+            registerDonationBookCommandHandler.handle(vo);
+        } catch (Exception e) { // BussinessException 로직 추가하기
+            e.printStackTrace();
+        }
+
+        return "redirect:/donationBoard";
     }
 
     @Logging
@@ -56,7 +80,8 @@ public class BookAPIcontroller {
     public ModelAndView bookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
         try {
-            GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(new GetAllInformationOfTheBookByBookIdDto(bookId));
+            GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(
+                new GetAllInformationOfTheBookByBookIdDto(bookId));
             addHitWhenBookClickedCommandHandler.handle(bookId);
 
             model.setViewName("saleDetail");
@@ -64,7 +89,9 @@ public class BookAPIcontroller {
             model.addObject("title", result.getBook().getPostMessage());
             model.addObject("book", result.getBook());
             model.addObject("countLike", result.getCountLikedInTheBook().size());
-            if(result.getIsLikeExisted() != null) model.addObject("isLiked", true);
+            if (result.getIsLikeExisted() != null) {
+                model.addObject("isLiked", true);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,13 +103,15 @@ public class BookAPIcontroller {
     public String hitLike(BookHitVO vo) {
 
         BookHitVO alreadyLiked = hitReLikeCommandHandler.handle(vo);
-        if(alreadyLiked.getId() != null || vo.getId() != null) { return "redirect:/" + vo.getBookId(); }
+        if (alreadyLiked.getId() != null || vo.getId() != null) {
+            return "redirect:/" + vo.getBookId();
+        }
 
         // hitLikeCommandHandler 핸들러에서 id 값을 넣어 주니까
         // id 값이 있으면(null 이 아니면) 다시 row 를 생성할 필요가 없으니 null 리턴
 
         hitLikeCommandHandler.handle(vo);
 
-        return "redirect:/"+vo.getBookId();
+        return "redirect:/" + vo.getBookId();
     }
 }
