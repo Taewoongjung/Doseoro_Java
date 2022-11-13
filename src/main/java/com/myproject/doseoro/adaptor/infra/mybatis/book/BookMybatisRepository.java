@@ -25,6 +25,11 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
+    public void registerDonationBook(RegisterBookVO vo) {
+        dao.registerDonationBook(vo);
+    }
+
+    @Override
     public BookVO findBookByBookId(String bookId) {
         return dao.findBookByBookId(bookId);
     }

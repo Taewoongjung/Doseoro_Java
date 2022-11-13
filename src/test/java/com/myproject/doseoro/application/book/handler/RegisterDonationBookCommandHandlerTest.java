@@ -17,19 +17,19 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 @ExtendWith(MockitoExtension.class)
-class RegisterBookCommandHandlerTest {
+class RegisterDonationBookCommandHandlerTest {
 
     @InjectMocks
-    private RegisterBookCommandHandler sut;
+    private RegisterDonationBookCommandHandler sut;
     @Mock
     private BookRepository repository;
     @Mock
     private IdentityRepository identityRepository;
 
     @Test
-    @DisplayName("유저는 책을 등록할 수 있다.")
     @Transactional
-    public void handle() {
+    @DisplayName("유저는 무료나눔 책을 등록할 수 있다.")
+    void test() {
         // given
         RegisterBookVO registerBook = RegisterBookVOFixture.registerBookVO();
         when(identityRepository.findUserByEmail("abcdefg@naver.com"))
@@ -43,7 +43,6 @@ class RegisterBookCommandHandlerTest {
         assertThat(actual).isNotNull();
         assertThat(actual.getPostmessage()).isEqualTo("책 팔아요 ~ ");
         assertThat(actual.getTitle()).isEqualTo("당랑의 꿈");
-        assertThat(actual.getPrice()).isEqualTo("77000");
         assertThat(actual.getAuthor()).isEqualTo("휴먼");
         assertThat(actual.getPublisher()).isEqualTo("실크로드");
         assertThat(actual.getCheckCategory()).contains("SF");
@@ -56,5 +55,7 @@ class RegisterBookCommandHandlerTest {
         assertThat(actual.getSold()).isEqualTo("0");
         assertThat(actual.getAbout()).isEqualTo("좋은 책 이에요 ^^");
         assertThat(actual.getOwnerEmail()).isEqualTo("abcdefg@naver.com");
+
     }
+
 }

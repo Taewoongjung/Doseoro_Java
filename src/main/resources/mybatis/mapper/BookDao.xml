@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myproject.doseoro.adaptor.infra.dao.BookDao">
 
-  <!--    책 등록    -->
+  <!--   판매 책 등록    -->
   <insert id="registerBook"
     parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
     INSERT INTO t_book
@@ -24,6 +24,34 @@
             #{vo.postmessage},
             #{vo.title},
             #{vo.price},
+            #{vo.author},
+            #{vo.publisher},
+            #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.dealRoot},
+            #{vo.images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{vo.about},
+            #{vo.ownerId});
+  </insert>
+
+  <!--   무료나눔 책 등록    -->
+  <insert id="registerDonationBook"
+    parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
+    INSERT INTO t_book
+    (id,
+     post_message,
+     title,
+     author,
+     publisher,
+     category,
+     state,
+     trade_method,
+     img,
+     about,
+     owner_id)
+    VALUES (#{vo.id},
+            #{vo.postmessage},
+            #{vo.title},
             #{vo.author},
             #{vo.publisher},
             #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
@@ -72,6 +100,7 @@
     FROM t_book
     where id = #{bookId}
   </select>
+
 
   <!--    홈 화면에 전시할 책 5가지 찾기   -->
   <resultMap id="HomeDisplayedBookVO"

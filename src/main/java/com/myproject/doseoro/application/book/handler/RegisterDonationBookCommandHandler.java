@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO, RegisterBookVO> {
+public class RegisterDonationBookCommandHandler implements
+    CommandHandler<RegisterBookVO, RegisterBookVO> {
 
     private final BookRepository repository;
     private final IdentityRepository identityRepository;
@@ -28,7 +29,7 @@ public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO
         vo.imbueId(uuid);
         vo.imbueOwnerId(idToBeSetInDTO);
 
-        repository.registerBook(vo);
+        repository.registerDonationBook(vo);
         return vo;
     }
 }
