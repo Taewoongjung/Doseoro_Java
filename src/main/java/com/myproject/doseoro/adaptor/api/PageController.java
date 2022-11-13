@@ -1,20 +1,19 @@
 package com.myproject.doseoro.adaptor.api;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
-import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
-import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
-import com.myproject.doseoro.application.identity.readmodel.GetUserInformationQuery;
-import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
+import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
+import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
+import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
+import com.myproject.doseoro.application.identity.readmodel.GetUserInformationQuery;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,7 +23,6 @@ public class PageController {
     private final GetUserInformationQuery myPageQuery;
     private final GetAllSaleBooksQuery saleBoardQuery;
     private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
-
 
 
     Void voId = null;
@@ -84,6 +82,17 @@ public class PageController {
 
         return "saleBoard";
     }
+
+    @Logging
+    @RequestMapping(value = "/donationBoard")
+    public String donationBoard(Model model) {
+
+        GetAllSaleBooksResult bookList = saleBoardQuery.query(voId);
+        model.addAttribute("books", bookList.getBookList());
+
+        return "donationBoard";
+    }
+
 
     @Logging
     @RequestMapping(value = "/registerBook")
