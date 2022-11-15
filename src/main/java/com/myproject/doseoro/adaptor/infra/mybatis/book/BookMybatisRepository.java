@@ -2,11 +2,13 @@ package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
+import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
@@ -50,20 +52,20 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public void hitReLikeWhenLiked(String userId, String bookId, String isLiked) {
+    public void hitReLikeWhenLiked(BookReHitDto dto) {
         // 좋아요 눌러져 있을 때
-        dao.hitReLikeWhenLiked(userId, bookId, isLiked);
+        dao.hitReLikeWhenLiked(dto);
     }
 
     @Override
-    public void hitReLikeWhenUnLiked(String userId, String bookId, String isLiked) {
+    public void hitReLikeWhenUnLiked(BookReHitDto dto) {
         // 좋아요 안 눌러져 있을 때
-        dao.hitReLikeWhenUnLiked(userId, bookId, isLiked);
+        dao.hitReLikeWhenUnLiked(dto);
     }
 
     @Override
-    public List<BookHitVO> isLikedByUserIdAndBookId(String userId, String bookId) {
-        return dao.isLikedByUserIdAndBookId(userId, bookId);
+    public List<BookHitVO> isLikedByUserIdAndBookId(BookHitVO vo) {
+        return dao.isLikedByUserIdAndBookId(vo);
     }
 
     @Override
@@ -72,8 +74,8 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public String isBookLiked(String userId, String bookId) {
-        return dao.isBookLiked(userId, bookId);
+    public String isBookLiked(FindIfBookIsLikedVo vo) {
+        return dao.isBookLiked(vo);
     }
 
     @Override

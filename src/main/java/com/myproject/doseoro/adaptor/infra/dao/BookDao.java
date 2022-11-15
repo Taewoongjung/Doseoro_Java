@@ -1,20 +1,21 @@
 package com.myproject.doseoro.adaptor.infra.dao;
 
+import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
+import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface BookDao {
 
-    void registerBook(@Param("vo") RegisterBookVO vo);
+    void registerBook(RegisterBookVO vo);
 
-    void registerDonationBook(@Param("vo") RegisterBookVO vo);
+    void registerDonationBook(RegisterBookVO vo);
 
     BookVO findBookByBookId(String bookId);
 
@@ -22,24 +23,21 @@ public interface BookDao {
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();
 
-    void hitLike(@Param("vo") BookHitVO vo);
+    void hitLike(BookHitVO vo);
 
-    void hitReLikeWhenUnLiked(@Param("userId") String userId, @Param("bookId") String bookId,
-        @Param("isLiked") String isLiked);
+    void hitReLikeWhenUnLiked(BookReHitDto dto);
 
-    void hitReLikeWhenLiked(@Param("userId") String userId, @Param("bookId") String bookId,
-        @Param("isLiked") String isLiked);
+    void hitReLikeWhenLiked(BookReHitDto dto);
 
-    List<BookHitVO> isLikedByUserIdAndBookId(@Param("userId") String userId,
-        @Param("bookId") String bookId);
+    List<BookHitVO> isLikedByUserIdAndBookId(BookHitVO vo);
 
     List<BookHitVO> countLike(String bookId);
 
-    String isBookLiked(@Param("userId") String userId, @Param("bookId") String bookId);
+    String isBookLiked(FindIfBookIsLikedVo vo);
 
     List<FindAllLikedBookVO> FindAllLikedBookByUserId(String userId);
 
     List<AllLikedBookVO> allLikedBook(String userId);
 
-    void hitBook(@Param("bookId") String bookId);
+    void hitBook(String bookId);
 }

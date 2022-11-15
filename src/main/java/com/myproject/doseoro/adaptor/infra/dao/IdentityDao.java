@@ -4,7 +4,6 @@ import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.application.identity.vo.LogInVO;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
-import org.apache.ibatis.annotations.Param;
 
 public interface IdentityDao {
 
@@ -16,7 +15,7 @@ public interface IdentityDao {
 
     SignUpVO findUser(String email);
 
-    LogInVO loginCheck(@Param("email") String email);
+    LogInVO loginCheck(String email);
 
     boolean signUp(SignUpVO user);
 }
