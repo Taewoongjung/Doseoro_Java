@@ -8,6 +8,7 @@ import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
         if (userId == null) {
             return null;
         }
-        
+
         List<AllLikedBookVO> foundAllBooks = getAllLikedBook(userId);
         List<String> listOfBookId = makeListOfBookId(foundAllBooks);
         List<BookVO> bookList = makeListOfBooks(listOfBookId);
@@ -42,7 +43,9 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
     }
 
     private List<String> makeListOfBookId(List<AllLikedBookVO> list) {
-        return list.stream().map(AllLikedBookVO::getBookId).toList();
+        return list.stream()
+            .map(book -> book.getBookId())
+            .collect(Collectors.toList());
     }
 
     private List<BookVO> makeListOfBooks(List<String> listOfBookId) {
