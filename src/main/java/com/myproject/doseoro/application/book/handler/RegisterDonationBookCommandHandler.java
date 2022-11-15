@@ -21,13 +21,18 @@ public class RegisterDonationBookCommandHandler implements
     @Override
     public RegisterBookVO handle(RegisterBookVO vo) {
 
-        AccessUserVO user = identityRepository.findUserByEmail(vo.getOwnerEmail());
-        String idToBeSetInDTO = user.getUserId();
+        String ownerId = getOwnerId(vo.getOwnerEmail());
 
         vo.imbueId();
-        vo.imbueOwnerId(idToBeSetInDTO);
+        vo.imbueOwnerId(ownerId);
 
         repository.registerDonationBook(vo);
         return vo;
+    }
+
+    private String getOwnerId(String ownerEmail) {
+
+        AccessUserVO user = identityRepository.findUserByEmail(ownerEmail);
+        return user.getUserId();
     }
 }
