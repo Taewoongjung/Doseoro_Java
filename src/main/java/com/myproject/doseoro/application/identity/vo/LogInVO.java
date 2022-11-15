@@ -1,22 +1,31 @@
 package com.myproject.doseoro.application.identity.vo;
 
-import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Builder
 public class LogInVO {
-    private String id;
-    private String password;
-    private String email;
-    private String name;
-    private String nickName;
-    private String phone;
-    private String forgotPwQuestion;
-    private String forgotPwAnswer;
 
-    public LogInVO(String id, String password, String email, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
+    private final String id;
+    private final String password;
+    private final String email;
+    private final String name;
+    private final String nickName;
+    private final String phone;
+    private final String forgotPwQuestion;
+    private final String forgotPwAnswer;
+
+    public LogInVO(
+        final String id,
+        final String password,
+        final String email,
+        final String name,
+        final String nickName,
+        final String phone,
+        final String forgotPwQuestion,
+        final String forgotPwAnswer
+    ) {
         this.id = id;
         this.password = password;
         this.email = email;
@@ -25,19 +34,5 @@ public class LogInVO {
         this.phone = phone;
         this.forgotPwQuestion = forgotPwQuestion;
         this.forgotPwAnswer = forgotPwAnswer;
-    }
-
-    @Override
-    public String toString() {
-        return "LogInVO{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", forgotPwQuestion='" + forgotPwQuestion + '\'' +
-                ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
-                '}';
     }
 }

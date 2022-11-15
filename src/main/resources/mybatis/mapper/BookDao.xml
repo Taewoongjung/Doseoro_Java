@@ -79,7 +79,7 @@
       typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
     <result property="sold" column="sold"/>
     <result property="about" column="about"/>
-    <result property="OwnerId" column="owner_id"/>
+    <result property="ownerId" column="owner_id"/>
     <result property="hits" column="hits"/>
   </resultMap>
   <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
@@ -139,7 +139,7 @@
       typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
     <result property="sold" column="sold"/>
     <result property="about" column="about"/>
-    <result property="OwnerId" column="owner_id"/>
+    <result property="ownerId" column="owner_id"/>
   </resultMap>
   <select id="findAllBooksForSaleBoard" resultMap="FindAllBooksVO">
     SELECT id,

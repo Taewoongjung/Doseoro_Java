@@ -1,9 +1,12 @@
 package com.myproject.doseoro.application.identity.vo;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class IdentityVO {
+
     private final String id;
     private final String email;
     private final String password;
@@ -13,7 +16,16 @@ public class IdentityVO {
     private final String forgotPwQuestion;
     private final String forgotPwAnswer;
 
-    public IdentityVO(String id, String email, String password, String name, String nickName, String phone, String forgotPwQuestion, String forgotPwAnswer) {
+    public IdentityVO(
+        final String id,
+        final String email,
+        final String password,
+        final String name,
+        final String nickName,
+        final String phone,
+        final String forgotPwQuestion,
+        final String forgotPwAnswer
+    ) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -22,19 +34,5 @@ public class IdentityVO {
         this.phone = phone;
         this.forgotPwQuestion = forgotPwQuestion;
         this.forgotPwAnswer = forgotPwAnswer;
-    }
-
-    @Override
-    public String toString() {
-        return "IdentityVO{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", forgotPwQuestion='" + forgotPwQuestion + '\'' +
-                ", forgotPwAnswer='" + forgotPwAnswer + '\'' +
-                '}';
     }
 }

@@ -1,11 +1,11 @@
 package com.myproject.doseoro.book;
 
 import com.myproject.doseoro.application.book.vo.BookVO;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookVOFixture {
+
     public static final BookVO firstBookVO() {
         List<String> checkCategory = new ArrayList<>();
         checkCategory.add("SF");
@@ -20,20 +20,20 @@ public class BookVOFixture {
         images.add("imgs0c1d16f2-a946-468f-8bcc-ffdc8f57b2fe");
 
         return BookVO.builder()
-                .id("777")
-                .postMessage("책팝니다 ~")
-                .title("정말 재미 있는 책")
-                .price("100000")
-                .author("난 천재")
-                .publisher("출판사")
-                .category(checkCategory)
-                .state(checkState)
-                .images(images)
-                .tradeMethod("직거래")
-                .sold("0")
-                .about("재미있는 책 팜")
-                .OwnerId("12312315256787")
-                .build();
+            .id("777")
+            .postMessage("책팝니다 ~")
+            .title("정말 재미 있는 책")
+            .price("100000")
+            .author("난 천재")
+            .publisher("출판사")
+            .category(checkCategory)
+            .state(checkState)
+            .images(images)
+            .tradeMethod("직거래")
+            .sold("0")
+            .about("재미있는 책 팜")
+            .ownerId("12312315256787")
+            .build();
     }
 
     public static final BookVO secondBookVO() {
@@ -50,19 +50,19 @@ public class BookVOFixture {
         images.add("imgs0c1d16f2-a946-468f-8bcc-ffdc8f57b2fe");
 
         return BookVO.builder()
-                .id("121112")
-                .postMessage("이 책 팔아요")
-                .title("재미있는 책")
-                .price("100000")
-                .author("천재")
-                .publisher("출판사")
-                .category(checkCategory)
-                .state(checkState)
-                .images(images)
-                .tradeMethod("직거래")
-                .sold("0")
-                .about("재미있는 책 팜")
-                .OwnerId("12312315256787")
-                .build();
+            .id("121112")
+            .postMessage("이 책 팔아요")
+            .title("재미있는 책")
+            .price("100000")
+            .author("천재")
+            .publisher("출판사")
+            .category(checkCategory)
+            .state(checkState)
+            .images(images)
+            .tradeMethod("직거래")
+            .sold("0")
+            .about("재미있는 책 팜")
+            .ownerId("12312315256787")
+            .build();
     }
 }

@@ -1,34 +1,49 @@
 package com.myproject.doseoro.application.book.vo;
 
-import lombok.Builder;
-import lombok.Getter;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
-@Builder
 public class RegisterBookVO {
 
     private String id;
-    private String postmessage;
-    private final String title;
-    private final String price;
-    private final String author;
-    private final String publisher;
-    private final List<String> checkCategory;
-    private final List<String> checkState;
+    private String title;
+    private String price;
+    private String author;
+    private String publisher;
+    private List<String> checkCategory;
+    private List<String> checkState;
     private List<String> images;
-    private final String dealRoot;
-    private final String sold;
-    private final String about;
+    private String dealRoot;
+    private String sold;
+    private String about;
+    private String postmessage;
     private String ownerId;
     private String ownerEmail;
 
-    public RegisterBookVO(String id, String postmessage, String title, String price, String author, String publisher, List<String> checkCategory, List<String> checkState, List<String> images, String dealRoot, String sold, String about, String ownerId, String ownerEmail) {
+    public RegisterBookVO(
+        final String id,
+        final String postmessage,
+        final String title,
+        final String price,
+        final String author,
+        final String publisher,
+        final List<String> checkCategory,
+        final List<String> checkState,
+        final List<String> images,
+        final String dealRoot,
+        final String sold,
+        final String about,
+        final String ownerId,
+        final String ownerEmail
+    ) {
         this.id = id;
         this.postmessage = postmessage;
         this.title = title;
@@ -45,26 +60,6 @@ public class RegisterBookVO {
         this.ownerEmail = ownerEmail;
     }
 
-    @Override
-    public String toString() {
-        return "RegisterBookVO{" +
-                "id='" + id + '\'' +
-                ", postmessage='" + postmessage + '\'' +
-                ", title='" + title + '\'' +
-                ", price='" + price + '\'' +
-                ", author='" + author + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", checkCategory=" + checkCategory +
-                ", checkState=" + checkState +
-                ", images=" + images +
-                ", dealRoot='" + dealRoot + '\'' +
-                ", sold='" + sold + '\'' +
-                ", about='" + about + '\'' +
-                ", ownerId='" + ownerId + '\'' +
-                ", ownerEmail='" + ownerEmail + '\'' +
-                '}';
-    }
-
     public void imbueImages(List<String> images) {
         this.images = images;
     }
@@ -78,16 +73,18 @@ public class RegisterBookVO {
     }
 
 
-    public void multipleImageFileHandle(List<MultipartFile> multipartFile, RegisterBookVO vo) throws IOException {
+    public void multipleImageFileHandle(List<MultipartFile> multipartFile, RegisterBookVO vo)
+        throws IOException {
         String path = "/Users/jeongtaeung/Desktop/CODES/doseoro/src/main/resources/static/uploads/imgs/";
         File file = new File(path);
 
         List<String> imageFileList = new ArrayList<>();
 
-        if(multipartFile.size() > 0 && !multipartFile.get(0).getOriginalFilename().equals("")) {
+        if (multipartFile.size() > 0 && !multipartFile.get(0).getOriginalFilename().equals("")) {
             for (MultipartFile imgFile : multipartFile) {
                 String originalFileName = imgFile.getOriginalFilename(); //오리지날 파일명
-                String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자
+                String extension = originalFileName.substring(
+                    originalFileName.lastIndexOf(".")); //파일 확장자
                 String savedFileName = UUID.randomUUID() + extension; //저장될 파일 명
 
                 imageFileList.add(savedFileName);

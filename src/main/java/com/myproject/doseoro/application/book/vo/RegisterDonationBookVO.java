@@ -7,10 +7,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
+@ToString
 @Getter
+@Builder
 public class RegisterDonationBookVO {
 
     private final String title;
@@ -28,55 +32,47 @@ public class RegisterDonationBookVO {
     private String ownerEmail;
     private int flagForDonationBook;
 
-    public RegisterDonationBookVO(String id, String postmessage, String title, String author,
-        String publisher, List<String> checkCategory, List<String> checkState, List<String> images,
-        String dealRoot, String sold, String about, String ownerId, String ownerEmail,
-        int flagForDonationBook) {
-        this.id = id;
-        this.postmessage = postmessage;
+    public RegisterDonationBookVO(
+        final String title,
+        final String author,
+        final String publisher,
+        final List<String> checkCategory,
+        final List<String> checkState,
+        final String dealRoot,
+        final String sold,
+        final String about,
+        final String id,
+        final String postmessage,
+        final List<String> images,
+        final String ownerId,
+        final String ownerEmail,
+        final int flagForDonationBook
+    ) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
         this.checkCategory = checkCategory;
         this.checkState = checkState;
-        this.images = images;
         this.dealRoot = dealRoot;
         this.sold = sold;
         this.about = about;
+        this.id = id;
+        this.postmessage = postmessage;
+        this.images = images;
         this.ownerId = ownerId;
         this.ownerEmail = ownerEmail;
         this.flagForDonationBook = 1;
     }
 
-    @Override
-    public String toString() {
-        return "RegisterBookVO{" +
-            "id='" + id + '\'' +
-            ", postmessage='" + postmessage + '\'' +
-            ", title='" + title + '\'' +
-            ", author='" + author + '\'' +
-            ", publisher='" + publisher + '\'' +
-            ", checkCategory=" + checkCategory +
-            ", checkState=" + checkState +
-            ", images=" + images +
-            ", dealRoot='" + dealRoot + '\'' +
-            ", sold='" + sold + '\'' +
-            ", about='" + about + '\'' +
-            ", ownerId='" + ownerId + '\'' +
-            ", ownerEmail='" + ownerEmail + '\'' +
-            ", flagForDonationBook='" + flagForDonationBook + '\'' +
-            '}';
-    }
-
-    public void imbueImages(List<String> images) {
+    public void imbueImages(final List<String> images) {
         this.images = images;
     }
 
-    public void imbueId(String id) {
+    public void imbueId(final String id) {
         this.id = id;
     }
 
-    public void imbueOwnerId(String ownerId) {
+    public void imbueOwnerId(final String ownerId) {
         this.ownerId = ownerId;
     }
 
