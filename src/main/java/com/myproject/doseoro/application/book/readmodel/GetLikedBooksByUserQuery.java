@@ -25,16 +25,12 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
         if (userId == null) {
             return null;
         }
-
+        
         List<AllLikedBookVO> foundAllBooks = getAllLikedBook(userId);
         List<String> listOfBookId = makeListOfBookId(foundAllBooks);
+        List<BookVO> bookList = makeListOfBooks(listOfBookId);
 
-        List<BookVO> books = new ArrayList<>();
-        for (int i = 0; i < listOfBookId.size(); i++) {
-            books.add(bookMybatisRepository.findBookByBookId(listOfBookId.get(i)));
-        }
-
-        return new GetLikedBooksByUserDtoResult(books);
+        return new GetLikedBooksByUserDtoResult(bookList);
     }
 
     private String getUserIdFromSession() {
@@ -51,8 +47,7 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
 
     private List<BookVO> makeListOfBooks(List<String> listOfBookId) {
         List<BookVO> books = new ArrayList<>();
-        for (String bookId : listOfBookId) {
-            books.add(bookMybatisRepository.findBookByBookId(listOfBookId.get(bookId)));
-        }
+        listOfBookId.forEach(bookId -> books.add(bookMybatisRepository.findBookByBookId(bookId)));
+        return books;
     }
 }
