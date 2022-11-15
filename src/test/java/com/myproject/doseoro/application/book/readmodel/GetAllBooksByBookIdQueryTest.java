@@ -51,9 +51,7 @@ class GetAllBooksByBookIdQueryTest {
 
         List<BookHitVO> countLikedInTheBook = new ArrayList<>();
         countLikedInTheBook.add(bookLikedList);
-
-//        FindIfBookIsLikedVo vo = new FindIfBookIsLikedVo("12312315256787", "777");
-
+        
         when(bookMybatisService.findBookByBookId("777")).thenReturn(registeredBook1);
         when(identityMybatisRepository.findUserById("12312315256787")).thenReturn(
             registeredIdentity);
