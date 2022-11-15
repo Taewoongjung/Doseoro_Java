@@ -1,9 +1,11 @@
 package com.myproject.doseoro.application.book.vo;
 
-import lombok.*;
-
 import java.util.List;
-import java.util.Objects;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @Getter
@@ -24,10 +26,12 @@ public class BookVO {
     private List<String> images;
     private String sold;
     private String about;
-    private String OwnerId;
+    private String ownerId;
     private Integer hits;
 
-    public BookVO(String id, String postMessage, String title, String price, String author, String publisher, List<String> category, List<String> state, String tradeMethod, List<String> images, String sold, String about, String ownerId, Integer hits) {
+    public BookVO(String id, String postMessage, String title, String price, String author,
+        String publisher, List<String> category, List<String> state, String tradeMethod,
+        List<String> images, String sold, String about, String ownerId, Integer hits) {
         this.id = id;
         this.postMessage = postMessage;
         this.title = title;
@@ -40,7 +44,7 @@ public class BookVO {
         this.images = images;
         this.sold = sold;
         this.about = about;
-        OwnerId = ownerId;
+        this.ownerId = ownerId;
         this.hits = hits;
     }
 }
