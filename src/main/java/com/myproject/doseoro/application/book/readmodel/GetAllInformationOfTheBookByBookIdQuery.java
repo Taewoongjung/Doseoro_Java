@@ -25,21 +25,38 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
 
     @Override
     public GetAllInformationOfTheBookByBookIdDtoResult query(
-        GetAllInformationOfTheBookByBookIdDto detailDTO) {
+        GetAllInformationOfTheBookByBookIdDto allBook) {
 
-        BookVO book = bookMybatisService.findBookByBookId(detailDTO.getBookId());
-        IdentityMyPageVO user = repository.findUserById(book.getOwnerId());
-        String userId = accessUserSessionManager.extractUser();
-
-        List<BookHitVO> countLikedInTheBook = bookMybatisService.countLike(detailDTO.getBookId());
+        BookVO book = findBookByBookId(allBook.getBookId());
+        IdentityMyPageVO user = findUserById(book.getOwnerId());
+        String userId = getUserIdFromSession();
+        List<BookHitVO> countLikedOfTheBook = getLikedCountOfTheBook(allBook.getBookId());
 
         // 이 페이지를 열어본 유저가 책에 좋아요를 눌렀는지 검사 (여부에 따라 하트 색깔 바뀜)
-        String isLikeExisted = bookMybatisService.isBookLiked(
-            new FindIfBookIsLikedVo(userId, detailDTO.getBookId())
-        );
+        String isLikeExistedInTheBookPage = isBookLiked(userId, allBook.getBookId());
 
         return new GetAllInformationOfTheBookByBookIdDtoResult(
-            book, user, countLikedInTheBook, isLikeExisted
+            book, user, countLikedOfTheBook, isLikeExistedInTheBookPage
         );
+    }
+
+    private BookVO findBookByBookId(String bookId) {
+        return bookMybatisService.findBookByBookId(bookId);
+    }
+
+    private IdentityMyPageVO findUserById(String userId) {
+        return repository.findUserById(userId);
+    }
+
+    private String getUserIdFromSession() {
+        return accessUserSessionManager.extractUser();
+    }
+
+    private List<BookHitVO> getLikedCountOfTheBook(String bookId) {
+        return bookMybatisService.countLike(bookId);
+    }
+
+    private String isBookLiked(String userId, String bookId) {
+        return bookMybatisService.isBookLiked(new FindIfBookIsLikedVo(userId, bookId));
     }
 }
