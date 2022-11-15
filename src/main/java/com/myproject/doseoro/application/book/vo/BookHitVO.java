@@ -1,13 +1,16 @@
 package com.myproject.doseoro.application.book.vo;
 
-import lombok.*;
+import java.util.UUID;
+import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @ToString
 public class BookHitVO {
-    private String id;
+
     private final String userId;
     private final String bookId;
+    private String id;
     private String isLiked;
 
     public BookHitVO(String id, String userId, String bookId, String isLiked) {
@@ -17,7 +20,8 @@ public class BookHitVO {
         this.isLiked = isLiked;
     }
 
-    public void imbueId(String id) {
-        this.id = id;
+    public void imbueId() {
+        String uuid = UUID.randomUUID().toString();
+        this.id = uuid;
     }
 }

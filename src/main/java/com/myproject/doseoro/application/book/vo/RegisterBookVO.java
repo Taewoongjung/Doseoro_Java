@@ -64,8 +64,9 @@ public class RegisterBookVO {
         this.images = images;
     }
 
-    public void imbueId(String id) {
-        this.id = id;
+    public void imbueId() {
+        String uuid = UUID.randomUUID().toString();
+        this.id = uuid;
     }
 
     public void imbueOwnerId(String ownerId) {
