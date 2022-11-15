@@ -20,7 +20,7 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
 
     @Override
     public GetLikedBooksByUserDtoResult query(Void unused) {
-        String userId = accessUserSessionManager.extractUser();
+        String userId = getUserIdFromSession();
 
         if (userId == null) {
             return null;
@@ -36,5 +36,9 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
         }
 
         return new GetLikedBooksByUserDtoResult(books);
+    }
+
+    private String getUserIdFromSession() {
+        return accessUserSessionManager.extractUser();
     }
 }
