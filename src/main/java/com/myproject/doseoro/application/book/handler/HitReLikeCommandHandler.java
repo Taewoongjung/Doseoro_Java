@@ -18,18 +18,18 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
     @Logging
     @Override
     public BookHitVO handle(BookHitVO vo) {
-        List<BookHitVO> found = repository.isLikedByUserIdAndBookId(vo);
-        if (found.isEmpty()) {
+        BookHitVO book = findBookWith(vo);
+        if (book == null) {
             return vo;
         }
         // 좋아요 요청 들어오면 유저 이력 유무 검사.
         // 해당 객체에 좋아요 누른 이력이 없었으면 객체 그대로 리턴
 
-        BookReHitDto dto = new BookReHitDto(found.get(0).getUserId(), found.get(0).getBookId(),
-            found.get(0).getIsLiked());
+        BookReHitDto dto = new BookReHitDto(book.getUserId(), book.getBookId(),
+            book.getIsLiked());
 
-        if (!found.get(0).getId().isEmpty()) { // 유저의 좋아요 이력이 있을 때
-            if (found.get(0).getIsLiked().equals("f")) {
+        if (!book.getId().isEmpty()) { // 유저의 좋아요 이력이 있을 때
+            if (book.getIsLiked().equals("f")) {
                 // 좋아요 안 눌러져 있을때
                 repository.hitReLikeWhenUnLiked(dto);
 
@@ -37,8 +37,12 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
                 // 좋아요 눌러져 있을때
                 repository.hitReLikeWhenLiked(dto);
             }
-            return found.get(0);
         }
+        return book;
+    }
+
+    private BookHitVO findBookWith(BookHitVO bookHitVO) {
+        List<BookHitVO> found = repository.isLikedByUserIdAndBookId(bookHitVO);
         return found.get(0);
     }
 }
