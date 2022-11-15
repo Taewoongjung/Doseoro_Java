@@ -2,6 +2,7 @@ package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.BookDao;
 import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
@@ -50,15 +51,15 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public void hitReLikeWhenLiked(String userId, String bookId, String isLiked) {
+    public void hitReLikeWhenLiked(BookReHitDto dto) {
         // 좋아요 눌러져 있을 때
-        dao.hitReLikeWhenLiked(userId, bookId, isLiked);
+        dao.hitReLikeWhenLiked(dto);
     }
 
     @Override
-    public void hitReLikeWhenUnLiked(String userId, String bookId, String isLiked) {
+    public void hitReLikeWhenUnLiked(BookReHitDto dto) {
         // 좋아요 안 눌러져 있을 때
-        dao.hitReLikeWhenUnLiked(userId, bookId, isLiked);
+        dao.hitReLikeWhenUnLiked(dto);
     }
 
     @Override

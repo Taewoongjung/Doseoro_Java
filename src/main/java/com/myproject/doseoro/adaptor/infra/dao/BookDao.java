@@ -1,5 +1,6 @@
 package com.myproject.doseoro.adaptor.infra.dao;
 
+import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
@@ -12,9 +13,9 @@ import org.apache.ibatis.annotations.Param;
 
 public interface BookDao {
 
-    void registerBook(@Param("vo") RegisterBookVO vo);
+    void registerBook(RegisterBookVO vo);
 
-    void registerDonationBook(@Param("vo") RegisterBookVO vo);
+    void registerDonationBook(RegisterBookVO vo);
 
     BookVO findBookByBookId(String bookId);
 
@@ -22,13 +23,11 @@ public interface BookDao {
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();
 
-    void hitLike(@Param("vo") BookHitVO vo);
+    void hitLike(BookHitVO vo);
 
-    void hitReLikeWhenUnLiked(@Param("userId") String userId, @Param("bookId") String bookId,
-        @Param("isLiked") String isLiked);
+    void hitReLikeWhenUnLiked(BookReHitDto dto);
 
-    void hitReLikeWhenLiked(@Param("userId") String userId, @Param("bookId") String bookId,
-        @Param("isLiked") String isLiked);
+    void hitReLikeWhenLiked(BookReHitDto dto);
 
     List<BookHitVO> isLikedByUserIdAndBookId(@Param("userId") String userId,
         @Param("bookId") String bookId);

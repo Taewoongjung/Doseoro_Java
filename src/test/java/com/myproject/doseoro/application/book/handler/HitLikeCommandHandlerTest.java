@@ -36,6 +36,7 @@ class HitLikeCommandHandlerTest {
         assertThat(actual).isNotNull();
         assertThat(actual.get(0).getUserId()).isEqualTo("1212");
         assertThat(actual.get(0).getBookId()).isEqualTo("2525");
+        assertThat(actual.get(0).getIsLiked()).isEqualTo("t");
     }
 
     @Test

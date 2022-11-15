@@ -20,18 +20,18 @@
      img,
      about,
      owner_id)
-    VALUES (#{vo.id},
-            #{vo.postmessage},
-            #{vo.title},
-            #{vo.price},
-            #{vo.author},
-            #{vo.publisher},
-            #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.dealRoot},
-            #{vo.images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.about},
-            #{vo.ownerId});
+    VALUES (#{id},
+            #{postmessage},
+            #{title},
+            #{price},
+            #{author},
+            #{publisher},
+            #{checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{dealRoot},
+            #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{about},
+            #{ownerId});
   </insert>
 
   <!--   무료나눔 책 등록    -->
@@ -49,17 +49,17 @@
      img,
      about,
      owner_id)
-    VALUES (#{vo.id},
-            #{vo.postmessage},
-            #{vo.title},
-            #{vo.author},
-            #{vo.publisher},
-            #{vo.checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.dealRoot},
-            #{vo.images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
-            #{vo.about},
-            #{vo.ownerId});
+    VALUES (#{id},
+            #{postmessage},
+            #{title},
+            #{author},
+            #{publisher},
+            #{checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{checkState, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{dealRoot},
+            #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{about},
+            #{ownerId});
   </insert>
 
   <!--    책의 id로 책 찾기    -->
@@ -166,9 +166,9 @@
      identity_id,
      book_id,
      is_liked)
-    VALUES (#{vo.id},
-            #{vo.userId},
-            #{vo.bookId},
+    VALUES (#{id},
+            #{userId},
+            #{bookId},
             't');
   </insert>
 
@@ -192,7 +192,7 @@
 
 
   <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 't'면 'f'로 업데이트    -->
-  <update id="hitReLikeWhenLiked" parameterType="String">
+  <update id="hitReLikeWhenLiked">
     UPDATE t_book_like
     SET is_liked = 'f'
     WHERE identity_id = #{userId}
@@ -200,7 +200,7 @@
   </update>
 
   <!--    해당 유저가 다시 좋아요 눌렀을 때 'is_liked' 가 'f'면 't'로 업데이트    -->
-  <update id="hitReLikeWhenUnLiked" parameterType="String">
+  <update id="hitReLikeWhenUnLiked">
     UPDATE t_book_like
     SET is_liked = 't'
     WHERE identity_id = #{userId}
