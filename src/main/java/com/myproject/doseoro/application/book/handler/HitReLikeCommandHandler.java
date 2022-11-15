@@ -18,7 +18,7 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
     @Logging
     @Override
     public BookHitVO handle(BookHitVO vo) {
-        List<BookHitVO> found = repository.isLikedByUserIdAndBookId(vo.getUserId(), vo.getBookId());
+        List<BookHitVO> found = repository.isLikedByUserIdAndBookId(vo);
         if (found.isEmpty()) {
             return vo;
         }

@@ -63,8 +63,8 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public List<BookHitVO> isLikedByUserIdAndBookId(String userId, String bookId) {
-        return dao.isLikedByUserIdAndBookId(userId, bookId);
+    public List<BookHitVO> isLikedByUserIdAndBookId(BookHitVO vo) {
+        return dao.isLikedByUserIdAndBookId(vo);
     }
 
     @Override

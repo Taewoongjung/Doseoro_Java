@@ -29,8 +29,7 @@ public interface BookDao {
 
     void hitReLikeWhenLiked(BookReHitDto dto);
 
-    List<BookHitVO> isLikedByUserIdAndBookId(@Param("userId") String userId,
-        @Param("bookId") String bookId);
+    List<BookHitVO> isLikedByUserIdAndBookId(BookHitVO vo);
 
     List<BookHitVO> countLike(String bookId);
 

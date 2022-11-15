@@ -28,7 +28,7 @@ public interface BookRepository {
 
     public void hitReLikeWhenUnLiked(BookReHitDto dto);
 
-    public List<BookHitVO> isLikedByUserIdAndBookId(String userId, String bookId);
+    public List<BookHitVO> isLikedByUserIdAndBookId(BookHitVO vo);
 
     public List<BookHitVO> countLike(String bookId);
 
