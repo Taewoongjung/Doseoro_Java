@@ -221,7 +221,8 @@
   </select>
 
   <!--    좋아요 여부    -->
-  <select id="isBookLiked" resultType="String" parameterType="String">
+  <select id="isBookLiked" resultType="String"
+    parameterType="com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo">
     SELECT identity_id,
            book_id,
            is_liked

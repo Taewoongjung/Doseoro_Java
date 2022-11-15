@@ -1,5 +1,8 @@
 package com.myproject.doseoro.application.book.readmodel;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
 import com.myproject.doseoro.application.abstraction.BookRepository;
 import com.myproject.doseoro.application.abstraction.IdentityRepository;
@@ -7,22 +10,19 @@ import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBo
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
+import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.book.BookHitVOFixture;
 import com.myproject.doseoro.book.BookVOFixture;
 import com.myproject.doseoro.identity.IdentityMyPageVOFixture;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetAllBooksByBookIdQueryTest {
@@ -52,13 +52,20 @@ class GetAllBooksByBookIdQueryTest {
         List<BookHitVO> countLikedInTheBook = new ArrayList<>();
         countLikedInTheBook.add(bookLikedList);
 
+//        FindIfBookIsLikedVo vo = new FindIfBookIsLikedVo("12312315256787", "777");
+
         when(bookMybatisService.findBookByBookId("777")).thenReturn(registeredBook1);
-        when(identityMybatisRepository.findUserById("12312315256787")).thenReturn(registeredIdentity);
+        when(identityMybatisRepository.findUserById("12312315256787")).thenReturn(
+            registeredIdentity);
         when(accessUserSessionManager.extractUser()).thenReturn("12312315256787");
         when(bookMybatisService.countLike("777")).thenReturn(countLikedInTheBook);
-        when(bookMybatisService.isBookLiked("12312315256787", "777")).thenReturn("true");
 
-        GetAllInformationOfTheBookByBookIdDtoResult actual = getAllInformationOfTheBookByBookIdQuery.query(new GetAllInformationOfTheBookByBookIdDto("777"));
+        when(bookMybatisService.isBookLiked(
+            new FindIfBookIsLikedVo("12312315256787", "777"))
+        ).thenReturn("true");
+
+        GetAllInformationOfTheBookByBookIdDtoResult actual = getAllInformationOfTheBookByBookIdQuery.query(
+            new GetAllInformationOfTheBookByBookIdDto("777"));
 
         assertThat(actual).isNotNull();
         assertThat(actual.getBook().getId()).isEqualTo("777");
