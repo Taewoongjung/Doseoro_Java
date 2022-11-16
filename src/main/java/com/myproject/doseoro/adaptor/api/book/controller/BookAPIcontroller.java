@@ -101,7 +101,6 @@ public class BookAPIcontroller {
     @Logging
     @PostMapping(value = "/like")
     public String hitLike(BookHitVO vo) {
-
         BookHitVO alreadyLiked = hitReLikeCommandHandler.handle(vo);
         if (alreadyLiked.getId() != null || vo.getId() != null) {
             return "redirect:/" + vo.getBookId();

@@ -47,6 +47,11 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
+    public List<FindAllBooksVO> findAllBooksForDonationBoard() {
+        return dao.findAllBooksForDonationBoard();
+    }
+
+    @Override
     public void hitLike(BookHitVO vo) {
         dao.hitLike(vo);
     }

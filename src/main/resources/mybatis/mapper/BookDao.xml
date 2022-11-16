@@ -48,7 +48,8 @@
      trade_method,
      img,
      about,
-     owner_id)
+     owner_id,
+     donation)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -59,7 +60,8 @@
             #{dealRoot},
             #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
             #{about},
-            #{ownerId});
+            #{ownerId},
+            1);
   </insert>
 
   <!--    책의 id로 책 찾기    -->
@@ -157,6 +159,24 @@
            owner_id
     FROM t_book
     WHERE sold != 1 AND price != "null"
+  </select>
+
+  <!--    무료나눔 책 가져오기    -->
+  <select id="findAllBooksForDonationBoard" resultMap="FindAllBooksVO">
+    SELECT id,
+           post_message,
+           title,
+           author,
+           publisher,
+           category,
+           state,
+           trade_method,
+           img,
+           sold,
+           about,
+           owner_id
+    FROM t_book
+    WHERE sold != 1 AND donation = 1
   </select>
 
   <!--    좋아요 누르기    -->

@@ -125,9 +125,6 @@
                                 <form id="book_like-form">
                                     <div class="saleCheck border-0 p-2 d-flex"
                                          style="border-radius: 10px">
-                                        <!-- 책 올린 사람 찾기 위함 -->
-                                        <input type="hidden" name="createdat"
-                                               value="{{book.createdAt}}">
                                         <!-- OwnerId -->
                                         <input type="hidden" name="userId"
                                                value="${sessionScope.ACCESS_USER}">
@@ -151,7 +148,6 @@
                                              style="border-radius: 10px">
                                             <a class="h5 text-decoration-none fw-bold">+ ${countLike}</a>
                                         </div>
-                                        <%--                                            {% endif %}--%>
                                     </div>
                                 </form>
                             </div>

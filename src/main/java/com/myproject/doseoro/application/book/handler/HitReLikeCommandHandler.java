@@ -43,6 +43,9 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
 
     private BookHitVO findBookWith(BookHitVO bookHitVO) {
         List<BookHitVO> found = repository.isLikedByUserIdAndBookId(bookHitVO);
+        if (found.isEmpty()) {
+            return null;
+        }
         return found.get(0);
     }
 }

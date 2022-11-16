@@ -1,18 +1,31 @@
 package com.myproject.doseoro.application.book.vo;
 
 import java.util.List;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
+@ToString
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor
 public class HomeDisplayedBookVO {
 
-    private final String id;
-    private final String title;
-    private final String about;
-    private final String price;
-    private final List<String> images;
+    private String id;
+    private String title;
+    private String about;
+    private String price;
+    private List<String> images;
+
+    public HomeDisplayedBookVO(String id, String title, String about, String price,
+        List<String> images) {
+        this.id = id;
+        this.title = title;
+        this.about = about;
+        this.price = price;
+        this.images = images;
+    }
 }

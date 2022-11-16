@@ -41,18 +41,17 @@
             </form>
 
             <div class="d-flex justify-content-center flex-wrap mt-5">
-                {% for book in free_books %}
-                <div class="saleCard card m-sm-5 mt-4 m-2"
-                     style="min-width: 210px; max-width: 210px;"
-                     onclick="location.href='/book/{{book.id}}'">
-                    <img src="/img/{{book.img[0]}}" class="card-img-top" width="100%"
-                         height="280px">
-                    <div class="card-body text-center">
-                        <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
-                        <p class="postTitle card-title fw-bold mb-3">{{book.usernick}}</p>
+                <c:forEach var="book" items="${books}">
+                    <div class="saleCard card m-sm-5 mt-4 m-2"
+                         style="min-width: 210px; max-width: 210px;"
+                         onclick="location.href='${book.id}'">
+                        <img src="uploads/imgs${book.images[0]}" class="card-img-top" width="100%"
+                             height="280px">
+                        <div class="card-body text-center">
+                            <p class="postTitle card-title fw-bold mb-3">${book.postMessage}</p>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                </c:forEach>
             </div>
 
             <!-- 페이징 -->

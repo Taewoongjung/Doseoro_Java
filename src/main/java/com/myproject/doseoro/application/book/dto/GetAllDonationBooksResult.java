@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class GetAllSaleBooksResult {
+public class GetAllDonationBooksResult {
 
     private final List<FindAllBooksVO> bookList;
 }
