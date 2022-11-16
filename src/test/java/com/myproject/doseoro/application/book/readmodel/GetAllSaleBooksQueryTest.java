@@ -1,6 +1,6 @@
 package com.myproject.doseoro.application.book.readmodel;
 
-import com.myproject.doseoro.application.abstraction.BookRepository;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.book.FindAllBooksVOFixture;

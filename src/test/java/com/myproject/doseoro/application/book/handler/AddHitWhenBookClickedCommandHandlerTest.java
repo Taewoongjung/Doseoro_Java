@@ -1,19 +1,19 @@
 package com.myproject.doseoro.application.book.handler;
 
-import com.myproject.doseoro.application.abstraction.BookRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.application.identity.handler.CreateUserIdentityCommandHandler;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
 import com.myproject.doseoro.book.RegisterBookVOFixture;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
 import com.myproject.doseoro.identity.SignUpVOFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class AddHitWhenBookClickedCommandHandlerTest {
