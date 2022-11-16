@@ -101,11 +101,11 @@
         <!-- 판매리스트 -->
         <div class="saleList pt-5 mt-5 border-top">
             <div class="d-flex align-items-center">
-                <h2 class="h3 fw-bold">최근 판매 목록</h2>
+                <h2 class="h3 fw-bold">판매</h2>
                 <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/saleBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                <c:forEach var="book" items="${books}">
+                <c:forEach var="book" items="${saleBooks}">
                     <div class="saleCard card mt-4 m-2" style="max-width: 210px;"
                          onclick="location.href='/${book.id}'">
                         <div class="saleCard card mt-4 m-2" style="max-width: 210px;">
@@ -128,17 +128,18 @@
                 <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/donationBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                {% for book in freeBooksIndex %}
-                <div class="saleCard card mt-4 m-2" style="max-width: 210px;"
-                     onclick="location.href='/book/{{book.id}}'">
-                    <img src="/img/{{book.img[0]}}" class="card-img-top" width="100%"
-                         height="280px">
-                    <div class="card-body text-center">
-                        <p class="postTitle card-title fw-bold mb-3">{{book.postmessage}}</p>
-                        <a>{{book.usernick}}</a>
+                <c:forEach var="donationBooks" items="${donationBooks}">
+                    <div class="saleCard card mt-4 m-2" style="max-width: 210px;"
+                         onclick="location.href='${donationBooks.id}'">
+                        <img src="uploads/imgs${donationBooks.images[0]}" class="card-img-top"
+                             width="100%"
+                             height="280px">
+                        <div class="card-body text-center">
+                            <p class="postTitle card-title fw-bold mb-3">${donationBooks.title}</p>
+                            <a>${donationBooks.postMessage}</a>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                </c:forEach>
             </div>
         </div>
 

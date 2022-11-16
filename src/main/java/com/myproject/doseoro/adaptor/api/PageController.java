@@ -1,9 +1,11 @@
 package com.myproject.doseoro.adaptor.api;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
+import com.myproject.doseoro.application.book.dto.GetAllDonationBooksResult;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.readmodel.GetAllDonationBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
@@ -23,7 +25,8 @@ public class PageController {
     private final GetUserInformationQuery myPageQuery;
     private final GetAllSaleBooksQuery saleBoardQuery;
     private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
-
+    private final GetAllSaleBooksQuery getAllSaleBooksQuery;
+    private final GetAllDonationBooksQuery getAllDonationBooksQuery;
 
     Void voId = null;
 
@@ -33,9 +36,16 @@ public class PageController {
         // 홈화면에서 최근 판매목록 5개 가져오기
 
         Void unused = null;
-        List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
+        List<HomeDisplayedBookVO> recentlyRegisteredBooks
+            = findHomeDisplayingBooksCommandHandler.handle(unused);
+        GetAllSaleBooksResult allSaleBooks = getAllSaleBooksQuery.query(unused);
+        System.out.println("@@@ = " + allSaleBooks);
+        GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
+        System.out.println("@@@ = " + allDonationBooks);
 
-        model.addAttribute("books", list);
+        model.addAttribute("recentlyRegisteredBooks", recentlyRegisteredBooks);
+        model.addAttribute("saleBooks", allSaleBooks.getBookList());
+        model.addAttribute("donationBooks", allDonationBooks.getBookList());
         return "home";
     }
 

@@ -4,27 +4,60 @@ import java.util.List;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @Getter
+@ToString
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class FindAllBooksVO {
 
-    private final String id;
-    private final String postMessage;
-    private final String title;
-    private final String price;
-    private final String author;
-    private final String publisher;
-    private final List<String> category;
-    private final List<String> state;
-    private final String tradeMethod;
-    private final List<String> images;
-    private final String likeCount;
-    private final String sold;
-    private final String about;
-    private final String OwnerId;
-    
+    private String id;
+    private String postMessage;
+    private String title;
+    private String price;
+    private String author;
+    private String publisher;
+    private List<String> category;
+    private List<String> state;
+    private String tradeMethod;
+    private List<String> images;
+    private String likeCount;
+    private String sold;
+    private String about;
+    private String ownerId;
+
+    public FindAllBooksVO(
+        final String id,
+        final String postMessage,
+        final String title,
+        final String price,
+        final String author,
+        final String publisher,
+        final List<String> category,
+        final List<String> state,
+        final String tradeMethod,
+        final List<String> images,
+        final String likeCount,
+        final String sold,
+        final String about,
+        final String ownerId
+    ) {
+        this.id = id;
+        this.postMessage = postMessage;
+        this.title = title;
+        this.price = price;
+        this.author = author;
+        this.publisher = publisher;
+        this.category = category;
+        this.state = state;
+        this.tradeMethod = tradeMethod;
+        this.images = images;
+        this.likeCount = likeCount;
+        this.sold = sold;
+        this.about = about;
+        this.ownerId = ownerId;
+    }
 }

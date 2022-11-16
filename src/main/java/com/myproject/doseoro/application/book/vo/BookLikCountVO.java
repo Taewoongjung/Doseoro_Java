@@ -2,17 +2,29 @@ package com.myproject.doseoro.application.book.vo;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Builder
 @Getter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class BookLikCountVO {
 
-    private final String id;
-    private final String userId;
-    private final String bookId;
-    private final String isLiked;
+    private String id;
+    private String userId;
+    private String bookId;
+    private String isLiked;
+
+    public BookLikCountVO(
+        final String id,
+        final String userId,
+        final String bookId,
+        final String isLiked
+    ) {
+        this.id = id;
+        this.userId = userId;
+        this.bookId = bookId;
+        this.isLiked = isLiked;
+    }
 }

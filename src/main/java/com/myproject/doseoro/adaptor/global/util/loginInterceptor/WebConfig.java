@@ -11,10 +11,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
         registry.addInterceptor(new LoginCheckInterceptor())
-                .order(1)
-                .addPathPatterns("/registerBook")
-                .addPathPatterns("/like")
-                .excludePathPatterns(
-                        "/", "/members/add", "/login", "/logout", "/css/**", "/*.ico", "/error");
+            .order(1)
+            .addPathPatterns("/registerBook")
+            .addPathPatterns("/registerDonationBook")
+            .addPathPatterns("/like")
+            .excludePathPatterns(
+                "/", "/members/add", "/login", "/logout", "/css/**", "/*.ico", "/error");
     }
 }

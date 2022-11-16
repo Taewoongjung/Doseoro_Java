@@ -7,6 +7,7 @@ import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
 import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,8 +31,20 @@ public class RegisterBookCommandHandler implements CommandHandler<RegisterBookVO
     }
 
     private String getOwnerId(String ownerEmail) {
-
-        AccessUserVO user = identityRepository.findUserByEmail(ownerEmail);
+        String IfThereChunkAtTheLastOfLetter = checkLastLetterOfOwnerEmail(ownerEmail);
+        AccessUserVO user = identityRepository.findUserByEmail(IfThereChunkAtTheLastOfLetter);
         return user.getUserId();
+    }
+
+    private String checkLastLetterOfOwnerEmail(String ownerEmail) {
+        boolean flag = ownerEmail.endsWith("/");
+        if (flag) {
+            return removeLastLetterAfterChecking(ownerEmail);
+        }
+        return ownerEmail;
+    }
+
+    private String removeLastLetterAfterChecking(String ownerEmail) {
+        return StringUtils.chop(ownerEmail);
     }
 }
