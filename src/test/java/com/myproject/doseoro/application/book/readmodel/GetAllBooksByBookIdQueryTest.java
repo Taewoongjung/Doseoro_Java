@@ -4,8 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.application.abstraction.BookRepository;
-import com.myproject.doseoro.application.abstraction.IdentityRepository;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
@@ -14,6 +12,8 @@ import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.book.BookHitVOFixture;
 import com.myproject.doseoro.book.BookVOFixture;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
+import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import com.myproject.doseoro.identity.IdentityMyPageVOFixture;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ class GetAllBooksByBookIdQueryTest {
 
         List<BookHitVO> countLikedInTheBook = new ArrayList<>();
         countLikedInTheBook.add(bookLikedList);
-        
+
         when(bookMybatisService.findBookByBookId("777")).thenReturn(registeredBook1);
         when(identityMybatisRepository.findUserById("12312315256787")).thenReturn(
             registeredIdentity);

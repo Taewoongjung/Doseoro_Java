@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.abstraction;
+package com.myproject.doseoro.application.contract.abstraction;
 
 public interface CommandHandler<T, R> {
 

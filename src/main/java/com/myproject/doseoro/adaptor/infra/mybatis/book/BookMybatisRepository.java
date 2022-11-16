@@ -1,7 +1,6 @@
 package com.myproject.doseoro.adaptor.infra.mybatis.book;
 
 import com.myproject.doseoro.adaptor.infra.dao.BookDao;
-import com.myproject.doseoro.application.abstraction.BookRepository;
 import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
@@ -11,6 +10,7 @@ import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

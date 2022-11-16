@@ -1,4 +1,4 @@
-package com.myproject.doseoro.application.abstraction;
+package com.myproject.doseoro.domain.book.repository;
 
 import com.myproject.doseoro.application.book.dto.BookReHitDto;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;

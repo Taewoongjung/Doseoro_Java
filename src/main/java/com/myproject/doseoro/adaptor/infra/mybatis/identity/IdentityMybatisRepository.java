@@ -5,12 +5,12 @@ import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.PAS
 
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.infra.dao.IdentityDao;
-import com.myproject.doseoro.application.abstraction.IdentityRepository;
 import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.application.identity.vo.IdentityVO;
 import com.myproject.doseoro.application.identity.vo.LogInVO;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;

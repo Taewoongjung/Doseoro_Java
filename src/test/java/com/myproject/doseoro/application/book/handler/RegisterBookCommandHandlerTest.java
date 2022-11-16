@@ -3,11 +3,11 @@ package com.myproject.doseoro.application.book.handler;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.myproject.doseoro.application.abstraction.BookRepository;
-import com.myproject.doseoro.application.abstraction.IdentityRepository;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.application.identity.vo.AccessUserVO;
 import com.myproject.doseoro.book.RegisterBookVOFixture;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
+import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

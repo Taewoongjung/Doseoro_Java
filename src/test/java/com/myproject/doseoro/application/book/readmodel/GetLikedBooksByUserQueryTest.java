@@ -1,23 +1,22 @@
 package com.myproject.doseoro.application.book.readmodel;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.application.abstraction.BookRepository;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.book.BookVOFixture;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetLikedBooksByUserQueryTest {

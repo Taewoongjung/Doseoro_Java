@@ -1,11 +1,11 @@
 package com.myproject.doseoro.application.book.readmodel;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
-import com.myproject.doseoro.application.abstraction.BookRepository;
-import com.myproject.doseoro.application.abstraction.CommandQuery;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
+import com.myproject.doseoro.application.contract.abstraction.CommandQuery;
+import com.myproject.doseoro.domain.book.repository.BookRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

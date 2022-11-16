@@ -4,9 +4,9 @@ import static com.myproject.doseoro.adaptor.global.error.exception.ErrorCode.EMA
 
 import com.myproject.doseoro.adaptor.global.error.exception.BusinessException;
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.abstraction.CommandHandler;
-import com.myproject.doseoro.application.abstraction.IdentityRepository;
+import com.myproject.doseoro.application.contract.abstraction.CommandHandler;
 import com.myproject.doseoro.application.identity.vo.SignUpVO;
+import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class CreateUserIdentityCommandHandler implements CommandHandler<SignUpVO
         String hashedPassword = encoder.encode(vo.getPassword());
         vo.imbueUserPassword(hashedPassword);
         repository.signUp(vo);
-        
+
         return null;
     }
 }
