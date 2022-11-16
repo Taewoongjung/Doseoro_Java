@@ -1,11 +1,11 @@
 server:
-  port: 1000
+  port: 8080
 
 mybatis:
   configuration:
     return-instance-for-empty-row: true
     call-setters-on-nulls: true
-    
+
 spring:
   profiles:
     active: local
