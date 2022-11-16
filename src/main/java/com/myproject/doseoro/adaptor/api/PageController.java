@@ -24,6 +24,7 @@ public class PageController {
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final GetUserInformationQuery myPageQuery;
     private final GetAllSaleBooksQuery saleBoardQuery;
+    private final GetAllDonationBooksQuery donationBooksQuery;
     private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
     private final GetAllSaleBooksQuery getAllSaleBooksQuery;
     private final GetAllDonationBooksQuery getAllDonationBooksQuery;
@@ -97,7 +98,7 @@ public class PageController {
     @RequestMapping(value = "/donationBoard")
     public String donationBoard(Model model) {
 
-        GetAllSaleBooksResult bookList = saleBoardQuery.query(voId);
+        GetAllDonationBooksResult bookList = donationBooksQuery.query(voId);
         model.addAttribute("books", bookList.getBookList());
 
         return "donationBoard";
