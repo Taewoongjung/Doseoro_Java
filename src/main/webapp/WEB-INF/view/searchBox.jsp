@@ -26,7 +26,7 @@
     </div>
     <div class="menuBtn">
         <button type="button" class="btn fw-bold"
-                onclick="location.href='/pages/bookRequest'">삽니다
+                onclick="location.href='/buyingBoard'">삽니다
         </button>
     </div>
     <div class="menuBtn">

@@ -104,6 +104,15 @@ public class PageController {
         return "donationBoard";
     }
 
+    @Logging
+    @RequestMapping(value = "/buyingBoard")
+    public String buyingBoard(Model model) {
+
+        GetAllDonationBooksResult bookList = donationBooksQuery.query(voId);
+        model.addAttribute("books", bookList.getBookList());
+
+        return "buyingBoard";
+    }
 
     @Logging
     @RequestMapping(value = "/registerBook")
@@ -117,5 +126,12 @@ public class PageController {
     public String registerDonationBook() {
 
         return "registerDonation";
+    }
+
+    @Logging
+    @RequestMapping(value = "/registerBuyingBook")
+    public String registerBuyingBook() {
+
+        return "registerBuying";
     }
 }

@@ -147,7 +147,7 @@
         <div class="saleList pt-5 mt-5 border-top">
             <div class="d-flex align-items-center">
                 <h2 class="h3 fw-bold">구매희망</h2>
-                <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/pages/bookRequest">더보기</a>
+                <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/buyingBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
                 {% for book in wannabuyBooksIndex %}
