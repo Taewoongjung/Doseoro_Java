@@ -36,7 +36,7 @@
 
         <div class="saleList pt-5 mt-5 border-top">
             <h1 class="h2 fw-bold mb-4">삽니다</h1>
-            <form id="book-form" class="mb-5"><a href="/pages/registRequest"
+            <form id="book-form" class="mb-5"><a href="/registerBuyingBook"
                                                  class="addBook text-decoration-none btn-primary p-2">요청
                 등록</a></form>
 

@@ -127,4 +127,11 @@ public class PageController {
 
         return "registerDonation";
     }
+
+    @Logging
+    @RequestMapping(value = "/registerBuyingBook")
+    public String registerBuyingBook() {
+
+        return "registerBuying";
+    }
 }
