@@ -1,0 +1,1 @@
+ALTER TABLE `t_book` ADD COLUMN `donation` VARCHAR(1) AFTER `hits`;
