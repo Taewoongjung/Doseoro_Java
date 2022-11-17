@@ -27,6 +27,8 @@ public interface BookDao {
 
     List<FindAllBooksVO> findAllBooksForDonationBoard();
 
+    public List<FindAllBooksVO> findAllBooksForBuyingBoard();
+
     void hitLike(BookHitVO vo);
 
     void hitReLikeWhenUnLiked(BookReHitDto dto);
