@@ -1,6 +1,7 @@
 package com.myproject.doseoro.application.book.readmodel;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.vo.AllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
@@ -18,7 +19,8 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
 
     private final BookRepository bookMybatisRepository;
     private final AccessUserSessionManager accessUserSessionManager;
-    
+
+    @Logging
     @Override
     public GetLikedBooksByUserDtoResult query(Void unused) {
         String userId = getUserIdFromSession();

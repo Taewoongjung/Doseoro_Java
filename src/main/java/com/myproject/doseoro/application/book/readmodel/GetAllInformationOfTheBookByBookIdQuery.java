@@ -1,6 +1,7 @@
 package com.myproject.doseoro.application.book.readmodel;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
@@ -23,6 +24,7 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
     private final IdentityRepository repository;
     private final AccessUserSessionManager accessUserSessionManager;
 
+    @Logging
     @Override
     public GetAllInformationOfTheBookByBookIdDtoResult query(
         GetAllInformationOfTheBookByBookIdDto allBook) {

@@ -1,6 +1,7 @@
 package com.myproject.doseoro.application.identity.readmodel;
 
 import com.myproject.doseoro.adaptor.global.util.session.AccessUserSessionManager;
+import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.contract.abstraction.CommandQuery;
 import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
 import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
@@ -15,6 +16,7 @@ public class GetUserInformationQuery implements CommandQuery<Void, GetUserInform
     private final AccessUserSessionManager accessUserSessionManager;
     private final IdentityRepository identityRepository;
 
+    @Logging
     @Override
     public GetUserInformationDtoResult query(Void unused) {
         String userId = accessUserSessionManager.extractUser();
