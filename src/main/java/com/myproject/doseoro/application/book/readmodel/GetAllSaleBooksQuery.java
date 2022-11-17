@@ -1,5 +1,6 @@
 package com.myproject.doseoro.application.book.readmodel;
 
+import com.myproject.doseoro.adaptor.logger.Logging;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.contract.abstraction.CommandQuery;
@@ -14,6 +15,7 @@ public class GetAllSaleBooksQuery implements CommandQuery<Void, GetAllSaleBooksR
 
     private final BookRepository bookMybatisService;
 
+    @Logging
     @Override
     public GetAllSaleBooksResult query(Void unused) {
         List<FindAllBooksVO> bookList = bookMybatisService.findAllBooksForSaleBoard();
