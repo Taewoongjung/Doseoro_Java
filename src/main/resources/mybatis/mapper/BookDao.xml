@@ -19,7 +19,9 @@
      trade_method,
      img,
      about,
-     owner_id)
+     owner_id,
+     donation,
+     is_selling)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -31,7 +33,9 @@
             #{dealRoot},
             #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
             #{about},
-            #{ownerId});
+            #{ownerId},
+            0,
+            0);
   </insert>
 
   <!--   무료나눔 책 등록    -->
@@ -49,7 +53,8 @@
      img,
      about,
      owner_id,
-     donation)
+     donation,
+     is_selling)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -61,7 +66,8 @@
             #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
             #{about},
             #{ownerId},
-            1);
+            1,
+            0);
   </insert>
 
   <!--   삽니다 책 등록    -->
