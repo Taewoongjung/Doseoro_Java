@@ -225,7 +225,8 @@
            trade_method,
            sold,
            about,
-           owner_id
+           owner_id,
+           createdAt
     FROM t_book
     WHERE sold != 1 AND is_selling = 1
   </select>
