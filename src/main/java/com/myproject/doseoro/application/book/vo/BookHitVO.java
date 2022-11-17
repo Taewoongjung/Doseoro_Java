@@ -24,4 +24,18 @@ public class BookHitVO {
         String uuid = UUID.randomUUID().toString();
         this.id = uuid;
     }
+
+    public boolean checkIdExisted() {
+        if (this.id.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkIsLiked() {
+        if (this.isLiked.equals("t")) {
+            return false;
+        }
+        return true;
+    }
 }

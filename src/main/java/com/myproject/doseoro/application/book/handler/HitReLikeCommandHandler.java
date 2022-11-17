@@ -28,8 +28,8 @@ public class HitReLikeCommandHandler implements CommandHandler<BookHitVO, BookHi
         BookReHitDto dto = new BookReHitDto(book.getUserId(), book.getBookId(),
             book.getIsLiked());
 
-        if (!book.getId().isEmpty()) { // 유저의 좋아요 이력이 있을 때
-            if (book.getIsLiked().equals("f")) {
+        if (book.checkIdExisted()) { // 유저의 좋아요 이력이 있을 때
+            if (book.checkIsLiked()) {
                 // 좋아요 안 눌러져 있을때
                 repository.hitReLikeWhenUnLiked(dto);
 
