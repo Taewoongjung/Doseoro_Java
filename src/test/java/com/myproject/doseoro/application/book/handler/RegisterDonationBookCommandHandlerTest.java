@@ -31,10 +31,9 @@ class RegisterDonationBookCommandHandlerTest {
     @DisplayName("유저는 무료나눔 책을 등록할 수 있다.")
     void test() {
         // given
-        RegisterBookVO registerBook = RegisterBookVOFixture.registerBookVO();
+        RegisterBookVO registerBook = RegisterBookVOFixture.registerBookVOForDonation();
         when(identityRepository.findUserByEmail("abcdefg@naver.com"))
             .thenReturn(new AccessUserVO("1", "abcdefg@naver.com", "태웅"));
-        sut.handle(registerBook);
 
         // when
         RegisterBookVO actual = sut.handle(registerBook);
@@ -55,7 +54,6 @@ class RegisterDonationBookCommandHandlerTest {
         assertThat(actual.getSold()).isEqualTo("0");
         assertThat(actual.getAbout()).isEqualTo("좋은 책 이에요 ^^");
         assertThat(actual.getOwnerEmail()).isEqualTo("abcdefg@naver.com");
-
     }
 
 }
