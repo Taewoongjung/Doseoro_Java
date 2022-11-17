@@ -64,6 +64,34 @@
             1);
   </insert>
 
+  <!--   삽니다 책 등록    -->
+  <insert id="registerBuyingBook"
+    parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
+    INSERT INTO t_book
+    (id,
+     post_message,
+     title,
+     author,
+     publisher,
+     category,
+     trade_method,
+     about,
+     owner_id,
+     donation,
+     is_selling)
+    VALUES (#{id},
+            #{postmessage},
+            #{title},
+            #{author},
+            #{publisher},
+            #{checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{dealRoot},
+            #{about},
+            #{ownerId},
+            0,
+            1);
+  </insert>
+
   <!--    책의 id로 책 찾기    -->
   <resultMap id="BookVO" type="com.myproject.doseoro.application.book.vo.BookVO">
     <result property="id" column="id"/>

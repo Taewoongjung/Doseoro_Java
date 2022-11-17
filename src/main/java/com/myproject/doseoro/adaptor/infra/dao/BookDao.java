@@ -17,6 +17,8 @@ public interface BookDao {
 
     void registerDonationBook(RegisterBookVO vo);
 
+    void registerBuyingBook(RegisterBookVO vo);
+
     BookVO findBookByBookId(String bookId);
 
     List<HomeDisplayedBookVO> findHomeDisplayedBooks();
