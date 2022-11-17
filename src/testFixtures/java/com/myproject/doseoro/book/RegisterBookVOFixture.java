@@ -54,7 +54,7 @@ public class RegisterBookVOFixture {
             "1212131777",
             "책 팔아요 ~ ",
             "당랑의 꿈",
-            "77000",
+            null,
             "휴먼",
             "실크로드",
             checkCategory,
@@ -63,6 +63,29 @@ public class RegisterBookVOFixture {
             "직접 거래",
             "0",
             "좋은 책 이에요 ^^",
+            "19890879817",
+            "abcdefg@naver.com"
+        );
+    }
+
+    public static final RegisterBookVO registerBookVOForBuying() {
+        List<String> checkCategory = new ArrayList<>();
+        checkCategory.add("SF");
+        checkCategory.add("만화");
+
+        return new RegisterBookVO(
+            "1212131777",
+            "책 사요 ~ ",
+            "당랑의 꿈",
+            "7777777",
+            "휴먼",
+            "실크로드",
+            checkCategory,
+            null,
+            null,
+            "직접 거래",
+            "0",
+            "좋은 책 읽고싶어요 ^^",
             "19890879817",
             "abcdefg@naver.com"
         );

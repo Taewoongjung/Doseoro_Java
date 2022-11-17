@@ -18,7 +18,7 @@ public class GetLikedBooksByUserQuery implements CommandQuery<Void, GetLikedBook
 
     private final BookRepository bookMybatisRepository;
     private final AccessUserSessionManager accessUserSessionManager;
-
+    
     @Override
     public GetLikedBooksByUserDtoResult query(Void unused) {
         String userId = getUserIdFromSession();

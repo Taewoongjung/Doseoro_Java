@@ -17,6 +17,8 @@ public interface BookRepository {
 
     void registerDonationBook(RegisterBookVO vo);
 
+    void registerBuyingBook(RegisterBookVO vo);
+
     public BookVO findBookByBookId(String bookId);
 
     public List<HomeDisplayedBookVO> findHomeDisplayedBooks();

@@ -19,7 +19,9 @@
      trade_method,
      img,
      about,
-     owner_id)
+     owner_id,
+     donation,
+     is_selling)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -31,7 +33,9 @@
             #{dealRoot},
             #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
             #{about},
-            #{ownerId});
+            #{ownerId},
+            0,
+            0);
   </insert>
 
   <!--   무료나눔 책 등록    -->
@@ -49,7 +53,8 @@
      img,
      about,
      owner_id,
-     donation)
+     donation,
+     is_selling)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -61,6 +66,35 @@
             #{images, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
             #{about},
             #{ownerId},
+            1,
+            0);
+  </insert>
+
+  <!--   삽니다 책 등록    -->
+  <insert id="registerBuyingBook"
+    parameterType="com.myproject.doseoro.application.book.vo.RegisterBookVO">
+    INSERT INTO t_book
+    (id,
+     post_message,
+     title,
+     author,
+     publisher,
+     category,
+     trade_method,
+     about,
+     owner_id,
+     donation,
+     is_selling)
+    VALUES (#{id},
+            #{postmessage},
+            #{title},
+            #{author},
+            #{publisher},
+            #{checkCategory, typeHandler=com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler},
+            #{dealRoot},
+            #{about},
+            #{ownerId},
+            0,
             1);
   </insert>
 
@@ -120,6 +154,7 @@
            price,
            img
     FROM t_book
+    WHERE sold != 1 AND is_selling != 1
     ORDER BY createdAt
       DESC LIMIT 5
   </select>
@@ -158,7 +193,7 @@
            about,
            owner_id
     FROM t_book
-    WHERE sold != 1 AND price != "null"
+    WHERE sold != 1 AND price != "null" AND is_selling != 1
   </select>
 
   <!--    무료나눔 책 가져오기    -->

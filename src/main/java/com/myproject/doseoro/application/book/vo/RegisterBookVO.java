@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
 @Getter
+@ToString
 public class RegisterBookVO {
 
     private String id;

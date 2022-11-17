@@ -8,6 +8,7 @@ import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCom
 import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
+import com.myproject.doseoro.application.book.handler.RegisterBuyingBookCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterDonationBookCommandHandler;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
@@ -29,6 +30,7 @@ public class BookAPIcontroller {
 
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final RegisterDonationBookCommandHandler registerDonationBookCommandHandler;
+    private final RegisterBuyingBookCommandHandler registerBuyingBookCommandHandler;
     private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
@@ -63,6 +65,15 @@ public class BookAPIcontroller {
         }
 
         return "redirect:/donationBoard";
+    }
+
+    @Logging
+    @PostMapping(value = "/book/buy")
+    public String registerBuyingBook(RegisterBookVO vo) {
+
+        registerBuyingBookCommandHandler.handle(vo);
+
+        return "redirect:/buyingBoard";
     }
 
     @Logging
