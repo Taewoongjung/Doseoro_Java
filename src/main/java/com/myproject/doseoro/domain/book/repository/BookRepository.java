@@ -27,6 +27,8 @@ public interface BookRepository {
 
     public List<FindAllBooksVO> findAllBooksForDonationBoard();
 
+    public List<FindAllBooksVO> findAllBooksForBuyingBoard();
+
     public void hitLike(BookHitVO vo);
 
     public void hitReLikeWhenLiked(BookReHitDto dto);

@@ -138,4 +138,36 @@ public class FindAllBooksVOFixture {
             .ownerId("111")
             .build();
     }
+
+    public static final FindAllBooksVO firstBuyingBook() {
+        List<String> checkCategory = new ArrayList<>();
+        checkCategory.add("SF");
+        checkCategory.add("만화");
+
+        return FindAllBooksVO.builder()
+            .id("123")
+            .postMessage("책 사요 ~")
+            .title("읽으면 좋은 책")
+            .author("천재")
+            .publisher("천재 모임")
+            .category(checkCategory)
+            .ownerId("111")
+            .build();
+    }
+
+    public static final FindAllBooksVO secondBuyingBook() {
+        List<String> checkCategory = new ArrayList<>();
+        checkCategory.add("SF");
+        checkCategory.add("만화");
+
+        return FindAllBooksVO.builder()
+            .id("125")
+            .postMessage("책 사요 ~~")
+            .title("읽으면 좋은 책")
+            .author("천재 작가")
+            .publisher("천재 모임")
+            .category(checkCategory)
+            .ownerId("111")
+            .build();
+    }
 }

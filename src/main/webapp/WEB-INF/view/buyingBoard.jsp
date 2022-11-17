@@ -41,19 +41,19 @@
                 등록</a></form>
 
             <!-- 각 게시물 -->
-            {% for book in books %}
-            <div class="postingList border p-5"
-                 onclick="location.href='/wannabuy/buybook/{{book.id}}'">
-                <div class="pb-3 border-bottom">
-                    <div class="d-sm-flex justify-content-between align-items-center">
-                        <h1 class="postingTitle h3 fw-bold">{{book.postmessage}}</h1>
-                        <a>{{book.createdAt}}</a>
+            <c:forEach var="book" items="${books}">
+                <div class="postingList border p-5"
+                     onclick="location.href='/wannabuy/buybook/{{book.id}}'">
+                    <div class="pb-3 border-bottom">
+                        <div class="d-sm-flex justify-content-between align-items-center">
+                            <h1 class="postingTitle h3 fw-bold">${book.postMessage}</h1>
+                            <a>${book.createdAt}</a>
+                        </div>
+                        <p class="mt-3">{{book.usernick}}</p>
                     </div>
-                    <p class="mt-3">{{book.usernick}}</p>
+                    <p class="postingBody pt-3">${book.about}</p>
                 </div>
-                <p class="postingBody pt-3">{{book.about}}</p>
-            </div>
-            {% endfor %}
+            </c:forEach>
         </div>
 
         <!-- 페이징 -->

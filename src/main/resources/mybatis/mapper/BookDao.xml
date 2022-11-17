@@ -214,6 +214,23 @@
     WHERE sold != 1 AND donation = 1
   </select>
 
+  <!--    삽니다 책 가져오기    -->
+  <select id="findAllBooksForBuyingBoard" resultMap="FindAllBooksVO">
+    SELECT id,
+           post_message,
+           title,
+           author,
+           publisher,
+           category,
+           trade_method,
+           sold,
+           about,
+           owner_id,
+           createdAt
+    FROM t_book
+    WHERE sold != 1 AND is_selling = 1
+  </select>
+
   <!--    좋아요 누르기    -->
   <insert id="hitLike" parameterType="com.myproject.doseoro.application.book.vo.BookHitVO">
     INSERT INTO t_book_like

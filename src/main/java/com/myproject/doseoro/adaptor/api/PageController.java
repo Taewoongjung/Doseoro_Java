@@ -1,10 +1,12 @@
 package com.myproject.doseoro.adaptor.api;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
+import com.myproject.doseoro.application.book.dto.GetAllBuyingBooksResult;
 import com.myproject.doseoro.application.book.dto.GetAllDonationBooksResult;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
 import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
+import com.myproject.doseoro.application.book.readmodel.GetAllBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllDonationBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
@@ -28,6 +30,7 @@ public class PageController {
     private final GetLikedBooksByUserQuery getLikedBooksByUserQuery;
     private final GetAllSaleBooksQuery getAllSaleBooksQuery;
     private final GetAllDonationBooksQuery getAllDonationBooksQuery;
+    private final GetAllBuyingBooksQuery getAllBuyingBooksQuery;
 
     Void voId = null;
 
@@ -108,7 +111,7 @@ public class PageController {
     @RequestMapping(value = "/buyingBoard")
     public String buyingBoard(Model model) {
 
-        GetAllDonationBooksResult bookList = donationBooksQuery.query(voId);
+        GetAllBuyingBooksResult bookList = getAllBuyingBooksQuery.query(voId);
         model.addAttribute("books", bookList.getBookList());
 
         return "buyingBoard";
