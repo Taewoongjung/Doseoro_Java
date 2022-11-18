@@ -9,8 +9,10 @@ import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCom
 import com.myproject.doseoro.application.book.readmodel.GetAllBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllDonationBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
+import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
 import com.myproject.doseoro.application.identity.readmodel.GetUserInformationQuery;
 import java.util.List;
@@ -31,6 +33,8 @@ public class PageController {
     private final GetAllSaleBooksQuery getAllSaleBooksQuery;
     private final GetAllDonationBooksQuery getAllDonationBooksQuery;
     private final GetAllBuyingBooksQuery getAllBuyingBooksQuery;
+    private final GetHomeDisplayingBuyingBooksQuery getHomeDisplayingBuyingBooksQuery;
+
 
     Void voId = null;
 
@@ -40,16 +44,15 @@ public class PageController {
         // 홈화면에서 최근 판매목록 5개 가져오기
 
         Void unused = null;
-        List<HomeDisplayedBookVO> recentlyRegisteredBooks
+        List<HomeDisplayedSaleBookVO> allSaleBooks
             = findHomeDisplayingBooksCommandHandler.handle(unused);
-        GetAllSaleBooksResult allSaleBooks = getAllSaleBooksQuery.query(unused);
         GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
-        GetAllBuyingBooksResult allBuyingBooks = getAllBuyingBooksQuery.query(unused);
-
-        model.addAttribute("recentlyRegisteredBooks", recentlyRegisteredBooks);
-        model.addAttribute("saleBooks", allSaleBooks.getBookList());
+        List<HomeDisplayedBuyingBookVO> allBuyingBooks
+            = getHomeDisplayingBuyingBooksQuery.query(unused);
+        
+        model.addAttribute("saleBooks", allSaleBooks);
         model.addAttribute("donationBooks", allDonationBooks.getBookList());
-        model.addAttribute("buyingBooks", allBuyingBooks.getBookList());
+        model.addAttribute("buyingBooks", allBuyingBooks);
         return "home";
     }
 

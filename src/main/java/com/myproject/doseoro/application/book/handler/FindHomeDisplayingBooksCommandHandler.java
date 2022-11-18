@@ -1,7 +1,7 @@
 package com.myproject.doseoro.application.book.handler;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.contract.abstraction.CommandHandler;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
 import java.util.List;
@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class FindHomeDisplayingBooksCommandHandler implements
-    CommandHandler<Void, List<HomeDisplayedBookVO>> {
+    CommandHandler<Void, List<HomeDisplayedSaleBookVO>> {
 
-    private final BookRepository service;
+    private final BookRepository repository;
 
     @Logging
     @Override
-    public List<HomeDisplayedBookVO> handle(Void unused) {
-        List<HomeDisplayedBookVO> homeDisplayList = service.findHomeDisplayedBooks();
+    public List<HomeDisplayedSaleBookVO> handle(Void unused) {
+        List<HomeDisplayedSaleBookVO> homeDisplayList = repository.findHomeDisplayedSaleBooks();
 
         return homeDisplayList;
     }

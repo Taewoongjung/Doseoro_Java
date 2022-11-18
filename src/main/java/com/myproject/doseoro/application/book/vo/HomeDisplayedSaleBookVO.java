@@ -12,7 +12,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Builder
 @NoArgsConstructor
-public class HomeDisplayedBookVO {
+public class HomeDisplayedSaleBookVO {
 
     private String id;
     private String title;
@@ -20,7 +20,7 @@ public class HomeDisplayedBookVO {
     private String price;
     private List<String> images;
 
-    public HomeDisplayedBookVO(String id, String title, String about, String price,
+    public HomeDisplayedSaleBookVO(String id, String title, String about, String price,
         List<String> images) {
         this.id = id;
         this.title = title;
