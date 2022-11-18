@@ -8,9 +8,7 @@ import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.contract.abstraction.CommandQuery;
-import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
-import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
     CommandQuery<GetAllInformationOfTheBookByBookIdDto, GetAllInformationOfTheBookByBookIdDtoResult> {
 
     private final BookRepository bookMybatisService;
-    private final IdentityRepository repository;
     private final AccessUserSessionManager accessUserSessionManager;
 
     @Logging
@@ -30,7 +27,6 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
         GetAllInformationOfTheBookByBookIdDto book) {
 
         BookVO foundBook = findBookByBookId(book.getBookId());
-        IdentityMyPageVO user = findUserById(foundBook.getOwnerId());
         String userId = getUserIdFromSession();
         List<BookHitVO> countLikedOfTheBook = getLikedCountOfTheBook(book.getBookId());
 
@@ -38,16 +34,12 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
         String isLikeExistedInTheBookPage = isBookLiked(userId, book.getBookId());
 
         return new GetAllInformationOfTheBookByBookIdDtoResult(
-            foundBook, user, countLikedOfTheBook, isLikeExistedInTheBookPage
+            foundBook, countLikedOfTheBook, isLikeExistedInTheBookPage
         );
     }
 
     private BookVO findBookByBookId(String bookId) {
         return bookMybatisService.findBookByBookId(bookId);
-    }
-
-    private IdentityMyPageVO findUserById(String userId) {
-        return repository.findUserById(userId);
     }
 
     private String getUserIdFromSession() {

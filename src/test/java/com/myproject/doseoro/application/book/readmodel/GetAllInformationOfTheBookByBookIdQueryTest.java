@@ -1,6 +1,5 @@
 package com.myproject.doseoro.application.book.readmodel;
 
-import static com.myproject.doseoro.identity.IdentityMyPageVOFixture.identityMyPageVO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -11,7 +10,6 @@ import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.book.BookVOFixture;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
-import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -30,8 +28,6 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
     @Mock
     private BookRepository bookMybatisService;
     @Mock
-    private IdentityRepository repository;
-    @Mock
     private AccessUserSessionManager accessUserSessionManager;
 
     @Test
@@ -40,7 +36,6 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
         BookVO book = BookVOFixture.firstBookVO();
 
         when(bookMybatisService.findBookByBookId(book.getId())).thenReturn(book);
-        when(repository.findUserById(book.getOwnerId())).thenReturn(identityMyPageVO);
         when(accessUserSessionManager.extractUser()).thenReturn("111");
         when(bookMybatisService.isBookLiked(
             new FindIfBookIsLikedVo("111", book.getId()))).thenReturn("111");
@@ -76,19 +71,6 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
         assertThat(actual.getBook().getHits()).isEqualTo(77);
         assertThat(actual.getBook().getOwnerId()).isEqualTo("12312315256787");
 
-        assertThat(actual.getUser().getId()).isEqualTo("12312315256787");
-        assertThat(actual.getUser().getEmail()).isEqualTo("a@a.com");
-        assertThat(actual.getUser().getName()).isEqualTo("홍길동");
-        assertThat(actual.getUser().getNickName()).isEqualTo("길도이");
-        assertThat(actual.getUser().getPhone()).isEqualTo("010-2111-7777");
-        assertThat(actual.getUser().getLocation()).isEqualTo("경기도 용인시 보정동");
-        assertThat(actual.getUser().getDong()).isEqualTo("보정동");
-        assertThat(actual.getUser().getSi()).isEqualTo("용인시");
-        assertThat(actual.getUser().getDou()).isEqualTo("경기도");
-        assertThat(actual.getUser().getProvider()).isEqualTo("kakao");
-        assertThat(actual.getUser().getSnsId()).isEqualTo("12321-11");
-        assertThat(actual.getUser().getUpdatedAt()).isEqualTo("11-11-11");
-
     }
 
     @Test
@@ -97,7 +79,6 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
         BookVO book = BookVOFixture.firstBookVODonation();
 
         when(bookMybatisService.findBookByBookId(book.getId())).thenReturn(book);
-        when(repository.findUserById(book.getOwnerId())).thenReturn(identityMyPageVO);
         when(accessUserSessionManager.extractUser()).thenReturn("111");
         when(bookMybatisService.isBookLiked(
             new FindIfBookIsLikedVo("111", book.getId()))).thenReturn("111");
@@ -134,19 +115,6 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
         assertThat(actual.getBook().getOwnerId()).isEqualTo("12312315256787");
         assertThat(actual.getBook().getDonation()).isEqualTo("1");
         assertThat(actual.getBook().getIsBuying()).isEqualTo("0");
-
-        assertThat(actual.getUser().getId()).isEqualTo("12312315256787");
-        assertThat(actual.getUser().getEmail()).isEqualTo("a@a.com");
-        assertThat(actual.getUser().getName()).isEqualTo("홍길동");
-        assertThat(actual.getUser().getNickName()).isEqualTo("길도이");
-        assertThat(actual.getUser().getPhone()).isEqualTo("010-2111-7777");
-        assertThat(actual.getUser().getLocation()).isEqualTo("경기도 용인시 보정동");
-        assertThat(actual.getUser().getDong()).isEqualTo("보정동");
-        assertThat(actual.getUser().getSi()).isEqualTo("용인시");
-        assertThat(actual.getUser().getDou()).isEqualTo("경기도");
-        assertThat(actual.getUser().getProvider()).isEqualTo("kakao");
-        assertThat(actual.getUser().getSnsId()).isEqualTo("12321-11");
-        assertThat(actual.getUser().getUpdatedAt()).isEqualTo("11-11-11");
 
     }
 }

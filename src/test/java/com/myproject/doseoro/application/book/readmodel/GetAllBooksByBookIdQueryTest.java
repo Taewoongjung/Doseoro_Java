@@ -9,12 +9,9 @@ import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBo
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
-import com.myproject.doseoro.application.identity.vo.IdentityMyPageVO;
 import com.myproject.doseoro.book.BookHitVOFixture;
 import com.myproject.doseoro.book.BookVOFixture;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
-import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
-import com.myproject.doseoro.identity.IdentityMyPageVOFixture;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -28,14 +25,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class GetAllBooksByBookIdQueryTest {
 
     @InjectMocks
-    GetAllInformationOfTheBookByBookIdQuery getAllInformationOfTheBookByBookIdQuery;
+    GetAllInformationOfTheBookByBookIdQuery sut;
 
     @Mock
     private BookRepository bookMybatisService;
-
-    @Mock
-    private IdentityRepository identityMybatisRepository;
-
     @Mock
     private AccessUserSessionManager accessUserSessionManager;
 
@@ -44,17 +37,12 @@ class GetAllBooksByBookIdQueryTest {
     void test() {
 
         BookVO registeredBook1 = BookVOFixture.firstBookVO();
-
-        IdentityMyPageVO registeredIdentity = IdentityMyPageVOFixture.identityMyPageVO;
-
         BookHitVO bookLikedList = BookHitVOFixture.bookHitVO;
 
         List<BookHitVO> countLikedInTheBook = new ArrayList<>();
         countLikedInTheBook.add(bookLikedList);
 
         when(bookMybatisService.findBookByBookId("777")).thenReturn(registeredBook1);
-        when(identityMybatisRepository.findUserById("12312315256787")).thenReturn(
-            registeredIdentity);
         when(accessUserSessionManager.extractUser()).thenReturn("12312315256787");
         when(bookMybatisService.countLike("777")).thenReturn(countLikedInTheBook);
 
@@ -62,17 +50,14 @@ class GetAllBooksByBookIdQueryTest {
             new FindIfBookIsLikedVo("12312315256787", "777"))
         ).thenReturn("true");
 
-        GetAllInformationOfTheBookByBookIdDtoResult actual = getAllInformationOfTheBookByBookIdQuery.query(
+        GetAllInformationOfTheBookByBookIdDtoResult actual = sut.query(
             new GetAllInformationOfTheBookByBookIdDto("777"));
 
         assertThat(actual).isNotNull();
         assertThat(actual.getBook().getId()).isEqualTo("777");
         assertThat(actual.getBook().getTitle()).isEqualTo("정말 재미 있는 책");
         assertThat(actual.getBook().getOwnerId()).isEqualTo("12312315256787");
-
-        assertThat(actual.getUser().getId()).isEqualTo("12312315256787");
-        assertThat(actual.getUser().getEmail()).isEqualTo("a@a.com");
-        assertThat(actual.getUser().getName()).isEqualTo("홍길동");
+        assertThat(actual.getBook().getUserNickName()).isEqualTo("홍도");
 
         assertThat(actual.getCountLikedInTheBook().size()).isEqualTo(1);
         assertThat(actual.getIsLikeExisted()).isEqualTo("true");

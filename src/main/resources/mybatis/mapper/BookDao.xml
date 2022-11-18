@@ -117,9 +117,10 @@
     <result property="about" column="about"/>
     <result property="ownerId" column="owner_id"/>
     <result property="hits" column="hits"/>
+    <result property="userNickName" column="nick_name"/>
   </resultMap>
   <select id="findBookByBookId" resultMap="BookVO" parameterType="String">
-    SELECT id,
+    SELECT a.id,
            post_message,
            title,
            price,
@@ -132,9 +133,11 @@
            sold,
            about,
            owner_id,
-           hits
-    FROM t_book
-    where id = #{bookId}
+           hits,
+           b.nick_name
+    FROM t_book a
+           LEFT JOIN t_identity b ON (a.owner_id = b.id)
+    where a.id = #{bookId}
   </select>
 
   <!--    책의 id로 책 찾기 (삽니다)    -->
@@ -215,6 +218,7 @@
   <resultMap id="HomeDisplayedBuyingBookVO"
     type="com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO">
     <result property="id" column="id"/>
+    <result property="title" column="title"/>
     <result property="postMessage" column="post_message"/>
     <result property="userNickName" column="nick_name"/>
     <result property="about" column="about"/>
