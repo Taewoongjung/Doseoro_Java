@@ -65,4 +65,42 @@ public class BookVOFixture {
             .ownerId("12312315256787")
             .build();
     }
+
+    public static final BookVO firstBookVOForBuying() {
+        List<String> checkCategory = new ArrayList<>();
+        checkCategory.add("SF");
+        checkCategory.add("만화");
+
+        return BookVO.builder()
+            .id("777")
+            .postMessage("이 책 갖고 계신분 ~")
+            .title("정말 재미 있는 책")
+            .author("난 천재")
+            .publisher("출판사")
+            .category(checkCategory)
+            .tradeMethod("직거래")
+            .sold("0")
+            .about("재미있는 책 팜")
+            .ownerId("12312315256787")
+            .build();
+    }
+
+    public static final BookVO secondBookVOForBuying() {
+        List<String> checkCategory = new ArrayList<>();
+        checkCategory.add("SF");
+        checkCategory.add("만화");
+
+        return BookVO.builder()
+            .id("77777")
+            .postMessage("책 삽니다 ~")
+            .title("정말 재미 있는 책")
+            .author("난 천재")
+            .publisher("출판사")
+            .category(checkCategory)
+            .tradeMethod("직거래")
+            .sold("0")
+            .about("재미있는 책 팜")
+            .ownerId("12312315256787")
+            .build();
+    }
 }
