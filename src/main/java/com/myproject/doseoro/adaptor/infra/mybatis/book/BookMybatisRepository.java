@@ -9,6 +9,7 @@ import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedDonationBookVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
@@ -55,6 +56,11 @@ public class BookMybatisRepository implements BookRepository {
     @Override
     public List<HomeDisplayedBuyingBookVO> findHomeDisplayedBuyingBooks() {
         return dao.findHomeDisplayedBuyingBooks();
+    }
+
+    @Override
+    public List<HomeDisplayedDonationBookVO> findHomeDisplayedDonationBooks() {
+        return dao.findHomeDisplayedDonationBooks();
     }
 
     @Override

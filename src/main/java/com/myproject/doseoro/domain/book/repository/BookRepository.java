@@ -8,6 +8,7 @@ import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedDonationBookVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
@@ -27,6 +28,8 @@ public interface BookRepository {
     public List<HomeDisplayedSaleBookVO> findHomeDisplayedSaleBooks();
 
     public List<HomeDisplayedBuyingBookVO> findHomeDisplayedBuyingBooks();
+
+    public List<HomeDisplayedDonationBookVO> findHomeDisplayedDonationBooks();
 
     public List<FindAllBooksVO> findAllBooksForSaleBoard();
 

@@ -187,7 +187,26 @@
            price,
            img
     FROM t_book
-    WHERE sold != 1 AND is_buying != 1
+    WHERE sold != 1 AND is_buying != 1 AND donation != 1
+    ORDER BY createdAt
+      DESC LIMIT 5
+  </select>
+
+  <!--    홈 화면에 전시할 무료 나눔 책 5가지 조회   -->
+  <resultMap id="HomeDisplayedDonationBookVO"
+    type="com.myproject.doseoro.application.book.vo.HomeDisplayedDonationBookVO">
+    <result property="title" column="title"/>
+    <result property="about" column="about"/>
+    <result property="images" column="img"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+  </resultMap>
+  <select id="findHomeDisplayedDonationBooks" resultMap="HomeDisplayedDonationBookVO">
+    SELECT id,
+           title,
+           about,
+           img
+    FROM t_book
+    WHERE sold != 1 AND is_buying != 1 AND donation = 1
     ORDER BY createdAt
       DESC LIMIT 5
   </select>
