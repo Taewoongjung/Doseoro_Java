@@ -192,25 +192,25 @@
       DESC LIMIT 5
   </select>
 
-  <!--    홈 화면에 전시할 구매 책 5가지 조회   -->
-  <resultMap id="HomeDisplayedBookVO"
-    type="com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO">
-    <result property="title" column="title"/>
+  <!--    홈 화면에 전시할 구매 책 4가지 조회   -->
+  <resultMap id="HomeDisplayedBuyingBookVO"
+    type="com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO">
+    <result property="id" column="id"/>
+    <result property="postMessage" column="post_message"/>
+    <result property="userNickName" column="nick_name"/>
     <result property="about" column="about"/>
-    <result property="price" column="price"/>
-    <result property="images" column="img"
-      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
   </resultMap>
-  <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
-    SELECT id,
-           title,
+  <select id="findHomeDisplayedBuyingBooks" resultMap="HomeDisplayedBuyingBookVO">
+    SELECT a.id,
+           post_message,
            about,
-           price,
-           img
-    FROM t_book
-    WHERE sold != 1 AND is_buying != 1
+           nick_name
+    FROM t_book a
+           LEFT JOIN t_identity b
+                     ON (a.owner_id = b.id)
+    WHERE sold != 1 AND is_buying = 1
     ORDER BY createdAt
-      DESC LIMIT 5
+      DESC LIMIT 4
   </select>
 
   <!--    판매중인 책 모두 가져오기    -->

@@ -9,7 +9,9 @@ import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCom
 import com.myproject.doseoro.application.book.readmodel.GetAllBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllDonationBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
+import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.identity.dto.GetUserInformationDtoResult;
 import com.myproject.doseoro.application.identity.readmodel.GetUserInformationQuery;
@@ -31,6 +33,8 @@ public class PageController {
     private final GetAllSaleBooksQuery getAllSaleBooksQuery;
     private final GetAllDonationBooksQuery getAllDonationBooksQuery;
     private final GetAllBuyingBooksQuery getAllBuyingBooksQuery;
+    private final GetHomeDisplayingBuyingBooksQuery getHomeDisplayingBuyingBooksQuery;
+
 
     Void voId = null;
 
@@ -44,12 +48,13 @@ public class PageController {
             = findHomeDisplayingBooksCommandHandler.handle(unused);
         GetAllSaleBooksResult allSaleBooks = getAllSaleBooksQuery.query(unused);
         GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
-        GetAllBuyingBooksResult allBuyingBooks = getAllBuyingBooksQuery.query(unused);
+        List<HomeDisplayedBuyingBookVO> allBuyingBooks
+            = getHomeDisplayingBuyingBooksQuery.query(unused);
 
         model.addAttribute("recentlyRegisteredBooks", recentlyRegisteredBooks);
         model.addAttribute("saleBooks", allSaleBooks.getBookList());
         model.addAttribute("donationBooks", allDonationBooks.getBookList());
-        model.addAttribute("buyingBooks", allBuyingBooks.getBookList());
+        model.addAttribute("buyingBooks", allBuyingBooks);
         return "home";
     }
 

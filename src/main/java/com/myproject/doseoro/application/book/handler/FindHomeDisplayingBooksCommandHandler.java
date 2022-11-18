@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 public class FindHomeDisplayingBooksCommandHandler implements
     CommandHandler<Void, List<HomeDisplayedSaleBookVO>> {
 
-    private final BookRepository service;
+    private final BookRepository repository;
 
     @Logging
     @Override
     public List<HomeDisplayedSaleBookVO> handle(Void unused) {
-        List<HomeDisplayedSaleBookVO> homeDisplayList = service.findHomeDisplayedSaleBooks();
+        List<HomeDisplayedSaleBookVO> homeDisplayList = repository.findHomeDisplayedSaleBooks();
 
         return homeDisplayList;
     }
