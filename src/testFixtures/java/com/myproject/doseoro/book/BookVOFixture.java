@@ -134,7 +134,7 @@ public class BookVOFixture {
             .hits(77)
             .ownerId("12312315256787")
             .donation("1")
-            .isSelling("0")
+            .isBuying("0")
             .build();
     }
 }

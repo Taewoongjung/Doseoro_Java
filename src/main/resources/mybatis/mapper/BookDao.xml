@@ -21,7 +21,7 @@
      about,
      owner_id,
      donation,
-     is_selling)
+     is_buying)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -54,7 +54,7 @@
      about,
      owner_id,
      donation,
-     is_selling)
+     is_buying)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -84,7 +84,7 @@
      about,
      owner_id,
      donation,
-     is_selling)
+     is_buying)
     VALUES (#{id},
             #{postmessage},
             #{title},
@@ -187,7 +187,7 @@
            price,
            img
     FROM t_book
-    WHERE sold != 1 AND is_selling != 1
+    WHERE sold != 1 AND is_buying != 1
     ORDER BY createdAt
       DESC LIMIT 5
   </select>
@@ -226,7 +226,7 @@
            about,
            owner_id
     FROM t_book
-    WHERE sold != 1 AND price != "null" AND is_selling != 1
+    WHERE sold != 1 AND price != "null" AND is_buying != 1
   </select>
 
   <!--    무료나눔 책 가져오기    -->
@@ -284,7 +284,7 @@
     FROM t_book a
            LEFT JOIN t_identity b
                      ON (a.owner_id = b.id)
-    WHERE sold != 1 AND is_selling = 1
+    WHERE sold != 1 AND is_buying = 1
   </select>
 
   <!--    좋아요 누르기    -->

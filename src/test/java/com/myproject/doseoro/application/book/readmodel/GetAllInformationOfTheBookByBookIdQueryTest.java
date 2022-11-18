@@ -133,7 +133,7 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
         assertThat(actual.getBook().getHits()).isEqualTo(77);
         assertThat(actual.getBook().getOwnerId()).isEqualTo("12312315256787");
         assertThat(actual.getBook().getDonation()).isEqualTo("1");
-        assertThat(actual.getBook().getIsSelling()).isEqualTo("0");
+        assertThat(actual.getBook().getIsBuying()).isEqualTo("0");
 
         assertThat(actual.getUser().getId()).isEqualTo("12312315256787");
         assertThat(actual.getUser().getEmail()).isEqualTo("a@a.com");

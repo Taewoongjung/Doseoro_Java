@@ -29,7 +29,7 @@ public class BookVO {
     private String ownerId;
     private Integer hits;
     private String donation;
-    private String isSelling;
+    private String isBuying;
 
     public BookVO(
         final String id,
@@ -47,7 +47,7 @@ public class BookVO {
         final String ownerId,
         final Integer hits,
         final String donation,
-        final String isSelling
+        final String isBuying
     ) {
         this.id = id;
         this.postMessage = postMessage;
@@ -64,6 +64,6 @@ public class BookVO {
         this.ownerId = ownerId;
         this.hits = hits;
         this.donation = donation;
-        this.isSelling = isSelling;
+        this.isBuying = isBuying;
     }
 }
