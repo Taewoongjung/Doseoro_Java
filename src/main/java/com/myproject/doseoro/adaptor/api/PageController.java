@@ -43,13 +43,13 @@ public class PageController {
         List<HomeDisplayedBookVO> recentlyRegisteredBooks
             = findHomeDisplayingBooksCommandHandler.handle(unused);
         GetAllSaleBooksResult allSaleBooks = getAllSaleBooksQuery.query(unused);
-        System.out.println("@@@ = " + allSaleBooks);
         GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
-        System.out.println("@@@ = " + allDonationBooks);
+        GetAllBuyingBooksResult allBuyingBooks = getAllBuyingBooksQuery.query(unused);
 
         model.addAttribute("recentlyRegisteredBooks", recentlyRegisteredBooks);
         model.addAttribute("saleBooks", allSaleBooks.getBookList());
         model.addAttribute("donationBooks", allDonationBooks.getBookList());
+        model.addAttribute("buyingBooks", allBuyingBooks.getBookList());
         return "home";
     }
 
@@ -75,7 +75,9 @@ public class PageController {
     public String likedProduct(Model model) {
 
         GetLikedBooksByUserDtoResult books = getLikedBooksByUserQuery.query(voId);
-        model.addAttribute("books", books.getLikedBooks());
+        if (books != null) {
+            model.addAttribute("books", books.getLikedBooks());
+        }
 
         return "likedProduct";
     }
