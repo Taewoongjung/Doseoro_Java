@@ -9,7 +9,6 @@ import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
 import com.myproject.doseoro.application.contract.abstraction.CommandQuery;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
-import com.myproject.doseoro.domain.identity.repository.IdentityRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
     CommandQuery<GetAllInformationOfTheBookByBookIdDto, GetAllInformationOfTheBookByBookIdDtoResult> {
 
     private final BookRepository bookMybatisService;
-    private final IdentityRepository repository;
     private final AccessUserSessionManager accessUserSessionManager;
 
     @Logging

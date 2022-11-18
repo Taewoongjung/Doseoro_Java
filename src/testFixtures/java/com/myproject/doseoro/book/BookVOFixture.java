@@ -34,6 +34,7 @@ public class BookVOFixture {
             .about("재미있는 책 팜")
             .hits(77)
             .ownerId("12312315256787")
+            .userNickName("홍도")
             .build();
     }
 
@@ -64,6 +65,7 @@ public class BookVOFixture {
             .sold("0")
             .about("재미있는 책 팜")
             .ownerId("12312315256787")
+            .userNickName("홍도")
             .build();
     }
 

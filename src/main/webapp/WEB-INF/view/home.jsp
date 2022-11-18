@@ -135,7 +135,7 @@
                              width="100%"
                              height="280px">
                         <div class="card-body text-center">
-                            <p class="postTitle card-title fw-bold mb-3">${donationBooks.title}</p>
+                            <p class="postTitle card-title fw-bold mb-3">${donationBook.title}</p>
                             <a>${donationBook.postMessage}</a>
                         </div>
                     </div>
