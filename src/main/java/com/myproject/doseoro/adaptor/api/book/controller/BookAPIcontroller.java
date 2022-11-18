@@ -90,7 +90,7 @@ public class BookAPIcontroller {
             addHitWhenBookClickedCommandHandler.handle(bookId);
 
             model.setViewName("saleDetail");
-            model.addObject("user", result.getBook().getUserNickName());
+            model.addObject("userNickName", result.getBook().getUserNickName());
             model.addObject("title", result.getBook().getPostMessage());
             model.addObject("book", result.getBook());
             model.addObject("countLike", result.getCountLikedInTheBook().size());

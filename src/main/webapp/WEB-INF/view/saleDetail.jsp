@@ -36,7 +36,7 @@
                 </div>
                 <div class="d-lg-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center mb-2">
-                        <p class="me-2 mt-2 fw-bold">${user.nickName}</p>
+                        <p class="me-2 mt-2 fw-bold">${userNickName}</p>
                         <%--                            이거는 위치 정보. 카카오 api 붙이고 연결할 예정--%>
                         <%--                            {% if this_book_location %} --%>
                         <%--                            <p><a><img src="images/marker.png" width="20px"></a>{{this_book_location}}</p>--%>
