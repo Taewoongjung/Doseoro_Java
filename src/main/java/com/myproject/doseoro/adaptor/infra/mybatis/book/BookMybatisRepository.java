@@ -8,7 +8,7 @@ import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import com.myproject.doseoro.domain.book.repository.BookRepository;
 import java.util.List;
@@ -47,7 +47,7 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
-    public List<HomeDisplayedBookVO> findHomeDisplayedSaleBooks() {
+    public List<HomeDisplayedSaleBookVO> findHomeDisplayedSaleBooks() {
         return dao.findHomeDisplayedSaleBooks();
     }
 

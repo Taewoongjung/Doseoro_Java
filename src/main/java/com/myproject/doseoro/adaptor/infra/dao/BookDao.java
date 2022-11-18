@@ -7,7 +7,7 @@ import com.myproject.doseoro.application.book.vo.BookVO;
 import com.myproject.doseoro.application.book.vo.FindAllBooksVO;
 import com.myproject.doseoro.application.book.vo.FindAllLikedBookVO;
 import com.myproject.doseoro.application.book.vo.FindIfBookIsLikedVo;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public interface BookDao {
 
     BookVO findBuyingBookByBookId(String bookId);
 
-    List<HomeDisplayedBookVO> findHomeDisplayedSaleBooks();
+    List<HomeDisplayedSaleBookVO> findHomeDisplayedSaleBooks();
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();
 

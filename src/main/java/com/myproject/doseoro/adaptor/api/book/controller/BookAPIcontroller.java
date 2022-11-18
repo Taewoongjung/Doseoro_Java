@@ -15,7 +15,7 @@ import com.myproject.doseoro.application.book.handler.RegisterDonationBookComman
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfBuyingBookByBookIdQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
+import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -83,10 +83,10 @@ public class BookAPIcontroller {
 
     @Logging
     @GetMapping(value = "/book/find/booksForHome")
-    public List<HomeDisplayedBookVO> findBooks() {
+    public List<HomeDisplayedSaleBookVO> findBooks() {
 
         Void unused = null;
-        List<HomeDisplayedBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
+        List<HomeDisplayedSaleBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
 
         return list;
     }
