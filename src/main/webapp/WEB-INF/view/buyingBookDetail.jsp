@@ -42,18 +42,18 @@
             <div class="w-100 pb-2 mb-4 border-bottom">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h1 class="h2 text-decoration-none fw-bold" id="getPostingTitle">
-                        {{book.postmessage}}</h1>
-                    <div><p class="">조회수 : {{book.hits}}</p></div>
+                        ${book.postMessage}</h1>
+                    <div><p class="">조회수 : ${book.hits}</p></div>
                 </div>
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center mb-2">
-                        <div class="me-2 mt-2"><p class="fw-bold">{{book.usernick}}</p></div>
+                        <div class="me-2 mt-2"><p class="fw-bold">${user.nickName}</p></div>
                         <div>
-                            {% if this_book_location %}
-                            <p><img src="/img/marker.png" width="20px">{{this_book_location}}</p>
-                            {% else %}
-                            <p><a><img src="/img/marker.png" width="20px"></a>미등록</p>
-                            {% endif %}
+                            <%--                            {% if this_book_location %}--%>
+                            <%--                            <p><img src="/img/marker.png" width="20px">{{this_book_location}}</p>--%>
+                            <%--                            {% else %}--%>
+                            <%--                            <p><a><img src="/img/marker.png" width="20px"></a>미등록</p>--%>
+                            <%--                            {% endif %}--%>
                         </div>
                     </div>
                     <a class="text-decoration-none text-dark text-end" id="getPostingDate"></a>
@@ -66,11 +66,15 @@
                     <div class="d-flex mb-3 align-items-center w-100 justify-content-between">
                         <div class="saleCheck d-flex border-0 p-2 me-2 align-items-center"
                              style="border-radius: 10px">
-                            {% if book.sold == 1 %}
-                            <a class="h5 mb-0 text-decoration-none fw-bold">구매완료</a>
-                            {% else %}
-                            <a class="h5 mb-0 text-decoration-none fw-bold">구매</a>
-                            {% endif %}
+                            <c:choose>
+                                <c:when test="${book.sold == 1}">
+                                    <a class="h5 mb-0 text-decoration-none fw-bold">구매완료</a>
+                                </c:when>
+
+                                <c:when test="${book.sold == 0}">
+                                    <a class="h5 mb-0 text-decoration-none fw-bold">구매</a>
+                                </c:when>
+                            </c:choose>
                             <div class="">
                                 <form id="book_like-form">
                                     <div class="saleCheck border-0 p-2 d-flex"
@@ -132,29 +136,31 @@
                     <div class="bookTitle d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">책 제목</h4>
                         <a class="text-body text-decoration-none"
-                           id="getBookTitle">{{book.title}}</a>
+                           id="getBookTitle">${book.title}</a>
                     </div>
                     <div class="bookTitle d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">희망가격</h4>
                         <a class="text-body text-decoration-none"
-                           id="getBookPrice">{{book.price}}원</a>
+                           id="getBookPrice">${book.price}원</a>
                     </div>
                     <div class="auther d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">저자</h4>
-                        <a class="text-body text-decoration-none" id="getAuther">{{book.author}}</a>
+                        <a class="text-body text-decoration-none" id="getAuther">${book.author}</a>
                     </div>
                     <div class="publisher d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">출판사</h4>
-                        <a class="text-body text-decoration-none" id="getPublisher">{{book.publisher}}</a>
+                        <a class="text-body text-decoration-none"
+                           id="getPublisher">${book.publisher}</a>
                     </div>
                     <div class="category d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">카테고리</h4>
                         <a class="text-body text-decoration-none"
-                           id="getCategory">{{book.category}}</a>
+                           id="getCategory">${book.category}</a>
                     </div>
                     <div class="category d-flex align-items-center mt-2 mb-2">
                         <h4 class="h4 fw-bold w-50">거래방법</h4>
-                        <a class="text-body text-decoration-none" id="getAppearanceInfo">{{book.tradingmethod}}</a>
+                        <a class="text-body text-decoration-none"
+                           id="getAppearanceInfo">${book.tradeMethod}</a>
                     </div>
                 </div>
             </div>
@@ -162,7 +168,8 @@
         <!-- 게시물 내용 -->
         <div class="mt-3 border-top w-75 ms-auto me-auto mb-5 pt-4">
             <div class="mt-3"><a id="getPostingContents">{{book.tags}}</a></div>
-            <div class="mt-3"><a id="getPostingContents" style="white-space: pre-line;">{{book.about}}</a>
+            <div class="mt-3"><a id="getPostingContents"
+                                 style="white-space: pre-line;">${book.about}</a>
             </div>
         </div>
 

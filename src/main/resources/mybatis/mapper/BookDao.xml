@@ -138,8 +138,22 @@
   </select>
 
   <!--    책의 id로 책 찾기 (삽니다)    -->
-  <select id="findBuyingBookByBookId" parameterType="String"
-    resultType="com.myproject.doseoro.application.book.vo.BookVO">
+  <resultMap id="buyingBook" type="com.myproject.doseoro.application.book.vo.BookVO">
+    <result property="id" column="id"/>
+    <result property="postMessage" column="post_message"/>
+    <result property="title" column="title"/>
+    <result property="price" column="price"/>
+    <result property="author" column="author"/>
+    <result property="publisher" column="publisher"/>
+    <result property="category" column="category"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+    <result property="tradeMethod" column="trade_method"/>
+    <result property="sold" column="sold"/>
+    <result property="about" column="about"/>
+    <result property="ownerId" column="owner_id"/>
+    <result property="hits" column="hits"/>
+  </resultMap>
+  <select id="findBuyingBookByBookId" resultMap="buyingBook" parameterType="String">
     SELECT id,
            post_message,
            title,
