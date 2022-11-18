@@ -5,10 +5,10 @@ import com.myproject.doseoro.application.book.dto.GetAllBuyingBooksResult;
 import com.myproject.doseoro.application.book.dto.GetAllDonationBooksResult;
 import com.myproject.doseoro.application.book.dto.GetAllSaleBooksResult;
 import com.myproject.doseoro.application.book.dto.GetLikedBooksByUserDtoResult;
-import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.application.book.readmodel.GetAllBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllDonationBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllSaleBooksQuery;
+import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBuyingBooksQuery;
 import com.myproject.doseoro.application.book.readmodel.GetLikedBooksByUserQuery;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBuyingBookVO;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class PageController {
 
-    private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
+    private final GetHomeDisplayingBooksQuery findHomeDisplayingBooksCommandHandler;
     private final GetUserInformationQuery myPageQuery;
     private final GetAllSaleBooksQuery saleBoardQuery;
     private final GetAllDonationBooksQuery donationBooksQuery;
@@ -43,13 +43,12 @@ public class PageController {
     public String home(Model model) {
         // 홈화면에서 최근 판매목록 5개 가져오기
 
-        Void unused = null;
         List<HomeDisplayedSaleBookVO> allSaleBooks
-            = findHomeDisplayingBooksCommandHandler.handle(unused);
-        GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
+            = findHomeDisplayingBooksCommandHandler.query(voId);
+        GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(voId);
         List<HomeDisplayedBuyingBookVO> allBuyingBooks
-            = getHomeDisplayingBuyingBooksQuery.query(unused);
-        
+            = getHomeDisplayingBuyingBooksQuery.query(voId);
+
         model.addAttribute("saleBooks", allSaleBooks);
         model.addAttribute("donationBooks", allDonationBooks.getBookList());
         model.addAttribute("buyingBooks", allBuyingBooks);
