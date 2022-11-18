@@ -248,8 +248,28 @@
   </select>
 
   <!--    삽니다 책 모두 가져오기    -->
-  <select id="findAllBooksForBuyingBoard" resultMap="FindAllBooksVO">
-    SELECT id,
+  <resultMap id="FindAllBooksVO_Buying"
+    type="com.myproject.doseoro.application.book.vo.FindAllBooksVO">
+    <result property="id" column="id"/>
+    <result property="postMessage" column="post_message"/>
+    <result property="title" column="title"/>
+    <result property="price" column="price"/>
+    <result property="author" column="author"/>
+    <result property="publisher" column="publisher"/>
+    <result property="category" column="category"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+    <result property="state" column="state"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+    <result property="tradeMethod" column="trade_method"/>
+    <result property="images" column="img"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+    <result property="sold" column="sold"/>
+    <result property="about" column="about"/>
+    <result property="ownerId" column="owner_id"/>
+    <result property="userNickName" column="nick_name"/>
+  </resultMap>
+  <select id="findAllBooksForBuyingBoard" resultMap="FindAllBooksVO_Buying">
+    SELECT a.id,
            post_message,
            title,
            author,
@@ -259,8 +279,11 @@
            sold,
            about,
            owner_id,
-           createdAt
-    FROM t_book
+           createdAt,
+           nick_name
+    FROM t_book a
+           LEFT JOIN t_identity b
+                     ON (a.owner_id = b.id)
     WHERE sold != 1 AND is_selling = 1
   </select>
 

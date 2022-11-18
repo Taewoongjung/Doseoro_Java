@@ -29,6 +29,7 @@ public class FindAllBooksVO {
     private String about;
     private String ownerId;
     private String createdAt;
+    private String userNickName;
 
     public FindAllBooksVO(
         final String id,
@@ -45,7 +46,8 @@ public class FindAllBooksVO {
         final String sold,
         final String about,
         final String ownerId,
-        final String createdAt
+        final String createdAt,
+        String userNickName
     ) {
         this.id = id;
         this.postMessage = postMessage;
@@ -62,5 +64,6 @@ public class FindAllBooksVO {
         this.about = about;
         this.ownerId = ownerId;
         this.createdAt = createdAt;
+        this.userNickName = userNickName;
     }
 }
