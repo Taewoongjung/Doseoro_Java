@@ -6,7 +6,6 @@ import com.myproject.doseoro.application.book.dto.GetAllInformationOfBuyingBookB
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.handler.AddHitWhenBookClickedCommandHandler;
-import com.myproject.doseoro.application.book.handler.FindHomeDisplayingBooksCommandHandler;
 import com.myproject.doseoro.application.book.handler.HitLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
@@ -14,8 +13,8 @@ import com.myproject.doseoro.application.book.handler.RegisterBuyingBookCommandH
 import com.myproject.doseoro.application.book.handler.RegisterDonationBookCommandHandler;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfBuyingBookByBookIdQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
+import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBooksQuery;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
-import com.myproject.doseoro.application.book.vo.HomeDisplayedSaleBookVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +33,7 @@ public class BookAPIcontroller {
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final RegisterDonationBookCommandHandler registerDonationBookCommandHandler;
     private final RegisterBuyingBookCommandHandler registerBuyingBookCommandHandler;
-    private final FindHomeDisplayingBooksCommandHandler findHomeDisplayingBooksCommandHandler;
+    private final GetHomeDisplayingBooksQuery findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
     private final GetAllInformationOfTheBookByBookIdQuery bookDetailPageQuery;
@@ -79,16 +78,6 @@ public class BookAPIcontroller {
         registerBuyingBookCommandHandler.handle(vo);
 
         return "redirect:/buyingBoard";
-    }
-
-    @Logging
-    @GetMapping(value = "/book/find/booksForHome")
-    public List<HomeDisplayedSaleBookVO> findBooks() {
-
-        Void unused = null;
-        List<HomeDisplayedSaleBookVO> list = findHomeDisplayingBooksCommandHandler.handle(unused);
-
-        return list;
     }
 
     @Logging
