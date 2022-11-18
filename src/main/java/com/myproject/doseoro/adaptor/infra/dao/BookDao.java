@@ -21,6 +21,8 @@ public interface BookDao {
 
     BookVO findBookByBookId(String bookId);
 
+    BookVO findBuyingBookByBookId(String bookId);
+
     List<HomeDisplayedBookVO> findHomeDisplayedBooks();
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();

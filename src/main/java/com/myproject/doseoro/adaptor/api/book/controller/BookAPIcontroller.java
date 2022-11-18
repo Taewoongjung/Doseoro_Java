@@ -1,6 +1,8 @@
 package com.myproject.doseoro.adaptor.api.book.controller;
 
 import com.myproject.doseoro.adaptor.logger.Logging;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfBuyingBookByBookIdDto;
+import com.myproject.doseoro.application.book.dto.GetAllInformationOfBuyingBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDto;
 import com.myproject.doseoro.application.book.dto.GetAllInformationOfTheBookByBookIdDtoResult;
 import com.myproject.doseoro.application.book.handler.AddHitWhenBookClickedCommandHandler;
@@ -10,6 +12,7 @@ import com.myproject.doseoro.application.book.handler.HitReLikeCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterBookCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterBuyingBookCommandHandler;
 import com.myproject.doseoro.application.book.handler.RegisterDonationBookCommandHandler;
+import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfBuyingBookByBookIdQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO;
@@ -35,6 +38,8 @@ public class BookAPIcontroller {
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
     private final GetAllInformationOfTheBookByBookIdQuery bookDetailPageQuery;
+
+    private final GetAllInformationOfBuyingBookByBookIdQuery buyingBookDetailPageQuery;
     private final AddHitWhenBookClickedCommandHandler addHitWhenBookClickedCommandHandler;
 
     @Logging
@@ -114,18 +119,14 @@ public class BookAPIcontroller {
     public ModelAndView buyingBookDetailPage(ModelAndView model, @PathVariable String bookId) {
 
         try {
-            GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(
-                new GetAllInformationOfTheBookByBookIdDto(bookId));
+            GetAllInformationOfBuyingBookByBookIdDtoResult result = buyingBookDetailPageQuery.query(
+                new GetAllInformationOfBuyingBookByBookIdDto(bookId));
             addHitWhenBookClickedCommandHandler.handle(bookId);
 
             model.setViewName("buyingBookDetail");
             model.addObject("user", result.getUser());
             model.addObject("title", result.getBook().getPostMessage());
             model.addObject("book", result.getBook());
-            model.addObject("countLike", result.getCountLikedInTheBook().size());
-            if (result.getIsLikeExisted() != null) {
-                model.addObject("isLiked", true);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- <title>구매 디테일</title> -->
-    <title>{{title}}</title>
+    <title>${title}</title>
 </head>
 
 <body>

@@ -42,6 +42,11 @@ public class BookMybatisRepository implements BookRepository {
     }
 
     @Override
+    public BookVO findBuyingBookByBookId(String bookId) {
+        return dao.findBuyingBookByBookId(bookId);
+    }
+
+    @Override
     public List<HomeDisplayedBookVO> findHomeDisplayedBooks() {
         return dao.findHomeDisplayedBooks();
     }
