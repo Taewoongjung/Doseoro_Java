@@ -44,15 +44,13 @@ public class PageController {
         // 홈화면에서 최근 판매목록 5개 가져오기
 
         Void unused = null;
-        List<HomeDisplayedSaleBookVO> recentlyRegisteredBooks
+        List<HomeDisplayedSaleBookVO> allSaleBooks
             = findHomeDisplayingBooksCommandHandler.handle(unused);
-        GetAllSaleBooksResult allSaleBooks = getAllSaleBooksQuery.query(unused);
         GetAllDonationBooksResult allDonationBooks = getAllDonationBooksQuery.query(unused);
         List<HomeDisplayedBuyingBookVO> allBuyingBooks
             = getHomeDisplayingBuyingBooksQuery.query(unused);
-
-        model.addAttribute("recentlyRegisteredBooks", recentlyRegisteredBooks);
-        model.addAttribute("saleBooks", allSaleBooks.getBookList());
+        
+        model.addAttribute("saleBooks", allSaleBooks);
         model.addAttribute("donationBooks", allDonationBooks.getBookList());
         model.addAttribute("buyingBooks", allBuyingBooks);
         return "home";
