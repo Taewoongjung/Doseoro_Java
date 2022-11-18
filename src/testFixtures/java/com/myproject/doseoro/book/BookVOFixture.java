@@ -80,7 +80,7 @@ public class BookVOFixture {
             .category(checkCategory)
             .tradeMethod("직거래")
             .sold("0")
-            .about("재미있는 책 팜")
+            .about("이 책 구매 원해요")
             .ownerId("12312315256787")
             .build();
     }
@@ -99,7 +99,7 @@ public class BookVOFixture {
             .category(checkCategory)
             .tradeMethod("직거래")
             .sold("0")
-            .about("재미있는 책 팜")
+            .about("사요사요")
             .ownerId("12312315256787")
             .build();
     }
