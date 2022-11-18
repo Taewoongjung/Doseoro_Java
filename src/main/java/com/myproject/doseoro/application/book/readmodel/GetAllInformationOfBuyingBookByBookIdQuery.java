@@ -22,7 +22,7 @@ public class GetAllInformationOfBuyingBookByBookIdQuery implements
     @Logging
     @Override
     public GetAllInformationOfBuyingBookByBookIdDtoResult query(
-        GetAllInformationOfBuyingBookByBookIdDto getAllInformationOfBuyingBookByBookIdDto) {
+        GetAllInformationOfBuyingBookByBookIdDto book) {
         return null;
     }
 }
