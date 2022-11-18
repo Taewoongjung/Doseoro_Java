@@ -23,7 +23,7 @@ public interface BookRepository {
 
     public BookVO findBuyingBookByBookId(String bookId);
 
-    public List<HomeDisplayedBookVO> findHomeDisplayedBooks();
+    public List<HomeDisplayedBookVO> findHomeDisplayedSaleBooks();
 
     public List<FindAllBooksVO> findAllBooksForSaleBoard();
 

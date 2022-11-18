@@ -180,6 +180,27 @@
     <result property="images" column="img"
       typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
   </resultMap>
+  <select id="findHomeDisplayedSaleBooks" resultMap="HomeDisplayedBookVO">
+    SELECT id,
+           title,
+           about,
+           price,
+           img
+    FROM t_book
+    WHERE sold != 1 AND is_buying != 1
+    ORDER BY createdAt
+      DESC LIMIT 5
+  </select>
+
+  <!--    홈 화면에 전시할 책 5가지 찾기   -->
+  <resultMap id="HomeDisplayedBookVO"
+    type="com.myproject.doseoro.application.book.vo.HomeDisplayedBookVO">
+    <result property="title" column="title"/>
+    <result property="about" column="about"/>
+    <result property="price" column="price"/>
+    <result property="images" column="img"
+      typeHandler="com.myproject.doseoro.adaptor.infra.mybatis.util.JsonTypeHandler"/>
+  </resultMap>
   <select id="findHomeDisplayedBooks" resultMap="HomeDisplayedBookVO">
     SELECT id,
            title,

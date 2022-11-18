@@ -23,7 +23,7 @@ public interface BookDao {
 
     BookVO findBuyingBookByBookId(String bookId);
 
-    List<HomeDisplayedBookVO> findHomeDisplayedBooks();
+    List<HomeDisplayedBookVO> findHomeDisplayedSaleBooks();
 
     List<FindAllBooksVO> findAllBooksForSaleBoard();
 

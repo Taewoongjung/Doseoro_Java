@@ -18,7 +18,7 @@ public class FindHomeDisplayingBooksCommandHandler implements
     @Logging
     @Override
     public List<HomeDisplayedBookVO> handle(Void unused) {
-        List<HomeDisplayedBookVO> homeDisplayList = service.findHomeDisplayedBooks();
+        List<HomeDisplayedBookVO> homeDisplayList = service.findHomeDisplayedSaleBooks();
 
         return homeDisplayList;
     }
