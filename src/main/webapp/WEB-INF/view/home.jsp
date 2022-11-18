@@ -128,15 +128,15 @@
                 <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/donationBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                <c:forEach var="donationBooks" items="${donationBooks}">
+                <c:forEach var="donationBook" items="${donationBooks}">
                     <div class="saleCard card mt-4 m-2" style="max-width: 210px;"
-                         onclick="location.href='${donationBooks.id}'">
-                        <img src="uploads/imgs${donationBooks.images[0]}" class="card-img-top"
+                         onclick="location.href='${donationBook.id}'">
+                        <img src="uploads/imgs${donationBook.images[0]}" class="card-img-top"
                              width="100%"
                              height="280px">
                         <div class="card-body text-center">
                             <p class="postTitle card-title fw-bold mb-3">${donationBooks.title}</p>
-                            <a>${donationBooks.postMessage}</a>
+                            <a>${donationBook.postMessage}</a>
                         </div>
                     </div>
                 </c:forEach>
@@ -150,17 +150,17 @@
                 <a class="ms-3 mb-2 fw-bold text-decoration-none" href="/buyingBoard">더보기</a>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                {% for book in wannabuyBooksIndex %}
-                <div class="buycard card ms-2 me-3 mb-3" style="width: 18rem;"
-                     onclick="location.href='/wannabuy/buybook/{{book.id}}'">
-                    <div class="postTitle card-header fw-bold p-3">{{book.postmessage}}</div>
-                    <div class="card-body text-secondary pt-4 pb-4">
-                        <h5 class="card-title postTitle fw-bold">{{book.usernick}}</h5>
-                        <br>
-                        <p class="card-text postMsg">{{book.about}}</p>
+                <c:forEach var="buyingBook" items="${buyingBooks}">
+                    <div class="buycard card ms-2 me-3 mb-3" style="width: 18rem;"
+                         onclick="location.href='/buy/${buyingBook.id}'">
+                        <div class="postTitle card-header fw-bold p-3">${buyingBook.postMessage}</div>
+                        <div class="card-body text-secondary pt-4 pb-4">
+                            <h5 class="card-title postTitle fw-bold">${buyingBook.userNickName}</h5>
+                            <br>
+                            <p class="card-text postMsg">${buyingBook.about}</p>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+                </c:forEach>
             </div>
         </div>
     </main>
