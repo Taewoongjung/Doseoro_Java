@@ -27,20 +27,18 @@ public class GetAllInformationOfTheBookByBookIdQuery implements
     @Logging
     @Override
     public GetAllInformationOfTheBookByBookIdDtoResult query(
-        GetAllInformationOfTheBookByBookIdDto allBook) {
+        GetAllInformationOfTheBookByBookIdDto book) {
 
-        System.out.println("@@@ = " + allBook.getBookId());
-
-        BookVO book = findBookByBookId(allBook.getBookId());
-        IdentityMyPageVO user = findUserById(book.getOwnerId());
+        BookVO foundBook = findBookByBookId(book.getBookId());
+        IdentityMyPageVO user = findUserById(foundBook.getOwnerId());
         String userId = getUserIdFromSession();
-        List<BookHitVO> countLikedOfTheBook = getLikedCountOfTheBook(allBook.getBookId());
-        System.out.println("@@# = " + countLikedOfTheBook);
+        List<BookHitVO> countLikedOfTheBook = getLikedCountOfTheBook(book.getBookId());
+
         // 이 페이지를 열어본 유저가 책에 좋아요를 눌렀는지 검사 (여부에 따라 하트 색깔 바뀜)
-        String isLikeExistedInTheBookPage = isBookLiked(userId, allBook.getBookId());
+        String isLikeExistedInTheBookPage = isBookLiked(userId, book.getBookId());
 
         return new GetAllInformationOfTheBookByBookIdDtoResult(
-            book, user, countLikedOfTheBook, isLikeExistedInTheBookPage
+            foundBook, user, countLikedOfTheBook, isLikeExistedInTheBookPage
         );
     }
 

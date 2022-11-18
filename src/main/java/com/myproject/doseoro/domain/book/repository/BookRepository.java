@@ -21,6 +21,8 @@ public interface BookRepository {
 
     public BookVO findBookByBookId(String bookId);
 
+    public BookVO findBuyingBookByBookId(String bookId);
+
     public List<HomeDisplayedBookVO> findHomeDisplayedBooks();
 
     public List<FindAllBooksVO> findAllBooksForSaleBoard();
