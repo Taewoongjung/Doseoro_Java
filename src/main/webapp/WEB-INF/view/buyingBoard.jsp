@@ -49,7 +49,7 @@
                             <h1 class="postingTitle h3 fw-bold">${book.postMessage}</h1>
                             <a>${book.createdAt}</a>
                         </div>
-                        <p class="mt-3">${user.nickName}</p>
+                        <p class="mt-3">${book.userNickName}</p>
                     </div>
                     <p class="postingBody pt-3">${book.about}</p>
                 </div>
