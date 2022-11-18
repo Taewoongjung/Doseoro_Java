@@ -110,6 +110,29 @@ public class BookAPIcontroller {
     }
 
     @Logging
+    @GetMapping(value = "/buy/{bookId}")
+    public ModelAndView buyingBookDetailPage(ModelAndView model, @PathVariable String bookId) {
+
+        try {
+            GetAllInformationOfTheBookByBookIdDtoResult result = bookDetailPageQuery.query(
+                new GetAllInformationOfTheBookByBookIdDto(bookId));
+            addHitWhenBookClickedCommandHandler.handle(bookId);
+
+            model.setViewName("buyingBookDetail");
+            model.addObject("user", result.getUser());
+            model.addObject("title", result.getBook().getPostMessage());
+            model.addObject("book", result.getBook());
+            model.addObject("countLike", result.getCountLikedInTheBook().size());
+            if (result.getIsLikeExisted() != null) {
+                model.addObject("isLiked", true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return model;
+    }
+
+    @Logging
     @PostMapping(value = "/like")
     public String hitLike(BookHitVO vo) {
         BookHitVO alreadyLiked = hitReLikeCommandHandler.handle(vo);
