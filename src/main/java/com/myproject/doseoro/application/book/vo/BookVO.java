@@ -28,10 +28,27 @@ public class BookVO {
     private String about;
     private String ownerId;
     private Integer hits;
+    private String donation;
+    private String isSelling;
 
-    public BookVO(String id, String postMessage, String title, String price, String author,
-        String publisher, List<String> category, List<String> state, String tradeMethod,
-        List<String> images, String sold, String about, String ownerId, Integer hits) {
+    public BookVO(
+        final String id,
+        final String postMessage,
+        final String title,
+        final String price,
+        final String author,
+        final String publisher,
+        final List<String> category,
+        final List<String> state,
+        final String tradeMethod,
+        final List<String> images,
+        final String sold,
+        final String about,
+        final String ownerId,
+        final Integer hits,
+        final String donation,
+        final String isSelling
+    ) {
         this.id = id;
         this.postMessage = postMessage;
         this.title = title;
@@ -46,5 +63,7 @@ public class BookVO {
         this.about = about;
         this.ownerId = ownerId;
         this.hits = hits;
+        this.donation = donation;
+        this.isSelling = isSelling;
     }
 }
