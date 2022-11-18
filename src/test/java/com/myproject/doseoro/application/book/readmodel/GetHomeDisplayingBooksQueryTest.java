@@ -24,7 +24,7 @@ class GetHomeDisplayingBooksQueryTest {
     private BookRepository repository;
 
     @Test
-    @DisplayName("5개의 판매 책을 조회한다.")
+    @DisplayName("5개 이하의 판매 책을 조회한다.")
     void test1() {
         List<HomeDisplayedSaleBookVO> bookList
             = HomeDisplayedSaleBookVOFixture.homeDisplayedSaleBookVOList();

@@ -24,7 +24,7 @@ class GetHomeDisplayingBuyingBooksQueryTest {
     private BookRepository repository;
 
     @Test
-    @DisplayName("4개의 삽니다 책을 조회한다.")
+    @DisplayName("4개 이하의 삽니다 책을 조회한다.")
     void test1() {
         List<HomeDisplayedBuyingBookVO> bookList = HomeDisplayedBuyingBookVOFixture.HomeDisplayedBuyingBookVOList();
 
@@ -39,7 +39,7 @@ class GetHomeDisplayingBuyingBooksQueryTest {
     }
 
     @Test
-    @DisplayName("5개의 삽니다 책을 조회 하지 못한다.")
+    @DisplayName("5개 이상의 삽니다 책을 조회 하지 못한다.")
     void test2() {
         List<HomeDisplayedBuyingBookVO> bookList = HomeDisplayedBuyingBookVOFixture.HomeDisplayedBuyingBookVOList();
 
