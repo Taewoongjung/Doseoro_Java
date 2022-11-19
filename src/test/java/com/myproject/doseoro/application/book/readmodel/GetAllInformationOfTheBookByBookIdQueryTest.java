@@ -31,7 +31,7 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
     private AccessUserSessionManager accessUserSessionManager;
 
     @Test
-    @DisplayName("판매 책의 정보를 조회한다.")
+    @DisplayName("판매 책의 모든 정보를 조회한다.")
     void test1() {
         BookVO book = BookVOFixture.firstBookVO();
 
@@ -74,7 +74,7 @@ class GetAllInformationOfTheBookByBookIdQueryTest {
     }
 
     @Test
-    @DisplayName("무료나눔 책의 정보를 조회한다.")
+    @DisplayName("무료나눔 책의 모든 정보를 조회한다.")
     void test2() {
         BookVO book = BookVOFixture.firstBookVODonation();
 

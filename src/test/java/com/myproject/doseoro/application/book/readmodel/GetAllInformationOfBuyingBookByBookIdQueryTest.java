@@ -31,7 +31,7 @@ class GetAllInformationOfBuyingBookByBookIdQueryTest {
     private IdentityRepository repository;
 
     @Test
-    @DisplayName("책 구매 요청(삽니다)의 정보를 조회한다.")
+    @DisplayName("책 구매 요청(삽니다)의 모든 정보를 조회한다.")
     void test() {
         BookVO book = BookVOFixture.firstBookVOForBuying();
 
