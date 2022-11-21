@@ -15,7 +15,11 @@ public class AllLikedBookVO {
     private String userId;
     private String bookId;
 
-    public AllLikedBookVO(final String id, final String userId, final String bookId) {
+    public AllLikedBookVO(
+        final String id,
+        final String userId,
+        final String bookId
+    ) {
         this.id = id;
         this.userId = userId;
         this.bookId = bookId;
