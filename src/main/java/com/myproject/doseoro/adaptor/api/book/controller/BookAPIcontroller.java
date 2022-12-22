@@ -13,7 +13,6 @@ import com.myproject.doseoro.application.book.handler.RegisterBuyingBookCommandH
 import com.myproject.doseoro.application.book.handler.RegisterDonationBookCommandHandler;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfBuyingBookByBookIdQuery;
 import com.myproject.doseoro.application.book.readmodel.GetAllInformationOfTheBookByBookIdQuery;
-import com.myproject.doseoro.application.book.readmodel.GetHomeDisplayingBooksQuery;
 import com.myproject.doseoro.application.book.vo.BookHitVO;
 import com.myproject.doseoro.application.book.vo.RegisterBookVO;
 import java.util.List;
@@ -33,7 +32,6 @@ public class BookAPIcontroller {
     private final RegisterBookCommandHandler registerBookCommandHandler;
     private final RegisterDonationBookCommandHandler registerDonationBookCommandHandler;
     private final RegisterBuyingBookCommandHandler registerBuyingBookCommandHandler;
-    private final GetHomeDisplayingBooksQuery findHomeDisplayingBooksCommandHandler;
     private final HitLikeCommandHandler hitLikeCommandHandler;
     private final HitReLikeCommandHandler hitReLikeCommandHandler;
     private final GetAllInformationOfTheBookByBookIdQuery bookDetailPageQuery;
