@@ -49,7 +49,7 @@ public class BookAPIcontroller {
         try {
             vo.multipleImageFileHandle(multipartFile, vo);
             registerBookCommandHandler.handle(vo);
-        } catch (Exception e) { // BussinessException 로직 추가하기
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
